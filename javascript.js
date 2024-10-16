@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         console.log(url);
         // Redirect to the URL
-        window.location.href = url; // Redirect to the appropriate page
+        window.location.href = "blob/main/" + url; // Redirect to the appropriate page
 
         } else {
             console.log("Nessuna festività futura trovata.");
