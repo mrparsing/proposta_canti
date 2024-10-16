@@ -90,48 +90,62 @@
         }
 
         /* Responsive design */
+        /* Responsive design for mobile */
         @media (max-width: 768px) {
+            .responsive-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
             h1 {
                 font-size: 2rem;
-                /* Smaller title size */
             }
 
             p {
                 font-size: 0.95rem;
-                /* Smaller paragraph size */
             }
 
             .button {
                 font-size: 1rem;
-                width: 100%;
-                /* Full width on mobile */
+                width: auto;
+                /* Remove full width for better centering */
+                margin-top: 20px;
+                /* Ensure there's space around the button */
             }
 
             .search-bar {
-                width: 100%;
-                /* Full width on mobile */
+                width: auto;
+                margin-top: 10px;
+                /* Remove full width for centering */
             }
         }
 
         @media (max-width: 480px) {
+            .responsive-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
             h1 {
                 font-size: 1.6rem;
-                /* Further reduced title size */
             }
 
             p {
                 font-size: 0.85rem;
-                /* Further reduced paragraph size */
             }
 
             .button {
                 padding: 10px;
-                /* Smaller button */
+                margin-top: 15px;
             }
 
             .search-bar {
                 padding: 10px;
-                /* Smaller search bar */
+                margin-top: 10px;
             }
         }
 
