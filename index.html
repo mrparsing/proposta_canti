@@ -3,66 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposta Canti Religiosi</title>
+    <title>Proposta canti liturgici</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Basic styles for body and overall layout */
+        /* Base styling for body and layout */
         body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('https://example.com/background.jpg'); /* Use a gentle background image */
-            background-size: cover; /* Cover the entire background */
-            color: #444; /* Default text color */
-            margin: 0; /* Remove default margin */
-            padding: 20px; /* Add padding around the content */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #a8e6cf, #56ab91); /* Green gradient background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        header {
-            text-align: center; /* Center align header content */
-            padding: 40px 0; /* Add padding above and below */
-            background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        /* Full-screen central box */
+        .central-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px;
+            width: 80%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .central-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
-            font-size: 2.5rem; /* Larger font size for the title */
-            color: #6A1B9A; /* A rich purple color for the title */
-            margin: 0; /* Remove default margin */
+            font-size: 2.8rem;
+            color: #2e7d32; /* Darker green for title */
+            margin-bottom: 20px;
         }
 
-        /* Button styles */
+        p {
+            font-size: 1.2rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Button styling */
         .button {
-            display: inline-block; /* Align button properly */
-            padding: 10px 20px; /* Padding for the button */
-            background-color: #4CAF50; /* Green background for button */
-            color: white; /* White text */
-            text-decoration: none; /* Remove underline */
-            border-radius: 5px; /* Rounded corners */
-            font-size: 1rem; /* Font size */
-            transition: background-color 0.3s; /* Smooth transition */
-            margin-top: 20px; /* Space above button */
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
         }
 
         .button:hover {
-            background-color: #45a049; /* Darker green on hover */
+            background-color: #388E3C;
+            transform: translateY(-3px);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
+        /* Search bar with animated icon */
+        .search-container {
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .search-bar {
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            width: 250px;
+            transition: width 0.3s ease, border-color 0.3s ease;
+        }
+
+        .search-bar:focus {
+            width: 320px; /* Expand on focus */
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .search-icon:hover {
+            transform: translateY(-50%) scale(1.2); /* Zoom effect on hover */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .central-box {
+                width: 90%;
+                padding: 30px;
+            }
+
             h1 {
-                font-size: 2rem; /* Smaller font size on smaller screens */
+                font-size: 2.2rem;
+            }
+
+            .button {
+                font-size: 1rem;
+            }
+
+            .search-bar {
+                width: 100%;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Proposta Canti Religiosi</h1> <!-- Main title -->
-    </header>
-    
-    <a href="#" class="button">Canti proposti domenica/festività prossima</a>
+    <div class="central-box">
+        <h1>Proposta canti liturgici</h1>
+        <p>Benvenuti sul sito <strong>Proposta Canti Religiosi</strong>, uno strumento pensato per supportare la scelta dei canti liturgici più adatti in base al calendario liturgico. Questo sito fornisce suggerimenti sui canti da proporre per le varie domeniche e festività dell'anno liturgico, rispettando le stagioni liturgiche come l'Avvento, il Natale, la Quaresima e il Tempo Ordinario.</p>
 
-    <script src="javascript.js"></script>
+        <p>Grazie a questo strumento, sarà possibile pianificare con maggiore facilità i canti più appropriati per la celebrazione eucaristica, tenendo conto delle letture del giorno, dei temi liturgici e della tradizione musicale religiosa. Selezionando la prossima domenica o festività, potrai visualizzare una proposta di canti che aiuterà a guidare il coro parrocchiale o l’assemblea durante la messa.</p>
+
+        <p>Questo servizio è utile sia per i musicisti che per i responsabili della liturgia, fornendo una guida rapida e facile da utilizzare per preparare le celebrazioni in modo adeguato e spiritualmente coinvolgente.</p>
+        <a href="#" class="button">Proposta canti prossima domenica/festività</a>
+
+        <!-- Search bar section -->
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Pasqua, Quaresima, XX, XIV...">
+        </div>
+    </div>
+
+    <script>
+        // Simple search bar animation and interaction
+        document.querySelector('.search-bar').addEventListener('focus', function() {
+            document.querySelector('.search-icon').style.transform = 'translateY(-50%) scale(1.2)';
+        });
+
+        document.querySelector('.search-bar').addEventListener('blur', function() {
+            document.querySelector('.search-icon').style.transform = 'translateY(-50%)';
+        });
+    </script>
+<script src="javascript.js"> </script>
 </body>
 </html>

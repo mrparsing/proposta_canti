@@ -51,7 +51,7 @@ function calcolaQuaresima(anno) {
 
     const inizioQuaresima = mercolediCeneri;
     const fineQuaresima = new Date(pasqua);
-    fineQuaresima.setDate(pasqua.getDate() - 1); // Sabato Santo
+    fineQuaresima.setDate(pasqua.getDate() - 7); // Domenica delle Palme
 
     return { inizioQuaresima, fineQuaresima };
 }
@@ -143,36 +143,59 @@ function calcolaDomenicaCorrente() {
     return domenicaCorrente;
 }
 
+function calcolaDomenicheQuaresima(anno) {
+    const quaresima = calcolaQuaresima(anno);
+    const primaDomenicaQuaresima = prossima_domenica(quaresima.inizioQuaresima);
+
+    // Array per memorizzare le cinque domeniche di Quaresima
+    const domenicheQuaresima = [primaDomenicaQuaresima];
+
+    // Calcola le altre domeniche di Quaresima
+    for (let i = 1; i < 5; i++) {
+        const domenica = new Date(primaDomenicaQuaresima);
+        domenica.setDate(primaDomenicaQuaresima.getDate() + (i * 7)); // Aggiunge 7 giorni per ogni domenica
+        domenicheQuaresima.push(domenica);
+    }
+
+    return domenicheQuaresima;
+}
+
+
 function calcolaFestivita(anno) {
     const pasqua = calcolaPasqua(anno);
     const domenicheAvvento = calcolaDomenicheAvvento(anno);
     const quaresima = calcolaQuaresima(anno);
     const tempoOrdinario = calcolaTempoOrdinario(anno);
     const domenicheTempoOrdinario = calcolaDomenicheTempoOrdinario(anno);
+    const domenicheQuaresima = calcolaDomenicheQuaresima(anno)
+    tipologia_anno(anno)
     
     const festivita = [];
 
+    domenicheQuaresima.forEach((domenica, index) => {
+        festivita.push({ anno: tipologia_anno(anno), tipologia: "quaresima", numero: `${index + 1}`, data: domenica });
+    });
     // Aggiungi Pasqua
-    festivita.push({ tipologia: "pasqua", numero: 'Pasqua', data: pasqua });
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Pasqua', data: pasqua });
 
     // Aggiungi Avvento
     domenicheAvvento.forEach((domenica, index) => {
-        festivita.push({ tipologia: "avvento", numero: `${index + 1}`, data: domenica });
+        festivita.push({ anno: tipologia_anno(anno), tipologia: "avvento", numero: `${index + 1}`, data: domenica });
     });
 
     // Aggiungi inizio e fine Quaresima
-    festivita.push({ tipologia: "quaresima", numero: 'Inizio Quaresima', data: quaresima.inizioQuaresima });
-    festivita.push({ tipologia: "quaresima", numero: 'Fine Quaresima', data: quaresima.fineQuaresima });
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "quaresima", numero: 'Mercoledì delle Ceneri', data: quaresima.inizioQuaresima });
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "quaresima", numero: 'Domenica delle Palme', data: quaresima.fineQuaresima });
 
     // Aggiungi domeniche del Tempo Ordinario
     domenicheTempoOrdinario.forEach((domenica, index) => {
-        festivita.push({ tipologia: "ordinario", numero: `${index + 1}`, data: domenica });
+        festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: `${index + 1}`, data: domenica });
     });
     festivita.sort((a, b) => a.data - b.data);
 
     return festivita;
 }
-
+/*
 function visualizzaRisultati(anno, festivita, domenicaSuccessiva) {
     let output = `<h2>Risultati per l'anno ${anno}</h2>`;
     output += `<div class="result"><strong>Festività e Domeniche:</strong></div>`;
@@ -190,7 +213,7 @@ function visualizzaRisultati(anno, festivita, domenicaSuccessiva) {
 
     document.getElementById('output').innerHTML = output;
 }
-/*
+
 function calcolaDomenicaSuccessiva(festivita) {
     const oggi = new Date();
     const prossimaDomenica = prossima_domenica(oggi);
@@ -222,22 +245,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Find the next future holiday
         for (const festivitaItem of festivita) {
-            if (festivitaItem.data > oggi) {
+            if (festivitaItem.data >= oggi) {
                 festa = festivitaItem; // Get the next future holiday
                 break;
             }
         }
-
+        console.log(festivita);
         // Determine the URL based on the type of holiday
         if (festa) {
             if (festa.tipologia === "ordinario") {
                 const numero = festa.numero;
-                url = "tempo_ordinario/" + numero + ".html";
+                const anno = festa.anno;
+                url = "tempo_ordinario/anno_" + anno + "/" + numero + ".html";
+            } else if(festa.tipologia === "avvento") {
+                const numero = festa.numero;
+                const anno = festa.anno;
+                url = "tempo_avvento/anno_" + anno + "/" + numero + ".html";
+            } else if(festa.tipologia === "quaresima") {
+                const numero = festa.numero;
+                const anno = festa.anno;
+                url = "tempo_quaresima/anno_" + anno + "/" + numero + ".html";
             }
+        console.log(url);
+        // Redirect to the URL
+        window.location.href = url; // Redirect to the appropriate page
 
-            console.log(url);
-            // Redirect to the URL
-            window.location.href = url; // Redirect to the appropriate page
         } else {
             console.log("Nessuna festività futura trovata.");
             alert("Nessuna festività futura trovata."); // Optional: alert if no future holiday found
