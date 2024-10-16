@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('.button'); // Select the button
 
     button.addEventListener('click', function () {
-        const oggi = new Date();
+        const oggi = new Date()
         const festivita = calcolaFestivita(oggi.getFullYear());
         let festa;
         let url = "";
