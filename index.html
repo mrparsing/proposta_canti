@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,13 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Base styling for body and layout */
+        /* Base styling for body and layout */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #a8e6cf, #56ab91); /* Green gradient background */
+            background: linear-gradient(to bottom, #a8e6cf, #56ab91);
+            /* Green gradient background */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -20,33 +23,24 @@
         }
 
         /* Full-screen central box */
-        .central-box {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            text-align: center;
-            border-radius: 15px;
-            width: 80%; /* Responsive width */
-            max-width: 800px; /* Max width for larger screens */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .central-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-        }
-
         h1 {
-            font-size: 2.5rem; /* Relative size */
-            color: #2e7d32; /* Darker green for title */
+            font-size: 2.5rem;
+            /* Relative size */
+            color: #2e7d32;
+            /* Darker green for title */
             margin-bottom: 20px;
+            text-align: center;
+            /* Center title */
         }
 
         p {
-            font-size: 1rem; /* Adjusted size for readability */
+            font-size: 1rem;
+            /* Adjusted size for readability */
             color: #444;
             line-height: 1.6;
             margin-bottom: 15px;
+            text-align: center;
+            /* Center paragraphs */
         }
 
         /* Button styling */
@@ -60,7 +54,10 @@
             font-size: 1.1rem;
             transition: background-color 0.3s, transform 0.3s;
             margin-top: 20px;
-            width: auto; /* Auto width */
+            width: auto;
+            /* Auto width */
+            text-align: center;
+            /* Center button text */
         }
 
         .button:hover {
@@ -71,8 +68,8 @@
         /* Search bar with animated icon */
         .search-container {
             margin-top: 40px;
-            position: relative;
-            width: 100%; /* Full width */
+            text-align: center;
+            /* Center search container */
         }
 
         .search-bar {
@@ -80,101 +77,109 @@
             font-size: 1rem;
             border: 2px solid #ccc;
             border-radius: 25px;
-            width: 250px; /* Fixed width on desktop */
+            width: 250px;
+            /* Fixed width on desktop */
             transition: width 0.3s ease, border-color 0.3s ease;
         }
 
         .search-bar:focus {
-            width: 320px; /* Expand on focus */
+            width: 320px;
+            /* Expand on focus */
             outline: none;
             border-color: #4CAF50;
         }
 
-        .search-icon {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .search-icon:hover {
-            transform: translateY(-50%) scale(1.2); /* Zoom effect on hover */
-        }
-
         /* Responsive design */
         @media (max-width: 768px) {
-            .central-box {
-                width: 90%; /* Slightly wider on mobile */
-                padding: 30px; /* Reduced padding */
-            }
-
             h1 {
-                font-size: 2rem; /* Smaller title size */
+                font-size: 2rem;
+                /* Smaller title size */
             }
 
             p {
-                font-size: 0.95rem; /* Smaller paragraph size */
+                font-size: 0.95rem;
+                /* Smaller paragraph size */
             }
 
             .button {
                 font-size: 1rem;
-                width: 100%; /* Full width on mobile */
+                width: 100%;
+                /* Full width on mobile */
             }
 
             .search-bar {
-                width: 100%; /* Full width on mobile */
+                width: 100%;
+                /* Full width on mobile */
             }
         }
 
         @media (max-width: 480px) {
             h1 {
-                font-size: 1.6rem; /* Further reduced title size */
+                font-size: 1.6rem;
+                /* Further reduced title size */
             }
 
             p {
-                font-size: 0.85rem; /* Further reduced paragraph size */
+                font-size: 0.85rem;
+                /* Further reduced paragraph size */
             }
 
             .button {
-                padding: 10px; /* Smaller button */
+                padding: 10px;
+                /* Smaller button */
             }
 
             .search-bar {
-                padding: 10px; /* Smaller search bar */
+                padding: 10px;
+                /* Smaller search bar */
             }
+        }
+
+        /* Make container full width and center text inside */
+        .responsive-container {
+            width: 90vw;
+            /* Full width of the viewport */
+            margin: 0;
+            /* No margin to align it fully with the edges */
+            padding: 20px;
+            /* Padding for some spacing */
+            background-color: #ffffff;
+            /* White background for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
+            border-radius: 10px;
+            text-align: center;
+            /* Center all content */
         }
     </style>
 </head>
+
 <body>
 
-    <div class="central-box">
+    <div class="responsive-container">
         <h1>Proposta canti liturgici</h1>
-        <p>Benvenuti sul sito <strong>Proposta Canti Religiosi</strong>, uno strumento pensato per supportare la scelta dei canti liturgici più adatti in base al calendario liturgico. Questo sito fornisce suggerimenti sui canti da proporre per le varie domeniche e festività dell'anno liturgico, rispettando le stagioni liturgiche come l'Avvento, il Natale, la Quaresima e il Tempo Ordinario.</p>
+        <p>Benvenuti sul sito <strong>Proposta Canti Religiosi</strong>, uno strumento pensato per supportare la scelta
+            dei canti liturgici più adatti in base al calendario liturgico. Questo sito fornisce suggerimenti sui canti
+            da proporre per le varie domeniche e festività dell'anno liturgico, rispettando le stagioni liturgiche come
+            l'Avvento, il Natale, la Quaresima e il Tempo Ordinario.</p>
 
-        <p>Grazie a questo strumento, sarà possibile pianificare con maggiore facilità i canti più appropriati per la celebrazione eucaristica, tenendo conto delle letture del giorno, dei temi liturgici e della tradizione musicale religiosa. Selezionando la prossima domenica o festività, potrai visualizzare una proposta di canti che aiuterà a guidare il coro parrocchiale o l’assemblea durante la messa.</p>
+        <p>Grazie a questo strumento, sarà possibile pianificare con maggiore facilità i canti più appropriati per la
+            celebrazione eucaristica, tenendo conto delle letture del giorno, dei temi liturgici e della tradizione
+            musicale religiosa. Selezionando la prossima domenica o festività, potrai visualizzare una proposta di canti
+            che aiuterà a guidare il coro parrocchiale o l’assemblea durante la messa.</p>
 
-        <p>Questo servizio è utile sia per i musicisti che per i responsabili della liturgia, fornendo una guida rapida e facile da utilizzare per preparare le celebrazioni in modo adeguato e spiritualmente coinvolgente.</p>
+        <p>Questo servizio è utile sia per i musicisti che per i responsabili della liturgia, fornendo una guida rapida
+            e facile da utilizzare per preparare le celebrazioni in modo adeguato e spiritualmente coinvolgente.</p>
         <a href="#" class="button">Proposta canti prossima domenica/festività</a>
 
         <!-- Search bar section -->
         <div class="search-container">
             <input type="text" class="search-bar" placeholder="Pasqua, Quaresima, XX, XIV...">
-            <span class="search-icon">🔍</span> <!-- Placeholder for search icon -->
         </div>
     </div>
 
-    <script>
-        // Simple search bar animation and interaction
-        document.querySelector('.search-bar').addEventListener('focus', function() {
-            document.querySelector('.search-icon').style.transform = 'translateY(-50%) scale(1.2)';
-        });
 
-        document.querySelector('.search-bar').addEventListener('blur', function() {
-            document.querySelector('.search-icon').style.transform = 'translateY(-50%)';
-        });
-    </script>
     <script src="javascript.js"></script>
 </body>
+
 </html>
