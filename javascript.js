@@ -18,9 +18,9 @@ function calcolaPasqua(anno) {
 
 function tipologia_anno(anno) {
     if (anno % 3 === 2) {
-        return "B";
+        return "b";
     } else {
-        return "C";
+        return "b";
     }
 }
 
