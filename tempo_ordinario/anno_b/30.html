@@ -1,66 +1,128 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{Titolo della Celebrazione}}</title>
-    <link rel="stylesheet" href="../../styles/style_template.css">
+    <title>Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            color: white;
+            margin-right: 20px;
+        }
+
+        .navbar button,
+        .navbar input[type="text"] {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: black;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            min-width: 120px;
+        }
+
+        .navbar button:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .navbar input[type="text"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 250px;
+            transition: max-width 0.3s ease;
+            padding: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .navbar-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .navbar h1 {
+                margin-bottom: 10px;
+            }
+
+            .navbar-buttons {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .navbar.active .navbar-buttons {
+                display: flex;
+            }
+
+            .navbar input[type="text"] {
+                max-width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <div class="navbar" id="myNavbar">
+        <h1>Proposta canti</h1>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <div class="navbar-buttons">
+            <button>Home</button>
+            <button>Elenco canti</button>
+            <button>Spartiti salmi</button>
+        </div>
+        <input type="text" placeholder="Cerca canti...">
+    </div>
 
-<div class="responsive-container">
-    <!-- Titolo della celebrazione -->
-    <h1>{{Titolo della Celebrazione}}</h1>
-
-    <!-- Antifona d'ingresso -->
-    <h2>Antifona d'ingresso</h2>
-    <p>{{Testo Antifona d'ingresso}}</p>
-
-    <!-- Canto d'ingresso -->
-    <h3>Canto d'ingresso</h3>
-    <p>{{Testo Canto d'ingresso}}</p>
-
-    <!-- Atto penitenziale -->
-    <h2>Atto penitenziale</h2>
-    <p>{{Descrizione Atto penitenziale}}</p>
-    <p><b>{{Kyrie/Christe eleison}}</b></p>
-
-    <!-- Liturgia della parola -->
-    <h2>Liturgia della parola</h2>
-
-    <!-- Prima Lettura -->
-    <h3>PRIMA LETTURA</h3>
-    <p>Dal libro di {{Libro Prima Lettura}}<br> {{Riferimento Prima Lettura}}</p>
-    <p>{{Testo Prima Lettura}}</p>
-    <p>Parola di Dio.</p>
-
-    <!-- Salmo Responsoriale -->
-    <h2>SALMO RESPONSORIALE</h2>
-    <p><b>{{Ritornello Salmo Responsoriale}}</b></p>
-    <p>{{Testo Salmo Responsoriale}}</p>
-
-    <!-- Seconda Lettura -->
-    <h2>SECONDA LETTURA</h2>
-    <p>Dalla lettera di {{Lettera Seconda Lettura}}<br> {{Riferimento Seconda Lettura}}</p>
-    <p>{{Testo Seconda Lettura}}</p>
-    <p>Parola di Dio.</p>
-
-    <!-- Acclamazione al Vangelo -->
-    <h2>Acclamazione al Vangelo</h2>
-    <p>Alleluia, alleluia.</p>
-    <p>{{Testo Acclamazione al Vangelo}}</p>
-    <p>Alleluia.</p>
-
-    <!-- Vangelo -->
-    <h2>VANGELO</h2>
-    <p>Dal Vangelo secondo {{Vangelo}}<br> {{Riferimento Vangelo}}</p>
-    <p>{{Testo Vangelo}}</p>
-    <p>Parola del Signore.</p>
-
-    <!-- Antifona alla comunione -->
-    <h2>Antifona alla comunione</h2>
-    <p>{{Testo Antifona Comunione}}</p>
-</div>
-
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('myNavbar');
+            navbar.classList.toggle('active'); // Toggle the class to show/hide the menu
+        }
+    </script>
+    <script></script>
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Esempio con Colori Dinamici</title>
+    <title>Proposta Canti</title>
     <style>
         * {
             margin: 0;
@@ -105,6 +105,13 @@
 
         .slogan-div {
             flex: 0 0 65%;
+            line-height: 1.8;
+            /* Improve line spacing */
+        }
+
+        .slogan-div p {
+            margin-bottom: 15px;
+            /* Space between paragraphs */
         }
 
         .prossime-celebrazioni-div {
@@ -123,6 +130,7 @@
                 transform: translateY(-20px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -134,6 +142,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -174,44 +183,68 @@
                 flex-direction: column;
             }
         }
+
+        .prossime-celebrazioni-div {
+            background-color: #f9f9f9;
+            /* Light background for the section */
+            border-radius: 8px;
+            /* Rounded corners */
+            padding: 20px;
+            /* Padding around the section */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        .prossime-celebrazioni-div h2 {
+            font-size: 24px;
+            /* Font size for the heading */
+            color: #333;
+            /* Dark color for the heading */
+            margin-bottom: 15px;
+            /* Space below the heading */
+        }
+
+        #celebrazioneList {
+            list-style-type: none;
+            /* Remove bullet points */
+            padding: 0;
+            /* Remove default padding */
+        }
+
+        #celebrazioneList li {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #celebrazioneList li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #celebrazioneList li a {
+            display: block;
+            /* Make the link a block element */
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            height: 100%;
+            /* Ensures the anchor fills the list item */
+        }
+
+        #celebrazioneList li a:hover {
+            text-decoration: underline;
+            background-color: #f1f1f1;
+            /* Optional: highlight on hover */
+        }
     </style>
     <script>
         function toggleMenu() {
             const navbar = document.getElementById('myNavbar');
             navbar.classList.toggle('active'); // Attiva/disattiva la classe per mostrare/nascondere il menu
-        }
-
-        function setNavbarColor() {
-            const navbar = document.querySelector('.navbar');
-            const today = new Date();
-            const dayOfWeek = today.getDay();
-
-            switch (dayOfWeek) {
-                case 0:
-                    navbar.style.backgroundColor = '#FF6347'; // Rosso
-                    break;
-                case 1:
-                    navbar.style.backgroundColor = '#4682B4'; // Blu
-                    break;
-                case 2:
-                    navbar.style.backgroundColor = '#3CB371'; // Verde
-                    break;
-                case 3:
-                    navbar.style.backgroundColor = '#FFD700'; // Giallo
-                    break;
-                case 4:
-                    navbar.style.backgroundColor = '#FF4500'; // Arancione
-                    break;
-                case 5:
-                    navbar.style.backgroundColor = '#8A2BE2'; // Viola
-                    break;
-                case 6:
-                    navbar.style.backgroundColor = '#20B2AA'; // Acqua
-                    break;
-                default:
-                    navbar.style.backgroundColor = '#4CAF50'; // Colore di default
-                    break;
-            }
         }
 
         function addCelebrazione() {
@@ -245,13 +278,28 @@
             <input type="text" placeholder="Cerca canti...">
         </div>
 
-        <div class="main-content">
+        <div class="main-content" id="main-content">
             <div class="slogan-div">
-                <h2>Slogan o messaggio</h2>
                 <p>Benvenuti sul sito <strong>Proposta Canti Religiosi</strong>, uno strumento pensato per supportare la
                     scelta
-                    dei canti liturgici più adatti in base al calendario liturgico.</p>
-                <!-- Messaggi aggiuntivi -->
+                    dei canti liturgici più adatti in base al calendario liturgico. Questo sito fornisce suggerimenti
+                    sui canti
+                    da proporre per le varie domeniche e festività dell'anno liturgico, rispettando le stagioni
+                    liturgiche come
+                    l'Avvento, il Natale, la Quaresima e il Tempo Ordinario.</p>
+
+                <p>Grazie a questo strumento, sarà possibile pianificare con maggiore facilità i canti più appropriati
+                    per la
+                    celebrazione eucaristica, tenendo conto delle letture del giorno, dei temi liturgici e della
+                    tradizione
+                    musicale religiosa. Selezionando la prossima domenica o festività, potrai visualizzare una proposta
+                    di canti
+                    che aiuterà a guidare il coro parrocchiale o l’assemblea durante la messa.</p>
+
+                <p>Questo servizio è utile sia per i musicisti che per i responsabili della liturgia, fornendo una guida
+                    rapida
+                    e facile da utilizzare per preparare le celebrazioni in modo adeguato e spiritualmente coinvolgente.
+                </p>
             </div>
             <div class="prossime-celebrazioni-div">
                 <h2>Prossime celebrazioni</h2>

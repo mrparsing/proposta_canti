@@ -291,6 +291,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
+    setNavbarColor(prox_celebrazioni[0].tipologia)
+
     let url = "";
 
     console.log(prox_celebrazioni);
@@ -320,8 +323,79 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function inserisci_elemento_lista(numero, anno, tipologia, url) {
     console.log(numero, anno, tipologia, url);
-    const ul = document.querySelector('.prossime-celebrazioni-div ul'); // Select the unordered list
-    const li = document.createElement('li'); // Create a new list item
-    li.innerHTML = `Numero: ${numero}, Anno: ${anno}, Tipologia: ${tipologia} <a href="${url}">Link</a>`;
-    ul.appendChild(li); // Append the list item to the unordered list
+    const ul = document.querySelector('.prossime-celebrazioni-div ul');
+    const li = document.createElement('li');
+
+    // Aggiungi un gestore di eventi al clic sull'elemento della lista
+    li.addEventListener('click', function() {
+        caricaContenuto(url);
+    });
+
+    if (tipologia === "ordinario") {
+        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica tempo ordinario anno: ${anno}</a>`;
+    } else if (tipologia === "avvento") {
+        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica d'avvento anno: ${anno}</a>`;
+    }
+
+    ul.appendChild(li);
+}
+
+function caricaContenuto(url) {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // Restituisce il contenuto HTML come testo
+        })
+        .then(html => {
+            const mainContent = document.querySelector('.main-content');
+            mainContent.innerHTML = html; // Aggiorna solo il contenuto di mainContent
+        })
+        .catch(error => console.error('Error loading content:', error));
+}
+
+
+/*
+function inserisci_elemento_lista(numero, anno, tipologia, url) {
+    console.log(numero, anno, tipologia, url);
+    const ul = document.querySelector('.prossime-celebrazioni-div ul');
+    const li = document.createElement('li');
+    
+    // Define the image source based on your needs
+    const imageSrc = "path/to/your/image.png"; 
+
+    if (tipologia === "ordinario") {
+        li.innerHTML = `
+            <img src="${imageSrc}" alt="Icon" class="list-icon" /> 
+            <a href="${url}" style="display: inline-block; text-decoration: none; color: inherit;">
+                ${numero}° domenica tempo ordinario anno: ${anno}
+            </a>`;
+    } else if (tipologia === "avvento") {
+        li.innerHTML = `
+            <img src="${imageSrc}" alt="Icon" class="list-icon" /> 
+            <a href="${url}" style="display: inline-block; text-decoration: none; color: inherit;">
+                ${numero}° domenica d'avvento anno: ${anno}
+            </a>`;
+    }
+
+    ul.appendChild(li);
+}*/
+
+
+function setNavbarColor(tipologia) {
+    const navbar = document.querySelector('.navbar');
+    console.log("tiologia", tipologia);
+    switch (tipologia) {
+        case "ordinario":
+            console.log("sono qui");
+            navbar.style.backgroundColor = '#3CB371'; // Verde
+            break;
+        case "avvento":
+            navbar.style.backgroundColor = '#8A2BE2'; // Viola
+            break;
+        case "quaresima":
+            navbar.style.backgroundColor = '#8A2BE2'; // Viola
+            break;
+    }
 }
