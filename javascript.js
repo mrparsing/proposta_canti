@@ -160,7 +160,6 @@ function calcolaDomenicheQuaresima(anno) {
     return domenicheQuaresima;
 }
 
-
 function calcolaFestivita(anno) {
     const pasqua = calcolaPasqua(anno);
     const domenicheAvvento = calcolaDomenicheAvvento(anno);
@@ -195,6 +194,56 @@ function calcolaFestivita(anno) {
 
     return festivita;
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const oggi = new Date();
+    const festivita = calcolaFestivita(oggi.getFullYear());
+
+    console.log("ciao", festivita);
+
+    const prox_celebrazioni = [];
+
+    for (const festivitaItem of festivita) {
+        if (festivitaItem.data >= oggi) {
+            prox_celebrazioni.push(festivitaItem);
+            if (prox_celebrazioni.length === 10) {
+                break;
+            }
+        }
+    }
+
+    setNavbarColor(prox_celebrazioni[0].tipologia)
+
+    let url = "";
+
+    console.log(prox_celebrazioni);
+
+    // Insert the list into the div
+    const celebrazioniDiv = document.querySelector('.prossime-celebrazioni-div');
+    const ul = document.createElement('ul');
+    celebrazioniDiv.appendChild(ul);
+
+    for (const festa of prox_celebrazioni) {
+        if (festa.tipologia === "ordinario") {
+            const numero = festa.numero;
+            const anno = festa.anno;
+            url = "tempo_ordinario/anno_" + anno + "/" + numero + ".html";
+        } else if (festa.tipologia === "avvento") {
+            const numero = festa.numero;
+            const anno = festa.anno;
+            url = "tempo_avvento/anno_" + anno + "/" + numero + ".html";
+        } else if (festa.tipologia === "quaresima") {
+            const numero = festa.numero;
+            const anno = festa.anno;
+            url = "tempo_quaresima/anno_" + anno + "/" + numero + ".html";
+        }
+        inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia, url);
+    }
+});
+
+
+
 /*
 function visualizzaRisultati(anno, festivita, domenicaSuccessiva) {
     let output = `<h2>Risultati per l'anno ${anno}</h2>`;
@@ -277,85 +326,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 */
-document.addEventListener('DOMContentLoaded', function () {
-    const oggi = new Date();
-    const festivita = calcolaFestivita(oggi.getFullYear());
-
-    const prox_celebrazioni = [];
-
-    for (const festivitaItem of festivita) {
-        if (festivitaItem.data >= oggi) {
-            prox_celebrazioni.push(festivitaItem);
-            if (prox_celebrazioni.length === 10) {
-                break;
-            }
-        }
-    }
-
-    setNavbarColor(prox_celebrazioni[0].tipologia)
-
-    let url = "";
-
-    console.log(prox_celebrazioni);
-
-    // Insert the list into the div
-    const celebrazioniDiv = document.querySelector('.prossime-celebrazioni-div');
-    const ul = document.createElement('ul');
-    celebrazioniDiv.appendChild(ul);
-
-    for (const festa of prox_celebrazioni) {
-        if (festa.tipologia === "ordinario") {
-            const numero = festa.numero;
-            const anno = festa.anno;
-            url = "tempo_ordinario/anno_" + anno + "/" + numero + ".html";
-        } else if (festa.tipologia === "avvento") {
-            const numero = festa.numero;
-            const anno = festa.anno;
-            url = "tempo_avvento/anno_" + anno + "/" + numero + ".html";
-        } else if (festa.tipologia === "quaresima") {
-            const numero = festa.numero;
-            const anno = festa.anno;
-            url = "tempo_quaresima/anno_" + anno + "/" + numero + ".html";
-        }
-        inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia, url);
-    }
-});
 
 function inserisci_elemento_lista(numero, anno, tipologia, url) {
     console.log(numero, anno, tipologia, url);
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
-
-    // Aggiungi un gestore di eventi al clic sull'elemento della lista
-    li.addEventListener('click', function() {
-        caricaContenuto(url);
-    });
-
     if (tipologia === "ordinario") {
-        li.innerHTML = `<a style="display: block; text-decoration: none; color: inherit;">${numero}° domenica tempo ordinario anno: ${anno}</a>`;
-    } else if (tipologia === "avvento") {
-        li.innerHTML = `<a style="display: block; text-decoration: none; color: inherit;">${numero}° domenica d'avvento anno: ${anno}</a>`;
+        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica tempo ordinario anno: ${anno}</a>`;
+    } else if (tipologia==="avvento") {
+        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica d'avvento anno: ${anno}</a>`;
     }
-
     ul.appendChild(li);
 }
 
-function caricaContenuto(url) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text(); // Restituisce il contenuto HTML come testo
-        })
-        .then(html => {
-            const mainContent = document.querySelector('.main-content');
-            mainContent.innerHTML = html; // Aggiorna solo il contenuto di mainContent
-        })
-        .catch(error => console.error('Error loading content:', error));
-}
-
-
+document.addEventListener('DOMContentLoaded', function () {
+    festivita = calcolaFestivita(anno)
+    setNavbarColor(festivita[0].tipologia)
+});
 /*
 function inserisci_elemento_lista(numero, anno, tipologia, url) {
     console.log(numero, anno, tipologia, url);
