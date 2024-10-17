@@ -27,7 +27,28 @@
                 alert('Per favore, inserisci una celebrazione valida.');
             }
         }
+
     </script>
+    <style>
+        .slogan-div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slogan-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .slogan-div .half {
+            width: 48%; /* Adjust width to 48% to account for margins */
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
@@ -35,11 +56,6 @@
         <div class="navbar" id="myNavbar">
             <h1>Proposta canti</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-            <div class="navbar-buttons">
-                <button>Home</button>
-                <button>Elenco canti</button>
-                <button>Spartiti salmi</button>
-            </div>
             <input type="text" placeholder="Cerca canti...">
         </div>
 
@@ -65,7 +81,18 @@
                     rapida
                     e facile da utilizzare per preparare le celebrazioni in modo adeguato e spiritualmente coinvolgente.
                 </p>
+
+                <!-- Nuovi div in fondo alla sezione slogan -->
+                <div class="slogan-bottom">
+                    <div class="half">
+                        <p>Elenco canti</p>
+                    </div>
+                    <div class="half">
+                        <p>Salmi spartiti</p>
+                    </div>
+                </div>
             </div>
+
             <div class="prossime-celebrazioni-div">
                 <h2>Prossime celebrazioni</h2>
                 <ul id="celebrazioneList">
@@ -75,4 +102,5 @@
         </div>
     </div>
 </body>
+
 </html>

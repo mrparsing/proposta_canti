@@ -95,7 +95,7 @@ body {
 }
 
 .slogan-div {
-    flex: 0 0 65%;
+    flex: 0 0 60%;
     line-height: 1.8;
     /* Improve line spacing */
 }
@@ -107,7 +107,7 @@ body {
 
 .prossime-celebrazioni-div {
     background-color: #d1d1d1;
-    flex: 0 0 35%;
+    flex: 0 0 40%;
 }
 
 .slogan-div h2,
