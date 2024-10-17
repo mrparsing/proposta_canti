@@ -4,194 +4,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposta canti liturgici</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Navbar Esempio con Colori Dinamici</title>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #a8e6cf, #56ab91);
-            /* Green gradient background */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-sizing: border-box;
         }
 
-        /* Full-screen central box */
-        h1 {
-            font-size: 2.5rem;
-            /* Relative size */
-            color: #2e7d32;
-            /* Darker green for title */
-            margin-bottom: 20px;
-            text-align: center;
-            /* Center title */
+        html,
+        body {
+            height: 100%;
         }
 
-        p {
-            font-size: 1rem;
-            /* Adjusted size for readability */
-            color: #444;
+        body {
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin-bottom: 15px;
-            text-align: center;
-            /* Center paragraphs */
+            background-color: #f9f9f9;
         }
 
-        /* Button styling */
-        .button {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #4CAF50;
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
             color: white;
-            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .navbar button,
+        .navbar input[type="text"] {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            border: none;
             border-radius: 5px;
-            font-size: 1.1rem;
-            transition: background-color 0.3s, transform 0.3s;
-            margin-top: 20px;
-            width: auto;
-            /* Auto width */
-            text-align: center;
-            /* Center button text */
-        }
-
-        .button:hover {
-            background-color: #388E3C;
-            transform: translateY(-3px);
-        }
-
-        /* Search bar with animated icon */
-        .search-container {
-            margin-top: 40px;
-            text-align: center;
-            /* Center search container */
-        }
-
-        .search-bar {
-            padding: 12px;
-            font-size: 1rem;
-            border: 2px solid #ccc;
-            border-radius: 25px;
-            width: 250px;
-            /* Fixed width on desktop */
-            transition: width 0.3s ease, border-color 0.3s ease;
-        }
-
-        .search-bar:focus {
-            width: 320px;
-            /* Expand on focus */
-            outline: none;
-            border-color: #4CAF50;
-        }
-
-        /* Responsive design */
-        /* Responsive design for mobile */
-        @media (max-width: 768px) {
-            .responsive-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            p {
-                font-size: 0.95rem;
-            }
-
-            .button {
-                font-size: 1rem;
-                width: auto;
-                /* Remove full width for better centering */
-                margin-top: 20px;
-                /* Ensure there's space around the button */
-            }
-
-            .search-bar {
-                width: auto;
-                margin-top: 10px;
-                /* Remove full width for centering */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .responsive-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            p {
-                font-size: 0.85rem;
-            }
-
-            .button {
-                padding: 10px;
-                margin-top: 15px;
-            }
-
-            .search-bar {
-                padding: 10px;
-                margin-top: 10px;
-            }
-        }
-
-        /* Make container full width and center text inside */
-        .responsive-container {
-            width: 90vw;
-            /* Full width of the viewport */
-            margin: 0;
-            /* No margin to align it fully with the edges */
-            padding: 20px;
-            /* Padding for some spacing */
             background-color: #ffffff;
-            /* White background for content */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            /* Shadow for depth */
+            color: black;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            min-width: 120px;
+        }
+
+        .navbar button:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .navbar input[type="text"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 250px;
+            transition: max-width 0.3s ease;
+            padding: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .navbar-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .main-content {
+            display: flex;
+            flex-grow: 1;
+            padding: 20px;
+            width: 100%;
+            height: calc(100vh - 60px);
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .slogan-div,
+        .prossime-celebrazioni-div {
+            background-color: #e1e1e1;
+            padding: 20px;
             border-radius: 10px;
-            text-align: center;
-            /* Center all content */
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .slogan-div {
+            flex: 0 0 65%;
+        }
+
+        .prossime-celebrazioni-div {
+            background-color: #d1d1d1;
+            flex: 0 0 35%;
+        }
+
+        .slogan-div h2,
+        .prossime-celebrazioni-div h2 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .navbar h1 {
+                margin-bottom: 10px;
+            }
+
+            .navbar-buttons {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .navbar.active .navbar-buttons {
+                display: flex;
+            }
+
+            .navbar input[type="text"] {
+                max-width: 100%;
+                margin-top: 10px;
+            }
+
+            .main-content {
+                flex-direction: column;
+            }
         }
     </style>
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('myNavbar');
+            navbar.classList.toggle('active'); // Attiva/disattiva la classe per mostrare/nascondere il menu
+        }
+
+        function setNavbarColor() {
+            const navbar = document.querySelector('.navbar');
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+
+            switch (dayOfWeek) {
+                case 0:
+                    navbar.style.backgroundColor = '#FF6347'; // Rosso
+                    break;
+                case 1:
+                    navbar.style.backgroundColor = '#4682B4'; // Blu
+                    break;
+                case 2:
+                    navbar.style.backgroundColor = '#3CB371'; // Verde
+                    break;
+                case 3:
+                    navbar.style.backgroundColor = '#FFD700'; // Giallo
+                    break;
+                case 4:
+                    navbar.style.backgroundColor = '#FF4500'; // Arancione
+                    break;
+                case 5:
+                    navbar.style.backgroundColor = '#8A2BE2'; // Viola
+                    break;
+                case 6:
+                    navbar.style.backgroundColor = '#20B2AA'; // Acqua
+                    break;
+                default:
+                    navbar.style.backgroundColor = '#4CAF50'; // Colore di default
+                    break;
+            }
+        }
+
+        function addCelebrazione() {
+            const input = document.getElementById('celebrazioneInput');
+            const celebrazioneList = document.getElementById('celebrazioneList');
+
+            if (input.value.trim() !== '') {
+                const listItem = document.createElement('li');
+                listItem.textContent = input.value;
+                celebrazioneList.appendChild(listItem);
+                input.value = ''; // Pulisci il campo di input
+            } else {
+                alert('Per favore, inserisci una celebrazione valida.');
+            }
+        }
+
+        window.onload = setNavbarColor; // Imposta il colore della navbar al caricamento della pagina
+    </script>
 </head>
 
 <body>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Proposta canti</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button>Home</button>
+                <button>Elenco canti</button>
+                <button>Spartiti salmi</button>
+            </div>
+            <input type="text" placeholder="Cerca canti...">
+        </div>
 
-    <div class="responsive-container">
-        <h1>Proposta canti liturgici</h1>
-        <p>Benvenuti sul sito <strong>Proposta Canti Religiosi</strong>, uno strumento pensato per supportare la scelta
-            dei canti liturgici più adatti in base al calendario liturgico. Questo sito fornisce suggerimenti sui canti
-            da proporre per le varie domeniche e festività dell'anno liturgico, rispettando le stagioni liturgiche come
-            l'Avvento, il Natale, la Quaresima e il Tempo Ordinario.</p>
-
-        <p>Grazie a questo strumento, sarà possibile pianificare con maggiore facilità i canti più appropriati per la
-            celebrazione eucaristica, tenendo conto delle letture del giorno, dei temi liturgici e della tradizione
-            musicale religiosa. Selezionando la prossima domenica o festività, potrai visualizzare una proposta di canti
-            che aiuterà a guidare il coro parrocchiale o l’assemblea durante la messa.</p>
-
-        <p>Questo servizio è utile sia per i musicisti che per i responsabili della liturgia, fornendo una guida rapida
-            e facile da utilizzare per preparare le celebrazioni in modo adeguato e spiritualmente coinvolgente.</p>
-        <a href="#" class="button">Proposta canti prossima domenica/festività</a>
-
-        <!-- Search bar section -->
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Pasqua, Quaresima, XX, XIV...">
+        <div class="main-content">
+            <div class="slogan-div">
+                <h2>Slogan o messaggio</h2>
+                <p>Benvenuti sul sito <strong>Proposta Canti Religiosi</strong>, uno strumento pensato per supportare la
+                    scelta
+                    dei canti liturgici più adatti in base al calendario liturgico.</p>
+                <!-- Messaggi aggiuntivi -->
+            </div>
+            <div class="prossime-celebrazioni-div">
+                <h2>Prossime celebrazioni</h2>
+                <ul id="celebrazioneList">
+                    <!-- Le celebrazioni verranno aggiunte qui -->
+                </ul>
+            </div>
         </div>
     </div>
-
-
-    <script src="javascript.js"></script>
 </body>
+<script src="javascript.js"></script>
 
 </html>

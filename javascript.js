@@ -169,7 +169,7 @@ function calcolaFestivita(anno) {
     const domenicheTempoOrdinario = calcolaDomenicheTempoOrdinario(anno);
     const domenicheQuaresima = calcolaDomenicheQuaresima(anno)
     tipologia_anno(anno)
-    
+
     const festivita = [];
 
     domenicheQuaresima.forEach((domenica, index) => {
@@ -233,7 +233,7 @@ function calcolaDomenicaSuccessiva(festivita) {
 }
 
 let indiceDomenicaCorrente; // Variabile globale
-*/
+
 document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('.button'); // Select the button
 
@@ -276,3 +276,52 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+*/
+document.addEventListener('DOMContentLoaded', function () {
+    const oggi = new Date();
+    const festivita = calcolaFestivita(oggi.getFullYear());
+
+    const prox_celebrazioni = [];
+
+    for (const festivitaItem of festivita) {
+        if (festivitaItem.data >= oggi) {
+            prox_celebrazioni.push(festivitaItem);
+            if (prox_celebrazioni.length === 10) {
+                break;
+            }
+        }
+    }
+    let url = "";
+
+    console.log(prox_celebrazioni);
+
+    // Insert the list into the div
+    const celebrazioniDiv = document.querySelector('.prossime-celebrazioni-div');
+    const ul = document.createElement('ul');
+    celebrazioniDiv.appendChild(ul);
+
+    for (const festa of prox_celebrazioni) {
+        if (festa.tipologia === "ordinario") {
+            const numero = festa.numero;
+            const anno = festa.anno;
+            url = "tempo_ordinario/anno_" + anno + "/" + numero + ".html";
+        } else if (festa.tipologia === "avvento") {
+            const numero = festa.numero;
+            const anno = festa.anno;
+            url = "tempo_avvento/anno_" + anno + "/" + numero + ".html";
+        } else if (festa.tipologia === "quaresima") {
+            const numero = festa.numero;
+            const anno = festa.anno;
+            url = "tempo_quaresima/anno_" + anno + "/" + numero + ".html";
+        }
+        inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia, url);
+    }
+});
+
+function inserisci_elemento_lista(numero, anno, tipologia, url) {
+    console.log(numero, anno, tipologia, url);
+    const ul = document.querySelector('.prossime-celebrazioni-div ul'); // Select the unordered list
+    const li = document.createElement('li'); // Create a new list item
+    li.innerHTML = `Numero: ${numero}, Anno: ${anno}, Tipologia: ${tipologia} <a href="${url}">Link</a>`;
+    ul.appendChild(li); // Append the list item to the unordered list
+}
