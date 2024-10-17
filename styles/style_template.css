@@ -24,7 +24,7 @@ body {
 }
 
 .navbar h1 {
-    font-size: 24px;
+    font-size: 25px;
     color: white;
     margin: 0; /* Remove margin from the h1 */
 }
@@ -37,26 +37,30 @@ body {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #ffffff;
-    color: black;
+    color: white;
+    background-color: transparent; /* Rimuove lo sfondo */
     transition: background-color 0.3s ease, transform 0.2s ease;
     min-width: 120px;
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 .navbar button:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
+    background-color: transparent; /* Sfondo trasparente */
+    color: #c1bdbd; /* Cambia il colore del testo */
+    transform: scale(1.05); /* Mantiene l'effetto di ingrandimento */
 }
 
 .navbar input[type="text"] {
     border: 1px solid #ccc;
+    background-color: white;
     border-radius: 4px;
     width: 100%;
     max-width: 250px;
+    color: black;
     transition: max-width 0.3s ease;
     padding: 10px;
 }
-
 .menu-toggle {
     display: none;
     font-size: 24px;

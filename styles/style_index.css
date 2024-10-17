@@ -25,7 +25,7 @@ body {
 }
 
 .navbar h1 {
-    font-size: 24px;
+    font-size: 25px;
     color: white;
     margin-right: 20px;
 }
@@ -38,19 +38,24 @@ body {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #ffffff;
-    color: black;
+    color: white;
+    background-color: transparent; /* Rimuove lo sfondo */
     transition: background-color 0.3s ease, transform 0.2s ease;
     min-width: 120px;
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 .navbar button:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
+    background-color: transparent; /* Sfondo trasparente */
+    color: #c1bdbd; /* Cambia il colore del testo */
+    transform: scale(1.05); /* Mantiene l'effetto di ingrandimento */
 }
 
 .navbar input[type="text"] {
     border: 1px solid #ccc;
+    background-color: white;
+    color: black;
     border-radius: 4px;
     width: 100%;
     max-width: 250px;
@@ -173,6 +178,14 @@ body {
     .main-content {
         flex-direction: column;
     }
+
+    .slogan-image {
+        flex-direction: row; /* Cambia la disposizione in colonna su schermi piccoli */
+    }
+
+    .slogan-image .image, .slogan-image .text {
+        width: 100%; /* Fai in modo che l'immagine e il testo occupino l'intera larghezza */
+    }
 }
 
 .prossime-celebrazioni-div {
@@ -230,4 +243,43 @@ body {
     text-decoration: underline;
     background-color: #f1f1f1;
     /* Optional: highlight on hover */
+}
+
+
+.slogan-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.slogan-text {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.slogan-image {
+    display: flex;
+    flex-direction: row; /* Imposta disposizione orizzontale su schermi grandi */
+    width: 100%; /* Occupa l'intera larghezza del contenitore */
+    gap: 20px; /* Spazio tra immagine e testo */
+}
+
+.slogan-image .image, 
+.slogan-image .text {
+    flex: 1; /* Assegna spazio equo a immagine e testo */
+    margin: 10px;
+}
+
+.slogan-image img {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
