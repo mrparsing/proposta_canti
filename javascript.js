@@ -332,9 +332,9 @@ function inserisci_elemento_lista(numero, anno, tipologia, url) {
     });
 
     if (tipologia === "ordinario") {
-        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica tempo ordinario anno: ${anno}</a>`;
+        li.innerHTML = `<a style="display: block; text-decoration: none; color: inherit;">${numero}° domenica tempo ordinario anno: ${anno}</a>`;
     } else if (tipologia === "avvento") {
-        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica d'avvento anno: ${anno}</a>`;
+        li.innerHTML = `<a style="display: block; text-decoration: none; color: inherit;">${numero}° domenica d'avvento anno: ${anno}</a>`;
     }
 
     ul.appendChild(li);
