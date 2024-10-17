@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco canti</title>
+    <script src="../javascript/javascript.js"></script>
+    <link rel="stylesheet" href="../styles/style_index.css">
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('myNavbar');
+            navbar.classList.toggle('active');
+        }
+
+        function filterCanti() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cantiList = document.getElementById('cantiList');
+            const cantiItems = cantiList.getElementsByTagName('li');
+
+            for (let i = 0; i < cantiItems.length; i++) {
+                const canto = cantiItems[i].textContent.toLowerCase();
+                cantiItems[i].style.display = canto.includes(input) ? '' : 'none';
+            }
+        }
+    </script>
+
+    <style>
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            margin-top: 20px; /* Add some spacing from the navbar */
+        }
+
+        #searchInput {
+            margin-bottom: 20px; /* Space between search bar and list */
+            padding: 10px; /* Add padding for better appearance */
+            width: 100%; /* Full width */
+            max-width: 600px; /* Limit the width of the search bar */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        #cantiList {
+            list-style-type: none; /* Remove bullets */
+            padding: 0;
+            width: 100%; /* Ensure the list takes full width */
+            max-width: 600px; /* Limit the width of the list */
+        }
+
+        #cantiList li {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #cantiList li:hover {
+            background-color: #e7f3fe; /* Light blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Elenco canti</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button onclick="location.href='../index.html'">Home</button>
+                <button onclick="location.href='elenco_canti.html'">Elenco canti</button>
+                <button>Spartiti salmi</button>
+                <button>Anni liturgici</button>
+                <button>Eventi speciali</button>
+                <button>Impostazioni/Supporto</button>
+                <input type="text" placeholder="Cerca canti...">
+
+            </div>
+        </div>
+        <div class="main-content" id="main-content">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filterCanti()">
+            <ul id="cantiList">
+                <li>canto1</li>
+                <li>canto2</li>
+                <li>canto3</li>
+                <li>canto4</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
