@@ -228,15 +228,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (festa.tipologia === "ordinario") {
             const numero = festa.numero;
             const anno = festa.anno;
-            url = "tempo_ordinario/anno_" + anno + "/" + numero + ".html";
+            url = "tempi_liturgici/tempo_ordinario/anno_" + anno + "/" + numero + ".html";
         } else if (festa.tipologia === "avvento") {
             const numero = festa.numero;
             const anno = festa.anno;
-            url = "tempo_avvento/anno_" + anno + "/" + numero + ".html";
+            url = "tempi_liturgici/avvento/anno_" + anno + "/" + numero + ".html";
         } else if (festa.tipologia === "quaresima") {
             const numero = festa.numero;
             const anno = festa.anno;
-            url = "tempo_quaresima/anno_" + anno + "/" + numero + ".html";
+            url = "tempi_liturgici/tempo_quaresima/anno_" + anno + "/" + numero + ".html";
         }
         inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia, url);
     }
@@ -372,11 +372,11 @@ function inserisci_elemento_lista(numero, anno, tipologia, url) {
 
 function setNavbarColor(tipologia) {
     const navbar = document.querySelector('.navbar');
-    console.log("tiologia", tipologia);
+
     switch (tipologia) {
         case "ordinario":
             console.log("sono qui");
-            navbar.style.backgroundColor = '#3CB371'; // Verde
+            navbar.style.backgroundColor = '#2a9a5c'; // Verde
             break;
         case "avvento":
             navbar.style.backgroundColor = '#8A2BE2'; // Viola

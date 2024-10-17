@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    animation: slideDown 0.5s ease-in-out;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    color: white;
+    margin-right: 20px;
+}
+
+.navbar button,
+.navbar input[type="text"] {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: black;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 120px;
+}
+
+.navbar button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.navbar input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 250px;
+    transition: max-width 0.3s ease;
+    padding: 10px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+    padding: 20px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards;
+}
+
+.slogan-div,
+.prossime-celebrazioni-div {
+    background-color: #e1e1e1;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.slogan-div {
+    flex: 0 0 65%;
+    line-height: 1.8;
+    /* Improve line spacing */
+}
+
+.slogan-div p {
+    margin-bottom: 15px;
+    /* Space between paragraphs */
+}
+
+.prossime-celebrazioni-div {
+    background-color: #d1d1d1;
+    flex: 0 0 35%;
+}
+
+.slogan-div h2,
+.prossime-celebrazioni-div h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .navbar h1 {
+        margin-bottom: 10px;
+    }
+
+    .navbar-buttons {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .navbar.active .navbar-buttons {
+        display: flex;
+    }
+
+    .navbar input[type="text"] {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+}
+
+.prossime-celebrazioni-div {
+    background-color: #f9f9f9;
+    /* Light background for the section */
+    border-radius: 8px;
+    /* Rounded corners */
+    padding: 20px;
+    /* Padding around the section */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+.prossime-celebrazioni-div h2 {
+    font-size: 24px;
+    /* Font size for the heading */
+    color: #333;
+    /* Dark color for the heading */
+    margin-bottom: 15px;
+    /* Space below the heading */
+}
+
+#celebrazioneList {
+    list-style-type: none;
+    /* Remove bullet points */
+    padding: 0;
+    /* Remove default padding */
+}
+
+#celebrazioneList li {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#celebrazioneList li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#celebrazioneList li a {
+    display: block;
+    /* Make the link a block element */
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    height: 100%;
+    /* Ensures the anchor fills the list item */
+}
+
+#celebrazioneList li a:hover {
+    text-decoration: underline;
+    background-color: #f1f1f1;
+    /* Optional: highlight on hover */
+}
