@@ -28,7 +28,7 @@
             for (let i = 0; i < cantiItems.length; i++) {
                 const canto = cantiItems[i].textContent.toLowerCase();
                 const letter = canto.charAt(0).toUpperCase();
-                if (canto.includes(input)) {
+                if (canto.includes(input) && !cantiItems[i].classList.contains('letter-header')) {
                     cantiItems[i].style.display = '';
                     visibleLetters.add(letter); // Aggiungi la lettera al set delle lettere visibili
                 } else {
@@ -36,15 +36,22 @@
                 }
             }
 
-            // Mostra/nascondi le intestazioni delle lettere in base alla visibilità dei canti
+            // Mostra/nascondi le intestazioni delle lettere
+            if (input === '') {
+                mostraLettere(); // Se l'input è vuoto, mostra tutte le intestazioni
+            } else {
+                mostraLettere(visibleLetters); // Altrimenti, mostra solo quelle visibili
+            }
+        }
+
+        function mostraLettere(visibleLetters) {
+            const cantiList = document.getElementById('cantiList');
             const letterHeaders = cantiList.getElementsByClassName('letter-header');
+
+            // Mostra tutte le intestazioni delle lettere, se visibili
             for (let j = 0; j < letterHeaders.length; j++) {
                 const headerLetter = letterHeaders[j].textContent;
-                if (visibleLetters.has(headerLetter)) {
-                    letterHeaders[j].style.display = ''; // Mostra l'intestazione
-                } else {
-                    letterHeaders[j].style.display = 'none'; // Nascondi l'intestazione
-                }
+                letterHeaders[j].style.display = visibleLetters ? (visibleLetters.has(headerLetter) ? '' : 'none') : ''; // Mostra tutte se non ci sono filtri
             }
         }
 
@@ -79,6 +86,22 @@
                 groupedCanti[letter].forEach(item => cantiList.appendChild(item));
             }
         }
+
+        function toggleDetails(event) {
+            // Evita la propagazione del clic se il link è stato cliccato
+            if (event.target.tagName === "A") {
+                event.stopPropagation();
+                return; // Esci dalla funzione per non eseguire il toggle
+            }
+
+            // Toggle del box dei dettagli
+            const details = event.currentTarget.querySelector('.canto-details');
+            if (details) {
+                details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+            }
+        }
+
+
     </script>
 
     <style>
@@ -89,7 +112,6 @@
             margin-top: 20px;
         }
 
-        /* Stile della barra di ricerca */
         #searchInput {
             margin-bottom: 20px;
             padding: 12px 20px 12px 40px;
@@ -113,7 +135,6 @@
             background-color: #fff;
         }
 
-        /* Stile della lista dei canti */
         #cantiList {
             list-style-type: none;
             padding: 0;
@@ -127,6 +148,8 @@
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            /* Change cursor to pointer to indicate clickability */
             transition: background-color 0.3s, transform 0.3s;
         }
 
@@ -135,7 +158,6 @@
             transform: translateY(-2px);
         }
 
-        /* Stile per l'intestazione delle lettere */
         .letter-header {
             font-weight: bold;
             font-size: 1.5em;
@@ -151,7 +173,6 @@
             transition: none;
         }
 
-        /* Barra orizzontale sotto la lettera */
         .letter-header::after {
             content: '';
             display: block;
@@ -161,17 +182,33 @@
             margin-top: 5px;
         }
 
+        .canto-details {
+            display: none;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            display: none;
+            /* Hidden by default */
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            /* Optional visual separation */
+        }
+
         .link-button {
-    float: right; /* Posiziona il link a destra */
-    text-decoration: none; /* Rimuove la sottolineatura */
-    color: #4A90E2; /* Colore del link */
-    margin-left: 10px; /* Spazio tra il testo e il link */
-}
+            float: right;
+            /* Posiziona il link a destra */
+            text-decoration: none;
+            /* Rimuove la sottolineatura */
+            color: #4A90E2;
+            /* Colore del link */
+            margin-left: 10px;
+            /* Spazio tra il testo e il link */
+        }
 
-.link-button:hover {
-    text-decoration: underline; /* Sottolinea il link al passaggio del mouse */
-}
-
+        .link-button:hover {
+            text-decoration: underline;
+            /* Sottolinea il link al passaggio del mouse */
+        }
     </style>
 </head>
 
@@ -192,138 +229,1214 @@
         </div>
 
         <div class="main-content" id="main-content">
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filterCanti()">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filterCanti()"
+                onemptied="mostraLettere()">
 
             <ul id="cantiList">
-                Ecco come puoi aggiungere il link "Scarica" accanto a "Ascolta" in ogni voce della tua lista:
+                <li onclick="toggleDetails(event)">
+                    <span>Noi canteremo gloria a Te</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Acclamate al Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 2 | <strong>Tipologia:</strong> Tipologia 2
+                        <div>
+                            <a href="link2.html" class="link-button">Ascolta</a>
+                            <a href="download2.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>I cieli narrano</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 3 | <strong>Tipologia:</strong> Tipologia 3
+                        <div>
+                            <a href="link3.html" class="link-button">Ascolta</a>
+                            <a href="download3.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Ti esalto, Dio mio Re</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 4 | <strong>Tipologia:</strong> Tipologia 4
+                        <div>
+                            <a href="link4.html" class="link-button">Ascolta</a>
+                            <a href="download4.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Gustate e vedete</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 5 | <strong>Tipologia:</strong> Tipologia 5
+                        <div>
+                            <a href="link5.html" class="link-button">Ascolta</a>
+                            <a href="download5.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Dove la carità è vera</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 6 | <strong>Tipologia:</strong> Tipologia 6
+                        <div>
+                            <a href="link6.html" class="link-button">Ascolta</a>
+                            <a href="download6.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Benedici il Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 7 | <strong>Tipologia:</strong> Tipologia 7
+                        <div>
+                            <a href="link7.html" class="link-button">Ascolta</a>
+                            <a href="download7.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Alleluia cantico all'Agnello</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 8 | <strong>Tipologia:</strong> Tipologia 8
+                        <div>
+                            <a href="link8.html" class="link-button">Ascolta</a>
+                            <a href="download8.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Alleluia ed oggi ancora</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 9 | <strong>Tipologia:</strong> Tipologia 9
+                        <div>
+                            <a href="link9.html" class="link-button">Ascolta</a>
+                            <a href="download9.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Ecco Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 10 | <strong>Tipologia:</strong> Tipologia 10
+                        <div>
+                            <a href="link10.html" class="link-button">Ascolta</a>
+                            <a href="download10.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Alleluia, Tu sei Pietro</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 11 | <strong>Tipologia:</strong> Tipologia 11
+                        <div>
+                            <a href="link11.html" class="link-button">Ascolta</a>
+                            <a href="download11.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Resta qui con noi</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 12 | <strong>Tipologia:</strong> Tipologia 12
+                        <div>
+                            <a href="link12.html" class="link-button">Ascolta</a>
+                            <a href="download12.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Non di solo pane</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 13 | <strong>Tipologia:</strong> Tipologia 13
+                        <div>
+                            <a href="link13.html" class="link-button">Ascolta</a>
+                            <a href="download13.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Miserere</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 14 | <strong>Tipologia:</strong> Tipologia 14
+                        <div>
+                            <a href="link14.html" class="link-button">Ascolta</a>
+                            <a href="download14.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Chi mi seguirà</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 15 | <strong>Tipologia:</strong> Tipologia 15
+                        <div>
+                            <a href="link15.html" class="link-button">Ascolta</a>
+                            <a href="download15.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>O Signore nostro Dio</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 16 | <strong>Tipologia:</strong> Tipologia 16
+                        <div>
+                            <a href="link16.html" class="link-button">Ascolta</a>
+                            <a href="download16.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Chi ci separerà</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 17 | <strong>Tipologia:</strong> Tipologia 17
+                        <div>
+                            <a href="link17.html" class="link-button">Ascolta</a>
+                            <a href="download17.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Alto e glorioso Dio</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 18 | <strong>Tipologia:</strong> Tipologia 18
+                        <div>
+                            <a href="link18.html" class="link-button">Ascolta</a>
+                            <a href="download18.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Lodi all'Altissimo</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 19 | <strong>Tipologia:</strong> Tipologia 19
+                        <div>
+                            <a href="link19.html" class="link-button">Ascolta</a>
+                            <a href="download19.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Pane di Vita nuova</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 20 | <strong>Tipologia:</strong> Tipologia 20
+                        <div>
+                            <a href="link20.html" class="link-button">Ascolta</a>
+                            <a href="download20.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Ecco l'acqua</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 21 | <strong>Tipologia:</strong> Tipologia 21
+                        <div>
+                            <a href="link21.html" class="link-button">Ascolta</a>
+                            <a href="download21.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Cantate al Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 22 | <strong>Tipologia:</strong> Tipologia 22
+                        <div>
+                            <a href="link22.html" class="link-button">Ascolta</a>
+                            <a href="download22.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Eccomi</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 23 | <strong>Tipologia:</strong> Tipologia 23
+                        <div>
+                            <a href="link23.html" class="link-button">Ascolta</a>
+                            <a href="download23.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>La vera gioia</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 24 | <strong>Tipologia:</strong> Tipologia 24
+                        <div>
+                            <a href="link24.html" class="link-button">Ascolta</a>
+                            <a href="download24.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Benedetto sei Tu Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 25 | <strong>Tipologia:</strong> Tipologia 25
+                        <div>
+                            <a href="link25.html" class="link-button">Ascolta</a>
+                            <a href="download25.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Ti rendo grazie</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 26 | <strong>Tipologia:</strong> Tipologia 26
+                        <div>
+                            <a href="link26.html" class="link-button">Ascolta</a>
+                            <a href="download26.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Madre fiducia nostra</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 27 | <strong>Tipologia:</strong> Tipologia 27
+                        <div>
+                            <a href="link27.html" class="link-button">Ascolta</a>
+                            <a href="download27.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Se m'accogli</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 28 | <strong>Tipologia:</strong> Tipologia 28
+                        <div>
+                            <a href="link28.html" class="link-button">Ascolta</a>
+                            <a href="download28.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Santa Maria del cammino</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 29 | <strong>Tipologia:</strong> Tipologia 29
+                        <div>
+                            <a href="link29.html" class="link-button">Ascolta</a>
+                            <a href="download29.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Giovanni</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 30 | <strong>Tipologia:</strong> Tipologia 30
+                        <div>
+                            <a href="link30.html" class="link-button">Ascolta</a>
+                            <a href="download30.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Alleluia gregoriano</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 31 | <strong>Tipologia:</strong> Tipologia 31
+                        <div>
+                            <a href="link31.html" class="link-button">Ascolta</a>
+                            <a href="download31.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Riuniti nel nome del Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 32 | <strong>Tipologia:</strong> Tipologia 32
+                        <div>
+                            <a href="link32.html" class="link-button">Ascolta</a>
+                            <a href="download32.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Alleluia Io sono il pane vivo
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 33 | <strong>Tipologia:</strong> Tipologia 33
+                        <div>
+                            <a href="link33.html" class="link-button">Ascolta</a>
+                            <a href="download33.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Magnificat - Dio si è fatto come noi</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 34 | <strong>Tipologia:</strong> Tipologia 34
+                        <div>
+                            <a href="link34.html" class="link-button">Ascolta</a>
+                            <a href="download34.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Noi veniamo a te</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 35 | <strong>Tipologia:</strong> Tipologia 35
+                        <div>
+                            <a href="link35.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download35.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Tu sarai profeta</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 36 | <strong>Tipologia:</strong> Tipologia 36
+                        <div>
+                            <a href="link36.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download36.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>La vera Vite</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 37 | <strong>Tipologia:</strong> Tipologia 37
+                        <div>
+                            <a href="link37.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download37.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Io sarò con Te</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 38 | <strong>Tipologia:</strong> Tipologia 38
+                        <div>
+                            <a href="link38.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download38.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>E' l'ora che pia</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 39 | <strong>Tipologia:</strong> Tipologia 39
+                        <div>
+                            <a href="link39.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download39.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Lodate Dio</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 40 | <strong>Tipologia:</strong> Tipologia 40
+                        <div>
+                            <a href="link40.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download40.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Lo spirito del Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 41 | <strong>Tipologia:</strong> Tipologia 41
+                        <div>
+                            <a href="link41.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download41.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Il tuo popolo in cammino</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 42 | <strong>Tipologia:</strong> Tipologia 42
+                        <div>
+                            <a href="link42.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download42.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Accogli i nostri doni</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 43 | <strong>Tipologia:</strong> Tipologia 43
+                        <div>
+                            <a href="link43.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download43.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Lampada per i miei passi</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 44 | <strong>Tipologia:</strong> Tipologia 44
+                        <div>
+                            <a href="link44.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download44.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>O Sion loda il Salvatore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 45 | <strong>Tipologia:</strong> Tipologia 45
+                        <div>
+                            <a href="link45.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download45.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>E' asceso alla gloria</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 46 | <strong>Tipologia:</strong> Tipologia 46
+                        <div>
+                            <a href="link46.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download46.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Questo è il mio comandamento</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 47 | <strong>Tipologia:</strong> Tipologia 47
+                        <div>
+                            <a href="link47.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download47.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Cristo nostra Pasqua</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 48 | <strong>Tipologia:</strong> Tipologia 48
+                        <div>
+                            <a href="link48.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download48.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>La mia Pasqua è il Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 49 | <strong>Tipologia:</strong> Tipologia 49
+                        <div>
+                            <a href="link49.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download49.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Hosanna</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 50 | <strong>Tipologia:</strong> Tipologia 50
+                        <div>
+                            <a href="link50.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download50.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
 
-                ```html
-                <ul>
-                    <li>Noi canteremo gloria a Te <a href="link1.html" class="link-button">Ascolta</a> <a href="download1.html" class="link-button">Scarica</a></li>
-                    <li>Acclamate al Signore <a href="link2.html" class="link-button">Ascolta</a> <a href="download2.html" class="link-button">Scarica</a></li>
-                    <li>I cieli narrano <a href="link3.html" class="link-button">Ascolta</a> <a href="download3.html" class="link-button">Scarica</a></li>
-                    <li>Ti esalto, Dio mio Re <a href="link4.html" class="link-button">Ascolta</a> <a href="download4.html" class="link-button">Scarica</a></li>
-                    <li>Gustate e vedete <a href="link5.html" class="link-button">Ascolta</a> <a href="download5.html" class="link-button">Scarica</a></li>
-                    <li>Dove la carità è vera <a href="link6.html" class="link-button">Ascolta</a> <a href="download6.html" class="link-button">Scarica</a></li>
-                    <li>Benedici il Signore <a href="link7.html" class="link-button">Ascolta</a> <a href="download7.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia cantico all'Agnello <a href="link8.html" class="link-button">Ascolta</a> <a href="download8.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia ed oggi ancora <a href="link9.html" class="link-button">Ascolta</a> <a href="download9.html" class="link-button">Scarica</a></li>
-                    <li>Ecco Signore <a href="link10.html" class="link-button">Ascolta</a> <a href="download10.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia, Tu sei Pietro <a href="link11.html" class="link-button">Ascolta</a> <a href="download11.html" class="link-button">Scarica</a></li>
-                    <li>Resta qui con noi <a href="link12.html" class="link-button">Ascolta</a> <a href="download12.html" class="link-button">Scarica</a></li>
-                    <li>Non di solo pane <a href="link13.html" class="link-button">Ascolta</a> <a href="download13.html" class="link-button">Scarica</a></li>
-                    <li>Miserere <a href="link14.html" class="link-button">Ascolta</a> <a href="download14.html" class="link-button">Scarica</a></li>
-                    <li>Chi mi seguirà <a href="link15.html" class="link-button">Ascolta</a> <a href="download15.html" class="link-button">Scarica</a></li>
-                    <li>O Signore nostro Dio <a href="link16.html" class="link-button">Ascolta</a> <a href="download16.html" class="link-button">Scarica</a></li>
-                    <li>Chi ci separerà <a href="link17.html" class="link-button">Ascolta</a> <a href="download17.html" class="link-button">Scarica</a></li>
-                    <li>Alto e glorioso Dio <a href="link18.html" class="link-button">Ascolta</a> <a href="download18.html" class="link-button">Scarica</a></li>
-                    <li>Lodi all'Altissimo <a href="link19.html" class="link-button">Ascolta</a> <a href="download19.html" class="link-button">Scarica</a></li>
-                    <li>Pane di Vita nuova <a href="link20.html" class="link-button">Ascolta</a> <a href="download20.html" class="link-button">Scarica</a></li>
-                    <li>Ecco l'acqua <a href="link21.html" class="link-button">Ascolta</a> <a href="download21.html" class="link-button">Scarica</a></li>
-                    <li>Cantate al Signore <a href="link22.html" class="link-button">Ascolta</a> <a href="download22.html" class="link-button">Scarica</a></li>
-                    <li>Eccomi <a href="link23.html" class="link-button">Ascolta</a> <a href="download23.html" class="link-button">Scarica</a></li>
-                    <li>La vera gioia <a href="link24.html" class="link-button">Ascolta</a> <a href="download24.html" class="link-button">Scarica</a></li>
-                    <li>Benedetto sei Tu Signore <a href="link25.html" class="link-button">Ascolta</a> <a href="download25.html" class="link-button">Scarica</a></li>
-                    <li>Ti rendo grazie <a href="link26.html" class="link-button">Ascolta</a> <a href="download26.html" class="link-button">Scarica</a></li>
-                    <li>Madre fiducia nostra <a href="link27.html" class="link-button">Ascolta</a> <a href="download27.html" class="link-button">Scarica</a></li>
-                    <li>Se m'accogli <a href="link28.html" class="link-button">Ascolta</a> <a href="download28.html" class="link-button">Scarica</a></li>
-                    <li>Santa Maria del cammino <a href="link29.html" class="link-button">Ascolta</a> <a href="download29.html" class="link-button">Scarica</a></li>
-                    <li>Giovanni <a href="link30.html" class="link-button">Ascolta</a> <a href="download30.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia gregoriano <a href="link31.html" class="link-button">Ascolta</a> <a href="download31.html" class="link-button">Scarica</a></li>
-                    <li>Riuniti nel nome del Signore <a href="link32.html" class="link-button">Ascolta</a> <a href="download32.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia Io sono il pane vivo <a href="link33.html" class="link-button">Ascolta</a> <a href="download33.html" class="link-button">Scarica</a></li>
-                    <li>Magnificat - Dio si è fatto come noi <a href="link34.html" class="link-button">Ascolta</a> <a href="download34.html" class="link-button">Scarica</a></li>
-                    <li>Noi veniamo a te <a href="link35.html" class="link-button">Ascolta</a> <a href="download35.html" class="link-button">Scarica</a></li>
-                    <li>Tu sarai profeta <a href="link36.html" class="link-button">Ascolta</a> <a href="download36.html" class="link-button">Scarica</a></li>
-                    <li>La vera Vite <a href="link37.html" class="link-button">Ascolta</a> <a href="download37.html" class="link-button">Scarica</a></li>
-                    <li>Io sarò con Te <a href="link38.html" class="link-button">Ascolta</a> <a href="download38.html" class="link-button">Scarica</a></li>
-                    <li>E' l'ora che pia <a href="link39.html" class="link-button">Ascolta</a> <a href="download39.html" class="link-button">Scarica</a></li>
-                    <li>Lodate Dio <a href="link40.html" class="link-button">Ascolta</a> <a href="download40.html" class="link-button">Scarica</a></li>
-                    <li>Lo spirito del Signore <a href="link41.html" class="link-button">Ascolta</a> <a href="download41.html" class="link-button">Scarica</a></li>
-                    <li>Il tuo popolo in cammino <a href="link42.html" class="link-button">Ascolta</a> <a href="download42.html"
-                
-                 class="link-button">Scarica</a></li>
-                    <li>Accogli i nostri doni <a href="link43.html" class="link-button">Ascolta</a> <a href="download43.html" class="link-button">Scarica</a></li>
-                    <li>Lampada per i miei passi <a href="link44.html" class="link-button">Ascolta</a> <a href="download44.html" class="link-button">Scarica</a></li>
-                    <li>O Sion loda il Salvatore <a href="link45.html" class="link-button">Ascolta</a> <a href="download45.html" class="link-button">Scarica</a></li>
-                    <li>E' asceso alla gloria <a href="link46.html" class="link-button">Ascolta</a> <a href="download46.html" class="link-button">Scarica</a></li>
-                    <li>Questo è il mio comandamento <a href="link47.html" class="link-button">Ascolta</a> <a href="download47.html" class="link-button">Scarica</a></li>
-                    <li>Cristo nostra Pasqua <a href="link48.html" class="link-button">Ascolta</a> <a href="download48.html" class="link-button">Scarica</a></li>
-                    <li>La mia Pasqua è il Signore <a href="link49.html" class="link-button">Ascolta</a> <a href="download49.html" class="link-button">Scarica</a></li>
-                    <li>Hosanna <a href="link50.html" class="link-button">Ascolta</a> <a href="download50.html" class="link-button">Scarica</a></li>
-                    <li>O Dio, Tu sei il mio Dio <a href="link51.html" class="link-button">Ascolta</a> <a href="download51.html" class="link-button">Scarica</a></li>
-                    <li>I miei occhi <a href="link52.html" class="link-button">Ascolta</a> <a href="download52.html" class="link-button">Scarica</a></li>
-                    <li>M'invocherà e io lo esaudirò <a href="link53.html" class="link-button">Ascolta</a> <a href="download53.html" class="link-button">Scarica</a></li>
-                    <li>Ti seguirò <a href="link54.html" class="link-button">Ascolta</a> <a href="download54.html" class="link-button">Scarica</a></li>
-                    <li>Tu scendi dalle stelle <a href="link55.html" class="link-button">Ascolta</a> <a href="download55.html" class="link-button">Scarica</a></li>
-                    <li>Adeste Fideles <a href="link56.html" class="link-button">Ascolta</a> <a href="download56.html" class="link-button">Scarica</a></li>
-                    <li>Vieni Signore <a href="link57.html" class="link-button">Ascolta</a> <a href="download57.html" class="link-button">Scarica</a></li>
-                    <li>Camminiamo incontro al Signore <a href="link58.html" class="link-button">Ascolta</a> <a href="download58.html" class="link-button">Scarica</a></li>
-                    <li>Maria porta dell'Avvento <a href="link59.html" class="link-button">Ascolta</a> <a href="download59.html" class="link-button">Scarica</a></li>
-                    <li>Re di Gloria <a href="link60.html" class="link-button">Ascolta</a> <a href="download60.html" class="link-button">Scarica</a></li>
-                    <li>Dov'è carita e amore <a href="link61.html" class="link-button">Ascolta</a> <a href="download61.html" class="link-button">Scarica</a></li>
-                    <li>Ave Maris Stella <a href="link62.html" class="link-button">Ascolta</a> <a href="download62.html" class="link-button">Scarica</a></li>
-                    <li>All'agnello che è stato immolato <a href="link63.html" class="link-button">Ascolta</a> <a href="download63.html" class="link-button">Scarica</a></li>
-                    <li>Perché tu sei con me <a href="link64.html" class="link-button">Ascolta</a> <a href="download64.html" class="link-button">Scarica</a></li>
-                    <li>Le mani alzate <a href="link65.html" class="link-button">Ascolta</a> <a href="download65.html" class="link-button">Scarica</a></li>
-                    <li>Accostiamoci tutti all'altar <a href="link66.html" class="link-button">Ascolta</a> <a href="download66.html" class="link-button">Scarica</a></li>
-                    <li>Regina caeli <a href="link67.html" class="link-button">Ascolta</a> <a href="download67.html" class="link-button">Scarica</a></li>
-                    <li>Sei luce splendida <a href="link68.html" class="link-button">Ascolta</a> <a href="download68.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia <a href="link69.html" class="link-button">Ascolta</a> <a href="download69.html" class="link-button">Scarica</a></li>
-                    <li>Tu quando verrai <a href="link70.html" class="link-button">Ascolta</a> <a href="download70.html" class="link-button">Scarica</a></li>
-                    <li>Astro del ciel <a href="link71.html" class="link-button">Ascolta</a> <a href="download71.html" class="link-button">Scarica</a></li>
-                    <li>Andrò a vederla un dì <a href="link72.html" class="link-button">Ascolta</a> <a href="download72.html" class="link-button">Scarica</a></li>
-                    <li>Inni e canti <a href="link73.html" class="link-button">Ascolta</a> <a href="download73.html" class="link-button">Scarica</a></li>
-                    <li>Fratello sole, sorella luna <a href="link74.html" class="link-button">Ascolta</a> <a href="download74.html" class="link-button">Scarica</a></li>
-                    <li>Il Signore è la mia salvezza <a href="link75.html" class="link-button">Ascolta</a> <a href="download75.html" class="link-button">Scarica</a></li>
-                    <li>Dell'aurora Tu sorgi più bella <a href="link76.html" class="link-button">Ascolta</a> <a href="download76.html" class="link-button">Scarica</a></li>
-                    <li>T'adoriam, Ostia divina <a href="link77.html" class="link-button">Ascolta</a> <a href="download77.html" class="link-button">Scarica</a></li>
-                    <li>Mira il tuo popolo <a href="link78.html" class="link-button">Ascolta</a> <a href="download78.html" class="link-button">Scarica</a></li>
-                    <li>Il signore è vicino <a href="link79.html" class="link-button">Ascolta</a> <a href="download79.html" class="link-button">Scarica</a></li>
-                    <li>Cielo nuovo <a href="link80.html" class="link-button">Ascolta</a> <a href="download80.html" class="link-button">Scarica</a></li>
-                    <li>Frutto della nostra terra <a href="link81.html" class="link-button">Ascolta</a> <a href="download81.html" class="link-button">Scarica</a></li>
-                    <li>Nel sole dell'aurora <a href="link82.html" class="link-button">Ascolta</a> <a href="download82.html" class="link-button">Scarica</a></li>
-                    <li>Ti ringrazio, o mio Signore <a href="link83.html" class="link-button">Ascolta</a> <a href="download83.html" class="link-button">Scarica</a></li>
-                    <li>Inno d'Amore <a href="link84.html" class="link-button">Ascolta</a> <a href="download84.html" class="link-button
-                
-                ">Scarica</a></li>
-                    <li>Vi darò un cuore nuovo <a href="link85.html" class="link-button">Ascolta</a> <a href="download85.html" class="link-button">Scarica</a></li>
-                    <li>Beati quelli che ascoltano <a href="link86.html" class="link-button">Ascolta</a> <a href="download86.html" class="link-button">Scarica</a></li>
-                    <li>Vieni ancora, Gesù <a href="link87.html" class="link-button">Ascolta</a> <a href="download87.html" class="link-button">Scarica</a></li>
-                    <li>Symbolum 77 <a href="link88.html" class="link-button">Ascolta</a> <a href="download88.html" class="link-button">Scarica</a></li>
-                    <li>Dio si è fatto come noi <a href="link89.html" class="link-button">Ascolta</a> <a href="download89.html" class="link-button">Scarica</a></li>
-                    <li>Ecco quel che abbiamo <a href="link90.html" class="link-button">Ascolta</a> <a href="download90.html" class="link-button">Scarica</a></li>
-                    <li>Credo in te Signore <a href="link91.html" class="link-button">Ascolta</a> <a href="download91.html" class="link-button">Scarica</a></li>
-                    <li>Pane del Cielo <a href="link92.html" class="link-button">Ascolta</a> <a href="download92.html" class="link-button">Scarica</a></li>
-                    <li>Salve Regina <a href="link93.html" class="link-button">Ascolta</a> <a href="download93.html" class="link-button">Scarica</a></li>
-                    <li>E' bello lodarti <a href="link94.html" class="link-button">Ascolta</a> <a href="download94.html" class="link-button">Scarica</a></li>
-                    <li>O cieli piovete dall'alto <a href="link95.html" class="link-button">Ascolta</a> <a href="download95.html" class="link-button">Scarica</a></li>
-                    <li>Vieni Spirito d'Amore <a href="link96.html" class="link-button">Ascolta</a> <a href="download96.html" class="link-button">Scarica</a></li>
-                    <li>Inni e canti <a href="link97.html" class="link-button">Ascolta</a> <a href="download97.html" class="link-button">Scarica</a></li>
-                    <li>Osanna al figlio di David <a href="link98.html" class="link-button">Ascolta</a> <a href="download98.html" class="link-button">Scarica</a></li>
-                    <li>Se qualcuno ha dei beni <a href="link99.html" class="link-button">Ascolta</a> <a href="download99.html" class="link-button">Scarica</a></li>
-                    <li>In notte placida <a href="link100.html" class="link-button">Ascolta</a> <a href="download100.html" class="link-button">Scarica</a></li>
-                    <li>Madre mia bellissima <a href="link101.html" class="link-button">Ascolta</a> <a href="download101.html" class="link-button">Scarica</a></li>
-                    <li>Il pane del cammino <a href="link102.html" class="link-button">Ascolta</a> <a href="download102.html" class="link-button">Scarica</a></li>
-                    <li>Immacolata vergine bella <a href="link103.html" class="link-button">Ascolta</a> <a href="download103.html" class="link-button">Scarica</a></li>
-                    <li>Rallegrati Gerusalemme <a href="link104.html" class="link-button">Ascolta</a> <a href="download104.html" class="link-button">Scarica</a></li>
-                    <li>Come tu mi vuoi <a href="link105.html" class="link-button">Ascolta</a> <a href="download105.html" class="link-button">Scarica</a></li>
-                    <li>Venite fedeli <a href="link106.html" class="link-button">Ascolta</a> <a href="download106.html" class="link-button">Scarica</a></li>
-                    <li>Resta con noi signore la sera <a href="link107.html" class="link-button">Ascolta</a> <a href="download107.html" class="link-button">Scarica</a></li>
-                    <li>Andate per le strade <a href="link108.html" class="link-button">Ascolta</a> <a href="download108.html" class="link-button">Scarica</a></li>
-                    <li>Gloria a te <a href="link109.html" class="link-button">Ascolta</a> <a href="download109.html" class="link-button">Scarica</a></li>
-                    <li>Davanti al Re <a href="link110.html" class="link-button">Ascolta</a> <a href="download110.html" class="link-button">Scarica</a></li>
-                    <li>Te lodiamo Trinità <a href="link111.html" class="link-button">Ascolta</a> <a href="download111.html" class="link-button">Scarica</a></li>
-                    <li>Signore, da chi andremo <a href="link112.html" class="link-button">Ascolta</a> <a href="download112.html" class="link-button">Scarica</a></li>
-                    <li>Come un fiore <a href="link113.html" class="link-button">Ascolta</a> <a href="download113.html" class="link-button">Scarica</a></li>
-                    <li>Ti ringrazio <a href="link114.html" class="link-button">Ascolta</a> <a href="download114.html" class="link-button">Scarica</a></li>
-                    <li>Pange lingua <a href="link115.html" class="link-button">Ascolta</a> <a href="download115.html" class="link-button">Scarica</a></li>
-                    <li>Alleluia lodate il Signore <a href="link116.html" class="link-button">Ascolta</a> <a href="download116.html" class="link-button">Scarica</a></li>
-                    <li>Sei tu Signore il pane <a href="link117.html" class="link-button">Ascolta</a> <a href="download117.html" class="link-button">Scarica</a></li>
-                    <li>Guada questa offerta <a href="link118.html" class="link-button">Ascolta</a> <a href="download118.html" class="link-button">Scarica</a></li>
-                    <li>Il Signore è il mio Pastore <a href="link119.html" class="link-button">Ascolta</a> <a href="download119.html" class="link-button">Scarica</a></li>
-                    <li>Te al centro del mio cuore <a href="link120.html" class="link-button">Ascolta</a> <a href="download120.html" class="link-button">Scarica</a></li>
-                                            </ul>        </div>
+                <li onclick="toggleDetails(event)">
+                    <span>O Dio, Tu sei il mio Dio</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 51 | <strong>Tipologia:</strong> Tipologia 51
+                        <div>
+                            <a href="link51.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download51.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>I miei occhi</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 52 | <strong>Tipologia:</strong> Tipologia 52
+                        <div>
+                            <a href="link52.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download52.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>M'invocherà e io lo esaudirò</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 53 | <strong>Tipologia:</strong> Tipologia 53
+                        <div>
+                            <a href="link53.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download53.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Ti seguirò</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 54 | <strong>Tipologia:</strong> Tipologia 54
+                        <div>
+                            <a href="link54.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download54.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Tu scendi dalle stelle</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 55 | <strong>Tipologia:</strong> Tipologia 55
+                        <div>
+                            <a href="link55.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download55.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Adeste Fideles</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 56 | <strong>Tipologia:</strong> Tipologia 56
+                        <div>
+                            <a href="link56.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download56.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Vieni Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 57 | <strong>Tipologia:</strong> Tipologia 57
+                        <div>
+                            <a href="link57.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download57.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Camminiamo incontro al Signore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 58 | <strong>Tipologia:</strong> Tipologia 58
+                        <div>
+                            <a href="link58.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download58.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Maria porta dell'Avvento</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 59 | <strong>Tipologia:</strong> Tipologia 59
+                        <div>
+                            <a href="link59.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download59.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Re di Gloria</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 60 | <strong>Tipologia:</strong> Tipologia 60
+                        <div>
+                            <a href="link60.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download60.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Dov'è carita e amore</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 61 | <strong>Tipologia:</strong> Tipologia 61
+                        <div>
+                            <a href="link61.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download61.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Ave Maris Stella</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 62 | <strong>Tipologia:</strong> Tipologia 62
+                        <div>
+                            <a href="link62.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download62.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>All'agnello che è stato immolato</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 63 | <strong>Tipologia:</strong> Tipologia 63
+                        <div>
+                            <a href="link63.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download63.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Perché tu sei con me</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 64 | <strong>Tipologia:</strong> Tipologia 64
+                        <div>
+                            <a href="link64.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download64.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Le mani alzate</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 65 | <strong>Tipologia:</strong> Tipologia 65
+                        <div>
+                            <a href="link65.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download65.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Accostiamoci tutti all'altar</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 66 | <strong>Tipologia:</strong> Tipologia 66
+                        <div>
+                            <a href="link66.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download66.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Regina caeli</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 67 | <strong>Tipologia:</strong> Tipologia 67
+                        <div>
+                            <a href="link67.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download67.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Sei luce splendida</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 68 | <strong>Tipologia:</strong> Tipologia 68
+                        <div>
+                            <a href="link68.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download68.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Alleluia</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 69 | <strong>Tipologia:</strong> Tipologia 69
+                        <div>
+                            <a href="link69.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download69.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Tu quando verrai</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 70 | <strong>Tipologia:</strong> Tipologia 70
+                        <div>
+                            <a href="link70.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download70.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Astro del ciel</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 71 | <strong>Tipologia:</strong> Tipologia 71
+                        <div>
+                            <a href="link71.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download71.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Andrò a vederla un dì</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 72 | <strong>Tipologia:</strong> Tipologia 72
+                        <div>
+                            <a href="link72.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download72.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Inni e canti</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 73 | <strong>Tipologia:</strong> Tipologia 73
+                        <div>
+                            <a href="link73.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download73.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Fratello sole, sorella luna</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 74 | <strong>Tipologia:</strong> Tipologia 74
+                        <div>
+                            <a href="link74.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download74.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Il Signore è la mia salvezza</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 75 | <strong>Tipologia:</strong> Tipologia 75
+                        <div>
+                            <a href="link75.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download75.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Dell'aurora Tu sorgi più bella</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 76 | <strong>Tipologia:</strong> Tipologia 76
+                        <div>
+                            <a href="link76.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download76.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>T'adoriam, Ostia divina</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 77 | <strong>Tipologia:</strong> Tipologia 77
+                        <div>
+                            <a href="link77.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download77.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Mira il tuo popolo</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 78 | <strong>Tipologia:</strong> Tipologia 78
+                        <div>
+                            <a href="link78.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download78.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Il signore è vicino</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 79 | <strong>Tipologia:</strong> Tipologia 79
+                        <div>
+                            <a href="link79.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download79.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>Cielo nuovo</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 80 | <strong>Tipologia:</strong> Tipologia 80
+                        <div>
+                            <a href="link80.html" class="link-button" onclick="event.stopPropagation();">Ascolta</a>
+                            <a href="download80.html" class="link-button" onclick="event.stopPropagation();">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li onclick="toggleDetails(event)">
+                    Frutto della nostra terra
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 81 | <strong>Tipologia:</strong> Tipologia 81
+                        <div>
+                            <a href="link81.html" class="link-button">Ascolta</a>
+                            <a href="download81.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Nel sole dell'aurora
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 82 | <strong>Tipologia:</strong> Tipologia 82
+                        <div>
+                            <a href="link82.html" class="link-button">Ascolta</a>
+                            <a href="download82.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Ti ringrazio, o mio Signore
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 83 | <strong>Tipologia:</strong> Tipologia 83
+                        <div>
+                            <a href="link83.html" class="link-button">Ascolta</a>
+                            <a href="download83.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Inno d'Amore
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 84 | <strong>Tipologia:</strong> Tipologia 84
+                        <div>
+                            <a href="link84.html" class="link-button">Ascolta</a>
+                            <a href="download84.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Vi darò un cuore nuovo
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 85 | <strong>Tipologia:</strong> Tipologia 85
+                        <div>
+                            <a href="link85.html" class="link-button">Ascolta</a>
+                            <a href="download85.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Beati quelli che ascoltano
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 86 | <strong>Tipologia:</strong> Tipologia 86
+                        <div>
+                            <a href="link86.html" class="link-button">Ascolta</a>
+                            <a href="download86.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Vieni ancora, Gesù
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 87 | <strong>Tipologia:</strong> Tipologia 87
+                        <div>
+                            <a href="link87.html" class="link-button">Ascolta</a>
+                            <a href="download87.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Symbolum 77
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 88 | <strong>Tipologia:</strong> Tipologia 88
+                        <div>
+                            <a href="link88.html" class="link-button">Ascolta</a>
+                            <a href="download88.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Dio si è fatto come noi
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 89 | <strong>Tipologia:</strong> Tipologia 89
+                        <div>
+                            <a href="link89.html" class="link-button">Ascolta</a>
+                            <a href="download89.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Ecco quel che abbiamo
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 90 | <strong>Tipologia:</strong> Tipologia 90
+                        <div>
+                            <a href="link90.html" class="link-button">Ascolta</a>
+                            <a href="download90.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Credo in te Signore
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 91 | <strong>Tipologia:</strong> Tipologia 91
+                        <div>
+                            <a href="link91.html" class="link-button">Ascolta</a>
+                            <a href="download91.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Pane del Cielo
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 92 | <strong>Tipologia:</strong> Tipologia 92
+                        <div>
+                            <a href="link92.html" class="link-button">Ascolta</a>
+                            <a href="download92.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Salve Regina
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 93 | <strong>Tipologia:</strong> Tipologia 93
+                        <div>
+                            <a href="link93.html" class="link-button">Ascolta</a>
+                            <a href="download93.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    E' bello lodarti
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 94 | <strong>Tipologia:</strong> Tipologia 94
+                        <div>
+                            <a href="link94.html" class="link-button">Ascolta</a>
+                            <a href="download94.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    O cieli piovete dall'alto
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 95 | <strong>Tipologia:</strong> Tipologia 95
+                        <div>
+                            <a href="link95.html" class="link-button">Ascolta</a>
+                            <a href="download95.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Vieni Spirito d'Amore
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 96 | <strong>Tipologia:</strong> Tipologia 96
+                        <div>
+                            <a href="link96.html" class="link-button">Ascolta</a>
+                            <a href="download96.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Inni e canti
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 97 | <strong>Tipologia:</strong> Tipologia 97
+                        <div>
+                            <a href="link97.html" class="link-button">Ascolta</a>
+                            <a href="download97.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Osanna al figlio di David
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 98 | <strong>Tipologia:</strong> Tipologia 98
+                        <div>
+                            <a href="link98.html" class="link-button">Ascolta</a>
+                            <a href="download98.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Se qualcuno ha dei beni
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 99 | <strong>Tipologia:</strong> Tipologia 99
+                        <div>
+                            <a href="link99.html" class="link-button">Ascolta</a>
+                            <a href="download99.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    In notte placida
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 100 | <strong>Tipologia:</strong> Tipologia 100
+                        <div>
+                            <a href="link100.html" class="link-button">Ascolta</a>
+                            <a href="download100.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Madre mia bellissima
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 101 | <strong>Tipologia:</strong> Tipologia 101
+                        <div>
+                            <a href="link101.html" class="link-button">Ascolta</a>
+                            <a href="download101.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Il pane del cammino
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 102 | <strong>Tipologia:</strong> Tipologia 102
+                        <div>
+                            <a href="link102.html" class="link-button">Ascolta</a>
+                            <a href="download102.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Immacolata vergine bella
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 103 | <strong>Tipologia:</strong> Tipologia 103
+                        <div>
+                            <a href="link103.html" class="link-button">Ascolta</a>
+                            <a href="download103.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Rallegrati Gerusalemme
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 104 | <strong>Tipologia:</strong> Tipologia 104
+                        <div>
+                            <a href="link104.html" class="link-button">Ascolta</a>
+                            <a href="download104.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Come tu mi vuoi
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 105 | <strong>Tipologia:</strong> Tipologia 105
+                        <div>
+                            <a href="link105.html" class="link-button">Ascolta</a>
+                            <a href="download105.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Venite fedeli
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 106 | <strong>Tipologia:</strong> Tipologia 106
+                        <div>
+                            <a href="link106.html" class="link-button">Ascolta</a>
+                            <a href="download106.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Resta con noi Signore la sera
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 107 | <strong>Tipologia:</strong> Tipologia 107
+                        <div>
+                            <a href="link107.html" class="link-button">Ascolta</a>
+                            <a href="download107.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Andate per le strade
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 108 | <strong>Tipologia:</strong> Tipologia 108
+                        <div>
+                            <a href="link108.html" class="link-button">Ascolta</a>
+                            <a href="download108.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Gloria a te
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 109 | <strong>Tipologia:</strong> Tipologia 109
+                        <div>
+                            <a href="link109.html" class="link-button">Ascolta</a>
+                            <a href="download109.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Davanti al Re
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 110 | <strong>Tipologia:</strong> Tipologia 110
+                        <div>
+                            <a href="link110.html" class="link-button">Ascolta</a>
+                            <a href="download110.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Te lodiamo Trinità
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 111 | <strong>Tipologia:</strong> Tipologia 111
+                        <div>
+                            <a href="link111.html" class="link-button">Ascolta</a>
+                            <a href="download111.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Signore, da chi andremo
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 112 | <strong>Tipologia:</strong> Tipologia 112
+                        <div>
+                            <a href="link112.html" class="link-button">Ascolta</a>
+                            <a href="download112.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Come un fiore
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 113 | <strong>Tipologia:</strong> Tipologia 113
+                        <div>
+                            <a href="link113.html" class="link-button">Ascolta</a>
+                            <a href="download113.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Ti ringrazio
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 114 | <strong>Tipologia:</strong> Tipologia 114
+                        <div>
+                            <a href="link114.html" class="link-button">Ascolta</a>
+                            <a href="download114.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Pange lingua
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 115 | <strong>Tipologia:</strong> Tipologia 115
+                        <div>
+                            <a href="link115.html" class="link-button">Ascolta</a>
+                            <a href="download115.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Alleluia lodate il Signore
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 116 | <strong>Tipologia:</strong> Tipologia 116
+                        <div>
+                            <a href="link116.html" class="link-button">Ascolta</a>
+                            <a href="download116.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Sei tu Signore il pane
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 117 | <strong>Tipologia:</strong> Tipologia 117
+                        <div>
+                            <a href="link117.html" class="link-button">Ascolta</a>
+                            <a href="download117.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Guada questa offerta
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 118 | <strong>Tipologia:</strong> Tipologia 118
+                        <div>
+                            <a href="link118.html" class="link-button">Ascolta</a>
+                            <a href="download118.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Il Signore è il mio Pastore
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 119 | <strong>Tipologia:</strong> Tipologia 119
+                        <div>
+                            <a href="link119.html" class="link-button">Ascolta</a>
+                            <a href="download119.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    Te al centro del mio cuore
+                    <div class="canto-details">
+                        <strong>Autore:</strong> Autore 120 | <strong>Tipologia:</strong> Tipologia 120
+                        <div>
+                            <a href="link120.html" class="link-button">Ascolta</a>
+                            <a href="download120.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 
