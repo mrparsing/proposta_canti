@@ -7,209 +7,16 @@
     <title>Elenco canti</title>
     <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
+    <script src="../javascript/js_search_bar.js"></script>
+    <link rel="stylesheet" href="../styles/style_lista.css">
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             sortAndGroupCanti();
         });
-
-        function toggleMenu() {
-            const navbar = document.getElementById('myNavbar');
-            navbar.classList.toggle('active');
-        }
-
-        function filterCanti() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cantiList = document.getElementById('cantiList');
-            const cantiItems = cantiList.getElementsByTagName('li');
-            const visibleLetters = new Set(); // Set per tenere traccia delle lettere visibili
-
-            // Nascondi gli elementi che non corrispondono al filtro
-            for (let i = 0; i < cantiItems.length; i++) {
-                const canto = cantiItems[i].textContent.toLowerCase();
-                const letter = canto.charAt(0).toUpperCase();
-                if (canto.includes(input) && !cantiItems[i].classList.contains('letter-header')) {
-                    cantiItems[i].style.display = '';
-                    visibleLetters.add(letter); // Aggiungi la lettera al set delle lettere visibili
-                } else {
-                    cantiItems[i].style.display = 'none';
-                }
-            }
-
-            // Mostra/nascondi le intestazioni delle lettere
-            if (input === '') {
-                mostraLettere(); // Se l'input è vuoto, mostra tutte le intestazioni
-            } else {
-                mostraLettere(visibleLetters); // Altrimenti, mostra solo quelle visibili
-            }
-        }
-
-        function mostraLettere(visibleLetters) {
-            const cantiList = document.getElementById('cantiList');
-            const letterHeaders = cantiList.getElementsByClassName('letter-header');
-
-            // Mostra tutte le intestazioni delle lettere, se visibili
-            for (let j = 0; j < letterHeaders.length; j++) {
-                const headerLetter = letterHeaders[j].textContent;
-                letterHeaders[j].style.display = visibleLetters ? (visibleLetters.has(headerLetter) ? '' : 'none') : ''; // Mostra tutte se non ci sono filtri
-            }
-        }
-
-
-        function sortAndGroupCanti() {
-            const cantiList = document.getElementById('cantiList');
-            const cantiItems = Array.from(cantiList.getElementsByTagName('li'));
-
-            // Ordina gli elementi della lista
-            cantiItems.sort((a, b) => a.textContent.localeCompare(b.textContent));
-
-            // Crea un oggetto per raggruppare i canti per lettera
-            const groupedCanti = {};
-            cantiItems.forEach(item => {
-                const letter = item.textContent.trim().charAt(0).toUpperCase();
-                if (!groupedCanti[letter]) {
-                    groupedCanti[letter] = [];
-                }
-                groupedCanti[letter].push(item);
-            });
-
-            // Rimuovi tutti gli elementi della lista e ricostruisci la lista con le lettere in evidenza
-            cantiList.innerHTML = '';
-            for (const letter in groupedCanti) {
-                // Aggiungi l'intestazione per la lettera
-                const letterHeader = document.createElement('p');
-                letterHeader.textContent = letter;
-                letterHeader.classList.add('letter-header'); // Aggiunta della classe
-                cantiList.appendChild(letterHeader);
-
-                // Aggiungi i canti per questa lettera
-                groupedCanti[letter].forEach(item => cantiList.appendChild(item));
-            }
-        }
-
-        function toggleDetails(event) {
-            // Evita la propagazione del clic se il link è stato cliccato
-            if (event.target.tagName === "A") {
-                event.stopPropagation();
-                return; // Esci dalla funzione per non eseguire il toggle
-            }
-
-            // Toggle del box dei dettagli
-            const details = event.currentTarget.querySelector('.canto-details');
-            if (details) {
-                details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
-            }
-        }
-
-
     </script>
 
-    <style>
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
 
-        #searchInput {
-            margin-bottom: 20px;
-            padding: 12px 20px 12px 40px;
-            width: 100%;
-            max-width: 600px;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-            font-size: 16px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-            background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
-            background-position: 10px center;
-            background-repeat: no-repeat;
-            background-size: 20px;
-            transition: all 0.3s ease;
-        }
-
-        #searchInput:focus {
-            border-color: #4A90E2;
-            outline: none;
-            background-color: #fff;
-        }
-
-        #cantiList {
-            list-style-type: none;
-            padding: 0;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        #cantiList li {
-            margin: 10px 0;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            /* Change cursor to pointer to indicate clickability */
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        #cantiList li:hover {
-            background-color: #e7f3fe;
-            transform: translateY(-2px);
-        }
-
-        .letter-header {
-            font-weight: bold;
-            font-size: 1.5em;
-            margin-top: 20px;
-            margin-bottom: 5px;
-            color: #333;
-            text-align: left;
-            padding: 0;
-            background: none;
-            border: none;
-            box-shadow: none;
-            cursor: default;
-            transition: none;
-        }
-
-        .letter-header::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: #ccc;
-            margin-top: 5px;
-        }
-
-        .canto-details {
-            display: none;
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 10px;
-            display: none;
-            /* Hidden by default */
-            padding: 10px;
-            border-top: 1px solid #ccc;
-            /* Optional visual separation */
-        }
-
-        .link-button {
-            float: right;
-            /* Posiziona il link a destra */
-            text-decoration: none;
-            /* Rimuove la sottolineatura */
-            color: #4A90E2;
-            /* Colore del link */
-            margin-left: 10px;
-            /* Spazio tra il testo e il link */
-        }
-
-        .link-button:hover {
-            text-decoration: underline;
-            /* Sottolinea il link al passaggio del mouse */
-        }
-    </style>
 </head>
 
 <body>
@@ -220,16 +27,16 @@
             <div class="navbar-buttons">
                 <button onclick="location.href='../index.html'">Home</button>
                 <button onclick="location.href='elenco_canti.html'">Elenco canti</button>
-                <button>Spartiti salmi</button>
-                <button>Anni liturgici</button>
-                <button>Eventi speciali</button>
+                <button onclick="location.href='spartiti_salmi.html'">Spartiti salmi</button>
+                <button onclick="location.href='anno_liturgico.html'">Anno liturgico</button>
+                <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
                 <button>Impostazioni/Supporto</button>
                 <input type="text" placeholder="Cerca canti...">
             </div>
         </div>
 
         <div class="main-content" id="main-content">
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filterCanti()"
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()"
                 onemptied="mostraLettere()">
 
             <ul id="cantiList">
@@ -1439,5 +1246,6 @@
         </div>
     </div>
 </body>
+
 
 </html>

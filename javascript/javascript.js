@@ -197,6 +197,13 @@ function calcolaFestivita(anno) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    window.onload = function () {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            console.log("ciao", savedTheme);
+            document.body.classList.add('dark-theme');
+        }
+    }
     const oggi = new Date();
     const festivita = calcolaFestivita(oggi.getFullYear());
 

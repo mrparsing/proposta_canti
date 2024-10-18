@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spartiti salmi</title>
+    <script src="../javascript/javascript.js"></script>
+    <link rel="stylesheet" href="../styles/style_index.css">
+
+    <style>
+        :root {
+            --background-color: white;
+            --text-color: black;
+        }
+
+        .dark-theme {
+            --background-color: #121212;
+            --text-color: #f1f1f1;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .box .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+                margin-top: 480px;
+            }
+
+            .row {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+
+            .main-content {
+                margin-top: 60px;
+            }
+        }
+
+        .section {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle('dark-theme');
+        const themeToggleSwitch = document.getElementById('theme-toggle');
+
+        if (document.body.classList.contains('dark-theme')) {
+            localStorage.setItem('theme', 'dark');
+            themeToggleSwitch.checked = true; // Attiva lo switch
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeToggleSwitch.checked = false; // Disattiva lo switch
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme');
+        const themeToggleSwitch = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggleSwitch.checked = true; // Attiva lo switch
+        } else {
+            themeToggleSwitch.checked = false; // Disattiva lo switch
+        }
+    });
+</script>
+
+
+
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Spartiti salmi</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button onclick="location.href='../index.html'">Home</button>
+                <button onclick="location.href='elenco_canti.html'">Elenco canti</button>
+                <button onclick="location.href='spartiti_salmi.html'">Spartiti salmi</button>
+                <button onclick="location.href='anno_liturgico.html'">Anno liturgico</button>
+                <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
+                <button onclick="location.href='imp_supporto.html'">Impostazioni/Supporto</button>
+                <input type="text" placeholder="Cerca canti...">
+            </div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <p>Attiva il tema scuro:</p>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+                <span class="slider"></span>
+            </label>
+
+            <div class="section">
+                <h3>Contatti</h3>
+                <p>Per qualsiasi richiesta di supporto o suggerimenti, puoi inviare un'email a <a
+                        href="mailto:supporto@example.com">supporto@example.com</a>.</p>
+            </div>
+
+            <div class="credits">
+                <p>Sito creato da [Il tuo nome]. Ospitato su GitHub Pages. Per segnalare problemi, visita il nostro <a
+                        href="https://github.com/tuo-repository/issues" target="_blank">GitHub repository</a>.</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

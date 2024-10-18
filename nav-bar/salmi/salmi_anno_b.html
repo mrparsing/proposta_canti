@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco canti</title>
+    <script src="../../javascript/javascript.js"></script>
+    <script src="../../javascript/js_search_bar.js"></script>
+    <link rel="stylesheet" href="../../styles/style_index.css">
+    <link rel="stylesheet" href="../../styles/style_lista.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Elenco canti</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button onclick="location.href='../index.html'">Home</button>
+                <button onclick="location.href='elenco_canti.html'">Elenco canti</button>
+                <button onclick="location.href='../spartiti_salmi.html'">Spartiti salmi</button>
+                <button>Anno liturgico</button>
+                <button>Eventi speciali</button>
+                <button>Impostazioni/Supporto</button>
+                <input type="text" placeholder="Cerca salmo...">
+            </div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
+
+            <ul id="cantiList">
+                <li onclick="toggleDetails(event)">
+                    <span>I domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>II domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>III domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>IV domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>V domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>VI domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>VII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>VIII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>IX domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>X domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XI domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XIII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XIV domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XV domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XVI domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XVII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XVIII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XIX domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XX domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXI domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXIII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXIV domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXIV domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXV domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXVI domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXVII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXVIII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXIX domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXXI domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXXII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+                <li onclick="toggleDetails(event)">
+                    <span>XXXIII domenica tempo ordinario</span>
+                    <div class="canto-details" style="display: none;">
+                        <strong>Autore:</strong> Autore 1 | <strong>Tipologia:</strong> Tipologia 1
+                        <div>
+                            <a href="link1.html" class="link-button">Ascolta</a>
+                            <a href="download1.html" class="link-button">Scarica</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
