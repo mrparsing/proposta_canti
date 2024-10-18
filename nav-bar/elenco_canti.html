@@ -22,12 +22,32 @@
             const input = document.getElementById('searchInput').value.toLowerCase();
             const cantiList = document.getElementById('cantiList');
             const cantiItems = cantiList.getElementsByTagName('li');
+            const visibleLetters = new Set(); // Set per tenere traccia delle lettere visibili
 
+            // Nascondi gli elementi che non corrispondono al filtro
             for (let i = 0; i < cantiItems.length; i++) {
                 const canto = cantiItems[i].textContent.toLowerCase();
-                cantiItems[i].style.display = canto.includes(input) ? '' : 'none';
+                const letter = canto.charAt(0).toUpperCase();
+                if (canto.includes(input)) {
+                    cantiItems[i].style.display = '';
+                    visibleLetters.add(letter); // Aggiungi la lettera al set delle lettere visibili
+                } else {
+                    cantiItems[i].style.display = 'none';
+                }
+            }
+
+            // Mostra/nascondi le intestazioni delle lettere in base alla visibilità dei canti
+            const letterHeaders = cantiList.getElementsByClassName('letter-header');
+            for (let j = 0; j < letterHeaders.length; j++) {
+                const headerLetter = letterHeaders[j].textContent;
+                if (visibleLetters.has(headerLetter)) {
+                    letterHeaders[j].style.display = ''; // Mostra l'intestazione
+                } else {
+                    letterHeaders[j].style.display = 'none'; // Nascondi l'intestazione
+                }
             }
         }
+
 
         function sortAndGroupCanti() {
             const cantiList = document.getElementById('cantiList');
@@ -140,6 +160,18 @@
             background-color: #ccc;
             margin-top: 5px;
         }
+
+        .link-button {
+    float: right; /* Posiziona il link a destra */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #4A90E2; /* Colore del link */
+    margin-left: 10px; /* Spazio tra il testo e il link */
+}
+
+.link-button:hover {
+    text-decoration: underline; /* Sottolinea il link al passaggio del mouse */
+}
+
     </style>
 </head>
 
@@ -163,128 +195,135 @@
             <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filterCanti()">
 
             <ul id="cantiList">
-                <li>Noi canteremo gloria a Te</li>
-                <li>Acclamate al Signore</li>
-                <li>I cieli narrano</li>
-                <li>Ti esalto, Dio mio Re</li>
-                <li>Gustate e vedete</li>
-                <li>Dove la carità è vera</li>
-                <li>Benedici il Signore</li>
-                <li>Alleluia cantico all'Agnello</li>
-                <li>Alleluia ed oggi ancora</li>
-                <li>Ecco Signore</li>
-                <li>Alleluia, Tu sei Pietro</li>
-                <li>Resta qui con noi</li>
-                <li>Non di solo pane</li>
-                <li>Miserere</li>
-                <li>Chi mi seguirà</li>
-                <li>O Signore nostro Dio</li>
-                <li>Chi ci separerà</li>
-                <li>Alto e glorioso Dio</li>
-                <li>Lodi all'Altissimo</li>
-                <li>Pane di Vita nuova</li>
-                <li>Ecco l'acqua</li>
-                <li>Cantate al Signore</li>
-                <li>Eccomi</li>
-                <li>La vera gioia</li>
-                <li>Benedetto sei Tu Signore</li>
-                <li>Ti rendo grazie</li>
-                <li>Madre fiducia nostra</li>
-                <li>Se m'accogli</li>
-                <li>Santa Maria del cammino</li>
-                <li>Giovanni</li>
-                <li>Alleluia gregoriano</li>
-                <li>Riuniti nel nome del Signore</li>
-                <li>Alleluia Io sono il pane vivo</li>
-                <li>Magnificat - Dio si è fatto come noi</li>
-                <li>Noi veniamo a te</li>
-                <li>Tu sarai profeta</li>
-                <li>La vera Vite</li>
-                <li>Io sarò con Te</li>
-                <li>E' l'ora che pia</li>
-                <li>Lodate Dio</li>
-                <li>Lo spirito del Signore</li>
-                <li>Il tuo popolo in cammino</li>
-                <li>Accogli i nostri doni</li>
-                <li>Lampada per i miei passi</li>
-                <li>O Sion loda il Salvatore</li>
-                <li>E' asceso alla gloria</li>
-                <li>Questo è il mio comandamento</li>
-                <li>Cristo nostra Pasqua</li>
-                <li>La mia Pasqua è il Signore</li>
-                <li>Hosanna</li>
-                <li>O Dio, Tu sei il mio Dio</li>
-                <li>I miei occhi</li>
-                <li>M'invocherà e io lo esaudirò</li>
-                <li>Ti seguirò</li>
-                <li>Tu scendi dalle stelle</li>
-                <li>Adeste Fideles</li>
-                <li>Vieni Signore</li>
-                <li>Camminiamo incontro al Signore</li>
-                <li>Maria porta dell'Avvento</li>
-                <li>Re di Gloria</li>
-                <li>Dov'è carita e amore</li>
-                <li>Ave Maris Stella</li>
-                <li>All'agnello che è stato immolato</li>
-                <li>Perché tu sei con me</li>
-                <li>Le mani alzate</li>
-                <li>Accostiamoci tutti all'altar</li>
-                <li>Regina caeli</li>
-                <li>Sei luce splendida</li>
-                <li>Alleluia</li>
-                <li>Tu quando verrai</li>
-                <li>Astro del ciel</li>
-                <li>Andrò a vederla un dì</li>
-                <li>Inni e canti</li>
-                <li>Fratello sole, sorella luna</li>
-                <li>Il Signore è la mia salvezza</li>
-                <li>Dell'aurora Tu sorgi più bella</li>
-                <li>T'adoriam, Ostia divina</li>
-                <li>Mira il tuo popolo</li>
-                <li>Il signore è vicino</li>
-                <li>Cielo nuovo</li>
-                <li>Frutto della nostra terra</li>
-                <li>Nel sole dell'aurora</li>
-                <li>Ti ringrazio, o mio Signore</li>
-                <li>Inno d'Amore</li>
-                <li>Vi darò un cuore nuovo</li>
-                <li>Beati quelli che ascoltano</li>
-                <li>Vieni ancora, Gesù</li>
-                <li>Symbolum 77</li>
-                <li>Dio si è fatto come noi</li>
-                <li>Ecco quel che abbiamo</li>
-                <li>Credo in te Signore</li>
-                <li>Pane del Cielo</li>
-                <li>Salve Regina</li>
-                <li>E' bello lodarti</li>
-                <li>O cieli piovete dall'alto</li>
-                <li>Vieni Spirito d'Amore</li>
-                <li>Inni e canti</li>
-                <li>Osanna al figlio di David</li>
-                <li>Se qualcuno ha dei beni</li>
-                <li>In notte placida</li>
-                <li>Madre mia bellissima</li>
-                <li>Il pane del cammino</li>
-                <li>Immacolata vergine bella</li>
-                <li>Rallegrati Gerusalemme</li>
-                <li>Come tu mi vuoi</li>
-                <li>Venite fedeli</li>
-                <li>Resta con noi signore la sera</li>
-                <li>Andate per le strade</li>
-                <li>Gloria a te</li>
-                <li>Davanti al Re</li>
-                <li>Te lodiamo Trinità</li>
-                <li>Signore, da chi andremo</li>
-                <li>Come un fiore</li>
-                <li>Ti ringrazio</li>
-                <li>Pange lingua</li>
-                <li>Alleluia lodate il Signore</li>
-                <li>Sei tu Signore il pane</li>
-                <li>Guada questa offerta</li>
-                <li>Il Signore è il mio Pastore</li>
-                <li>Te al centro del mio cuore</li>
-            </ul>
-        </div>
+                Ecco come puoi aggiungere il link "Scarica" accanto a "Ascolta" in ogni voce della tua lista:
+
+                ```html
+                <ul>
+                    <li>Noi canteremo gloria a Te <a href="link1.html" class="link-button">Ascolta</a> <a href="download1.html" class="link-button">Scarica</a></li>
+                    <li>Acclamate al Signore <a href="link2.html" class="link-button">Ascolta</a> <a href="download2.html" class="link-button">Scarica</a></li>
+                    <li>I cieli narrano <a href="link3.html" class="link-button">Ascolta</a> <a href="download3.html" class="link-button">Scarica</a></li>
+                    <li>Ti esalto, Dio mio Re <a href="link4.html" class="link-button">Ascolta</a> <a href="download4.html" class="link-button">Scarica</a></li>
+                    <li>Gustate e vedete <a href="link5.html" class="link-button">Ascolta</a> <a href="download5.html" class="link-button">Scarica</a></li>
+                    <li>Dove la carità è vera <a href="link6.html" class="link-button">Ascolta</a> <a href="download6.html" class="link-button">Scarica</a></li>
+                    <li>Benedici il Signore <a href="link7.html" class="link-button">Ascolta</a> <a href="download7.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia cantico all'Agnello <a href="link8.html" class="link-button">Ascolta</a> <a href="download8.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia ed oggi ancora <a href="link9.html" class="link-button">Ascolta</a> <a href="download9.html" class="link-button">Scarica</a></li>
+                    <li>Ecco Signore <a href="link10.html" class="link-button">Ascolta</a> <a href="download10.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia, Tu sei Pietro <a href="link11.html" class="link-button">Ascolta</a> <a href="download11.html" class="link-button">Scarica</a></li>
+                    <li>Resta qui con noi <a href="link12.html" class="link-button">Ascolta</a> <a href="download12.html" class="link-button">Scarica</a></li>
+                    <li>Non di solo pane <a href="link13.html" class="link-button">Ascolta</a> <a href="download13.html" class="link-button">Scarica</a></li>
+                    <li>Miserere <a href="link14.html" class="link-button">Ascolta</a> <a href="download14.html" class="link-button">Scarica</a></li>
+                    <li>Chi mi seguirà <a href="link15.html" class="link-button">Ascolta</a> <a href="download15.html" class="link-button">Scarica</a></li>
+                    <li>O Signore nostro Dio <a href="link16.html" class="link-button">Ascolta</a> <a href="download16.html" class="link-button">Scarica</a></li>
+                    <li>Chi ci separerà <a href="link17.html" class="link-button">Ascolta</a> <a href="download17.html" class="link-button">Scarica</a></li>
+                    <li>Alto e glorioso Dio <a href="link18.html" class="link-button">Ascolta</a> <a href="download18.html" class="link-button">Scarica</a></li>
+                    <li>Lodi all'Altissimo <a href="link19.html" class="link-button">Ascolta</a> <a href="download19.html" class="link-button">Scarica</a></li>
+                    <li>Pane di Vita nuova <a href="link20.html" class="link-button">Ascolta</a> <a href="download20.html" class="link-button">Scarica</a></li>
+                    <li>Ecco l'acqua <a href="link21.html" class="link-button">Ascolta</a> <a href="download21.html" class="link-button">Scarica</a></li>
+                    <li>Cantate al Signore <a href="link22.html" class="link-button">Ascolta</a> <a href="download22.html" class="link-button">Scarica</a></li>
+                    <li>Eccomi <a href="link23.html" class="link-button">Ascolta</a> <a href="download23.html" class="link-button">Scarica</a></li>
+                    <li>La vera gioia <a href="link24.html" class="link-button">Ascolta</a> <a href="download24.html" class="link-button">Scarica</a></li>
+                    <li>Benedetto sei Tu Signore <a href="link25.html" class="link-button">Ascolta</a> <a href="download25.html" class="link-button">Scarica</a></li>
+                    <li>Ti rendo grazie <a href="link26.html" class="link-button">Ascolta</a> <a href="download26.html" class="link-button">Scarica</a></li>
+                    <li>Madre fiducia nostra <a href="link27.html" class="link-button">Ascolta</a> <a href="download27.html" class="link-button">Scarica</a></li>
+                    <li>Se m'accogli <a href="link28.html" class="link-button">Ascolta</a> <a href="download28.html" class="link-button">Scarica</a></li>
+                    <li>Santa Maria del cammino <a href="link29.html" class="link-button">Ascolta</a> <a href="download29.html" class="link-button">Scarica</a></li>
+                    <li>Giovanni <a href="link30.html" class="link-button">Ascolta</a> <a href="download30.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia gregoriano <a href="link31.html" class="link-button">Ascolta</a> <a href="download31.html" class="link-button">Scarica</a></li>
+                    <li>Riuniti nel nome del Signore <a href="link32.html" class="link-button">Ascolta</a> <a href="download32.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia Io sono il pane vivo <a href="link33.html" class="link-button">Ascolta</a> <a href="download33.html" class="link-button">Scarica</a></li>
+                    <li>Magnificat - Dio si è fatto come noi <a href="link34.html" class="link-button">Ascolta</a> <a href="download34.html" class="link-button">Scarica</a></li>
+                    <li>Noi veniamo a te <a href="link35.html" class="link-button">Ascolta</a> <a href="download35.html" class="link-button">Scarica</a></li>
+                    <li>Tu sarai profeta <a href="link36.html" class="link-button">Ascolta</a> <a href="download36.html" class="link-button">Scarica</a></li>
+                    <li>La vera Vite <a href="link37.html" class="link-button">Ascolta</a> <a href="download37.html" class="link-button">Scarica</a></li>
+                    <li>Io sarò con Te <a href="link38.html" class="link-button">Ascolta</a> <a href="download38.html" class="link-button">Scarica</a></li>
+                    <li>E' l'ora che pia <a href="link39.html" class="link-button">Ascolta</a> <a href="download39.html" class="link-button">Scarica</a></li>
+                    <li>Lodate Dio <a href="link40.html" class="link-button">Ascolta</a> <a href="download40.html" class="link-button">Scarica</a></li>
+                    <li>Lo spirito del Signore <a href="link41.html" class="link-button">Ascolta</a> <a href="download41.html" class="link-button">Scarica</a></li>
+                    <li>Il tuo popolo in cammino <a href="link42.html" class="link-button">Ascolta</a> <a href="download42.html"
+                
+                 class="link-button">Scarica</a></li>
+                    <li>Accogli i nostri doni <a href="link43.html" class="link-button">Ascolta</a> <a href="download43.html" class="link-button">Scarica</a></li>
+                    <li>Lampada per i miei passi <a href="link44.html" class="link-button">Ascolta</a> <a href="download44.html" class="link-button">Scarica</a></li>
+                    <li>O Sion loda il Salvatore <a href="link45.html" class="link-button">Ascolta</a> <a href="download45.html" class="link-button">Scarica</a></li>
+                    <li>E' asceso alla gloria <a href="link46.html" class="link-button">Ascolta</a> <a href="download46.html" class="link-button">Scarica</a></li>
+                    <li>Questo è il mio comandamento <a href="link47.html" class="link-button">Ascolta</a> <a href="download47.html" class="link-button">Scarica</a></li>
+                    <li>Cristo nostra Pasqua <a href="link48.html" class="link-button">Ascolta</a> <a href="download48.html" class="link-button">Scarica</a></li>
+                    <li>La mia Pasqua è il Signore <a href="link49.html" class="link-button">Ascolta</a> <a href="download49.html" class="link-button">Scarica</a></li>
+                    <li>Hosanna <a href="link50.html" class="link-button">Ascolta</a> <a href="download50.html" class="link-button">Scarica</a></li>
+                    <li>O Dio, Tu sei il mio Dio <a href="link51.html" class="link-button">Ascolta</a> <a href="download51.html" class="link-button">Scarica</a></li>
+                    <li>I miei occhi <a href="link52.html" class="link-button">Ascolta</a> <a href="download52.html" class="link-button">Scarica</a></li>
+                    <li>M'invocherà e io lo esaudirò <a href="link53.html" class="link-button">Ascolta</a> <a href="download53.html" class="link-button">Scarica</a></li>
+                    <li>Ti seguirò <a href="link54.html" class="link-button">Ascolta</a> <a href="download54.html" class="link-button">Scarica</a></li>
+                    <li>Tu scendi dalle stelle <a href="link55.html" class="link-button">Ascolta</a> <a href="download55.html" class="link-button">Scarica</a></li>
+                    <li>Adeste Fideles <a href="link56.html" class="link-button">Ascolta</a> <a href="download56.html" class="link-button">Scarica</a></li>
+                    <li>Vieni Signore <a href="link57.html" class="link-button">Ascolta</a> <a href="download57.html" class="link-button">Scarica</a></li>
+                    <li>Camminiamo incontro al Signore <a href="link58.html" class="link-button">Ascolta</a> <a href="download58.html" class="link-button">Scarica</a></li>
+                    <li>Maria porta dell'Avvento <a href="link59.html" class="link-button">Ascolta</a> <a href="download59.html" class="link-button">Scarica</a></li>
+                    <li>Re di Gloria <a href="link60.html" class="link-button">Ascolta</a> <a href="download60.html" class="link-button">Scarica</a></li>
+                    <li>Dov'è carita e amore <a href="link61.html" class="link-button">Ascolta</a> <a href="download61.html" class="link-button">Scarica</a></li>
+                    <li>Ave Maris Stella <a href="link62.html" class="link-button">Ascolta</a> <a href="download62.html" class="link-button">Scarica</a></li>
+                    <li>All'agnello che è stato immolato <a href="link63.html" class="link-button">Ascolta</a> <a href="download63.html" class="link-button">Scarica</a></li>
+                    <li>Perché tu sei con me <a href="link64.html" class="link-button">Ascolta</a> <a href="download64.html" class="link-button">Scarica</a></li>
+                    <li>Le mani alzate <a href="link65.html" class="link-button">Ascolta</a> <a href="download65.html" class="link-button">Scarica</a></li>
+                    <li>Accostiamoci tutti all'altar <a href="link66.html" class="link-button">Ascolta</a> <a href="download66.html" class="link-button">Scarica</a></li>
+                    <li>Regina caeli <a href="link67.html" class="link-button">Ascolta</a> <a href="download67.html" class="link-button">Scarica</a></li>
+                    <li>Sei luce splendida <a href="link68.html" class="link-button">Ascolta</a> <a href="download68.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia <a href="link69.html" class="link-button">Ascolta</a> <a href="download69.html" class="link-button">Scarica</a></li>
+                    <li>Tu quando verrai <a href="link70.html" class="link-button">Ascolta</a> <a href="download70.html" class="link-button">Scarica</a></li>
+                    <li>Astro del ciel <a href="link71.html" class="link-button">Ascolta</a> <a href="download71.html" class="link-button">Scarica</a></li>
+                    <li>Andrò a vederla un dì <a href="link72.html" class="link-button">Ascolta</a> <a href="download72.html" class="link-button">Scarica</a></li>
+                    <li>Inni e canti <a href="link73.html" class="link-button">Ascolta</a> <a href="download73.html" class="link-button">Scarica</a></li>
+                    <li>Fratello sole, sorella luna <a href="link74.html" class="link-button">Ascolta</a> <a href="download74.html" class="link-button">Scarica</a></li>
+                    <li>Il Signore è la mia salvezza <a href="link75.html" class="link-button">Ascolta</a> <a href="download75.html" class="link-button">Scarica</a></li>
+                    <li>Dell'aurora Tu sorgi più bella <a href="link76.html" class="link-button">Ascolta</a> <a href="download76.html" class="link-button">Scarica</a></li>
+                    <li>T'adoriam, Ostia divina <a href="link77.html" class="link-button">Ascolta</a> <a href="download77.html" class="link-button">Scarica</a></li>
+                    <li>Mira il tuo popolo <a href="link78.html" class="link-button">Ascolta</a> <a href="download78.html" class="link-button">Scarica</a></li>
+                    <li>Il signore è vicino <a href="link79.html" class="link-button">Ascolta</a> <a href="download79.html" class="link-button">Scarica</a></li>
+                    <li>Cielo nuovo <a href="link80.html" class="link-button">Ascolta</a> <a href="download80.html" class="link-button">Scarica</a></li>
+                    <li>Frutto della nostra terra <a href="link81.html" class="link-button">Ascolta</a> <a href="download81.html" class="link-button">Scarica</a></li>
+                    <li>Nel sole dell'aurora <a href="link82.html" class="link-button">Ascolta</a> <a href="download82.html" class="link-button">Scarica</a></li>
+                    <li>Ti ringrazio, o mio Signore <a href="link83.html" class="link-button">Ascolta</a> <a href="download83.html" class="link-button">Scarica</a></li>
+                    <li>Inno d'Amore <a href="link84.html" class="link-button">Ascolta</a> <a href="download84.html" class="link-button
+                
+                ">Scarica</a></li>
+                    <li>Vi darò un cuore nuovo <a href="link85.html" class="link-button">Ascolta</a> <a href="download85.html" class="link-button">Scarica</a></li>
+                    <li>Beati quelli che ascoltano <a href="link86.html" class="link-button">Ascolta</a> <a href="download86.html" class="link-button">Scarica</a></li>
+                    <li>Vieni ancora, Gesù <a href="link87.html" class="link-button">Ascolta</a> <a href="download87.html" class="link-button">Scarica</a></li>
+                    <li>Symbolum 77 <a href="link88.html" class="link-button">Ascolta</a> <a href="download88.html" class="link-button">Scarica</a></li>
+                    <li>Dio si è fatto come noi <a href="link89.html" class="link-button">Ascolta</a> <a href="download89.html" class="link-button">Scarica</a></li>
+                    <li>Ecco quel che abbiamo <a href="link90.html" class="link-button">Ascolta</a> <a href="download90.html" class="link-button">Scarica</a></li>
+                    <li>Credo in te Signore <a href="link91.html" class="link-button">Ascolta</a> <a href="download91.html" class="link-button">Scarica</a></li>
+                    <li>Pane del Cielo <a href="link92.html" class="link-button">Ascolta</a> <a href="download92.html" class="link-button">Scarica</a></li>
+                    <li>Salve Regina <a href="link93.html" class="link-button">Ascolta</a> <a href="download93.html" class="link-button">Scarica</a></li>
+                    <li>E' bello lodarti <a href="link94.html" class="link-button">Ascolta</a> <a href="download94.html" class="link-button">Scarica</a></li>
+                    <li>O cieli piovete dall'alto <a href="link95.html" class="link-button">Ascolta</a> <a href="download95.html" class="link-button">Scarica</a></li>
+                    <li>Vieni Spirito d'Amore <a href="link96.html" class="link-button">Ascolta</a> <a href="download96.html" class="link-button">Scarica</a></li>
+                    <li>Inni e canti <a href="link97.html" class="link-button">Ascolta</a> <a href="download97.html" class="link-button">Scarica</a></li>
+                    <li>Osanna al figlio di David <a href="link98.html" class="link-button">Ascolta</a> <a href="download98.html" class="link-button">Scarica</a></li>
+                    <li>Se qualcuno ha dei beni <a href="link99.html" class="link-button">Ascolta</a> <a href="download99.html" class="link-button">Scarica</a></li>
+                    <li>In notte placida <a href="link100.html" class="link-button">Ascolta</a> <a href="download100.html" class="link-button">Scarica</a></li>
+                    <li>Madre mia bellissima <a href="link101.html" class="link-button">Ascolta</a> <a href="download101.html" class="link-button">Scarica</a></li>
+                    <li>Il pane del cammino <a href="link102.html" class="link-button">Ascolta</a> <a href="download102.html" class="link-button">Scarica</a></li>
+                    <li>Immacolata vergine bella <a href="link103.html" class="link-button">Ascolta</a> <a href="download103.html" class="link-button">Scarica</a></li>
+                    <li>Rallegrati Gerusalemme <a href="link104.html" class="link-button">Ascolta</a> <a href="download104.html" class="link-button">Scarica</a></li>
+                    <li>Come tu mi vuoi <a href="link105.html" class="link-button">Ascolta</a> <a href="download105.html" class="link-button">Scarica</a></li>
+                    <li>Venite fedeli <a href="link106.html" class="link-button">Ascolta</a> <a href="download106.html" class="link-button">Scarica</a></li>
+                    <li>Resta con noi signore la sera <a href="link107.html" class="link-button">Ascolta</a> <a href="download107.html" class="link-button">Scarica</a></li>
+                    <li>Andate per le strade <a href="link108.html" class="link-button">Ascolta</a> <a href="download108.html" class="link-button">Scarica</a></li>
+                    <li>Gloria a te <a href="link109.html" class="link-button">Ascolta</a> <a href="download109.html" class="link-button">Scarica</a></li>
+                    <li>Davanti al Re <a href="link110.html" class="link-button">Ascolta</a> <a href="download110.html" class="link-button">Scarica</a></li>
+                    <li>Te lodiamo Trinità <a href="link111.html" class="link-button">Ascolta</a> <a href="download111.html" class="link-button">Scarica</a></li>
+                    <li>Signore, da chi andremo <a href="link112.html" class="link-button">Ascolta</a> <a href="download112.html" class="link-button">Scarica</a></li>
+                    <li>Come un fiore <a href="link113.html" class="link-button">Ascolta</a> <a href="download113.html" class="link-button">Scarica</a></li>
+                    <li>Ti ringrazio <a href="link114.html" class="link-button">Ascolta</a> <a href="download114.html" class="link-button">Scarica</a></li>
+                    <li>Pange lingua <a href="link115.html" class="link-button">Ascolta</a> <a href="download115.html" class="link-button">Scarica</a></li>
+                    <li>Alleluia lodate il Signore <a href="link116.html" class="link-button">Ascolta</a> <a href="download116.html" class="link-button">Scarica</a></li>
+                    <li>Sei tu Signore il pane <a href="link117.html" class="link-button">Ascolta</a> <a href="download117.html" class="link-button">Scarica</a></li>
+                    <li>Guada questa offerta <a href="link118.html" class="link-button">Ascolta</a> <a href="download118.html" class="link-button">Scarica</a></li>
+                    <li>Il Signore è il mio Pastore <a href="link119.html" class="link-button">Ascolta</a> <a href="download119.html" class="link-button">Scarica</a></li>
+                    <li>Te al centro del mio cuore <a href="link120.html" class="link-button">Ascolta</a> <a href="download120.html" class="link-button">Scarica</a></li>
+                                            </ul>        </div>
     </div>
 </body>
 
