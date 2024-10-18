@@ -21,23 +21,25 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 80vh; /* Altezza del contenitore per centraggio verticale */
+            height: 80vh;
         }
 
         .row {
             display: flex;
             justify-content: center;
-            margin: 10px 0; /* Spazio tra le righe */
+            margin: 10px 0;
         }
 
         .box {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             margin: 10px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            /* Aggiungi position: relative per gestire il posizionamento del testo */
         }
 
         .box img {
@@ -47,19 +49,45 @@
             border-radius: 8px;
         }
 
+        .box .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Sfondo semitrasparente */
+            padding: 5px;
+            border-radius: 0 0 8px 8px;
+        }
+
         @media (max-width: 768px) {
-    .row {
-        flex-direction: column;
-        align-items: center;
-    }
+            #container {
+                flex-direction: column;
+                margin-top: 500px;
+            }
 
-    .main-content {
-        flex-direction: column;
-    }
+            .row {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
 
-}
 
+            .main-content {
+                margin-top: 60px;
+            }
+        }
     </style>
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('myNavbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
 </head>
 
 <body>
@@ -81,31 +109,36 @@
         <div class="main-content" id="main-content">
             <div id="container">
                 <div class="row">
-                    <a href="pagina_salmo_1.html">
+                    <a href="salmi/salmi_anno_a.html">
                         <div class="box">
                             <img src="../styles/img/san_matteo.jpg">
+                            <div class="text">SALMI ANNO A</div>
                         </div>
                     </a>
-                    <a href="pagina_salmo_2.html">
+                    <a href="salmi/salmi_anno_b.html">
                         <div class="box">
                             <img src="../styles/img/San-Marco-evangelista.jpg">
+                            <div class="text">SALMI ANNO B</div>
                         </div>
                     </a>
-                    <a href="pagina_salmo_3.html">
+                    <a href="salmi/salmi_anno_c.html">
                         <div class="box">
                             <img src="../styles/img/SanLuca.jpg">
+                            <div class="text">SALMI ANNO C</div>
                         </div>
                     </a>
                 </div>
                 <div class="row">
-                    <a href="pagina_salmo_4.html">
+                    <a href="salmi/salmi_altre_festivita.html">
                         <div class="box">
                             <img src="immagini/salmo4.jpg">
+                            <div class="text">SALMI ALTRE FESTIVITA'</div>
                         </div>
                     </a>
-                    <a href="pagina_salmo_5.html">
+                    <a href="salmi/salmi_eventi_speciali.html">
                         <div class="box">
                             <img src="immagini/salmo5.jpg">
+                            <div class="text">SALMI EVENTI SPECIALI</div>
                         </div>
                     </a>
                 </div>

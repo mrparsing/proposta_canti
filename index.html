@@ -13,21 +13,6 @@
             const navbar = document.getElementById('myNavbar');
             navbar.classList.toggle('active');
         }
-
-        function addCelebrazione() {
-            const input = document.getElementById('celebrazioneInput');
-            const celebrazioneList = document.getElementById('celebrazioneList');
-
-            if (input.value.trim() !== '') {
-                const listItem = document.createElement('li');
-                listItem.textContent = input.value;
-                celebrazioneList.appendChild(listItem);
-                input.value = ''; // Pulisci il campo di input
-            } else {
-                alert('Per favore, inserisci una celebrazione valida.');
-            }
-        }
-
     </script>
 </head>
 
