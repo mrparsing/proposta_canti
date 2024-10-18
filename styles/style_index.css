@@ -32,7 +32,7 @@ body {
 
 .navbar button,
 .navbar input[type="text"] {
-    padding: 10px 15px;
+    padding: 10px 10px;
     font-size: 16px;
     cursor: pointer;
     margin: 5px;
@@ -71,7 +71,6 @@ body {
 
 .navbar-buttons {
     display: flex;
-    flex-wrap: wrap;
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -179,11 +178,10 @@ body {
     }
 
     .slogan-image {
-        flex-direction: row; /* Cambia la disposizione in colonna su schermi piccoli */
-    }
-
-    .slogan-image .image, .slogan-image .text {
-        width: 100%; /* Fai in modo che l'immagine e il testo occupino l'intera larghezza */
+        display: flex;
+        flex-direction: column; /* Imposta disposizione orizzontale su schermi grandi */
+        width: 100%; /* Occupa l'intera larghezza del contenitore */
+        gap: 20px; /* Spazio tra immagine e testo */
     }
 }
 
@@ -266,16 +264,15 @@ body {
 
 .slogan-image {
     display: flex;
-    flex-direction: row; /* Imposta disposizione orizzontale su schermi grandi */
-    width: 100%; /* Occupa l'intera larghezza del contenitore */
-    gap: 20px; /* Spazio tra immagine e testo */
+    justify-content: space-between;
+    align-items: center;
 }
 
-.slogan-image .image, 
-.slogan-image .text {
-    flex: 1; /* Assegna spazio equo a immagine e testo */
+.slogan-image .image, .slogan-image .text {
+    width: 100%; /* Assegna larghezze per il layout desktop */
     margin: 10px;
 }
+
 
 .slogan-image img {
     max-width: 100%;

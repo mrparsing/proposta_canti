@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../styles/style_index.css">
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            sortAndGroupCanti();
+        });
+
         function toggleMenu() {
             const navbar = document.getElementById('myNavbar');
             navbar.classList.toggle('active');
@@ -24,42 +28,117 @@
                 cantiItems[i].style.display = canto.includes(input) ? '' : 'none';
             }
         }
+
+        function sortAndGroupCanti() {
+            const cantiList = document.getElementById('cantiList');
+            const cantiItems = Array.from(cantiList.getElementsByTagName('li'));
+
+            // Ordina gli elementi della lista
+            cantiItems.sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+            // Crea un oggetto per raggruppare i canti per lettera
+            const groupedCanti = {};
+            cantiItems.forEach(item => {
+                const letter = item.textContent.trim().charAt(0).toUpperCase();
+                if (!groupedCanti[letter]) {
+                    groupedCanti[letter] = [];
+                }
+                groupedCanti[letter].push(item);
+            });
+
+            // Rimuovi tutti gli elementi della lista e ricostruisci la lista con le lettere in evidenza
+            cantiList.innerHTML = '';
+            for (const letter in groupedCanti) {
+                // Aggiungi l'intestazione per la lettera
+                const letterHeader = document.createElement('p');
+                letterHeader.textContent = letter;
+                letterHeader.classList.add('letter-header'); // Aggiunta della classe
+                cantiList.appendChild(letterHeader);
+
+                // Aggiungi i canti per questa lettera
+                groupedCanti[letter].forEach(item => cantiList.appendChild(item));
+            }
+        }
     </script>
 
     <style>
         .main-content {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center items horizontally */
-            margin-top: 20px; /* Add some spacing from the navbar */
+            align-items: center;
+            margin-top: 20px;
         }
 
+        /* Stile della barra di ricerca */
         #searchInput {
-            margin-bottom: 20px; /* Space between search bar and list */
-            padding: 10px; /* Add padding for better appearance */
-            width: 100%; /* Full width */
-            max-width: 600px; /* Limit the width of the search bar */
-            border: 1px solid #ccc; /* Light gray border */
-            border-radius: 5px; /* Rounded corners */
+            margin-bottom: 20px;
+            padding: 12px 20px 12px 40px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+            background-position: 10px center;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            transition: all 0.3s ease;
         }
 
+        #searchInput:focus {
+            border-color: #4A90E2;
+            outline: none;
+            background-color: #fff;
+        }
+
+        /* Stile della lista dei canti */
         #cantiList {
-            list-style-type: none; /* Remove bullets */
+            list-style-type: none;
             padding: 0;
-            width: 100%; /* Ensure the list takes full width */
-            max-width: 600px; /* Limit the width of the list */
+            width: 100%;
+            max-width: 600px;
         }
 
         #cantiList li {
             margin: 10px 0;
             padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         #cantiList li:hover {
-            background-color: #e7f3fe; /* Light blue on hover */
+            background-color: #e7f3fe;
+            transform: translateY(-2px);
+        }
+
+        /* Stile per l'intestazione delle lettere */
+        .letter-header {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            color: #333;
+            text-align: left;
+            padding: 0;
+            background: none;
+            border: none;
+            box-shadow: none;
+            cursor: default;
+            transition: none;
+        }
+
+        /* Barra orizzontale sotto la lettera */
+        .letter-header::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -77,16 +156,133 @@
                 <button>Eventi speciali</button>
                 <button>Impostazioni/Supporto</button>
                 <input type="text" placeholder="Cerca canti...">
-
             </div>
         </div>
+
         <div class="main-content" id="main-content">
             <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filterCanti()">
+
             <ul id="cantiList">
-                <li>canto1</li>
-                <li>canto2</li>
-                <li>canto3</li>
-                <li>canto4</li>
+                <li>Noi canteremo gloria a Te</li>
+                <li>Acclamate al Signore</li>
+                <li>I cieli narrano</li>
+                <li>Ti esalto, Dio mio Re</li>
+                <li>Gustate e vedete</li>
+                <li>Dove la carità è vera</li>
+                <li>Benedici il Signore</li>
+                <li>Alleluia cantico all'Agnello</li>
+                <li>Alleluia ed oggi ancora</li>
+                <li>Ecco Signore</li>
+                <li>Alleluia, Tu sei Pietro</li>
+                <li>Resta qui con noi</li>
+                <li>Non di solo pane</li>
+                <li>Miserere</li>
+                <li>Chi mi seguirà</li>
+                <li>O Signore nostro Dio</li>
+                <li>Chi ci separerà</li>
+                <li>Alto e glorioso Dio</li>
+                <li>Lodi all'Altissimo</li>
+                <li>Pane di Vita nuova</li>
+                <li>Ecco l'acqua</li>
+                <li>Cantate al Signore</li>
+                <li>Eccomi</li>
+                <li>La vera gioia</li>
+                <li>Benedetto sei Tu Signore</li>
+                <li>Ti rendo grazie</li>
+                <li>Madre fiducia nostra</li>
+                <li>Se m'accogli</li>
+                <li>Santa Maria del cammino</li>
+                <li>Giovanni</li>
+                <li>Alleluia gregoriano</li>
+                <li>Riuniti nel nome del Signore</li>
+                <li>Alleluia Io sono il pane vivo</li>
+                <li>Magnificat - Dio si è fatto come noi</li>
+                <li>Noi veniamo a te</li>
+                <li>Tu sarai profeta</li>
+                <li>La vera Vite</li>
+                <li>Io sarò con Te</li>
+                <li>E' l'ora che pia</li>
+                <li>Lodate Dio</li>
+                <li>Lo spirito del Signore</li>
+                <li>Il tuo popolo in cammino</li>
+                <li>Accogli i nostri doni</li>
+                <li>Lampada per i miei passi</li>
+                <li>O Sion loda il Salvatore</li>
+                <li>E' asceso alla gloria</li>
+                <li>Questo è il mio comandamento</li>
+                <li>Cristo nostra Pasqua</li>
+                <li>La mia Pasqua è il Signore</li>
+                <li>Hosanna</li>
+                <li>O Dio, Tu sei il mio Dio</li>
+                <li>I miei occhi</li>
+                <li>M'invocherà e io lo esaudirò</li>
+                <li>Ti seguirò</li>
+                <li>Tu scendi dalle stelle</li>
+                <li>Adeste Fideles</li>
+                <li>Vieni Signore</li>
+                <li>Camminiamo incontro al Signore</li>
+                <li>Maria porta dell'Avvento</li>
+                <li>Re di Gloria</li>
+                <li>Dov'è carita e amore</li>
+                <li>Ave Maris Stella</li>
+                <li>All'agnello che è stato immolato</li>
+                <li>Perché tu sei con me</li>
+                <li>Le mani alzate</li>
+                <li>Accostiamoci tutti all'altar</li>
+                <li>Regina caeli</li>
+                <li>Sei luce splendida</li>
+                <li>Alleluia</li>
+                <li>Tu quando verrai</li>
+                <li>Astro del ciel</li>
+                <li>Andrò a vederla un dì</li>
+                <li>Inni e canti</li>
+                <li>Fratello sole, sorella luna</li>
+                <li>Il Signore è la mia salvezza</li>
+                <li>Dell'aurora Tu sorgi più bella</li>
+                <li>T'adoriam, Ostia divina</li>
+                <li>Mira il tuo popolo</li>
+                <li>Il signore è vicino</li>
+                <li>Cielo nuovo</li>
+                <li>Frutto della nostra terra</li>
+                <li>Nel sole dell'aurora</li>
+                <li>Ti ringrazio, o mio Signore</li>
+                <li>Inno d'Amore</li>
+                <li>Vi darò un cuore nuovo</li>
+                <li>Beati quelli che ascoltano</li>
+                <li>Vieni ancora, Gesù</li>
+                <li>Symbolum 77</li>
+                <li>Dio si è fatto come noi</li>
+                <li>Ecco quel che abbiamo</li>
+                <li>Credo in te Signore</li>
+                <li>Pane del Cielo</li>
+                <li>Salve Regina</li>
+                <li>E' bello lodarti</li>
+                <li>O cieli piovete dall'alto</li>
+                <li>Vieni Spirito d'Amore</li>
+                <li>Inni e canti</li>
+                <li>Osanna al figlio di David</li>
+                <li>Se qualcuno ha dei beni</li>
+                <li>In notte placida</li>
+                <li>Madre mia bellissima</li>
+                <li>Il pane del cammino</li>
+                <li>Immacolata vergine bella</li>
+                <li>Rallegrati Gerusalemme</li>
+                <li>Come tu mi vuoi</li>
+                <li>Venite fedeli</li>
+                <li>Resta con noi signore la sera</li>
+                <li>Andate per le strade</li>
+                <li>Gloria a te</li>
+                <li>Davanti al Re</li>
+                <li>Te lodiamo Trinità</li>
+                <li>Signore, da chi andremo</li>
+                <li>Come un fiore</li>
+                <li>Ti ringrazio</li>
+                <li>Pange lingua</li>
+                <li>Alleluia lodate il Signore</li>
+                <li>Sei tu Signore il pane</li>
+                <li>Guada questa offerta</li>
+                <li>Il Signore è il mio Pastore</li>
+                <li>Te al centro del mio cuore</li>
             </ul>
         </div>
     </div>
