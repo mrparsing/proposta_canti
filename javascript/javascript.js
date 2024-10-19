@@ -420,3 +420,8 @@ function setNavbarColor(tipologia) {
             break;
     }
 }
+
+function toggleMenu() {
+    const navbar = document.getElementById('myNavbar');
+    navbar.classList.toggle('active');
+}

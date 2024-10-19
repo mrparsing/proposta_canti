@@ -99,7 +99,7 @@ body {
 .main-content {
     display: flex;
     flex-grow: 1;
-    padding: 20px;
+    padding: 15px;
     width: 100%;
     height: calc(100vh - 60px);
     gap: 10px;
@@ -111,10 +111,10 @@ body {
 .slogan-div,
 .prossime-celebrazioni-div {
     background-color: #e1e1e1;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     background-color: var(--background-color);
     color: var(--text-color);
 }
@@ -218,7 +218,7 @@ body {
     /* Rounded corners */
     padding: 20px;
     /* Padding around the section */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     background-color: var(--background-color);
     color: var(--text-color);
 }
@@ -246,51 +246,45 @@ body {
     border-radius: 4px;
     padding: 12px;
     margin-bottom: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
 #celebrazioneList li:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0; /* Cambia lo sfondo all'hover */
 }
 
-/* Stili di base per i link */
 #celebrazioneList li a {
     display: block;
     color: #000000;
-    /* Colore del testo predefinito (tema chiaro) */
     text-decoration: none;
     font-weight: bold;
     height: 100%;
-    /* Ensures the anchor fills the list item */
-    transition: background-color 0.3s, color 0.3s;
+    transition: color 0.3s;
 }
 
-/* Hover per tema chiaro */
+
 #celebrazioneList li a:hover {
     text-decoration: underline;
     color: var(--text-color);
-    /* Mantiene il colore del tema corrente */
-    background-color: #cbcbcb;
-    /* Sfondo grigio chiaro */
 }
 
+.dark-theme #celebrazioneList li:hover {
+    background-color: #3a3a3a;
+}
+
+/* Hover per i link nel tema scuro */
+.dark-theme #celebrazioneList li a:hover {
+    color: #ffffff;
+}
 /* Tema scuro - colore di default */
 .dark-theme #celebrazioneList li a {
     color: #ffffff;
     /* Il testo sarà bianco in modalità scura */
 }
-
-/* Hover per tema scuro */
-.dark-theme #celebrazioneList li a:hover {
-    background-color: #3a3a3a;
-    /* Colore di sfondo per l'hover nel tema scuro */
-    transform: translateY(-2px);
-}
-
-
 
 
 .slogan-div {
@@ -307,7 +301,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     font-size: 20px;
     line-height: 1.6;
 }
@@ -329,7 +323,7 @@ body {
 .slogan-image img {
     max-width: 100%;
     border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 
