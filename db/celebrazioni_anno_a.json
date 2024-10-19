@@ -6,7 +6,19 @@
             "tipologia": "b",
             "antifona_ingresso": "Io t'invoco, o Dio, poiché tu mi rispondi; tendi a me l'orecchio, ascolta le mie parole. Custodiscimi come pupilla degli occhi, all'ombra delle tue ali nascondimi.",
             "canto_ingresso": "-",
-            "atto_penitenziale": "Il Signore ci dona la sua vita nell'oblazione cruenta sulla croce. Salvati dal suo sangue, riconosciamoci peccatori. Apriamo il nostro cuore al suo amore che perdona, ci rinnova e ci rende figli del Padre."
+            "atto_penitenziale": "Il Signore ci dona la sua vita nell'oblazione cruenta sulla croce. Salvati dal suo sangue, riconosciamoci peccatori. Apriamo il nostro cuore al suo amore che perdona, ci rinnova e ci rende figli del Padre.",
+            "tropo_1": "Signore, che ti sei caricato del nostro peccato, <b>Kỳrie, elèison.",
+            "tropo_2": "Cristo, che sei venuto non a condannare ma a perdonare, <b>Christe, elèison.",
+            "tropo_3": "Signore, che hai dato la vita per la nostra salvezza, <b>Kyrie, eleison.",
+            "prima_lettura_aut": "Dal libro del profeta Isaìa, Is 53,10-11",
+            "prima_lettura_testo": "Al Signore è piaciuto prostrarlo con dolori. Quando offrirà se stesso in sacrificio di riparazione, vedrà una discendenza, vivrà a lungo, si compirà per mezzo suo la volontà del Signore. Dopo il suo intimo tormento vedrà la luce e si sazierà della sua conoscenza; il giusto mio servo giustificherà molti, egli si addosserà le loro iniquità.",
+            "salmo_link": "-",
+            "salmo_testo": "-",
+            "seconda_lettura_aut": "-",
+            "seconda_lettura_testo": "-",
+            "acclamazione_al_vangelo": "-",
+            "vangelo": "-",
+            "antifona_alla_comunione": "-"
         }
     ]
 }

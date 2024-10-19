@@ -14,46 +14,40 @@
     </style>
 
     <script>
-        // Funzione per ottenere i parametri dall'URL
         function getQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);
             const numero = urlParams.get('numero');
             const anno = urlParams.get('anno');
-
             return { numero, anno };
         }
 
-        // Funzione per popolare la pagina
-        // Funzione per popolare la pagina
         function populatePage(data, numero, anno) {
-            // Cerca la celebrazione che corrisponde ai parametri "numero" e "anno"
             const celebrazione = data.celebrazioni.find(celebra => celebra.numero === parseInt(numero));
 
             if (celebrazione) {
-                // Aggiorna il titolo della pagina
                 document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
-
-                // Popola i vari campi con i dati della celebrazione
                 document.querySelector('h1').textContent = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
-                document.querySelector('#antifona-ingresso').textContent = celebrazione.antifona_ingresso; // Aggiornato
-                console.log("ANTIFONA", celebrazione.antifona_ingresso);
-                document.querySelector('#canto-ingresso').textContent = celebrazione.canto_ingresso; // Aggiornato
-                //document.querySelector('#salmo').href = celebrazione.liturgia_della_parola.salmo.link; // Link al PDF del salmo
+                document.querySelector('#antifona-ingresso').textContent = celebrazione.antifona_ingresso;
+                document.querySelector('#canto-ingresso').textContent = celebrazione.canto_ingresso || "N/A";
+                document.querySelector('#atto-penitenziale').textContent = celebrazione.atto_penitenziale;
+                document.querySelector('#tropo-1').innerHTML = celebrazione.tropo_1;
+                document.querySelector('#tropo-2').innerHTML = celebrazione.tropo_2;
+                document.querySelector('#tropo-3').innerHTML = celebrazione.tropo_3;
+                document.querySelector('#prima-lettura').textContent = celebrazione.prima_lettura_testo;
+                document.querySelector('#vangelo').textContent = celebrazione.vangelo || "N/A";
+                document.querySelector('#antifona-alla-comunione').textContent = celebrazione.antifona_alla_comunione || "N/A";
             } else {
-                document.body.innerHTML = `<p>Errore: Celebrazione non trovata per numero ${numero} e anno ${anno}.</p>`;
+                document.body.innerHTML = `<p class="error">Errore: Celebrazione non trovata per numero ${numero} e anno ${anno}.</p>`;
             }
         }
 
-        // Carica il file JSON
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno } = getQueryParams();
-            console.log(numero, anno, "sdfosdnfoisdn");
 
-            // Carica il file JSON
             fetch('db/celebrazioni_anno_a.json')
                 .then(response => response.json())
                 .then(data => {
-                    populatePage(data, numero, anno); // Popola la pagina con i dati corretti
+                    populatePage(data, numero, anno);
                 })
                 .catch(error => console.error('Errore nel caricamento del JSON:', error));
         });
@@ -76,22 +70,36 @@
     </div>
 
     <div class="responsive-container">
-        <h1></h1> <!-- Questo verrà popolato dal JSON -->
+        <h1></h1>
 
         <h2>Antifona d'ingresso</h2>
-        <p id="antifona-ingresso"></p> <!-- Verrà popolato con il testo dell'antifona d'ingresso -->
+        <p id="antifona-ingresso"></p>
 
         <h3>Canto d'ingresso</h3>
-        <p id="canto-ingresso"></p> <!-- Verrà popolato con il titolo del canto d'ingresso -->
+        <p id="canto-ingresso"></p>
 
-        <h2>SALMO RESPONSORIALE</h2>
-        <a id="salmo" class="link_salmo" href="" download>Salmo Responsoriale</a>
+        <h2>Atto Penitenziale</h2>
+        <p id="atto-penitenziale"></p>
+
+        <h2>Tropi</h2>
+        <p id="tropo-1"></p>
+        <p id="tropo-2"></p>
+        <p id="tropo-3"></p>
+
+        <h2>Prima Lettura</h2>
+        <p id="prima-lettura"></p>
+
+        <h2>Vangelo</h2>
+        <p id="vangelo"></p>
+
+        <h2>Antifona alla Comunione</h2>
+        <p id="antifona-alla-comunione"></p>
     </div>
 
     <script>
         function toggleMenu() {
             const navbar = document.getElementById('myNavbar');
-            navbar.classList.toggle('active'); // Toggle the class to show/hide the menu
+            navbar.classList.toggle('active');
         }
     </script>
 </body>
