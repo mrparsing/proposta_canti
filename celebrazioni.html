@@ -34,6 +34,8 @@
                 document.querySelector('#tropo-2').innerHTML = celebrazione.tropo_2;
                 document.querySelector('#tropo-3').innerHTML = celebrazione.tropo_3;
                 document.querySelector('#prima-lettura').textContent = celebrazione.prima_lettura_testo;
+                document.querySelector('#seconda-lettura').textContent = celebrazione.seconda_lettura_testo || "N/A"; // Seconda Lettura
+                document.querySelector('#salmo').textContent = celebrazione.salmo_testo || "N/A"; // Salmo
                 document.querySelector('#vangelo').textContent = celebrazione.vangelo || "N/A";
                 document.querySelector('#antifona-alla-comunione').textContent = celebrazione.antifona_alla_comunione || "N/A";
             } else {
@@ -81,13 +83,18 @@
         <h2>Atto Penitenziale</h2>
         <p id="atto-penitenziale"></p>
 
-        <h2>Tropi</h2>
         <p id="tropo-1"></p>
         <p id="tropo-2"></p>
         <p id="tropo-3"></p>
 
         <h2>Prima Lettura</h2>
         <p id="prima-lettura"></p>
+
+        <h2>Seconda Lettura</h2>
+        <p id="seconda-lettura"></p> <!-- Seconda Lettura -->
+
+        <h2>Salmo Responsoriale</h2>
+        <p id="salmo"></p> <!-- Salmo -->
 
         <h2>Vangelo</h2>
         <p id="vangelo"></p>
