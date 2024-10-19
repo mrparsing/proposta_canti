@@ -19,26 +19,27 @@
             const urlParams = new URLSearchParams(window.location.search);
             const numero = urlParams.get('numero');
             const anno = urlParams.get('anno');
-            console.log(numero);
+
             return { numero, anno };
         }
 
         // Funzione per popolare la pagina
+        // Funzione per popolare la pagina
         function populatePage(data, numero, anno) {
             // Cerca la celebrazione che corrisponde ai parametri "numero" e "anno"
-            const celebrazione = data.celebrazioni.find(celebra => celebra.numero === numero && celebra.anno === anno);
+            const celebrazione = data.celebrazioni.find(celebra => celebra.numero === parseInt(numero));
 
             if (celebrazione) {
                 // Aggiorna il titolo della pagina
                 document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
-                
+
                 // Popola i vari campi con i dati della celebrazione
                 document.querySelector('h1').textContent = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
-                document.querySelector('#antifona-ingresso').textContent = celebrazione.antifona_ingresso;
-                document.querySelector('#canto-ingresso').textContent = celebrazione.canto_ingresso;
-                document.querySelector('#salmo').href = celebrazione.salmo_link; // Link al PDF del salmo
+                document.querySelector('#antifona-ingresso').textContent = celebrazione.antifona_ingresso.text; // Aggiornato
+                document.querySelector('#canto-ingresso').textContent = celebrazione.canto_ingresso.text; // Aggiornato
+                document.querySelector('#salmo').href = celebrazione.liturgia_della_parola.salmo.link; // Link al PDF del salmo
             } else {
-                document.body.innerHTML = '<p>Errore: Celebrazione non trovata.</p>';
+                document.body.innerHTML = `<p>Errore: Celebrazione non trovata per numero ${numero} e anno ${anno}.</p>`;
             }
         }
 
@@ -50,6 +51,7 @@
             fetch('db/celebrazioni_anno_a.json')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(numero, anno, "sdfosdnfoisdn");
                     populatePage(data, numero, anno); // Popola la pagina con i dati corretti
                 })
                 .catch(error => console.error('Errore nel caricamento del JSON:', error));
@@ -74,7 +76,7 @@
 
     <div class="responsive-container">
         <h1></h1> <!-- Questo verrà popolato dal JSON -->
-        
+
         <h2>Antifona d'ingresso</h2>
         <p id="antifona-ingresso"></p> <!-- Verrà popolato con il testo dell'antifona d'ingresso -->
 
