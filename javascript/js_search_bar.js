@@ -1,86 +1,106 @@
-function mostraLettere(visibleLetters) {
+fetch('../db/canti.json')
+.then(response => response.json())
+.then(data => {
     const cantiList = document.getElementById('cantiList');
-    const letterHeaders = cantiList.getElementsByClassName('letter-header');
+    const groupedCanti = groupCantiByLetter(data.canti);  // Raggruppare i canti per lettera
 
-    // Mostra tutte le intestazioni delle lettere, se visibili
-    for (let j = 0; j < letterHeaders.length; j++) {
-        const headerLetter = letterHeaders[j].textContent;
-        letterHeaders[j].style.display = visibleLetters ? (visibleLetters.has(headerLetter) ? '' : 'none') : ''; // Mostra tutte se non ci sono filtri
-    }
-}
-
-function sortAndGroupCanti() {
-    const cantiList = document.getElementById('cantiList');
-    const cantiItems = Array.from(cantiList.getElementsByTagName('li'));
-
-    // Ordina gli elementi della lista
-    cantiItems.sort((a, b) => a.textContent.localeCompare(b.textContent));
-
-    // Crea un oggetto per raggruppare i canti per lettera
-    const groupedCanti = {};
-    cantiItems.forEach(item => {
-        const letter = item.textContent.trim().charAt(0).toUpperCase();
-        if (!groupedCanti[letter]) {
-            groupedCanti[letter] = [];
-        }
-        groupedCanti[letter].push(item);
-    });
-
-    // Rimuovi tutti gli elementi della lista e ricostruisci la lista con le lettere in evidenza
-    cantiList.innerHTML = '';
-    for (const letter in groupedCanti) {
-        // Aggiungi l'intestazione per la lettera
-        const letterHeader = document.createElement('p');
+    Object.keys(groupedCanti).forEach(letter => {
+        // Creare un elemento <div> per la lettera (intestazione)
+        const letterHeader = document.createElement('div');
         letterHeader.textContent = letter;
-        letterHeader.classList.add('letter-header'); // Aggiunta della classe
+        letterHeader.className = 'letter-header';  // Stile per le intestazioni delle lettere
+        letterHeader.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
         cantiList.appendChild(letterHeader);
 
-        // Aggiungi i canti per questa lettera
-        groupedCanti[letter].forEach(item => cantiList.appendChild(item));
-    }
-}
+        // Creare un <li> per ciascun canto sotto la lettera corrispondente
+        groupedCanti[letter].forEach(canto => {
+            const li = document.createElement('li');
+            li.onclick = toggleDetails;
+            li.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
 
+            const span = document.createElement('span');
+            span.textContent = canto.titolo;
+            li.appendChild(span);
+
+            const detailsDiv = document.createElement('div');
+            detailsDiv.className = 'canto-details';
+            detailsDiv.style.display = 'none';
+            detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
+
+            const linksDiv = document.createElement('div');
+            const ascoltaLink = document.createElement('a');
+            ascoltaLink.href = canto.ascolta;
+            ascoltaLink.className = 'link-button';
+            ascoltaLink.textContent = 'Ascolta';
+            linksDiv.appendChild(ascoltaLink);
+
+            const scaricaLink = document.createElement('a');
+            scaricaLink.href = canto.scarica;
+            scaricaLink.className = 'link-button';
+            scaricaLink.textContent = 'Scarica';
+            linksDiv.appendChild(scaricaLink);
+
+            detailsDiv.appendChild(linksDiv);
+            li.appendChild(detailsDiv);
+
+            cantiList.appendChild(li);
+        });
+    });
+})
+.catch(error => console.error('Errore nel caricamento del file JSON:', error));
+
+// Funzione per mostrare/nascondere i dettagli
 function toggleDetails(event) {
-    // Evita la propagazione del clic se il link è stato cliccato
-    if (event.target.tagName === "A") {
-        event.stopPropagation();
-        return; // Esci dalla funzione per non eseguire il toggle
-    }
-
-    // Toggle del box dei dettagli
-    const details = event.currentTarget.querySelector('.canto-details');
-    if (details) {
-        details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
-    }
+const details = event.currentTarget.querySelector('.canto-details');
+details.style.display = details.style.display === 'none' ? 'block' : 'none';
 }
 
+// Funzione per raggruppare i canti per lettera
+function groupCantiByLetter(canti) {
+const grouped = {};
+canti.sort((a, b) => a.titolo.localeCompare(b.titolo));  // Ordina i canti per titolo
+
+canti.forEach(canto => {
+    const firstLetter = canto.titolo.charAt(0).toUpperCase();
+    if (!grouped[firstLetter]) {
+        grouped[firstLetter] = [];
+    }
+    grouped[firstLetter].push(canto);
+});
+
+return grouped;
+}
+
+// Funzione per filtrare l'elenco in base alla barra di ricerca
 function filter_search_bar() {
-    const input = document.getElementById('searchInput').value.toLowerCase();
-    const cantiList = document.getElementById('cantiList');
-    const cantiItems = cantiList.getElementsByTagName('li');
-    const visibleLetters = new Set(); // Set per tenere traccia delle lettere visibili
+const input = document.getElementById('searchInput').value.toUpperCase();
+const cantiList = document.getElementById('cantiList');
+const items = cantiList.getElementsByTagName('li');
+const headers = document.getElementsByClassName('letter-header');
 
-    // Nascondi gli elementi che non corrispondono al filtro
-    for (let i = 0; i < cantiItems.length; i++) {
-        const canto = cantiItems[i].textContent.toLowerCase();
-        const letter = canto.charAt(0).toUpperCase();
-        if (canto.includes(input) && !cantiItems[i].classList.contains('letter-header')) {
-            cantiItems[i].style.display = '';
-            visibleLetters.add(letter); // Aggiungi la lettera al set delle lettere visibili
-        } else {
-            cantiItems[i].style.display = 'none';
-        }
-    }
+let letterFound = {}; // Oggetto per tenere traccia delle lettere con risultati
 
-    // Mostra/nascondi le intestazioni delle lettere
-    if (input === '') {
-        mostraLettere(); // Se l'input è vuoto, mostra tutte le intestazioni
+// Nascondere o mostrare i canti in base alla ricerca
+for (let i = 0; i < items.length; i++) {
+    const span = items[i].getElementsByTagName('span')[0];
+    const txtValue = span.textContent || span.innerText;
+    const cantoLetter = items[i].getAttribute('data-letter');
+
+    if (txtValue.toUpperCase().indexOf(input) > -1) {
+        items[i].style.display = '';  // Mostra i canti che corrispondono alla ricerca
+        letterFound[cantoLetter] = true;  // Segna la lettera come trovata
     } else {
-        mostraLettere(visibleLetters); // Altrimenti, mostra solo quelle visibili
+        items[i].style.display = 'none';  // Nascondi i canti che non corrispondono
     }
 }
 
-function toggleMenu() {
-    const navbar = document.getElementById('myNavbar');
-    navbar.classList.toggle('active');
+// Mostrare solo le lettere che hanno risultati
+for (let j = 0; j < headers.length; j++) {
+    const letter = headers[j].getAttribute('data-letter');
+    if (letterFound[letter]) {
+        headers[j].style.display = '';  // Mostra la lettera se c'è un risultato
+    } else {
+        headers[j].style.display = 'none';  // Nascondi la lettera se non ci sono risultati
+    }
+}
 }
