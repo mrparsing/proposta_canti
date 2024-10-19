@@ -164,7 +164,6 @@ function calcolaFestivita(anno) {
     const pasqua = calcolaPasqua(anno);
     const domenicheAvvento = calcolaDomenicheAvvento(anno);
     const quaresima = calcolaQuaresima(anno);
-    const tempoOrdinario = calcolaTempoOrdinario(anno);
     const domenicheTempoOrdinario = calcolaDomenicheTempoOrdinario(anno);
     const domenicheQuaresima = calcolaDomenicheQuaresima(anno)
     tipologia_anno(anno)
@@ -174,8 +173,6 @@ function calcolaFestivita(anno) {
     domenicheQuaresima.forEach((domenica, index) => {
         festivita.push({ anno: tipologia_anno(anno), tipologia: "quaresima", numero: `${index + 1}`, data: domenica });
     });
-    // Aggiungi Pasqua
-    festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Pasqua', data: pasqua });
 
     // Aggiungi Avvento
     domenicheAvvento.forEach((domenica, index) => {
@@ -190,6 +187,29 @@ function calcolaFestivita(anno) {
     domenicheTempoOrdinario.forEach((domenica, index) => {
         festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: `${index + 1}`, data: domenica });
     });
+
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "natale", numero: "Vigilia di Natale", data: new Date(anno, 11, 24) })
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "natale", numero: "Natale", data: new Date(anno, 11, 25) })
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "natale", numero: "Santo Stefano", data: new Date(anno, 11, 26) })
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "natale", numero: "Maria Santissima Madre di Dio", data: new Date(anno + 1, 0, 1) })
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "natale", numero: "Epifania", data: new Date(anno + 1, 0, 6) })
+
+
+    // Aggiungi Pasqua
+    const giovediSanto = new Date(pasqua); // Crea una copia della data di Pasqua
+    giovediSanto.setDate(pasqua.getDate() - 3); // Sottrai 3 giorni
+
+    const venerdiSanto = new Date(pasqua); // Crea una copia della data di Pasqua
+    venerdiSanto.setDate(pasqua.getDate() - 2); // Sottrai 3 giorni
+
+    const sabatoSanto = new Date(pasqua); // Crea una copia della data di Pasqua
+    sabatoSanto.setDate(pasqua.getDate() - 1); // Sottrai 3 giorni
+
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Giovedì Santo', data: giovediSanto });
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Venerdì Santo', data: venerdiSanto });
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Sabato Santo', data: sabatoSanto });
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Pasqua', data: pasqua });
+
     festivita.sort((a, b) => a.data - b.data);
 
     return festivita;
@@ -206,15 +226,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     const oggi = new Date();
     const festivita = calcolaFestivita(oggi.getFullYear());
-
-    console.log("ciao", festivita);
-
+    console.log(festivita);
     const prox_celebrazioni = [];
 
     for (const festivitaItem of festivita) {
         if (festivitaItem.data >= oggi) {
             prox_celebrazioni.push(festivitaItem);
-            if (prox_celebrazioni.length === 10) {
+            if (prox_celebrazioni.length === 9) {
                 break;
             }
         }
@@ -224,26 +242,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let url = "";
 
-    console.log(prox_celebrazioni);
-
     // Insert the list into the div
     const celebrazioniDiv = document.querySelector('.prossime-celebrazioni-div');
     const ul = document.createElement('ul');
     celebrazioniDiv.appendChild(ul);
 
     for (const festa of prox_celebrazioni) {
+        const numero = festa.numero;
         if (festa.tipologia === "ordinario") {
-            const numero = festa.numero;
             const anno = festa.anno;
             url = "tempi_liturgici/tempo_ordinario/anno_" + anno + "/" + numero + ".html";
         } else if (festa.tipologia === "avvento") {
-            const numero = festa.numero;
             const anno = festa.anno;
             url = "tempi_liturgici/avvento/anno_" + anno + "/" + numero + ".html";
         } else if (festa.tipologia === "quaresima") {
-            const numero = festa.numero;
             const anno = festa.anno;
             url = "tempi_liturgici/tempo_quaresima/anno_" + anno + "/" + numero + ".html";
+        } else if (festa.tipologia === "natale") {
+            url = "tempi_liturgici/quaresima/" + numero + ".html";
+        } else if (festa.tipologia === "pasqua") {
+            url = "tempi_liturgici/pasqua/" + numero + ".html";
         }
         inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia, url);
     }
@@ -339,9 +357,18 @@ function inserisci_elemento_lista(numero, anno, tipologia, url) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
     if (tipologia === "ordinario") {
-        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica tempo ordinario anno: ${anno}</a>`;
-    } else if (tipologia==="avvento") {
-        li.innerHTML = `<a href="${url}" style="display: block; text-decoration: none; color: inherit;">${numero}° domenica d'avvento anno: ${anno}</a>`;
+        li.innerHTML = `<a href="${url}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+    } else if (tipologia === "avvento") {
+        li.innerHTML = `<a href="${url}">${numero}° domenica d'avvento - anno: ${anno}</a>`;
+    } else if (tipologia === "natale") {
+        li.innerHTML = `<a href="${url}">${numero}</a>`;
+    }
+    else if (numero === "Mercoledì delle Ceneri") {
+        li.innerHTML = `<a href="${url}">${numero}</a>`;
+    } else if (tipologia === "quaresima") {
+        li.innerHTML = `<a href="${url}">${numero}° domenica di quaresima - anno: ${anno}</a>`;
+    } else if (tipologia === "pasqua") {
+        li.innerHTML = `<a href="${url}">${numero}</a>`;
     }
     ul.appendChild(li);
 }

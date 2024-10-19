@@ -3,13 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --background-color: white;
     --text-color: black;
 }
 
 .dark-theme {
-    --background-color: black;
+    --background-color: #212121;
     --text-color: #ffffff;
 }
 
@@ -50,17 +51,25 @@ body {
     border: none;
     border-radius: 5px;
     color: white;
-    background-color: transparent; /* Rimuove lo sfondo */
+    background-color: transparent;
+    /* Rimuove lo sfondo */
     transition: background-color 0.3s ease, transform 0.2s ease;
     min-width: 120px;
     font-size: 18px;
     font-weight: bolder;
 }
 
+.navbar input[type="text"] {
+    color: #000000;
+}
+
 .navbar button:hover {
-    background-color: transparent; /* Sfondo trasparente */
-    color: #c1bdbd; /* Cambia il colore del testo */
-    transform: scale(1.05); /* Mantiene l'effetto di ingrandimento */
+    background-color: transparent;
+    /* Sfondo trasparente */
+    color: #c1bdbd;
+    /* Cambia il colore del testo */
+    transform: scale(1.05);
+    /* Mantiene l'effetto di ingrandimento */
 }
 
 .navbar input[type="text"] {
@@ -125,6 +134,7 @@ body {
     background-color: #d1d1d1;
     flex: 0 0 40%;
 }
+
 
 .slogan-div h2,
 .prossime-celebrazioni-div h2 {
@@ -192,9 +202,12 @@ body {
 
     .slogan-image {
         display: flex;
-        flex-direction: column; /* Imposta disposizione orizzontale su schermi grandi */
-        width: 100%; /* Occupa l'intera larghezza del contenitore */
-        gap: 20px; /* Spazio tra immagine e testo */
+        flex-direction: column;
+        /* Imposta disposizione orizzontale su schermi grandi */
+        width: 100%;
+        /* Occupa l'intera larghezza del contenitore */
+        gap: 20px;
+        /* Spazio tra immagine e testo */
     }
 }
 
@@ -243,21 +256,41 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Stili di base per i link */
 #celebrazioneList li a {
     display: block;
-    /* Make the link a block element */
-    color: #007bff;
+    color: #000000;
+    /* Colore del testo predefinito (tema chiaro) */
     text-decoration: none;
     font-weight: bold;
     height: 100%;
     /* Ensures the anchor fills the list item */
+    transition: background-color 0.3s, color 0.3s;
 }
 
+/* Hover per tema chiaro */
 #celebrazioneList li a:hover {
     text-decoration: underline;
-    background-color: #f1f1f1;
-    /* Optional: highlight on hover */
+    color: var(--text-color);
+    /* Mantiene il colore del tema corrente */
+    background-color: #cbcbcb;
+    /* Sfondo grigio chiaro */
 }
+
+/* Tema scuro - colore di default */
+.dark-theme #celebrazioneList li a {
+    color: #ffffff;
+    /* Il testo sarà bianco in modalità scura */
+}
+
+/* Hover per tema scuro */
+.dark-theme #celebrazioneList li a:hover {
+    background-color: #3a3a3a;
+    /* Colore di sfondo per l'hover nel tema scuro */
+    transform: translateY(-2px);
+}
+
+
 
 
 .slogan-div {
@@ -285,8 +318,10 @@ body {
     align-items: center;
 }
 
-.slogan-image .image, .slogan-image .text {
-    width: 100%; /* Assegna larghezze per il layout desktop */
+.slogan-image .image,
+.slogan-image .text {
+    width: 100%;
+    /* Assegna larghezze per il layout desktop */
     margin: 10px;
 }
 
@@ -307,17 +342,48 @@ h1,
 h2,
 h3 {
     margin-bottom: 10px;
-    color: black; /* Change the color for headings */
+    color: var(--text-color);
+    /* Mantiene il colore del tema corrente */
+    /* Change the color for headings */
 }
 
 p {
-    margin-bottom: 15px; /* Add margin for paragraphs */
+    margin-bottom: 15px;
+    /* Add margin for paragraphs */
 }
 
 .response-list {
-    margin-left: 20px; /* Indent for lists */
+    margin-left: 20px;
+    /* Indent for lists */
 }
 
 .response-list b {
-    font-weight: bold; /* Make response bold */
+    font-weight: bold;
+    /* Make response bold */
+}
+
+/* Stile di default per il link .link_salmo (tema chiaro) */
+.link_salmo {
+    color: #007bff;
+    /* Colore blu chiaro per il link */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link_salmo:hover {
+    color: #0056b3;
+    /* Colore blu più scuro al passaggio del mouse */
+    text-decoration: underline;
+}
+
+/* Stile del link .link_salmo in modalità tema scuro */
+.dark-theme .link_salmo {
+    color: #4da6ff;
+    /* Colore blu chiaro per il link nel tema scuro */
+}
+
+.dark-theme .link_salmo:hover {
+    color: #1a8cff;
+    /* Colore più acceso quando si passa sopra nel tema scuro */
+    text-decoration: underline;
 }

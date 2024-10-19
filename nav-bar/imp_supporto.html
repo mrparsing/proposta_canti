@@ -4,21 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spartiti salmi</title>
+    <title>Supporto</title>
     <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
 
     <style>
-        :root {
-            --background-color: white;
-            --text-color: black;
-        }
-
-        .dark-theme {
-            --background-color: #121212;
-            --text-color: #f1f1f1;
-        }
-
         body {
             background-color: var(--background-color);
             color: var(--text-color);
@@ -96,11 +86,13 @@
 
         .section {
             width: 100%;
-            max-width: 600px;
+            text-align: center;
+            max-width: 1000px;
             margin-bottom: 30px;
+            margin-top: 40px;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 15px rgba(122, 122, 122, 0.2);
         }
 
         .theme-switch {
@@ -149,42 +141,100 @@
         input:checked+.slider:before {
             transform: translateX(26px);
         }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .dark-theme a {
+            color: #4da6ff;
+        }
+
+        .dark-theme a:hover {
+            color: #1a8cff;
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px; /* Added max-width for better proportions */
+            width: 100%; /* Full width for smaller screens */
+            margin: 0 auto; /* Center the form */
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px; /* Increased font size for better visibility */
+        }
+
+        form textarea {
+            width: 100%;
+            height: 150px; /* Adjusted height for better proportions */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px; /* Increased font size for better visibility */
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2196F3;
+            color: white;
+            cursor: pointer;
+            font-size: 16px; /* Increased font size for better visibility */
+        }
+
+        form button:hover {
+            background-color: #1a8cff;
+        }
     </style>
-<script>
-    function toggleTheme() {
-        document.body.classList.toggle('dark-theme');
-        const themeToggleSwitch = document.getElementById('theme-toggle');
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const themeToggleSwitch = document.getElementById('theme-toggle');
 
-        if (document.body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme', 'dark');
-            themeToggleSwitch.checked = true; // Attiva lo switch
-        } else {
-            localStorage.setItem('theme', 'light');
-            themeToggleSwitch.checked = false; // Disattiva lo switch
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggleSwitch.checked = true;
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggleSwitch.checked = false;
+            }
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const savedTheme = localStorage.getItem('theme');
-        const themeToggleSwitch = document.getElementById('theme-toggle');
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggleSwitch = document.getElementById('theme-toggle');
 
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-theme');
-            themeToggleSwitch.checked = true; // Attiva lo switch
-        } else {
-            themeToggleSwitch.checked = false; // Disattiva lo switch
-        }
-    });
-</script>
-
-
-
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeToggleSwitch.checked = true;
+            } else {
+                themeToggleSwitch.checked = false;
+            }
+        });
+    </script>
 </head>
 
 <body>
     <div class="main-container">
         <div class="navbar" id="myNavbar">
-            <h1>Spartiti salmi</h1>
+            <h1>Supporto</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
             <div class="navbar-buttons">
                 <button onclick="location.href='../index.html'">Home</button>
@@ -198,23 +248,25 @@
         </div>
 
         <div class="main-content" id="main-content">
-            <p>Attiva il tema scuro:</p>
-            <label class="theme-switch">
-                <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
-                <span class="slider"></span>
-            </label>
+            <div style="display: flex; align-items: center;">
+                <p style="margin-right: 10px;">Attiva il tema scuro:</p>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+                    <span class="slider"></span>
+                </label>
+            </div>
 
             <div class="section">
                 <h3>Contatti</h3>
-                <p>Per qualsiasi richiesta di supporto o suggerimenti, puoi inviare un'email a <a
-                        href="mailto:supporto@example.com">supporto@example.com</a>.</p>
+                <p>Per qualsiasi richiesta di supporto, suggerimenti o segnalazioni di problemi, puoi creare un'issue
+                    nella repository <a href="https://github.com/mrparsing/proposta_canti/issues"
+                        target="_blank">GitHub</a> o inviare un messaggio compilando il form.</p>
+                <form action="https://formspree.io/f/xgveegyl" method="POST">
+                    <input type="email" name="email" placeholder="La tua email" required>
+                    <textarea name="message" placeholder="Il tuo messaggio" required></textarea>
+                    <button type="submit">Invia</button>
+                </form>
             </div>
-
-            <div class="credits">
-                <p>Sito creato da [Il tuo nome]. Ospitato su GitHub Pages. Per segnalare problemi, visita il nostro <a
-                        href="https://github.com/tuo-repository/issues" target="_blank">GitHub repository</a>.</p>
-            </div>
-
         </div>
     </div>
 </body>
