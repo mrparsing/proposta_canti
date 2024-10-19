@@ -1,1179 +1,1177 @@
 {
     "canti": [
         {
-            "title": "Noi canteremo gloria a Te",
-            "author": "author 1",
-            "type": "type 1",
-            "listen_link": "link1.html",
+            "titolo": "Noi canteremo gloria a Te",
+            "autore": "autore 1",
+            "tipologia": "tipologia 1",
+            "ascolta": "link1.html",
             "download_link": "download1.html"
         },
         {
-            "title": "Acclamate al Signore",
-            "author": "author 2",
-            "type": "type 2",
-            "listen_link": "link2.html",
+            "titolo": "Acclamate al Signore",
+            "autore": "autore 2",
+            "tipologia": "tipologia 2",
+            "ascolta": "link2.html",
             "download_link": "download2.html"
         },
         {
-            "title": "I cieli narrano",
-            "author": "author 3",
-            "type": "type 3",
-            "listen_link": "link3.html",
+            "titolo": "I cieli narrano",
+            "autore": "autore 3",
+            "tipologia": "tipologia 3",
+            "ascolta": "link3.html",
             "download_link": "download3.html"
         },
         {
-            "title": "Ti esalto, Dio mio Re",
-            "author": "author 4",
-            "type": "type 4",
-            "listen_link": "link4.html",
+            "titolo": "Ti esalto, Dio mio Re",
+            "autore": "autore 4",
+            "tipologia": "tipologia 4",
+            "ascolta": "link4.html",
             "download_link": "download4.html"
         },
         {
-            "title": "Gustate e vedete",
-            "author": "author 5",
-            "type": "type 5",
-            "listen_link": "link5.html",
+            "titolo": "Gustate e vedete",
+            "autore": "autore 5",
+            "tipologia": "tipologia 5",
+            "ascolta": "link5.html",
             "download_link": "download5.html"
         },
         {
-            "title": "Dove la carità è vera",
-            "author": "author 6",
-            "type": "type 6",
-            "listen_link": "link6.html",
+            "titolo": "Dove la carità è vera",
+            "autore": "autore 6",
+            "tipologia": "tipologia 6",
+            "ascolta": "link6.html",
             "download_link": "download6.html"
         },
         {
-            "title": "Benedici il Signore",
-            "author": "author 7",
-            "type": "type 7",
-            "listen_link": "link7.html",
+            "titolo": "Benedici il Signore",
+            "autore": "autore 7",
+            "tipologia": "tipologia 7",
+            "ascolta": "link7.html",
             "download_link": "download7.html"
         },
         {
-            "title": "Alleluia cantico all'Agnello",
-            "author": "author 8",
-            "type": "type 8",
-            "listen_link": "link8.html",
+            "titolo": "Alleluia cantico all'Agnello",
+            "autore": "autore 8",
+            "tipologia": "tipologia 8",
+            "ascolta": "link8.html",
             "download_link": "download8.html"
         },
         {
-            "title": "Alleluia ed oggi ancora",
-            "author": "author 9",
-            "type": "type 9",
-            "listen_link": "link9.html",
+            "titolo": "Alleluia ed oggi ancora",
+            "autore": "autore 9",
+            "tipologia": "tipologia 9",
+            "ascolta": "link9.html",
             "download_link": "download9.html"
         },
         {
-            "title": "Ecco Signore",
-            "author": "author 10",
-            "type": "type 10",
-            "listen_link": "link10.html",
+            "titolo": "Ecco Signore",
+            "autore": "autore 10",
+            "tipologia": "tipologia 10",
+            "ascolta": "link10.html",
             "download_link": "download10.html"
         },
         {
-            "title": "Alleluia, Tu sei Pietro",
-            "author": "author 11",
-            "type": "type 11",
-            "listen_link": "link11.html",
+            "titolo": "Alleluia, Tu sei Pietro",
+            "autore": "autore 11",
+            "tipologia": "tipologia 11",
+            "ascolta": "link11.html",
             "download_link": "download11.html"
         },
         {
-            "title": "Resta qui con noi",
-            "author": "author 12",
-            "type": "type 12",
-            "listen_link": "link12.html",
+            "titolo": "Resta qui con noi",
+            "autore": "autore 12",
+            "tipologia": "tipologia 12",
+            "ascolta": "link12.html",
             "download_link": "download12.html"
         },
         {
-            "title": "Non di solo pane",
-            "author": "author 13",
-            "type": "type 13",
-            "listen_link": "link13.html",
+            "titolo": "Non di solo pane",
+            "autore": "autore 13",
+            "tipologia": "tipologia 13",
+            "ascolta": "link13.html",
             "download_link": "download13.html"
         },
         {
-            "title": "Miserere",
-            "author": "author 14",
-            "type": "type 14",
-            "listen_link": "link14.html",
+            "titolo": "Miserere",
+            "autore": "autore 14",
+            "tipologia": "tipologia 14",
+            "ascolta": "link14.html",
             "download_link": "download14.html"
         },
         {
-            "title": "Chi mi seguirà",
-            "author": "author 15",
-            "type": "type 15",
-            "listen_link": "link15.html",
+            "titolo": "Chi mi seguirà",
+            "autore": "autore 15",
+            "tipologia": "tipologia 15",
+            "ascolta": "link15.html",
             "download_link": "download15.html"
         },
         {
-            "title": "O Signore nostro Dio",
-            "author": "author 16",
-            "type": "type 16",
-            "listen_link": "link16.html",
+            "titolo": "O Signore nostro Dio",
+            "autore": "autore 16",
+            "tipologia": "tipologia 16",
+            "ascolta": "link16.html",
             "download_link": "download16.html"
         },
         {
-            "title": "Chi ci separerà",
-            "author": "author 17",
-            "type": "type 17",
-            "listen_link": "link17.html",
+            "titolo": "Chi ci separerà",
+            "autore": "autore 17",
+            "tipologia": "tipologia 17",
+            "ascolta": "link17.html",
             "download_link": "download17.html"
         },
         {
-            "title": "Alto e glorioso Dio",
-            "author": "author 18",
-            "type": "type 18",
-            "listen_link": "link18.html",
+            "titolo": "Alto e glorioso Dio",
+            "autore": "autore 18",
+            "tipologia": "tipologia 18",
+            "ascolta": "link18.html",
             "download_link": "download18.html"
         },
         {
-            "title": "Lodi all'Altissimo",
-            "author": "author 19",
-            "type": "type 19",
-            "listen_link": "link19.html",
+            "titolo": "Lodi all'Altissimo",
+            "autore": "autore 19",
+            "tipologia": "tipologia 19",
+            "ascolta": "link19.html",
             "download_link": "download19.html"
         },
         {
-            "title": "Pane di Vita nuova",
-            "author": "author 20",
-            "type": "type 20",
-            "listen_link": "link20.html",
+            "titolo": "Pane di Vita nuova",
+            "autore": "autore 20",
+            "tipologia": "tipologia 20",
+            "ascolta": "link20.html",
             "download_link": "download20.html"
         },
         {
-            "title": "Ecco l'acqua",
-            "author": "author 21",
-            "type": "type 21",
-            "listen_link": "link21.html",
+            "titolo": "Ecco l'acqua",
+            "autore": "autore 21",
+            "tipologia": "tipologia 21",
+            "ascolta": "link21.html",
             "download_link": "download21.html"
         },
         {
-            "title": "Cantate al Signore",
-            "author": "author 22",
-            "type": "type 22",
-            "listen_link": "link22.html",
+            "titolo": "Cantate al Signore",
+            "autore": "autore 22",
+            "tipologia": "tipologia 22",
+            "ascolta": "link22.html",
             "download_link": "download22.html"
         },
         {
-            "title": "Eccomi",
-            "author": "author 23",
-            "type": "type 23",
-            "listen_link": "link23.html",
+            "titolo": "Eccomi",
+            "autore": "autore 23",
+            "tipologia": "tipologia 23",
+            "ascolta": "link23.html",
             "download_link": "download23.html"
         },
         {
-            "title": "La vera gioia",
-            "author": "author 24",
-            "type": "type 24",
-            "listen_link": "link24.html",
+            "titolo": "La vera gioia",
+            "autore": "autore 24",
+            "tipologia": "tipologia 24",
+            "ascolta": "link24.html",
             "download_link": "download24.html"
         },
         {
-            "title": "Benedetto sei Tu Signore",
-            "author": "author 25",
-            "type": "type 25",
-            "listen_link": "link25.html",
+            "titolo": "Benedetto sei Tu Signore",
+            "autore": "autore 25",
+            "tipologia": "tipologia 25",
+            "ascolta": "link25.html",
             "download_link": "download25.html"
         },
         {
-            "title": "Ti rendo grazie",
-            "author": "author 26",
-            "type": "type 26",
-            "listen_link": "link26.html",
+            "titolo": "Ti rendo grazie",
+            "autore": "autore 26",
+            "tipologia": "tipologia 26",
+            "ascolta": "link26.html",
             "download_link": "download26.html"
         },
         {
-            "title": "Madre fiducia nostra",
-            "author": "author 27",
-            "type": "type 27",
-            "listen_link": "link27.html",
+            "titolo": "Madre fiducia nostra",
+            "autore": "autore 27",
+            "tipologia": "tipologia 27",
+            "ascolta": "link27.html",
             "download_link": "download27.html"
         },
         {
-            "title": "Se m'accogli",
-            "author": "author 28",
-            "type": "type 28",
-            "listen_link": "link28.html",
+            "titolo": "Se m'accogli",
+            "autore": "autore 28",
+            "tipologia": "tipologia 28",
+            "ascolta": "link28.html",
             "download_link": "download28.html"
         },
         {
-            "title": "Santa Maria del cammino",
-            "author": "author 29",
-            "type": "type 29",
-            "listen_link": "link29.html",
+            "titolo": "Santa Maria del cammino",
+            "autore": "autore 29",
+            "tipologia": "tipologia 29",
+            "ascolta": "link29.html",
             "download_link": "download29.html"
         },
         {
-            "title": "Giovanni",
-            "author": "author 30",
-            "type": "type 30",
-            "listen_link": "link30.html",
+            "titolo": "Giovanni",
+            "autore": "autore 30",
+            "tipologia": "tipologia 30",
+            "ascolta": "link30.html",
             "download_link": "download30.html"
         },
         {
-            "title": "Alleluia gregoriano",
-            "author": "author 31",
-            "type": "type 31",
-            "listen_link": "link31.html",
+            "titolo": "Alleluia gregoriano",
+            "autore": "autore 31",
+            "tipologia": "tipologia 31",
+            "ascolta": "link31.html",
             "download_link": "download31.html"
         },
         {
-            "title": "Riuniti nel nome del Signore",
-            "author": "author 32",
-            "type": "type 32",
-            "listen_link": "link32.html",
+            "titolo": "Riuniti nel nome del Signore",
+            "autore": "autore 32",
+            "tipologia": "tipologia 32",
+            "ascolta": "link32.html",
             "download_link": "download32.html"
         },
         {
-            "title": "Alleluia Io sono il pane vivo",
-            "author": "author 33",
-            "type": "type 33",
-            "listen_link": "link33.html",
+            "titolo": "Alleluia Io sono il pane vivo",
+            "autore": "autore 33",
+            "tipologia": "tipologia 33",
+            "ascolta": "link33.html",
             "download_link": "download33.html"
         },
         {
-            "title": "Magnificat - Dio si è fatto come noi",
-            "author": "author 34",
-            "type": "type 34",
-            "listen_link": "link34.html",
+            "titolo": "Magnificat - Dio si è fatto come noi",
+            "autore": "autore 34",
+            "tipologia": "tipologia 34",
+            "ascolta": "link34.html",
             "download_link": "download34.html"
         },
         {
-            "title": "Noi veniamo a te",
-            "author": "author 35",
-            "type": "type 35",
-            "listen_link": "link35.html",
+            "titolo": "Noi veniamo a te",
+            "autore": "autore 35",
+            "tipologia": "tipologia 35",
+            "ascolta": "link35.html",
             "download_link": "download35.html"
         },
         {
-            "title": "Tu sarai profeta",
-            "author": "author 36",
-            "type": "type 36",
-            "listen_link": "link36.html",
+            "titolo": "Tu sarai profeta",
+            "autore": "autore 36",
+            "tipologia": "tipologia 36",
+            "ascolta": "link36.html",
             "download_link": "download36.html"
         },
         {
-            "title": "La vera Vite",
-            "author": "author 37",
-            "type": "type 37",
-            "listen_link": "link37.html",
+            "titolo": "La vera Vite",
+            "autore": "autore 37",
+            "tipologia": "tipologia 37",
+            "ascolta": "link37.html",
             "download_link": "download37.html"
         },
         {
-            "title": "Io sarò con Te",
-            "author": "author 38",
-            "type": "type 38",
-            "listen_link": "link38.html",
+            "titolo": "Io sarò con Te",
+            "autore": "autore 38",
+            "tipologia": "tipologia 38",
+            "ascolta": "link38.html",
             "download_link": "download38.html"
         },
         {
-            "title": "E' l'ora che pia",
-            "author": "author 39",
-            "type": "type 39",
-            "listen_link": "link39.html",
+            "titolo": "E' l'ora che pia",
+            "autore": "autore 39",
+            "tipologia": "tipologia 39",
+            "ascolta": "link39.html",
             "download_link": "download39.html"
         },
         {
-            "title": "Lodate Dio",
-            "author": "author 40",
-            "type": "type 40",
-            "listen_link": "link40.html",
+            "titolo": "Lodate Dio",
+            "autore": "autore 40",
+            "tipologia": "tipologia 40",
+            "ascolta": "link40.html",
             "download_link": "download40.html"
         },
         {
-            "title": "Lo spirito del Signore",
-            "author": "author 41",
-            "type": "type 41",
-            "listen_link": "link41.html",
+            "titolo": "Lo spirito del Signore",
+            "autore": "autore 41",
+            "tipologia": "tipologia 41",
+            "ascolta": "link41.html",
             "download_link": "download41.html"
         },
         {
-            "title": "Il tuo popolo in cammino",
-            "author": "author 42",
-            "type": "type 42",
-            "listen_link": "link42.html",
+            "titolo": "Il tuo popolo in cammino",
+            "autore": "autore 42",
+            "tipologia": "tipologia 42",
+            "ascolta": "link42.html",
             "download_link": "download42.html"
         },
         {
-            "title": "Accogli i nostri doni",
-            "author": "author 43",
-            "type": "type 43",
-            "listen_link": "link43.html",
+            "titolo": "Accogli i nostri doni",
+            "autore": "autore 43",
+            "tipologia": "tipologia 43",
+            "ascolta": "link43.html",
             "download_link": "download43.html"
         },
         {
-            "title": "Lampada per i miei passi",
-            "author": "author 44",
-            "type": "type 44",
-            "listen_link": "link44.html",
+            "titolo": "Lampada per i miei passi",
+            "autore": "autore 44",
+            "tipologia": "tipologia 44",
+            "ascolta": "link44.html",
             "download_link": "download44.html"
         },
         {
-            "title": "O Sion loda il Salvatore",
-            "author": "author 45",
-            "type": "type 45",
-            "listen_link": "link45.html",
+            "titolo": "O Sion loda il Salvatore",
+            "autore": "autore 45",
+            "tipologia": "tipologia 45",
+            "ascolta": "link45.html",
             "download_link": "download45.html"
         },
         {
-            "title": "E' asceso alla gloria",
-            "author": "author 46",
-            "type": "type 46",
-            "listen_link": "link46.html",
+            "titolo": "E' asceso alla gloria",
+            "autore": "autore 46",
+            "tipologia": "tipologia 46",
+            "ascolta": "link46.html",
             "download_link": "download46.html"
         },
         {
-            "title": "Questo è il mio comandamento",
-            "author": "author 47",
-            "type": "type 47",
-            "listen_link": "link47.html",
+            "titolo": "Questo è il mio comandamento",
+            "autore": "autore 47",
+            "tipologia": "tipologia 47",
+            "ascolta": "link47.html",
             "download_link": "download47.html"
         },
         {
-            "title": "Cristo nostra Pasqua",
-            "author": "author 48",
-            "type": "type 48",
-            "listen_link": "link48.html",
+            "titolo": "Cristo nostra Pasqua",
+            "autore": "autore 48",
+            "tipologia": "tipologia 48",
+            "ascolta": "link48.html",
             "download_link": "download48.html"
         },
         {
-            "title": "La mia Pasqua è il Signore",
-            "author": "author 49",
-            "type": "type 49",
-            "listen_link": "link49.html",
+            "titolo": "La mia Pasqua è il Signore",
+            "autore": "autore 49",
+            "tipologia": "tipologia 49",
+            "ascolta": "link49.html",
             "download_link": "download49.html"
         },
         {
-            "title": "Hosanna",
-            "author": "author 50",
-            "type": "type 50",
-            "listen_link": "link50.html",
+            "titolo": "Hosanna",
+            "autore": "autore 50",
+            "tipologia": "tipologia 50",
+            "ascolta": "link50.html",
             "download_link": "download50.html"
         },
         {
-            "title": "O Dio, Tu sei il mio Dio",
-            "author": "author 51",
-            "type": "type 51",
-            "listen_link": "link51.html",
+            "titolo": "O Dio, Tu sei il mio Dio",
+            "autore": "autore 51",
+            "tipologia": "tipologia 51",
+            "ascolta": "link51.html",
             "download_link": "download51.html"
         },
         {
-            "title": "I miei occhi",
-            "author": "author 52",
-            "type": "type 52",
-            "listen_link": "link52.html",
+            "titolo": "I miei occhi",
+            "autore": "autore 52",
+            "tipologia": "tipologia 52",
+            "ascolta": "link52.html",
             "download_link": "download52.html"
         },
         {
-            "title": "M'invocherà e io lo esaudirò",
-            "author": "author 53",
-            "type": "type 53",
-            "listen_link": "link53.html",
+            "titolo": "M'invocherà e io lo esaudirò",
+            "autore": "autore 53",
+            "tipologia": "tipologia 53",
+            "ascolta": "link53.html",
             "download_link": "download53.html"
         },
         {
-            "title": "Ti seguirò",
-            "author": "author 54",
-            "type": "type 54",
-            "listen_link": "link54.html",
+            "titolo": "Ti seguirò",
+            "autore": "autore 54",
+            "tipologia": "tipologia 54",
+            "ascolta": "link54.html",
             "download_link": "download54.html"
         },
         {
-            "title": "Tu scendi dalle stelle",
-            "author": "author 55",
-            "type": "type 55",
-            "listen_link": "link55.html",
+            "titolo": "Tu scendi dalle stelle",
+            "autore": "autore 55",
+            "tipologia": "tipologia 55",
+            "ascolta": "link55.html",
             "download_link": "download55.html"
         },
         {
-            "title": "Adeste Fideles",
-            "author": "author 56",
-            "type": "type 56",
-            "listen_link": "link56.html",
+            "titolo": "Adeste Fideles",
+            "autore": "autore 56",
+            "tipologia": "tipologia 56",
+            "ascolta": "link56.html",
             "download_link": "download56.html"
         },
         {
-            "title": "Vieni Signore",
-            "author": "author 57",
-            "type": "type 57",
-            "listen_link": "link57.html",
+            "titolo": "Vieni Signore",
+            "autore": "autore 57",
+            "tipologia": "tipologia 57",
+            "ascolta": "link57.html",
             "download_link": "download57.html"
         },
         {
-            "title": "Camminiamo incontro al Signore",
-            "author": "author 58",
-            "type": "type 58",
-            "listen_link": "link58.html",
+            "titolo": "Camminiamo incontro al Signore",
+            "autore": "autore 58",
+            "tipologia": "tipologia 58",
+            "ascolta": "link58.html",
             "download_link": "download58.html"
         },
         {
-            "title": "Maria porta dell'Avvento",
-            "author": "author 59",
-            "type": "type 59",
-            "listen_link": "link59.html",
+            "titolo": "Maria porta dell'Avvento",
+            "autore": "autore 59",
+            "tipologia": "tipologia 59",
+            "ascolta": "link59.html",
             "download_link": "download59.html"
         },
         {
-            "title": "Re di Gloria",
-            "author": "author 60",
-            "type": "type 60",
-            "listen_link": "link60.html",
+            "titolo": "Re di Gloria",
+            "autore": "autore 60",
+            "tipologia": "tipologia 60",
+            "ascolta": "link60.html",
             "download_link": "download60.html"
         },
         {
-            "title": "Dov'è carita e amore",
-            "author": "author 61",
-            "type": "type 61",
-            "listen_link": "link61.html",
+            "titolo": "Dov'è carita e amore",
+            "autore": "autore 61",
+            "tipologia": "tipologia 61",
+            "ascolta": "link61.html",
             "download_link": "download61.html"
         },
         {
-            "title": "Ave Maris Stella",
-            "author": "author 62",
-            "type": "type 62",
-            "listen_link": "link62.html",
+            "titolo": "Ave Maris Stella",
+            "autore": "autore 62",
+            "tipologia": "tipologia 62",
+            "ascolta": "link62.html",
             "download_link": "download62.html"
         },
         {
-            "title": "All'agnello che è stato immolato",
-            "author": "author 63",
-            "type": "type 63",
-            "listen_link": "link63.html",
+            "titolo": "All'agnello che è stato immolato",
+            "autore": "autore 63",
+            "tipologia": "tipologia 63",
+            "ascolta": "link63.html",
             "download_link": "download63.html"
         },
         {
-            "title": "Perché tu sei con me",
-            "author": "author 64",
-            "type": "type 64",
-            "listen_link": "link64.html",
+            "titolo": "Perché tu sei con me",
+            "autore": "autore 64",
+            "tipologia": "tipologia 64",
+            "ascolta": "link64.html",
             "download_link": "download64.html"
         },
         {
-            "title": "Le mani alzate",
-            "author": "author 65",
-            "type": "type 65",
-            "listen_link": "link65.html",
+            "titolo": "Le mani alzate",
+            "autore": "autore 65",
+            "tipologia": "tipologia 65",
+            "ascolta": "link65.html",
             "download_link": "download65.html"
         },
         {
-            "title": "Accostiamoci tutti all'altar",
-            "author": "author 66",
-            "type": "type 66",
-            "listen_link": "link66.html",
+            "titolo": "Accostiamoci tutti all'altar",
+            "autore": "autore 66",
+            "tipologia": "tipologia 66",
+            "ascolta": "link66.html",
             "download_link": "download66.html"
         },
         {
-            "title": "Regina caeli",
-            "author": "author 67",
-            "type": "type 67",
-            "listen_link": "link67.html",
+            "titolo": "Regina caeli",
+            "autore": "autore 67",
+            "tipologia": "tipologia 67",
+            "ascolta": "link67.html",
             "download_link": "download67.html"
         },
         {
-            "title": "Sei luce splendida",
-            "author": "author 68",
-            "type": "type 68",
-            "listen_link": "link68.html",
+            "titolo": "Sei luce splendida",
+            "autore": "autore 68",
+            "tipologia": "tipologia 68",
+            "ascolta": "link68.html",
             "download_link": "download68.html"
         },
         {
-            "title": "Accogli i nostri doni",
-            "author": "author 43",
-            "type": "type 43",
-            "links": {
-                "listen": "link43.html",
+            "titolo": "Accogli i nostri doni",
+            "autore": "autore 43",
+            "tipologia": "tipologia 43",
                 "download": "download43.html"
-            }
+
         },
         {
-            "title": "Lampada per i miei passi",
-            "author": "author 44",
-            "type": "type 44",
-            "links": {
+            "titolo": "Lampada per i miei passi",
+            "autore": "autore 44",
+            "tipologia": "tipologia 44",
+            "download_link": {
                 "listen": "link44.html",
                 "download": "download44.html"
             }
         },
         {
-            "title": "O Sion loda il Salvatore",
-            "author": "author 45",
-            "type": "type 45",
-            "links": {
+            "titolo": "O Sion loda il Salvatore",
+            "autore": "autore 45",
+            "tipologia": "tipologia 45",
+            "download_link": {
                 "listen": "link45.html",
                 "download": "download45.html"
             }
         },
         {
-            "title": "E' asceso alla gloria",
-            "author": "author 46",
-            "type": "type 46",
-            "links": {
+            "titolo": "E' asceso alla gloria",
+            "autore": "autore 46",
+            "tipologia": "tipologia 46",
+            "download_link": {
                 "listen": "link46.html",
                 "download": "download46.html"
             }
         },
         {
-            "title": "Questo è il mio comandamento",
-            "author": "author 47",
-            "type": "type 47",
-            "links": {
+            "titolo": "Questo è il mio comandamento",
+            "autore": "autore 47",
+            "tipologia": "tipologia 47",
+            "download_link": {
                 "listen": "link47.html",
                 "download": "download47.html"
             }
         },
         {
-            "title": "Cristo nostra Pasqua",
-            "author": "author 48",
-            "type": "type 48",
-            "links": {
+            "titolo": "Cristo nostra Pasqua",
+            "autore": "autore 48",
+            "tipologia": "tipologia 48",
+            "download_link": {
                 "listen": "link48.html",
                 "download": "download48.html"
             }
         },
         {
-            "title": "La mia Pasqua è il Signore",
-            "author": "author 49",
-            "type": "type 49",
-            "links": {
+            "titolo": "La mia Pasqua è il Signore",
+            "autore": "autore 49",
+            "tipologia": "tipologia 49",
+            "download_link": {
                 "listen": "link49.html",
                 "download": "download49.html"
             }
         },
         {
-            "title": "Hosanna",
-            "author": "author 50",
-            "type": "type 50",
-            "links": {
+            "titolo": "Hosanna",
+            "autore": "autore 50",
+            "tipologia": "tipologia 50",
+            "download_link": {
                 "listen": "link50.html",
                 "download": "download50.html"
             }
         },
         {
-            "title": "O Dio, Tu sei il mio Dio",
-            "author": "author 51",
-            "type": "type 51",
-            "links": {
+            "titolo": "O Dio, Tu sei il mio Dio",
+            "autore": "autore 51",
+            "tipologia": "tipologia 51",
+            "download_link": {
                 "listen": "link51.html",
                 "download": "download51.html"
             }
         },
         {
-            "title": "I miei occhi",
-            "author": "author 52",
-            "type": "type 52",
-            "links": {
+            "titolo": "I miei occhi",
+            "autore": "autore 52",
+            "tipologia": "tipologia 52",
+            "download_link": {
                 "listen": "link52.html",
                 "download": "download52.html"
             }
         },
         {
-            "title": "M'invocherà e io lo esaudirò",
-            "author": "author 53",
-            "type": "type 53",
-            "links": {
+            "titolo": "M'invocherà e io lo esaudirò",
+            "autore": "autore 53",
+            "tipologia": "tipologia 53",
+            "download_link": {
                 "listen": "link53.html",
                 "download": "download53.html"
             }
         },
         {
-            "title": "Ti seguirò",
-            "author": "author 54",
-            "type": "type 54",
-            "links": {
+            "titolo": "Ti seguirò",
+            "autore": "autore 54",
+            "tipologia": "tipologia 54",
+            "download_link": {
                 "listen": "link54.html",
                 "download": "download54.html"
             }
         },
         {
-            "title": "Tu scendi dalle stelle",
-            "author": "author 55",
-            "type": "type 55",
-            "links": {
+            "titolo": "Tu scendi dalle stelle",
+            "autore": "autore 55",
+            "tipologia": "tipologia 55",
+            "download_link": {
                 "listen": "link55.html",
                 "download": "download55.html"
             }
         },
         {
-            "title": "Adeste Fideles",
-            "author": "author 56",
-            "type": "type 56",
-            "links": {
+            "titolo": "Adeste Fideles",
+            "autore": "autore 56",
+            "tipologia": "tipologia 56",
+            "download_link": {
                 "listen": "link56.html",
                 "download": "download56.html"
             }
         },
         {
-            "title": "Vieni Signore",
-            "author": "author 57",
-            "type": "type 57",
-            "links": {
+            "titolo": "Vieni Signore",
+            "autore": "autore 57",
+            "tipologia": "tipologia 57",
+            "download_link": {
                 "listen": "link57.html",
                 "download": "download57.html"
             }
         },
         {
-            "title": "Camminiamo incontro al Signore",
-            "author": "author 58",
-            "type": "type 58",
-            "links": {
+            "titolo": "Camminiamo incontro al Signore",
+            "autore": "autore 58",
+            "tipologia": "tipologia 58",
+            "download_link": {
                 "listen": "link58.html",
                 "download": "download58.html"
             }
         },
         {
-            "title": "Maria porta dell'Avvento",
-            "author": "author 59",
-            "type": "type 59",
-            "links": {
+            "titolo": "Maria porta dell'Avvento",
+            "autore": "autore 59",
+            "tipologia": "tipologia 59",
+            "download_link": {
                 "listen": "link59.html",
                 "download": "download59.html"
             }
         },
         {
-            "title": "Re di Gloria",
-            "author": "author 60",
-            "type": "type 60",
-            "links": {
+            "titolo": "Re di Gloria",
+            "autore": "autore 60",
+            "tipologia": "tipologia 60",
+            "download_link": {
                 "listen": "link60.html",
                 "download": "download60.html"
             }
         },
         {
-            "title": "Dov'è carita e amore",
-            "author": "author 61",
-            "type": "type 61",
-            "links": {
+            "titolo": "Dov'è carita e amore",
+            "autore": "autore 61",
+            "tipologia": "tipologia 61",
+            "download_link": {
                 "listen": "link61.html",
                 "download": "download61.html"
             }
         },
         {
-            "title": "Ave Maris Stella",
-            "author": "author 62",
-            "type": "type 62",
-            "links": {
+            "titolo": "Ave Maris Stella",
+            "autore": "autore 62",
+            "tipologia": "tipologia 62",
+            "download_link": {
                 "listen": "link62.html",
                 "download": "download62.html"
             }
         },
         {
-            "title": "All'agnello che è stato immolato",
-            "author": "author 63",
-            "type": "type 63",
-            "links": {
+            "titolo": "All'agnello che è stato immolato",
+            "autore": "autore 63",
+            "tipologia": "tipologia 63",
+            "download_link": {
                 "listen": "link63.html",
                 "download": "download63.html"
             }
         },
         {
-            "title": "Perché tu sei con me",
-            "author": "author 64",
-            "type": "type 64",
-            "links": {
+            "titolo": "Perché tu sei con me",
+            "autore": "autore 64",
+            "tipologia": "tipologia 64",
+            "download_link": {
                 "listen": "link64.html",
                 "download": "download64.html"
             }
         },
         {
-            "title": "Le mani alzate",
-            "author": "author 65",
-            "type": "type 65",
-            "links": {
+            "titolo": "Le mani alzate",
+            "autore": "autore 65",
+            "tipologia": "tipologia 65",
+            "download_link": {
                 "listen": "link65.html",
                 "download": "download65.html"
             }
         },
         {
-            "title": "Accostiamoci tutti all'altar",
-            "author": "author 66",
-            "type": "type 66",
-            "links": {
+            "titolo": "Accostiamoci tutti all'altar",
+            "autore": "autore 66",
+            "tipologia": "tipologia 66",
+            "download_link": {
                 "listen": "link66.html",
                 "download": "download66.html"
             }
         },
         {
-            "title": "Regina caeli",
-            "author": "author 67",
-            "type": "type 67",
-            "links": {
+            "titolo": "Regina caeli",
+            "autore": "autore 67",
+            "tipologia": "tipologia 67",
+            "download_link": {
                 "listen": "link67.html",
                 "download": "download67.html"
             }
         },
         {
-            "title": "Sei luce splendida",
-            "author": "author 68",
-            "type": "type 68",
-            "links": {
+            "titolo": "Sei luce splendida",
+            "autore": "autore 68",
+            "tipologia": "tipologia 68",
+            "download_link": {
                 "listen": "link68.html",
                 "download": "download68.html"
             }
         },
         {
-            "title": "Alleluia",
-            "author": "author 69",
-            "type": "type 69",
-            "links": {
+            "titolo": "Alleluia",
+            "autore": "autore 69",
+            "tipologia": "tipologia 69",
+            "download_link": {
                 "listen": "link69.html",
                 "download": "download69.html"
             }
         },
         {
-            "title": "Tu quando verrai",
-            "author": "author 70",
-            "type": "type 70",
-            "links": {
+            "titolo": "Tu quando verrai",
+            "autore": "autore 70",
+            "tipologia": "tipologia 70",
+            "download_link": {
                 "listen": "link70.html",
                 "download": "download70.html"
             }
         },
         {
-            "title": "Astro del ciel",
-            "author": "author 71",
-            "type": "type 71",
-            "links": {
+            "titolo": "Astro del ciel",
+            "autore": "autore 71",
+            "tipologia": "tipologia 71",
+            "download_link": {
                 "listen": "link71.html",
                 "download": "download71.html"
             }
         },
         {
-            "title": "Andrò a vederla un dì",
-            "author": "author 72",
-            "type": "type 72",
-            "links": {
+            "titolo": "Andrò a vederla un dì",
+            "autore": "autore 72",
+            "tipologia": "tipologia 72",
+            "download_link": {
                 "listen": "link72.html",
                 "download": "download72.html"
             }
         },
         {
-            "title": "Inni e canti",
-            "author": "author 73",
-            "type": "type 73",
-            "links": {
+            "titolo": "Inni e canti",
+            "autore": "autore 73",
+            "tipologia": "tipologia 73",
+            "download_link": {
                 "listen": "link73.html",
                 "download": "download73.html"
             }
         },
         {
-            "title": "Fratello sole, sorella luna",
-            "author": "author 74",
-            "type": "type 74",
-            "links": {
+            "titolo": "Fratello sole, sorella luna",
+            "autore": "autore 74",
+            "tipologia": "tipologia 74",
+            "download_link": {
                 "listen": "link74.html",
                 "download": "download74.html"
             }
         },
         {
-            "title": "Il Signore è la mia salvezza",
-            "author": "author 75",
-            "type": "type 75",
-            "links": {
+            "titolo": "Il Signore è la mia salvezza",
+            "autore": "autore 75",
+            "tipologia": "tipologia 75",
+            "download_link": {
                 "listen": "link75.html",
                 "download": "download75.html"
             }
         },
         {
-            "title": "Dell'aurora Tu sorgi più bella",
-            "author": "author 76",
-            "type": "type 76",
-            "links": {
+            "titolo": "Dell'aurora Tu sorgi più bella",
+            "autore": "autore 76",
+            "tipologia": "tipologia 76",
+            "download_link": {
                 "listen": "link76.html",
                 "download": "download76.html"
             }
         },
         {
-            "title": "T'adoriam, Ostia divina",
-            "author": "author 77",
-            "type": "type 77",
-            "links": {
+            "titolo": "T'adoriam, Ostia divina",
+            "autore": "autore 77",
+            "tipologia": "tipologia 77",
+            "download_link": {
                 "listen": "link77.html",
                 "download": "download77.html"
             }
         },
         {
-            "title": "Mira il tuo popolo",
-            "author": "author 78",
-            "type": "type 78",
-            "links": {
+            "titolo": "Mira il tuo popolo",
+            "autore": "autore 78",
+            "tipologia": "tipologia 78",
+            "download_link": {
                 "listen": "link78.html",
                 "download": "download78.html"
             }
         },
         {
-            "title": "Il signore è vicino",
-            "author": "author 79",
-            "type": "type 79",
-            "links": {
+            "titolo": "Il signore è vicino",
+            "autore": "autore 79",
+            "tipologia": "tipologia 79",
+            "download_link": {
                 "listen": "link79.html",
                 "download": "download79.html"
             }
         },
         {
-            "title": "Cielo nuovo",
-            "author": "author 80",
-            "type": "type 80",
-            "links": {
+            "titolo": "Cielo nuovo",
+            "autore": "autore 80",
+            "tipologia": "tipologia 80",
+            "download_link": {
                 "listen": "link80.html",
                 "download": "download80.html"
             }
         },
         {
-            "title": "Frutto della nostra terra",
-            "author": "author 81",
-            "type": "type 81",
-            "links": {
+            "titolo": "Frutto della nostra terra",
+            "autore": "autore 81",
+            "tipologia": "tipologia 81",
+            "download_link": {
                 "listen": "link81.html",
                 "download": "download81.html"
             }
         },
         {
-            "title": "Nel sole dell'aurora",
-            "author": "author 82",
-            "type": "type 82",
-            "links": {
+            "titolo": "Nel sole dell'aurora",
+            "autore": "autore 82",
+            "tipologia": "tipologia 82",
+            "download_link": {
                 "listen": "link82.html",
                 "download": "download82.html"
             }
         },
         {
-            "title": "Ti ringrazio, o mio Signore",
-            "author": "author 83",
-            "type": "type 83",
-            "links": {
+            "titolo": "Ti ringrazio, o mio Signore",
+            "autore": "autore 83",
+            "tipologia": "tipologia 83",
+            "download_link": {
                 "listen": "link83.html",
                 "download": "download83.html"
             }
         },
         {
-            "title": "Inno d'Amore",
-            "author": "author 84",
-            "type": "type 84",
-            "links": {
+            "titolo": "Inno d'Amore",
+            "autore": "autore 84",
+            "tipologia": "tipologia 84",
+            "download_link": {
                 "listen": "link84.html",
                 "download": "download84.html"
             }
         },
         {
-            "title": "Vi darò un cuore nuovo",
-            "author": "author 85",
-            "type": "type 85",
-            "links": {
+            "titolo": "Vi darò un cuore nuovo",
+            "autore": "autore 85",
+            "tipologia": "tipologia 85",
+            "download_link": {
                 "listen": "link85.html",
                 "download": "download85.html"
             }
         },
         {
-            "title": "Beati quelli che listen_linkno",
-            "author": "author 86",
-            "type": "type 86",
-            "links": {
+            "titolo": "Beati quelli che ascoltano",
+            "autore": "autore 86",
+            "tipologia": "tipologia 86",
+            "download_link": {
                 "listen": "link86.html",
                 "download": "download86.html"
             }
         },
         {
-            "title": "Vieni ancora, Gesù",
-            "author": "author 87",
-            "type": "type 87",
-            "links": {
+            "titolo": "Vieni ancora, Gesù",
+            "autore": "autore 87",
+            "tipologia": "tipologia 87",
+            "download_link": {
                 "listen": "link87.html",
                 "download": "download87.html"
             }
         },
         {
-            "title": "Symbolum 77",
-            "author": "author 88",
-            "type": "type 88",
-            "links": {
+            "titolo": "Symbolum 77",
+            "autore": "autore 88",
+            "tipologia": "tipologia 88",
+            "download_link": {
                 "listen": "link88.html",
                 "download": "download88.html"
             }
         },
         {
-            "title": "Dio si è fatto come noi",
-            "author": "author 89",
-            "type": "type 89",
-            "links": {
+            "titolo": "Dio si è fatto come noi",
+            "autore": "autore 89",
+            "tipologia": "tipologia 89",
+            "download_link": {
                 "listen": "link89.html",
                 "download": "download89.html"
             }
         },
         {
-            "title": "Ecco quel che abbiamo",
-            "author": "author 90",
-            "type": "type 90",
-            "links": {
+            "titolo": "Ecco quel che abbiamo",
+            "autore": "autore 90",
+            "tipologia": "tipologia 90",
+            "download_link": {
                 "listen": "link90.html",
                 "download": "download90.html"
             }
         },
         {
-            "title": "Credo in te Signore",
-            "author": "author 91",
-            "type": "type 91",
-            "links": {
+            "titolo": "Credo in te Signore",
+            "autore": "autore 91",
+            "tipologia": "tipologia 91",
+            "download_link": {
                 "listen": "link91.html",
                 "download": "download91.html"
             }
         },
         {
-            "title": "Pane del Cielo",
-            "author": "author 92",
-            "type": "type 92",
-            "links": {
+            "titolo": "Pane del Cielo",
+            "autore": "autore 92",
+            "tipologia": "tipologia 92",
+            "download_link": {
                 "listen": "link92.html",
                 "download": "download92.html"
             }
         },
         {
-            "title": "Salve Regina",
-            "author": "author 93",
-            "type": "type 93",
-            "links": {
+            "titolo": "Salve Regina",
+            "autore": "autore 93",
+            "tipologia": "tipologia 93",
+            "download_link": {
                 "listen": "link93.html",
                 "download": "download93.html"
             }
         },
         {
-            "title": "E' bello lodarti",
-            "author": "author 94",
-            "type": "type 94",
-            "links": {
+            "titolo": "E' bello lodarti",
+            "autore": "autore 94",
+            "tipologia": "tipologia 94",
+            "download_link": {
                 "listen": "link94.html",
                 "download": "download94.html"
             }
         },
         {
-            "title": "O cieli piovete dall'alto",
-            "author": "author 95",
-            "type": "type 95",
-            "links": {
+            "titolo": "O cieli piovete dall'alto",
+            "autore": "autore 95",
+            "tipologia": "tipologia 95",
+            "download_link": {
                 "listen": "link95.html",
                 "download": "download95.html"
             }
         },
         {
-            "title": "Vieni Spirito d'Amore",
-            "author": "author 96",
-            "type": "type 96",
-            "links": {
+            "titolo": "Vieni Spirito d'Amore",
+            "autore": "autore 96",
+            "tipologia": "tipologia 96",
+            "download_link": {
                 "listen": "link96.html",
                 "download": "download96.html"
             }
         },
         {
-            "title": "Inni e canti",
-            "author": "author 97",
-            "type": "type 97",
-            "links": {
+            "titolo": "Inni e canti",
+            "autore": "autore 97",
+            "tipologia": "tipologia 97",
+            "download_link": {
                 "listen": "link97.html",
                 "download": "download97.html"
             }
         },
         {
-            "title": "Osanna al figlio di David",
-            "author": "author 98",
-            "type": "type 98",
-            "links": {
+            "titolo": "Osanna al figlio di David",
+            "autore": "autore 98",
+            "tipologia": "tipologia 98",
+            "download_link": {
                 "listen": "link98.html",
                 "download": "download98.html"
             }
         },
         {
-            "title": "Se qualcuno ha dei beni",
-            "author": "author 99",
-            "type": "type 99",
-            "links": {
+            "titolo": "Se qualcuno ha dei beni",
+            "autore": "autore 99",
+            "tipologia": "tipologia 99",
+            "download_link": {
                 "listen": "link99.html",
                 "download": "download99.html"
             }
         },
         {
-            "title": "In notte placida",
-            "author": "author 100",
-            "type": "type 100",
-            "links": {
+            "titolo": "In notte placida",
+            "autore": "autore 100",
+            "tipologia": "tipologia 100",
+            "download_link": {
                 "listen": "link100.html",
                 "download": "download100.html"
             }
         },
         {
-            "title": "Madre mia bellissima",
-            "author": "author 101",
-            "type": "type 101",
-            "links": {
+            "titolo": "Madre mia bellissima",
+            "autore": "autore 101",
+            "tipologia": "tipologia 101",
+            "download_link": {
                 "listen": "link101.html",
                 "download": "download101.html"
             }
         },
         {
-            "title": "Il pane del cammino",
-            "author": "author 102",
-            "type": "type 102",
-            "links": {
+            "titolo": "Il pane del cammino",
+            "autore": "autore 102",
+            "tipologia": "tipologia 102",
+            "download_link": {
                 "listen": "link102.html",
                 "download": "download102.html"
             }
         },
         {
-            "title": "Immacolata vergine bella",
-            "author": "author 103",
-            "type": "type 103",
-            "links": {
+            "titolo": "Immacolata vergine bella",
+            "autore": "autore 103",
+            "tipologia": "tipologia 103",
+            "download_link": {
                 "listen": "link103.html",
                 "download": "download103.html"
             }
         },
         {
-            "title": "Rallegrati Gerusalemme",
-            "author": "author 104",
-            "type": "type 104",
-            "links": {
+            "titolo": "Rallegrati Gerusalemme",
+            "autore": "autore 104",
+            "tipologia": "tipologia 104",
+            "download_link": {
                 "listen": "link104.html",
                 "download": "download104.html"
             }
         },
         {
-            "title": "Come tu mi vuoi",
-            "author": "author 105",
-            "type": "type 105",
-            "links": {
+            "titolo": "Come tu mi vuoi",
+            "autore": "autore 105",
+            "tipologia": "tipologia 105",
+            "download_link": {
                 "listen": "link105.html",
                 "download": "download105.html"
             }
         },
         {
-            "title": "Venite fedeli",
-            "author": "author 106",
-            "type": "type 106",
-            "links": {
+            "titolo": "Venite fedeli",
+            "autore": "autore 106",
+            "tipologia": "tipologia 106",
+            "download_link": {
                 "listen": "link106.html",
                 "download": "download106.html"
             }
         },
         {
-            "title": "Resta con noi Signore la sera",
-            "author": "author 107",
-            "type": "type 107",
-            "links": {
+            "titolo": "Resta con noi Signore la sera",
+            "autore": "autore 107",
+            "tipologia": "tipologia 107",
+            "download_link": {
                 "listen": "link107.html",
                 "download": "download107.html"
             }
         },
         {
-            "title": "Andate per le strade",
-            "author": "author 108",
-            "type": "type 108",
-            "links": {
+            "titolo": "Andate per le strade",
+            "autore": "autore 108",
+            "tipologia": "tipologia 108",
+            "download_link": {
                 "listen": "link108.html",
                 "download": "download108.html"
             }
         },
         {
-            "title": "Gloria a te",
-            "author": "author 109",
-            "type": "type 109",
-            "links": {
+            "titolo": "Gloria a te",
+            "autore": "autore 109",
+            "tipologia": "tipologia 109",
+            "download_link": {
                 "listen": "link109.html",
                 "download": "download109.html"
             }
         },
         {
-            "title": "Davanti al Re",
-            "author": "author 110",
-            "type": "type 110",
-            "links": {
+            "titolo": "Davanti al Re",
+            "autore": "autore 110",
+            "tipologia": "tipologia 110",
+            "download_link": {
                 "listen": "link110.html",
                 "download": "download110.html"
             }
         },
         {
-            "title": "Te lodiamo Trinità",
-            "author": "author 111",
-            "type": "type 111",
-            "links": {
+            "titolo": "Te lodiamo Trinità",
+            "autore": "autore 111",
+            "tipologia": "tipologia 111",
+            "download_link": {
                 "listen": "link111.html",
                 "download": "download111.html"
             }
         },
         {
-            "title": "Signore, da chi andremo",
-            "author": "author 112",
-            "type": "type 112",
-            "links": {
+            "titolo": "Signore, da chi andremo",
+            "autore": "autore 112",
+            "tipologia": "tipologia 112",
+            "download_link": {
                 "listen": "link112.html",
                 "download": "download112.html"
             }
         },
         {
-            "title": "Come un fiore",
-            "author": "author 113",
-            "type": "type 113",
-            "links": {
+            "titolo": "Come un fiore",
+            "autore": "autore 113",
+            "tipologia": "tipologia 113",
+            "download_link": {
                 "listen": "link113.html",
                 "download": "download113.html"
             }
         },
         {
-            "title": "Ti ringrazio",
-            "author": "author 114",
-            "type": "type 114",
-            "links": {
+            "titolo": "Ti ringrazio",
+            "autore": "autore 114",
+            "tipologia": "tipologia 114",
+            "download_link": {
                 "listen": "link114.html",
                 "download": "download114.html"
             }
         },
         {
-            "title": "Pange lingua",
-            "author": "author 115",
-            "type": "type 115",
-            "links": {
+            "titolo": "Pange lingua",
+            "autore": "autore 115",
+            "tipologia": "tipologia 115",
+            "download_link": {
                 "listen": "link115.html",
                 "download": "download115.html"
             }
         },
         {
-            "title": "Alleluia lodate il Signore",
-            "author": "author 116",
-            "type": "type 116",
-            "links": {
+            "titolo": "Alleluia lodate il Signore",
+            "autore": "autore 116",
+            "tipologia": "tipologia 116",
+            "download_link": {
                 "listen": "link116.html",
                 "download": "download116.html"
             }
         },
         {
-            "title": "Sei tu Signore il pane",
-            "author": "author 117",
-            "type": "type 117",
-            "links": {
+            "titolo": "Sei tu Signore il pane",
+            "autore": "autore 117",
+            "tipologia": "tipologia 117",
+            "download_link": {
                 "listen": "link117.html",
                 "download": "download117.html"
             }
         },
         {
-            "title": "Guada questa offerta",
-            "author": "author 118",
-            "type": "type 118",
-            "links": {
+            "titolo": "Guada questa offerta",
+            "autore": "autore 118",
+            "tipologia": "tipologia 118",
+            "download_link": {
                 "listen": "link118.html",
                 "download": "download118.html"
             }
         },
         {
-            "title": "Il Signore è il mio Pastore",
-            "author": "author 119",
-            "type": "type 119",
-            "links": {
+            "titolo": "Il Signore è il mio Pastore",
+            "autore": "autore 119",
+            "tipologia": "tipologia 119",
+            "download_link": {
                 "listen": "link119.html",
                 "download": "download119.html"
             }
         },
         {
-            "title": "Te al centro del mio cuore",
-            "author": "author 120",
-            "type": "type 120",
-            "links": {
+            "titolo": "Te al centro del mio cuore",
+            "autore": "autore 120",
+            "tipologia": "tipologia 120",
+            "download_link": {
                 "listen": "link120.html",
                 "download": "download120.html"
             }
