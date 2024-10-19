@@ -11,64 +11,99 @@
     <link rel="stylesheet" href="../styles/style_lista.css">
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            sortAndGroupCanti();
-        });
-
-        // Funzione per caricare il JSON e creare gli elementi della lista
+        // Funzione per caricare il JSON, ordinare i canti e creare gli elementi della lista
         fetch('../db/canti.json')
             .then(response => response.json())
             .then(data => {
                 const cantiList = document.getElementById('cantiList');
-
-                data.canti.forEach(canto => {
-                    // Creare un elemento <li> per ogni canto
-                    const li = document.createElement('li');
-                    li.onclick = toggleDetails;
-
-                    // Titolo del canto
-                    const span = document.createElement('span');
-                    span.textContent = canto.titolo;
-                    li.appendChild(span);
-
-                    // Dettagli del canto
-                    const detailsDiv = document.createElement('div');
-                    detailsDiv.className = 'canto-details';
-                    detailsDiv.style.display = 'none';
-
-                    // Autore e Tipologia
-                    detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
-
-                    // Link Ascolta e Scarica
-                    const linksDiv = document.createElement('div');
-                    const ascoltaLink = document.createElement('a');
-                    ascoltaLink.href = canto.ascolta;
-                    ascoltaLink.className = 'link-button';
-                    ascoltaLink.textContent = 'Ascolta';
-                    linksDiv.appendChild(ascoltaLink);
-
-                    const scaricaLink = document.createElement('a');
-                    scaricaLink.href = canto.scarica;
-                    scaricaLink.className = 'link-button';
-                    scaricaLink.textContent = 'Scarica';
-                    linksDiv.appendChild(scaricaLink);
-
-                    detailsDiv.appendChild(linksDiv);
-                    li.appendChild(detailsDiv);
-
-                    // Aggiungere il <li> alla lista
-                    cantiList.appendChild(li);
+                const groupedCanti = groupCantiByLetter(data.canti);  // Raggruppare i canti per lettera
+    
+                Object.keys(groupedCanti).forEach(letter => {
+                    // Creare un elemento <li> per la lettera (intestazione)
+                    const letterHeader = document.createElement('li');
+                    letterHeader.textContent = letter;
+                    letterHeader.className = 'letter-header';  // Aggiungi uno stile per le intestazioni
+                    cantiList.appendChild(letterHeader);
+    
+                    // Creare un <li> per ciascun canto sotto la lettera corrispondente
+                    groupedCanti[letter].forEach(canto => {
+                        const li = document.createElement('li');
+                        li.onclick = toggleDetails;
+    
+                        const span = document.createElement('span');
+                        span.textContent = canto.titolo;
+                        li.appendChild(span);
+    
+                        const detailsDiv = document.createElement('div');
+                        detailsDiv.className = 'canto-details';
+                        detailsDiv.style.display = 'none';
+                        detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
+    
+                        const linksDiv = document.createElement('div');
+                        const ascoltaLink = document.createElement('a');
+                        ascoltaLink.href = canto.ascolta;
+                        ascoltaLink.className = 'link-button';
+                        ascoltaLink.textContent = 'Ascolta';
+                        linksDiv.appendChild(ascoltaLink);
+    
+                        const scaricaLink = document.createElement('a');
+                        scaricaLink.href = canto.scarica;
+                        scaricaLink.className = 'link-button';
+                        scaricaLink.textContent = 'Scarica';
+                        linksDiv.appendChild(scaricaLink);
+    
+                        detailsDiv.appendChild(linksDiv);
+                        li.appendChild(detailsDiv);
+    
+                        cantiList.appendChild(li);
+                    });
                 });
             })
             .catch(error => console.error('Errore nel caricamento del file JSON:', error));
-
+    
         // Funzione per mostrare/nascondere i dettagli
         function toggleDetails(event) {
             const details = event.currentTarget.querySelector('.canto-details');
             details.style.display = details.style.display === 'none' ? 'block' : 'none';
         }
-
+    
+        // Funzione per raggruppare i canti per lettera
+        function groupCantiByLetter(canti) {
+            const grouped = {};
+            canti.sort((a, b) => a.titolo.localeCompare(b.titolo));  // Ordina i canti per titolo
+    
+            canti.forEach(canto => {
+                const firstLetter = canto.titolo.charAt(0).toUpperCase();
+                if (!grouped[firstLetter]) {
+                    grouped[firstLetter] = [];
+                }
+                grouped[firstLetter].push(canto);
+            });
+    
+            return grouped;
+        }
+    
+        // Funzione per filtrare l'elenco in base alla barra di ricerca
+        function filter_search_bar() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const ul = document.getElementById('cantiList');
+            const li = ul.getElementsByTagName('li');
+    
+            for (let i = 0; i < li.length; i++) {
+                const span = li[i].getElementsByTagName('span')[0];
+                if (span) {
+                    const txtValue = span.textContent || span.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = '';
+                    } else {
+                        li[i].style.display = 'none';
+                    }
+                }
+            }
+        }
     </script>
+    
 
 
 </head>
