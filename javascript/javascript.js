@@ -357,7 +357,8 @@ function inserisci_elemento_lista(numero, anno, tipologia, url) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
     if (tipologia === "ordinario") {
-        li.innerHTML = `<a href="${url}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazione.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+
     } else if (tipologia === "avvento") {
         li.innerHTML = `<a href="${url}">${numero}° domenica d'avvento - anno: ${anno}</a>`;
     } else if (tipologia === "natale") {
