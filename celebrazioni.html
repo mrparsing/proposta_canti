@@ -47,7 +47,7 @@
             const { numero, anno } = getQueryParams();
 
             // Carica il file JSON
-            fetch('../../../json/celebrazioni.json')
+            fetch('db/celebrazioni_anno_a.json')
                 .then(response => response.json())
                 .then(data => {
                     populatePage(data, numero, anno); // Popola la pagina con i dati corretti
