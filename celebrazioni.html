@@ -46,12 +46,12 @@
         // Carica il file JSON
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno } = getQueryParams();
+            console.log(numero, anno, "sdfosdnfoisdn");
 
             // Carica il file JSON
-            fetch('../db/celebrazioni_anno_a.json')
+            fetch('db/celebrazioni_anno_a.json')
                 .then(response => response.json())
                 .then(data => {
-                    console.log(numero, anno, "sdfosdnfoisdn");
                     populatePage(data, numero, anno); // Popola la pagina con i dati corretti
                 })
                 .catch(error => console.error('Errore nel caricamento del JSON:', error));
