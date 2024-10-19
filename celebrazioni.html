@@ -35,7 +35,7 @@
 
                 // Popola i vari campi con i dati della celebrazione
                 document.querySelector('h1').textContent = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
-                document.querySelector('#antifona-ingresso').textContent = celebrazione.content.antifona_ingresso.text; // Aggiornato
+                document.querySelector('#antifona-ingresso').textContent = celebrazione.antifona_ingresso.text; // Aggiornato
                 document.querySelector('#canto-ingresso').textContent = celebrazione.canto_ingresso.text; // Aggiornato
                 document.querySelector('#salmo').href = celebrazione.liturgia_della_parola.salmo.link; // Link al PDF del salmo
             } else {
