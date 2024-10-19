@@ -296,3 +296,28 @@ body {
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+
+.responsive-container {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+    margin-bottom: 10px;
+    color: black; /* Change the color for headings */
+}
+
+p {
+    margin-bottom: 15px; /* Add margin for paragraphs */
+}
+
+.response-list {
+    margin-left: 20px; /* Indent for lists */
+}
+
+.response-list b {
+    font-weight: bold; /* Make response bold */
+}
