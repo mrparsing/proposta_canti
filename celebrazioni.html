@@ -26,7 +26,7 @@
 
             if (celebrazione) {
                 document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
-                document.querySelector('h1').textContent = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                document.querySelector('#title').textContent = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
                 document.querySelector('#antifona-ingresso').textContent = celebrazione.antifona_ingresso;
                 document.querySelector('#canto-ingresso').textContent = celebrazione.canto_ingresso || "N/A";
                 document.querySelector('#atto-penitenziale').textContent = celebrazione.atto_penitenziale;
@@ -72,7 +72,7 @@
     </div>
 
     <div class="responsive-container">
-        <h1></h1>
+        <h1 id="title"></h1>
 
         <h2>Antifona d'ingresso</h2>
         <p id="antifona-ingresso"></p>
