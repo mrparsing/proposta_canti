@@ -48,7 +48,7 @@
             const { numero, anno } = getQueryParams();
 
             // Carica il file JSON
-            fetch('db/celebrazioni_anno_a.json')
+            fetch('../db/celebrazioni_anno_a.json')
                 .then(response => response.json())
                 .then(data => {
                     console.log(numero, anno, "sdfosdnfoisdn");
