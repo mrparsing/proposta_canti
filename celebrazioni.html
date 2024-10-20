@@ -34,9 +34,13 @@
                 document.querySelector('#tropo-2').innerHTML = celebrazione.tropo_2;
                 document.querySelector('#tropo-3').innerHTML = celebrazione.tropo_3;
                 document.querySelector('#prima-lettura').textContent = celebrazione.prima_lettura_testo;
+                document.querySelector('#salmo').textContent = celebrazione.salmo_testo || "N/A";
+                const link_salmo = celebrazione.salmo_link;
+                document.getElementById('link_salmo').setAttribute('href', link_salmo);
                 document.querySelector('#seconda-lettura').textContent = celebrazione.seconda_lettura_testo || "N/A"; // Seconda Lettura
-                document.querySelector('#salmo').textContent = celebrazione.salmo_testo || "N/A"; // Salmo
                 document.querySelector('#vangelo').textContent = celebrazione.vangelo || "N/A";
+                document.querySelector('#canto-offertorio').textContent = celebrazione.canto_offertorio || "N/A";
+                document.querySelector('#canto-comunione').textContent = celebrazione.canto_comunione || "N/A";
                 document.querySelector('#antifona-alla-comunione').textContent = celebrazione.antifona_alla_comunione || "N/A";
             } else {
                 document.body.innerHTML = `<p class="error">Errore: Celebrazione non trovata per numero ${numero} e anno ${anno}.</p>`;
@@ -90,14 +94,21 @@
         <h2>Prima Lettura</h2>
         <p id="prima-lettura"></p>
 
+        <h2>Salmo Responsoriale</h2>
+        <p><a id="link_salmo" href="#" download>Salmo Responsoriale</a></p>
+        <p id="salmo"></p> <!-- Salmo -->
+
         <h2>Seconda Lettura</h2>
         <p id="seconda-lettura"></p> <!-- Seconda Lettura -->
 
-        <h2>Salmo Responsoriale</h2>
-        <p id="salmo"></p> <!-- Salmo -->
-
         <h2>Vangelo</h2>
         <p id="vangelo"></p>
+
+        <h3>Canto d'offertorio</h3>
+        <p id="canto-offertorio"></p>
+
+        <h3>Canto di comunione</h3>
+        <p id="canto-comunione"></p>
 
         <h2>Antifona alla Comunione</h2>
         <p id="antifona-alla-comunione"></p>
