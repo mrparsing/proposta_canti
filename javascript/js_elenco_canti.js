@@ -111,11 +111,13 @@ function filter_search_bar_2() {
     const typeValue = document.getElementById('typeSelect').value;
     const tempoValue = document.getElementById('tempoSelect').value;
 
-    const canti = document.querySelectorAll('#cantiList li');
-
-    canti.forEach(canto => {
-        const cantoText = canto.textContent.toLowerCase();
-        const cantoAuthor = canto.getAttribute('data-author').toLowerCase();
+    const cantiList = document.getElementById('cantiList');
+    const items = cantiList.getElementsByTagName('li');
+    
+    for (let i = 0; i < items.length; i++) {
+        const canto = items[i];
+        const cantoText = canto.querySelector('span').textContent.toLowerCase();
+        const cantoAuthor = canto.getAttribute('data-author') ? canto.getAttribute('data-author').toLowerCase() : '';
         const cantoType = canto.getAttribute('data-type');
         const cantoTempo = canto.getAttribute('data-tempo');
 
@@ -129,5 +131,5 @@ function filter_search_bar_2() {
         } else {
             canto.style.display = 'none';
         }
-    });
+    }
 }
