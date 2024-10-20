@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 fetch('../db/canti.json')
 .then(response => response.json())
 .then(data => {
@@ -48,6 +49,7 @@ fetch('../db/canti.json')
     });
 })
 .catch(error => console.error('Errore nel caricamento del file JSON:', error));
+});
 
 // Funzione per mostrare/nascondere i dettagli
 function toggleDetails(event) {
