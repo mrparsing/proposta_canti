@@ -13,7 +13,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const numero = urlParams.get('numero');
             const anno = urlParams.get('anno');
-            return { numero, anno };
+            const festivita = urlParams.get('festivita')
+            return { numero, anno, festivita };
         }
 
         function populatePage(data, numero, anno) {
@@ -51,8 +52,16 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            const { numero, anno } = getQueryParams();
-            const jsonFile = `db/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            const { numero, anno, festivita } = getQueryParams();
+            if (festivita === "ordinario") {
+                const jsonFile = `db/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            } else if (festivita === "natale") {
+                // gestisci natale
+            } else if (festivita === "avvento") {
+                const jsonFile = `db/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            } else if (festivita === "quaresima") {
+                const jsonFile = `db/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            }
 
             fetch(jsonFile)
                 .then(response => response.json())

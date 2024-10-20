@@ -2,10 +2,11 @@
     "canti": [
         {
             "titolo": "Noi canteremo gloria a Te",
-            "autore": "autore 1",
-            "tipologia": "tipologia 1",
-            "ascolta": "link1.html",
-            "download_link": "download1.html"
+            "autore": "Loys Bourgeois",
+            "tipologia": "Ingresso",
+            "tempo": "qualunque",
+            "ascolta": "https://www.youtube.com/watch?v=CqgUU_lOJDk",
+            "download_link": "../db/canti/noi_canteremo_gloria_a_te.pdf"
         },
         {
             "titolo": "Acclamate al Signore",

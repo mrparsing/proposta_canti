@@ -242,112 +242,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setNavbarColor(prox_celebrazioni[0].tipologia)
 
-    for (const festa of prox_celebrazioni) {        
+    for (const festa of prox_celebrazioni) {
         inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia);
     }
 });
 
 
-
-/*
-function visualizzaRisultati(anno, festivita, domenicaSuccessiva) {
-    let output = `<h2>Risultati per l'anno ${anno}</h2>`;
-    output += `<div class="result"><strong>Festività e Domeniche:</strong></div>`;
-    output += `<ul>`;
-    festivita.forEach(f => {
-        output += `<li>${f.numero}: ${f.data.toLocaleDateString('it-IT')}</li>`;
-    });
-    output += `</ul>`;
-
-    if (domenicaSuccessiva) {
-        output += `<div class="result"><strong>Domenica Successiva:</strong> ${domenicaSuccessiva.toLocaleDateString('it-IT')}</div>`;
-    } else {
-        output += `<div class="result"><strong>Domenica Successiva:</strong> Non trovata</div>`;
-    }
-
-    document.getElementById('output').innerHTML = output;
-}
-
-function calcolaDomenicaSuccessiva(festivita) {
-    const oggi = new Date();
-    const prossimaDomenica = prossima_domenica(oggi);
-
-    // Controlla se la prossima domenica è presente nella lista delle festività
-    for (const festivitaItem of festivita) {
-        if (
-            festivitaItem.data.getFullYear() === prossimaDomenica.getFullYear() &&
-            festivitaItem.data.getMonth() === prossimaDomenica.getMonth() &&
-            festivitaItem.data.getDate() === prossimaDomenica.getDate()
-        ) {
-            return prossimaDomenica; // Restituisce la domenica successiva se presente
-        }
-    }
-
-    return null;
-}
-
-let indiceDomenicaCorrente; // Variabile globale
-
-document.addEventListener('DOMContentLoaded', function () {
-    const button = document.querySelector('.button'); // Select the button
-
-    button.addEventListener('click', function () {
-        const oggi = new Date()
-        const festivita = calcolaFestivita(oggi.getFullYear());
-        let festa;
-        let url = "";
-
-        // Find the next future holiday
-        for (const festivitaItem of festivita) {
-            if (festivitaItem.data >= oggi) {
-                festa = festivitaItem; // Get the next future holiday
-                break;
-            }
-        }
-        console.log(festivita);
-        // Determine the URL based on the type of holiday
-        if (festa) {
-            if (festa.tipologia === "ordinario") {
-                const numero = festa.numero;
-                const anno = festa.anno;
-                url = "tempo_ordinario/anno_" + anno + "/" + numero + ".html";
-            } else if(festa.tipologia === "avvento") {
-                const numero = festa.numero;
-                const anno = festa.anno;
-                url = "tempo_avvento/anno_" + anno + "/" + numero + ".html";
-            } else if(festa.tipologia === "quaresima") {
-                const numero = festa.numero;
-                const anno = festa.anno;
-                url = "tempo_quaresima/anno_" + anno + "/" + numero + ".html";
-            }
-        console.log(url);
-        // Redirect to the URL
-        window.location.href = url; // Redirect to the appropriate page
-
-        } else {
-            console.log("Nessuna festività futura trovata.");
-            alert("Nessuna festività futura trovata."); // Optional: alert if no future holiday found
-        }
-    });
-});
-*/
-
 function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
     if (tipologia === "ordinario") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     } else if (tipologia === "avvento") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo d'avvento - anno: ${anno}</a>`;
     } else if (tipologia === "natale") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
-    }
-    else if (numero === "Mercoledì delle Ceneri") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}</a>`;
+    } else if (numero === "Mercoledì delle Ceneri") {
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}</a>`;
     } else if (tipologia === "quaresima") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo di quaresima - anno: ${anno}</a>`;
     } else if (tipologia === "pasqua") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}</a>`;
     }
     ul.appendChild(li);
 }
@@ -356,31 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
     festivita = calcolaFestivita(anno)
     setNavbarColor(festivita[0].tipologia)
 });
-/*
-function inserisci_elemento_lista(numero, anno, tipologia, url) {
-    console.log(numero, anno, tipologia, url);
-    const ul = document.querySelector('.prossime-celebrazioni-div ul');
-    const li = document.createElement('li');
-    
-    // Define the image source based on your needs
-    const imageSrc = "path/to/your/image.png"; 
 
-    if (tipologia === "ordinario") {
-        li.innerHTML = `
-            <img src="${imageSrc}" alt="Icon" class="list-icon" /> 
-            <a href="${url}" style="display: inline-block; text-decoration: none; color: inherit;">
-                ${numero}° domenica tempo ordinario anno: ${anno}
-            </a>`;
-    } else if (tipologia === "avvento") {
-        li.innerHTML = `
-            <img src="${imageSrc}" alt="Icon" class="list-icon" /> 
-            <a href="${url}" style="display: inline-block; text-decoration: none; color: inherit;">
-                ${numero}° domenica d'avvento anno: ${anno}
-            </a>`;
-    }
-
-    ul.appendChild(li);
-}*/
 
 
 function setNavbarColor(tipologia) {
