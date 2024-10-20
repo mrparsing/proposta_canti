@@ -18,9 +18,11 @@ function calcolaPasqua(anno) {
 
 function tipologia_anno(anno) {
     if (anno % 3 === 2) {
-        return "b";
+        return "B";
+    } else if (anno % 3 === 0) {
+        return "C";
     } else {
-        return "c";
+        return "A";
     }
 }
 
@@ -240,30 +242,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setNavbarColor(prox_celebrazioni[0].tipologia)
 
-    let url = "";
-
-    // Insert the list into the div
-    const celebrazioniDiv = document.querySelector('.prossime-celebrazioni-div');
-    const ul = document.createElement('ul');
-    celebrazioniDiv.appendChild(ul);
-
-    for (const festa of prox_celebrazioni) {
-        const numero = festa.numero;
-        if (festa.tipologia === "ordinario") {
-            const anno = festa.anno;
-            url = "tempi_liturgici/tempo_ordinario/anno_" + anno + "/" + numero + ".html";
-        } else if (festa.tipologia === "avvento") {
-            const anno = festa.anno;
-            url = "tempi_liturgici/avvento/anno_" + anno + "/" + numero + ".html";
-        } else if (festa.tipologia === "quaresima") {
-            const anno = festa.anno;
-            url = "tempi_liturgici/tempo_quaresima/anno_" + anno + "/" + numero + ".html";
-        } else if (festa.tipologia === "natale") {
-            url = "tempi_liturgici/quaresima/" + numero + ".html";
-        } else if (festa.tipologia === "pasqua") {
-            url = "tempi_liturgici/pasqua/" + numero + ".html";
-        }
-        inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia, url);
+    for (const festa of prox_celebrazioni) {        
+        inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia);
     }
 });
 
@@ -352,23 +332,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 */
 
-function inserisci_elemento_lista(numero, anno, tipologia, url) {
-    console.log(numero, anno, tipologia, url);
+function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
     if (tipologia === "ordinario") {
         li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     } else if (tipologia === "avvento") {
-        li.innerHTML = `<a href="${url}">${numero}° domenica d'avvento - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     } else if (tipologia === "natale") {
-        li.innerHTML = `<a href="${url}">${numero}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     }
     else if (numero === "Mercoledì delle Ceneri") {
-        li.innerHTML = `<a href="${url}">${numero}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     } else if (tipologia === "quaresima") {
-        li.innerHTML = `<a href="${url}">${numero}° domenica di quaresima - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     } else if (tipologia === "pasqua") {
-        li.innerHTML = `<a href="${url}">${numero}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
     }
     ul.appendChild(li);
 }

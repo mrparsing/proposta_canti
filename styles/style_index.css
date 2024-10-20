@@ -381,3 +381,7 @@ p {
     /* Colore più acceso quando si passa sopra nel tema scuro */
     text-decoration: underline;
 }
+
+.dark-theme a {
+    color: #4da6ff;
+}
