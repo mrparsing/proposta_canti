@@ -3,21 +3,22 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             const cantiList = document.getElementById('cantiList');
-            const groupedCanti = groupCantiByLetter(data.canti);  // Raggruppare i canti per lettera
+            const groupedCanti = groupCantiByLetter(data.canti);
 
             Object.keys(groupedCanti).forEach(letter => {
-                // Creare un elemento <div> per la lettera (intestazione)
                 const letterHeader = document.createElement('div');
                 letterHeader.textContent = letter;
-                letterHeader.className = 'letter-header';  // Stile per le intestazioni delle lettere
-                letterHeader.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
+                letterHeader.className = 'letter-header';
+                letterHeader.setAttribute('data-letter', letter);
                 cantiList.appendChild(letterHeader);
 
-                // Creare un <li> per ciascun canto sotto la lettera corrispondente
                 groupedCanti[letter].forEach(canto => {
                     const li = document.createElement('li');
                     li.onclick = toggleDetails;
-                    li.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
+                    li.setAttribute('data-letter', letter);
+                    li.setAttribute('data-author', canto.autore);
+                    li.setAttribute('data-type', canto.tipologia);
+                    li.setAttribute('data-tempo', canto.tempo);
 
                     const span = document.createElement('span');
                     span.textContent = canto.titolo;
@@ -51,16 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Errore nel caricamento del file JSON:', error));
 });
 
-// Funzione per mostrare/nascondere i dettagli
 function toggleDetails(event) {
     const details = event.currentTarget.querySelector('.canto-details');
     details.style.display = details.style.display === 'none' ? 'block' : 'none';
 }
 
-// Funzione per raggruppare i canti per lettera
 function groupCantiByLetter(canti) {
     const grouped = {};
-    canti.sort((a, b) => a.titolo.localeCompare(b.titolo));  // Ordina i canti per titolo
+    canti.sort((a, b) => a.titolo.localeCompare(b.titolo));
 
     canti.forEach(canto => {
         const firstLetter = canto.titolo.charAt(0).toUpperCase();
@@ -71,6 +70,35 @@ function groupCantiByLetter(canti) {
     });
 
     return grouped;
+}
+
+function filter_search_bar_2() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase();
+    const authorValue = document.getElementById('authorInput').value.toLowerCase();
+    const typeValue = document.getElementById('typeSelect').value;
+    const tempoValue = document.getElementById('tempoSelect').value;
+
+    const cantiList = document.getElementById('cantiList');
+    const items = cantiList.getElementsByTagName('li');
+
+    for (let i = 0; i < items.length; i++) {
+        const canto = items[i];
+        const cantoText = canto.querySelector('span').textContent.toLowerCase();
+        const cantoAuthor = canto.getAttribute('data-author') ? canto.getAttribute('data-author').toLowerCase() : '';
+        const cantoType = canto.getAttribute('data-type');
+        const cantoTempo = canto.getAttribute('data-tempo');
+
+        const matchSearch = cantoText.includes(searchValue);
+        const matchAuthor = cantoAuthor.includes(authorValue);
+        const matchType = !typeValue || cantoType === typeValue;
+        const matchTempo = !tempoValue || cantoTempo === tempoValue;
+
+        if (matchSearch && matchAuthor && matchType && matchTempo) {
+            canto.style.display = '';
+        } else {
+            canto.style.display = 'none';
+        }
+    }
 }
 
 // Funzione per filtrare l'elenco in base alla barra di ricerca
@@ -106,33 +134,3 @@ function filter_search_bar() {
         }
     }
 }
-
-function filter_search_bar_2() {
-    const searchValue = document.getElementById('searchInput').value.toLowerCase();
-    const authorValue = document.getElementById('authorInput').value.toLowerCase();
-    const typeValue = document.getElementById('typeSelect').value;
-    const tempoValue = document.getElementById('tempoSelect').value;
-
-    const cantiList = document.getElementById('cantiList');
-    const items = cantiList.getElementsByTagName('li');
-
-    for (let i = 0; i < items.length; i++) {
-        const canto = items[i];
-        const cantoText = canto.querySelector('span').textContent.toLowerCase();
-        const cantoAuthor = canto.getAttribute('data-author') ? canto.getAttribute('data-author').toLowerCase() : '';
-        const cantoType = canto.getAttribute('data-type');
-        const cantoTempo = canto.getAttribute('data-tempo');
-
-        const matchSearch = cantoText.includes(searchValue);
-        const matchAuthor = cantoAuthor.includes(authorValue);
-        const matchType = !typeValue || cantoType === typeValue;
-        const matchTempo = !tempoValue || cantoTempo === tempoValue;
-
-        if (matchSearch && matchAuthor && matchType && matchTempo) {
-            canto.style.display = '';
-        } else {
-            canto.style.display = 'none';
-        }
-    }
-}
-

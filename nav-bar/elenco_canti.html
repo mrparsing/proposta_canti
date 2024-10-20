@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elenco canti</title>
-    <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
-    <script src="../javascript/js_elenco_canti.js"></script>
     <link rel="stylesheet" href="../styles/style_lista.css">
-
     <style>
         .letter-header {
             font-size: 24px;
             font-weight: bold;
             margin-top: 10px;
+        }
+
+        .filters-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .filters-container label {
+            margin-right: 10px;
+        }
+
+        .filters-container input,
+        .filters-container select {
+            margin-right: 20px;
         }
     </style>
 </head>
@@ -36,37 +47,42 @@
         </div>
 
         <div class="main-content" id="main-content">
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()"
-                onemptied="mostraLettere()">
+            <!-- Barra di ricerca -->
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
 
-                <div class="filter-container">
-                    <label for="authorInput">Autore:</label>
-                    <input type="text" id="authorInput" placeholder="Inserisci autore" onkeyup="">
-                
-                    <label for="typeSelect">Tipologia:</label>
-                    <select id="typeSelect" onchange="">
-                        <option value="">Tutti</option>
-                        <option value="Liturgico">Liturgico</option>
-                        <option value="Salmo">Salmo</option>
-                        <option value="Messa">Messa</option>
-                        <option value="Mariano">Mariano</option>
-                    </select>
-                
-                    <label for="tempoSelect">Tempo:</label>
-                    <select id="tempoSelect" onchange="">
-                        <option value="">Tutti</option>
-                        <option value="Avvento">Avvento</option>
-                        <option value="Natale">Natale</option>
-                        <option value="Quaresima">Quaresima</option>
-                        <option value="Pasqua">Pasqua</option>
-                        <option value="Ordinario">Ordinario</option>
-                    </select>
-                </div>
-    
-            </ul>
+            <!-- Contenitore filtri -->
+            <div class="filters-container">
+                <label for="authorInput">Autore:</label>
+                <input type="text" id="authorInput" placeholder="Cerca per autore..." onkeyup="filter_search_bar_2()">
+
+                <label for="typeSelect">Tipologia:</label>
+                <select id="typeSelect" onchange="filter_search_bar_2()">
+                    <option value="">Tutti</option>
+                    <option value="Ingresso">Ingresso</option>
+                    <option value="Alleluia">Alleluia</option>
+                    <option value="Offertorio">Offertorio</option>
+                    <option value="Comunione">Comunione</option>
+                    <option value="Finale">Finale</option>
+                </select>
+
+                <label for="tempoSelect">Tempo:</label>
+                <select id="tempoSelect" onchange="filter_search_bar_2()">
+                    <option value="">Tutti</option>
+                    <option value="Ordinario">Ordinario</option>
+                    <option value="Pasqua">Pasqua</option>
+                    <option value="Quaresima">Quaresima</option>
+                    <option value="Natale">Natale</option>
+                    <option value="Avvento">Avvento</option>
+                </select>
+            </div>
+
+            <!-- Elenco canti -->
+            <ul id="cantiList"></ul>
         </div>
     </div>
-</body>
 
+    <!-- Collegamento al file JavaScript -->
+    <script src="../javascript/elenco_canti.js"></script>
+</body>
 
 </html>
