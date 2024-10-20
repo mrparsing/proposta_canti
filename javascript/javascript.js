@@ -166,7 +166,6 @@ function calcolaFestivita(anno) {
     const quaresima = calcolaQuaresima(anno);
     const domenicheTempoOrdinario = calcolaDomenicheTempoOrdinario(anno);
     const domenicheQuaresima = calcolaDomenicheQuaresima(anno)
-    tipologia_anno(anno)
 
     const festivita = [];
 
@@ -220,17 +219,18 @@ document.addEventListener('DOMContentLoaded', function () {
     window.onload = function () {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
-            console.log("ciao", savedTheme);
             document.body.classList.add('dark-theme');
         }
     }
     const oggi = new Date();
+    oggi.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
     const festivita = calcolaFestivita(oggi.getFullYear());
     console.log(festivita);
     const prox_celebrazioni = [];
 
     for (const festivitaItem of festivita) {
         if (festivitaItem.data >= oggi) {
+            console.log(festivitaItem);
             prox_celebrazioni.push(festivitaItem);
             if (prox_celebrazioni.length === 9) {
                 break;
