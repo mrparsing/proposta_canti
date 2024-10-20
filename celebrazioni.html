@@ -52,7 +52,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno } = getQueryParams();
-            const jsonFile = `db/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            const jsonFile = `/db/celebrazioni_anno_${anno.toLowerCase()}.json`;
 
             fetch(jsonFile)
                 .then(response => response.json())
