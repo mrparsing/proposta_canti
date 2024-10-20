@@ -36,14 +36,33 @@
         </div>
 
         <div class="main-content" id="main-content">
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()"
-                onemptied="mostraLettere()">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar_2()">
 
-            <ul id="cantiList">
-            </ul>
+            <div class="filter-container">
+                <label for="authorInput">Autore:</label>
+                <input type="text" id="authorInput" placeholder="Inserisci autore" onkeyup="filter_search_bar_2()">
+            
+                <label for="typeSelect">Tipologia:</label>
+                <select id="typeSelect" onchange="filter_search_bar_2()">
+                    <option value="">Tutti</option>
+                    <option value="Ingresso">Ingresso</option>
+                    <option value="Salmo">Salmo</option>
+                    <option value="Messa">Messa</option>
+                    <option value="Mariano">Mariano</option>
+                </select>
+            
+                <label for="tempoSelect">Tempo:</label>
+                <select id="tempoSelect" onchange="filter_search_bar_2()">
+                    <option value="">Tutti</option>
+                    <option value="Avvento">Avvento</option>
+                    <option value="Natale">Natale</option>
+                    <option value="Quaresima">Quaresima</option>
+                    <option value="Pasqua">Pasqua</option>
+                    <option value="Ordinario">Ordinario</option>
+                </select>
+            </div>
         </div>
     </div>
 </body>
-
 
 </html>
