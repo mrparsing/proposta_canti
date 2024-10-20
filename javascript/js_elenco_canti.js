@@ -16,7 +16,7 @@ fetch('../db/canti.json')
         groupedCanti[letter].forEach(canto => {
             const li = document.createElement('li');
             li.onclick = toggleDetails;
-            li.setAttribute('data-letter', letter);
+            li.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
 
             const span = document.createElement('span');
             span.textContent = canto.titolo;
@@ -104,32 +104,3 @@ for (let j = 0; j < headers.length; j++) {
     }
 }
 }
-/*
-function filter_search_bar_2() {
-    const searchValue = document.getElementById('searchInput').value.toLowerCase();
-    const authorValue = document.getElementById('authorInput').value.toLowerCase();
-    const typeValue = document.getElementById('typeSelect').value;
-    const tempoValue = document.getElementById('tempoSelect').value;
-
-    const cantiList = document.getElementById('cantiList');
-    const items = cantiList.getElementsByTagName('li');
-    
-    for (let i = 0; i < items.length; i++) {
-        const canto = items[i];
-        const cantoText = canto.querySelector('span').textContent.toLowerCase();
-        const cantoAuthor = canto.getAttribute('data-author') ? canto.getAttribute('data-author').toLowerCase() : '';
-        const cantoType = canto.getAttribute('data-type');
-        const cantoTempo = canto.getAttribute('data-tempo');
-
-        const matchSearch = cantoText.includes(searchValue);
-        const matchAuthor = cantoAuthor.includes(authorValue);
-        const matchType = !typeValue || cantoType === typeValue;
-        const matchTempo = !tempoValue || cantoTempo === tempoValue;
-
-        if (matchSearch && matchAuthor && matchType && matchTempo) {
-            canto.style.display = '';
-        } else {
-            canto.style.display = 'none';
-        }
-    }
-}*/

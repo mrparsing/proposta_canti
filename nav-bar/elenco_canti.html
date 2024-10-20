@@ -36,10 +36,14 @@
         </div>
 
         <div class="main-content" id="main-content">
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar_2()">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()"
+                onemptied="mostraLettere()">
 
+            <ul id="cantiList">
+            </ul>
         </div>
     </div>
 </body>
+
 
 </html>
