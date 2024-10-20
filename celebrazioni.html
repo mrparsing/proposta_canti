@@ -55,7 +55,7 @@
             const { numero, anno, festivita } = getQueryParams();
             const jsonFile = ""
             if (festivita === "ordinario") {
-                jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
+                const jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
             } else if (festivita === "natale") {
                 // gestisci natale
             } else if (festivita === "avvento") {
