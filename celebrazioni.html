@@ -35,10 +35,17 @@
 
                 const link_salmo = celebrazione.salmo_link;
                 if (link_salmo) {
-                    document.getElementById('link_salmo').setAttribute('href', link_salmo);
+                    // Assicurati che il link termini con .pdf
+                    if (!link_salmo.endsWith('.pdf')) {
+                        // Se il link non termina con .pdf, puoi modificarlo qui
+                        document.getElementById('link_salmo').setAttribute('href', link_salmo + '.pdf');
+                    } else {
+                        document.getElementById('link_salmo').setAttribute('href', link_salmo);
+                    }
                 } else {
                     document.getElementById('link_salmo').style.display = 'none';
                 }
+
 
                 document.querySelector('#seconda-lettura').innerHTML = celebrazione.seconda_lettura_testo;
                 document.querySelector('#vangelo').innerHTML = celebrazione.vangelo;
@@ -102,7 +109,7 @@
         <p id="prima-lettura"></p>
 
         <h2>Salmo Responsoriale</h2>
-        <p><a id="link_salmo" href="#" download>Salmo Responsoriale</a></p>
+        <p><a id="link_salmo" href="#.pdf" download>Salmo Responsoriale</a></p>
         <p id="salmo"></p>
 
         <h2>Seconda Lettura</h2>
