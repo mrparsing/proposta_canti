@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="styles/style_index.css">
     <script src="javascript/theme.js"></script>
     <title>Proposta Canti - Domenica Tempo Ordinario</title>
-    <style>
-        .navbar {
-            background-color: #2a9a5c;
-        }
-    </style>
 
     <script>
         function getQueryParams() {
@@ -27,15 +22,17 @@
             if (celebrazione) {
                 document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
                 document.querySelector('#title').innerHTML = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                const colore = celebrazione.colore;
+                document.querySelector("#myNavbar").setAttribute("style", `background-color: ${colore};`);
                 document.querySelector('#antifona-ingresso').innerHTML = celebrazione.antifona_ingresso;
-                document.querySelector('#canto-ingresso').innerHTML = celebrazione.canto_ingresso || "N/A";
+                document.querySelector('#canto-ingresso').innerHTML = celebrazione.canto_ingresso || "";
                 document.querySelector('#atto-penitenziale').innerHTML = celebrazione.atto_penitenziale;
                 document.querySelector('#tropo-1').innerHTML = celebrazione.tropo_1;
                 document.querySelector('#tropo-2').innerHTML = celebrazione.tropo_2;
                 document.querySelector('#tropo-3').innerHTML = celebrazione.tropo_3;
                 document.querySelector('#prima-lettura').innerHTML = celebrazione.prima_lettura_testo;
-                document.querySelector('#salmo').innerHTML = celebrazione.salmo_testo || "N/A";
-                
+                document.querySelector('#salmo').innerHTML = celebrazione.salmo_testo;
+
                 const link_salmo = celebrazione.salmo_link;
                 if (link_salmo) {
                     document.getElementById('link_salmo').setAttribute('href', link_salmo);
@@ -43,11 +40,11 @@
                     document.getElementById('link_salmo').style.display = 'none';
                 }
 
-                document.querySelector('#seconda-lettura').innerHTML = celebrazione.seconda_lettura_testo || "N/A";
-                document.querySelector('#vangelo').innerHTML = celebrazione.vangelo || "N/A";
-                document.querySelector('#canto-offertorio').innerHTML = celebrazione.canto_offertorio || "N/A";
-                document.querySelector('#canto-comunione').innerHTML = celebrazione.canto_comunione || "N/A";
-                document.querySelector('#antifona-alla-comunione').innerHTML = celebrazione.antifona_alla_comunione || "N/A";
+                document.querySelector('#seconda-lettura').innerHTML = celebrazione.seconda_lettura_testo;
+                document.querySelector('#vangelo').innerHTML = celebrazione.vangelo;
+                document.querySelector('#canto-offertorio').innerHTML = celebrazione.canto_offertorio;
+                document.querySelector('#canto-comunione').innerHTML = celebrazione.canto_comunione;
+                document.querySelector('#antifona-alla-comunione').innerHTML = celebrazione.antifona_alla_comunione;
             } else {
                 document.body.innerHTML = `<p class="error">Errore: Celebrazione non trovata per numero ${numero} e anno ${anno}.</p>`;
             }
