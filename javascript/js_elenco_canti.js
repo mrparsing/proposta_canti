@@ -105,17 +105,17 @@ for (let j = 0; j < headers.length; j++) {
 }
 }
 
-function filter_search_bar() {
+function filter_search_bar_2() {
     const searchValue = document.getElementById('searchInput').value.toLowerCase();
     const authorValue = document.getElementById('authorInput').value.toLowerCase();
     const typeValue = document.getElementById('typeSelect').value;
     const tempoValue = document.getElementById('tempoSelect').value;
-    
-    const canti = document.querySelectorAll('#cantiList li'); // Assicurati che i canti siano sotto tag <li>
+
+    const canti = document.querySelectorAll('#cantiList li');
 
     canti.forEach(canto => {
         const cantoText = canto.textContent.toLowerCase();
-        const cantoAuthor = canto.getAttribute('data-author').toLowerCase(); // Assicurati di aggiungere data-author ai canti
+        const cantoAuthor = canto.getAttribute('data-author').toLowerCase();
         const cantoType = canto.getAttribute('data-type');
         const cantoTempo = canto.getAttribute('data-tempo');
 
