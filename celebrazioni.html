@@ -35,9 +35,15 @@
                 document.querySelector('#tropo-3').innerHTML = celebrazione.tropo_3;
                 document.querySelector('#prima-lettura').textContent = celebrazione.prima_lettura_testo;
                 document.querySelector('#salmo').textContent = celebrazione.salmo_testo || "N/A";
+                
                 const link_salmo = celebrazione.salmo_link;
-                document.getElementById('link_salmo').setAttribute('href', link_salmo);
-                document.querySelector('#seconda-lettura').textContent = celebrazione.seconda_lettura_testo || "N/A"; // Seconda Lettura
+                if (link_salmo) {
+                    document.getElementById('link_salmo').setAttribute('href', link_salmo);
+                } else {
+                    document.getElementById('link_salmo').style.display = 'none';
+                }
+
+                document.querySelector('#seconda-lettura').textContent = celebrazione.seconda_lettura_testo || "N/A";
                 document.querySelector('#vangelo').textContent = celebrazione.vangelo || "N/A";
                 document.querySelector('#canto-offertorio').textContent = celebrazione.canto_offertorio || "N/A";
                 document.querySelector('#canto-comunione').textContent = celebrazione.canto_comunione || "N/A";
@@ -49,13 +55,17 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno } = getQueryParams();
+            const jsonFile = `db/celebrazioni_anno_${anno.toLowerCase()}.json`;
 
-            fetch('db/celebrazioni_anno_a.json')
+            fetch(jsonFile)
                 .then(response => response.json())
                 .then(data => {
                     populatePage(data, numero, anno);
                 })
-                .catch(error => console.error('Errore nel caricamento del JSON:', error));
+                .catch(error => {
+                    console.error('Errore nel caricamento del JSON:', error);
+                    document.body.innerHTML = `<p class="error">Si è verificato un errore durante il caricamento delle informazioni. Riprova più tardi.</p>`;
+                });
         });
     </script>
 </head>
@@ -96,10 +106,10 @@
 
         <h2>Salmo Responsoriale</h2>
         <p><a id="link_salmo" href="#" download>Salmo Responsoriale</a></p>
-        <p id="salmo"></p> <!-- Salmo -->
+        <p id="salmo"></p>
 
         <h2>Seconda Lettura</h2>
-        <p id="seconda-lettura"></p> <!-- Seconda Lettura -->
+        <p id="seconda-lettura"></p>
 
         <h2>Vangelo</h2>
         <p id="vangelo"></p>
