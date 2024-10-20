@@ -104,7 +104,7 @@ for (let j = 0; j < headers.length; j++) {
     }
 }
 }
-
+/*
 function filter_search_bar_2() {
     const searchValue = document.getElementById('searchInput').value.toLowerCase();
     const authorValue = document.getElementById('authorInput').value.toLowerCase();
@@ -132,4 +132,4 @@ function filter_search_bar_2() {
             canto.style.display = 'none';
         }
     }
-}
+}*/
