@@ -16,7 +16,7 @@ fetch('../db/canti.json')
         groupedCanti[letter].forEach(canto => {
             const li = document.createElement('li');
             li.onclick = toggleDetails;
-            li.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
+            li.setAttribute('data-letter', letter);
 
             const span = document.createElement('span');
             span.textContent = canto.titolo;
@@ -25,7 +25,7 @@ fetch('../db/canti.json')
             const detailsDiv = document.createElement('div');
             detailsDiv.className = 'canto-details';
             detailsDiv.style.display = 'none';
-            detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
+            detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia} | <strong>Tempo: </strong> ${canto.tempo}`;
 
             const linksDiv = document.createElement('div');
             const ascoltaLink = document.createElement('a');
@@ -103,4 +103,31 @@ for (let j = 0; j < headers.length; j++) {
         headers[j].style.display = 'none';  // Nascondi la lettera se non ci sono risultati
     }
 }
+}
+
+function filter_search_bar() {
+    const searchValue = document.getElementById('searchInput').value.toLowerCase();
+    const authorValue = document.getElementById('authorInput').value.toLowerCase();
+    const typeValue = document.getElementById('typeSelect').value;
+    const tempoValue = document.getElementById('tempoSelect').value;
+    
+    const canti = document.querySelectorAll('#cantiList li'); // Assicurati che i canti siano sotto tag <li>
+
+    canti.forEach(canto => {
+        const cantoText = canto.textContent.toLowerCase();
+        const cantoAuthor = canto.getAttribute('data-author').toLowerCase(); // Assicurati di aggiungere data-author ai canti
+        const cantoType = canto.getAttribute('data-type');
+        const cantoTempo = canto.getAttribute('data-tempo');
+
+        const matchSearch = cantoText.includes(searchValue);
+        const matchAuthor = cantoAuthor.includes(authorValue);
+        const matchType = !typeValue || cantoType === typeValue;
+        const matchTempo = !tempoValue || cantoTempo === tempoValue;
+
+        if (matchSearch && matchAuthor && matchType && matchTempo) {
+            canto.style.display = '';
+        } else {
+            canto.style.display = 'none';
+        }
+    });
 }

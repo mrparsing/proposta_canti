@@ -59,9 +59,9 @@
             } else if (festivita === "natale") {
                 // gestisci natale
             } else if (festivita === "avvento") {
-                jsonFile = `db/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
+                jsonFile = `db/tempi_liturgici/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
             } else if (festivita === "quaresima") {
-                jsonFile = `db/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
+                jsonFile = `db/tempi_liturgici/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
             }
 
             fetch(jsonFile)
