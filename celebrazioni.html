@@ -53,14 +53,15 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno, festivita } = getQueryParams();
+            const jsonFile = ""
             if (festivita === "ordinario") {
-                const jsonFile = `db/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
+                jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
             } else if (festivita === "natale") {
                 // gestisci natale
             } else if (festivita === "avvento") {
-                const jsonFile = `db/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
+                jsonFile = `db/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
             } else if (festivita === "quaresima") {
-                const jsonFile = `db/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
+                jsonFile = `db/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
             }
 
             fetch(jsonFile)
