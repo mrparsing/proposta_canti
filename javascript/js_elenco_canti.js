@@ -35,7 +35,7 @@ fetch('../db/canti.json')
             linksDiv.appendChild(ascoltaLink);
 
             const scaricaLink = document.createElement('a');
-            scaricaLink.innerHTML = canto.scarica;
+            scaricaLink.href = canto.download_link;
             scaricaLink.className = 'link-button';
             scaricaLink.textContent = 'Scarica';
             linksDiv.appendChild(scaricaLink);
