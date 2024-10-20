@@ -53,7 +53,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno, festivita } = getQueryParams();
-            const jsonFile = ""
+            let jsonFile = ""
             if (festivita === "ordinario") {
                 jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
             } else if (festivita === "natale") {
