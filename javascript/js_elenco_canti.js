@@ -2,7 +2,7 @@ function carica_canti() {
     fetch('../db/canti.json')
         .then(response => response.json())
         .then(data => {
-            const cantiList = document.getElementById('cantiList');
+            const list = document.getElementById('list');
             const groupedCanti = groupCantiByLetter(data.canti);
 
             Object.keys(groupedCanti).forEach(letter => {
@@ -10,7 +10,7 @@ function carica_canti() {
                 letterHeader.textContent = letter;
                 letterHeader.className = 'letter-header';
                 letterHeader.setAttribute('data-letter', letter);
-                cantiList.appendChild(letterHeader);
+                list.appendChild(letterHeader);
 
                 groupedCanti[letter].forEach(canto => {
                     const li = document.createElement('li');
@@ -45,7 +45,7 @@ function carica_canti() {
                     detailsDiv.appendChild(linksDiv);
                     li.appendChild(detailsDiv);
 
-                    cantiList.appendChild(li);
+                    list.appendChild(li);
                 });
             });
         })
@@ -78,8 +78,8 @@ function groupCantiByLetter(canti) {
 
 function filter_search_bar() {
     const input = document.getElementById('searchInput').value.toUpperCase();
-    const cantiList = document.getElementById('cantiList');
-    const items = cantiList.getElementsByTagName('li');
+    const list = document.getElementById('list');
+    const items = list.getElementsByTagName('li');
     const headers = document.getElementsByClassName('letter-header');
 
     let letterFound = {}; // Oggetto per tenere traccia delle lettere con risultati
@@ -115,8 +115,8 @@ function filter_search_bar_2() {
     const typeValue = document.getElementById('typeSelect').value;
     const tempoValue = document.getElementById('tempoSelect').value;
 
-    const cantiList = document.getElementById('cantiList');
-    const items = cantiList.getElementsByTagName('li');
+    const list = document.getElementById('list');
+    const items = list.getElementsByTagName('li');
 
     // Nascondi tutte le lettere prima di filtrare
     const headers = document.getElementsByClassName('letter-header');

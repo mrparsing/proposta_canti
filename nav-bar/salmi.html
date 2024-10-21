@@ -27,7 +27,7 @@
         <div class="main-content" id="main-content">
             <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
 
-            <ul id="salmiList">
+            <ul id="list">
                 <!-- Gli elementi verranno generati dinamicamente qui -->
             </ul>
         </div>
@@ -37,7 +37,7 @@
         // Funzione che filtra gli elementi della lista basata sul testo inserito nella barra di ricerca
         function filter_search_bar() {
             const input = document.getElementById('searchInput').value.toLowerCase();
-            const listItems = document.querySelectorAll('#salmiList li a');
+            const listItems = document.querySelectorAll('#list li a');
 
             listItems.forEach(function (item) {
                 const text = item.textContent.toLowerCase();
@@ -55,8 +55,8 @@
         }
 
         function caricaSalmi(salmi) {
-            const salmiList = document.getElementById('salmiList');
-            salmiList.innerHTML = '';
+            const list = document.getElementById('list');
+            list.innerHTML = '';
 
             const anno = getQueryParams();
             const salmiFiltrati = salmi.filter(salmo => salmo.anno === anno);
@@ -67,7 +67,7 @@
                 link.href = salmo.download_link;
                 link.innerHTML = `${salmo.titolo}<br>${salmo.autore}`;
                 li.appendChild(link);
-                salmiList.appendChild(li);
+                list.appendChild(li);
             });
         }
 
