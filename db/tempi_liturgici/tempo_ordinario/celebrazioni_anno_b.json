@@ -1,9 +1,9 @@
 {
     "celebrazioni": [
         {
-            "title": "{titolo della domenica}",
+            "title": "I domenica tempo ordinario",
             "numero": 1,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -24,7 +24,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 2,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -45,7 +45,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 3,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -66,7 +66,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 4,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -87,7 +87,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 5,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -108,7 +108,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 6,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -129,7 +129,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 7,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -150,7 +150,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 8,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -171,7 +171,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 9,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -192,7 +192,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 10,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -213,7 +213,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 11,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -234,7 +234,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 12,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -255,7 +255,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 13,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -276,7 +276,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 14,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -297,7 +297,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 15,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -318,7 +318,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 16,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -339,7 +339,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 17,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -360,7 +360,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 18,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -381,7 +381,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 19,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -402,7 +402,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 20,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -423,7 +423,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 21,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -444,7 +444,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 22,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -465,7 +465,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 23,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -486,7 +486,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 24,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -507,7 +507,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 25,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -528,7 +528,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 26,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -549,7 +549,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 27,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -571,7 +571,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 28,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -591,7 +591,7 @@
         },        {
             "title": "{titolo della domenica}",
             "numero": 29,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -654,7 +654,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 32,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
@@ -675,7 +675,7 @@
         {
             "title": "{titolo della domenica}",
             "numero": 33,
-            "anno": "{anno}",
+            "anno": "B",
             "colore": "#2a9a5c",
             "antifona_ingresso": "{testo dell'antifona d'ingresso}",
             "canto_ingresso": "{canto d'ingresso}",
