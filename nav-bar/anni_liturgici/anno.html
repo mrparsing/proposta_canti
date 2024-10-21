@@ -76,11 +76,11 @@
         function caricaDatiCelebrazioni() {
             const anno = getQueryParams();
             const jsonFile = `../../db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
-            console.log("sofjnsdofnsdf", jsonFile);
+
             fetch(jsonFile)
                 .then(response => response.json()) // Converte la risposta in JSON
                 .then(data => {
-                    generaListaCelebrazioni(data); // Passa i dati alla funzione che genera la lista
+                    generaListaCelebrazioni(data.celebrazioni); // Passa i dati alla funzione che genera la lista
                 })
                 .catch(error => {
                     console.error('Errore durante il caricamento dei dati:', error);
