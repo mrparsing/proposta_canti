@@ -14,18 +14,18 @@
             <h1>Salmi</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
             <div class="navbar-buttons">
-                <button onclick="location.href='../../index.html'">Home</button>
-                <button onclick="location.href='../elenco_canti.html'">Elenco canti</button>
-                <button onclick="location.href='../spartiti_salmi.html'">Spartiti salmi</button>
-                <button onclick="location.href='../anno_liturgico.html'">Anno liturgico</button>
-                <button onclick="location.href='../eventi_speciali.html'">Eventi speciali</button>
-                <button onclick="location.href='../imp_supporto.html'">Impostazioni/Supporto</button>
-                <input type="text" placeholder="Cerca salmo...">
+                <button onclick="location.href='../index.html'">Home</button>
+                <button onclick="location.href='elenco_canti.html'">Elenco canti</button>
+                <button onclick="location.href='spartiti_salmi.html'">Spartiti salmi</button>
+                <button onclick="location.href='anno_liturgico.html'">Anno liturgico</button>
+                <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
+                <button onclick="location.href='imp_supporto.html'">Impostazioni/Supporto</button>
+                <input type="text" placeholder="Cerca...">
             </div>
         </div>
 
         <div class="main-content" id="main-content">
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
+            <input type="text" id="searchInput" placeholder="Cerca celebrazioni..." onkeyup="filter_search_bar()">
 
             <ul id="list">
                 <!-- Gli elementi verranno generati dinamicamente qui -->
@@ -65,7 +65,7 @@
                 const li = document.createElement('li');
                 const link = document.createElement('a');
                 link.href = salmo.download_link;
-                link.innerHTML = `${salmo.titolo}<br>${salmo.autore}`;
+                link.innerHTML = `${salmo.titolo} - ${salmo.autore}`;
                 li.appendChild(link);
                 list.appendChild(li);
             });
