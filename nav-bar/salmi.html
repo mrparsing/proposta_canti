@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celebrazioni</title>
-    <script src="../javascript/js_elenco_canti.js"></script>
     <script src="../javascript/javascript.js"></script>
 
 </head>
@@ -91,6 +90,8 @@
             fetch(jsonFile)
                 .then(response => response.json()) // Converte la risposta in JSON
                 .then(data => {
+                    console.log(data);
+                    console.log(data.salmi);
                     caricaSalmi(data); // Passa i dati alla funzione che genera la lista
                 })
                 .catch(error => {
