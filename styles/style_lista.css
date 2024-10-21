@@ -172,3 +172,79 @@
     padding: 5px;
     font-size: 16px;
 }
+
+.filters-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.filters-container label {
+    font-weight: bold;
+    color: var(--text-color);
+    /* Colore del testo coerente con il tema */
+}
+
+.filters-container input,
+.filters-container select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    width: 100%;
+    /* Adatta alla larghezza massima */
+}
+
+/* Effetto hover sugli input */
+.filters-container input:hover,
+.filters-container select:hover {
+    border-color: #4A90E2;
+    /* Cambia colore del bordo al passaggio del mouse */
+}
+
+.filters-container input:focus,
+.filters-container select:focus {
+    outline: none;
+    border-color: #4A90E2;
+}
+
+/* Tema scuro */
+.dark-theme .filters-container input,
+.dark-theme .filters-container select {
+    border: 1px solid #555;
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+.dark-theme .filters-container input:focus,
+.dark-theme .filters-container select:focus {
+    border-color: #4A90E2;
+    background-color: #444;
+}
+
+
+#resetFiltersBtn {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #e74c3c;
+    /* Colore del pulsante */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+/* Effetto hover per il pulsante */
+#resetFiltersBtn:hover {
+    background-color: #c0392b;
+    /* Cambia colore al passaggio del mouse */
+}

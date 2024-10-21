@@ -1,108 +1,106 @@
 fetch('../db/canti.json')
-.then(response => response.json())
-.then(data => {
-    const cantiList = document.getElementById('cantiList');
-    const groupedCanti = groupCantiByLetter(data.canti);  // Raggruppare i canti per lettera
+    .then(response => response.json())
+    .then(data => {
+        const cantiList = document.getElementById('cantiList');
+        const groupedCanti = groupCantiByLetter(data.canti);
 
-    Object.keys(groupedCanti).forEach(letter => {
-        // Creare un elemento <div> per la lettera (intestazione)
-        const letterHeader = document.createElement('div');
-        letterHeader.textContent = letter;
-        letterHeader.className = 'letter-header';  // Stile per le intestazioni delle lettere
-        letterHeader.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
-        cantiList.appendChild(letterHeader);
+        Object.keys(groupedCanti).forEach(letter => {
+            const letterHeader = document.createElement('div');
+            letterHeader.textContent = letter;
+            letterHeader.className = 'letter-header';
+            letterHeader.setAttribute('data-letter', letter);
+            cantiList.appendChild(letterHeader);
 
-        // Creare un <li> per ciascun canto sotto la lettera corrispondente
-        groupedCanti[letter].forEach(canto => {
-            const li = document.createElement('li');
-            li.onclick = toggleDetails;
-            li.setAttribute('data-letter', letter);  // Attributo personalizzato per la ricerca
+            groupedCanti[letter].forEach(canto => {
+                const li = document.createElement('li');
+                li.onclick = toggleDetails;
+                li.setAttribute('data-letter', letter);
+                li.setAttribute('data-author', canto.autore);
+                li.setAttribute('data-type', canto.tipologia);
+                li.setAttribute('data-tempo', canto.tempo);
 
-            const span = document.createElement('span');
-            span.textContent = canto.titolo;
-            li.appendChild(span);
+                const span = document.createElement('span');
+                span.textContent = canto.titolo;
+                li.appendChild(span);
 
-            const detailsDiv = document.createElement('div');
-            detailsDiv.className = 'canto-details';
-            detailsDiv.style.display = 'none';
-            detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
+                const detailsDiv = document.createElement('div');
+                detailsDiv.className = 'canto-details';
+                detailsDiv.style.display = 'none';
+                detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
 
-            const linksDiv = document.createElement('div');
-            const ascoltaLink = document.createElement('a');
-            ascoltaLink.href = canto.ascolta;
-            ascoltaLink.className = 'link-button';
-            ascoltaLink.textContent = 'Ascolta';
-            linksDiv.appendChild(ascoltaLink);
+                const linksDiv = document.createElement('div');
+                const ascoltaLink = document.createElement('a');
+                ascoltaLink.href = canto.ascolta;
+                ascoltaLink.className = 'link-button';
+                ascoltaLink.textContent = 'Ascolta';
+                linksDiv.appendChild(ascoltaLink);
 
-            const scaricaLink = document.createElement('a');
-            scaricaLink.href = canto.download_link;
-            scaricaLink.className = 'link-button';
-            scaricaLink.textContent = 'Scarica';
-            linksDiv.appendChild(scaricaLink);
+                const scaricaLink = document.createElement('a');
+                scaricaLink.href = canto.download_link;
+                scaricaLink.className = 'link-button';
+                scaricaLink.textContent = 'Scarica';
+                linksDiv.appendChild(scaricaLink);
 
-            detailsDiv.appendChild(linksDiv);
-            li.appendChild(detailsDiv);
+                detailsDiv.appendChild(linksDiv);
+                li.appendChild(detailsDiv);
 
-            cantiList.appendChild(li);
+                cantiList.appendChild(li);
+            });
         });
-    });
-})
-.catch(error => console.error('Errore nel caricamento del file JSON:', error));
+    })
+    .catch(error => console.error('Errore nel caricamento del file JSON:', error));
 
-// Funzione per mostrare/nascondere i dettagli
 function toggleDetails(event) {
-const details = event.currentTarget.querySelector('.canto-details');
-details.style.display = details.style.display === 'none' ? 'block' : 'none';
+    const details = event.currentTarget.querySelector('.canto-details');
+    details.style.display = details.style.display === 'none' ? 'block' : 'none';
 }
 
-// Funzione per raggruppare i canti per lettera
 function groupCantiByLetter(canti) {
-const grouped = {};
-canti.sort((a, b) => a.titolo.localeCompare(b.titolo));  // Ordina i canti per titolo
+    const grouped = {};
+    canti.sort((a, b) => a.titolo.localeCompare(b.titolo));
 
-canti.forEach(canto => {
-    const firstLetter = canto.titolo.charAt(0).toUpperCase();
-    if (!grouped[firstLetter]) {
-        grouped[firstLetter] = [];
-    }
-    grouped[firstLetter].push(canto);
-});
+    canti.forEach(canto => {
+        const firstLetter = canto.titolo.charAt(0).toUpperCase();
+        if (!grouped[firstLetter]) {
+            grouped[firstLetter] = [];
+        }
+        grouped[firstLetter].push(canto);
+    });
 
-return grouped;
+    return grouped;
 }
 
-// Funzione per filtrare l'elenco in base alla barra di ricerca
 function filter_search_bar() {
-const input = document.getElementById('searchInput').value.toUpperCase();
-const cantiList = document.getElementById('cantiList');
-const items = cantiList.getElementsByTagName('li');
-const headers = document.getElementsByClassName('letter-header');
+    const input = document.getElementById('searchInput').value.toUpperCase();
+    const cantiList = document.getElementById('cantiList');
+    const items = cantiList.getElementsByTagName('li');
+    const headers = document.getElementsByClassName('letter-header');
 
-let letterFound = {}; // Oggetto per tenere traccia delle lettere con risultati
+    let letterFound = {}; // Oggetto per tenere traccia delle lettere con risultati
 
-// Nascondere o mostrare i canti in base alla ricerca
-for (let i = 0; i < items.length; i++) {
-    const span = items[i].getElementsByTagName('span')[0];
-    const txtValue = span.textContent || span.innerText;
-    const cantoLetter = items[i].getAttribute('data-letter');
+    // Nascondere o mostrare i canti in base alla ricerca
+    for (let i = 0; i < items.length; i++) {
+        const span = items[i].getElementsByTagName('span')[0];
+        const txtValue = span.textContent || span.innerText;
+        const cantoLetter = items[i].getAttribute('data-letter');
 
-    if (txtValue.toUpperCase().indexOf(input) > -1) {
-        items[i].style.display = '';  // Mostra i canti che corrispondono alla ricerca
-        letterFound[cantoLetter] = true;  // Segna la lettera come trovata
-    } else {
-        items[i].style.display = 'none';  // Nascondi i canti che non corrispondono
+        if (txtValue.toUpperCase().indexOf(input) > -1) {
+            items[i].style.display = '';  // Mostra i canti che corrispondono alla ricerca
+            letterFound[cantoLetter] = true;  // Segna la lettera come trovata
+        } else {
+            items[i].style.display = 'none';  // Nascondi i canti che non corrispondono
+        }
     }
-}
 
-// Mostrare solo le lettere che hanno risultati
-for (let j = 0; j < headers.length; j++) {
-    const letter = headers[j].getAttribute('data-letter');
-    if (letterFound[letter]) {
-        headers[j].style.display = '';  // Mostra la lettera se c'è un risultato
-    } else {
-        headers[j].style.display = 'none';  // Nascondi la lettera se non ci sono risultati
+    // Mostrare solo le lettere che hanno risultati
+    for (let j = 0; j < headers.length; j++) {
+        const letter = headers[j].getAttribute('data-letter');
+        if (letterFound[letter]) {
+            headers[j].style.display = '';  // Mostra la lettera se c'è un risultato
+        } else {
+            headers[j].style.display = 'none';  // Nascondi la lettera se non ci sono risultati
+        }
     }
-}
 }
 
 function filter_search_bar_2() {
@@ -113,13 +111,20 @@ function filter_search_bar_2() {
 
     const cantiList = document.getElementById('cantiList');
     const items = cantiList.getElementsByTagName('li');
-    
+
+    // Nascondi tutte le lettere prima di filtrare
+    const headers = document.getElementsByClassName('letter-header');
+    for (let j = 0; j < headers.length; j++) {
+        headers[j].style.display = 'none';
+    }
+
+    // Filtra e mostra i canti corrispondenti
     for (let i = 0; i < items.length; i++) {
         const canto = items[i];
         const cantoText = canto.querySelector('span').textContent.toLowerCase();
         const cantoAuthor = canto.getAttribute('data-author') ? canto.getAttribute('data-author').toLowerCase() : '';
-        const cantoType = canto.getAttribute('data-type');
-        const cantoTempo = canto.getAttribute('data-tempo');
+        const cantoType = canto.getAttribute('data-type') || '';
+        const cantoTempo = canto.getAttribute('data-tempo') || '';
 
         const matchSearch = cantoText.includes(searchValue);
         const matchAuthor = cantoAuthor.includes(authorValue);
@@ -127,10 +132,28 @@ function filter_search_bar_2() {
         const matchTempo = !tempoValue || cantoTempo === tempoValue;
 
         if (matchSearch && matchAuthor && matchType && matchTempo) {
-            canto.style.display = '';
+            canto.style.display = ''; // Mostra l'elemento
+            // Mostra anche la lettera corrispondente (intestazione)
+            const letter = canto.getAttribute('data-letter');
+            const header = document.querySelector(`.letter-header[data-letter="${letter}"]`);
+            if (header) {
+                header.style.display = '';
+            }
         } else {
-            canto.style.display = 'none';
+            canto.style.display = 'none'; // Nascondi l'elemento
         }
     }
 }
 
+
+function resetFilters() {
+    // Resetta il campo autore
+    document.getElementById('authorInput').value = '';
+
+    // Resetta i selettori
+    document.getElementById('typeSelect').value = '';
+    document.getElementById('tempoSelect').value = '';
+
+    // Esegui il filtro per aggiornare la lista
+    filter_search_bar_2();
+}
