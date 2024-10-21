@@ -88,12 +88,10 @@
             const anno = getQueryParams();
             const jsonFile = `../db/salmi/elenco_salmi.json`;
 
-            console.log(jsonFile);
-
             fetch(jsonFile)
                 .then(response => response.json()) // Converte la risposta in JSON
                 .then(data => {
-                    caricaSalmi(data.salmi); // Passa i dati alla funzione che genera la lista
+                    caricaSalmi(data); // Passa i dati alla funzione che genera la lista
                 })
                 .catch(error => {
                     console.error('Errore durante il caricamento dei dati:', error);
