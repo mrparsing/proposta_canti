@@ -77,7 +77,7 @@
             fetch(jsonFile)
                 .then(response => response.json())
                 .then(data => {
-                    caricaSalmi(data);
+                    caricaSalmi(data.salmi);
                 })
                 .catch(error => {
                     console.error('Errore durante il caricamento dei dati:', error);
