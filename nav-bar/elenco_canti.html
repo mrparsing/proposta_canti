@@ -158,6 +158,39 @@
             return grouped;
         }
 
+        function filter_search_bar() {
+            const input = document.getElementById('searchInput').value.toUpperCase();
+            const cantiList = document.getElementById('cantiList');
+            const items = cantiList.getElementsByTagName('li');
+            const headers = document.getElementsByClassName('letter-header');
+
+            let letterFound = {}; // Oggetto per tenere traccia delle lettere con risultati
+
+            // Nascondere o mostrare i canti in base alla ricerca
+            for (let i = 0; i < items.length; i++) {
+                const span = items[i].getElementsByTagName('span')[0];
+                const txtValue = span.textContent || span.innerText;
+                const cantoLetter = items[i].getAttribute('data-letter');
+
+                if (txtValue.toUpperCase().indexOf(input) > -1) {
+                    items[i].style.display = '';  // Mostra i canti che corrispondono alla ricerca
+                    letterFound[cantoLetter] = true;  // Segna la lettera come trovata
+                } else {
+                    items[i].style.display = 'none';  // Nascondi i canti che non corrispondono
+                }
+            }
+
+            // Mostrare solo le lettere che hanno risultati
+            for (let j = 0; j < headers.length; j++) {
+                const letter = headers[j].getAttribute('data-letter');
+                if (letterFound[letter]) {
+                    headers[j].style.display = '';  // Mostra la lettera se c'è un risultato
+                } else {
+                    headers[j].style.display = 'none';  // Nascondi la lettera se non ci sono risultati
+                }
+            }
+        }
+
         function filter_search_bar_2() {
             const searchValue = document.getElementById('searchInput').value.toLowerCase();
             const authorValue = document.getElementById('authorInput').value.toLowerCase();
