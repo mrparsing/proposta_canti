@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celebrazioni</title>
     <script src="../javascript/javascript.js"></script>
-
 </head>
 
 <body>
@@ -37,18 +36,11 @@
     <script>
         // Funzione che filtra gli elementi della lista basata sul testo inserito nella barra di ricerca
         function filter_search_bar() {
-            // Ottieni l'input dell'utente e convertilo in minuscolo per una ricerca case-insensitive
             const input = document.getElementById('searchInput').value.toLowerCase();
-
-            // Seleziona tutti i link (a) nella lista di canti
             const listItems = document.querySelectorAll('#salmiList li a');
 
-            // Cicla attraverso tutti i link per verificare se corrispondono alla ricerca
             listItems.forEach(function (item) {
-                // Ottieni il testo del link e lo converte in minuscolo
                 const text = item.textContent.toLowerCase();
-
-                // Mostra o nasconde l'elemento in base alla corrispondenza tra il testo e il filtro
                 if (text.includes(input)) {
                     item.parentElement.style.display = ""; // Mostra l'elemento
                 } else {
@@ -59,23 +51,17 @@
 
         function getQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);
-            const anno = urlParams.get('anno');
-            return anno;
+            return urlParams.get('anno');
         }
 
-        function caricaSalmi(anno) {
-            // Ottieni la lista HTML dove aggiungere i salmi
+        function caricaSalmi(salmi) {
             const salmiList = document.getElementById('salmiList');
-            // Pulisci la lista prima di aggiungere nuovi elementi
             salmiList.innerHTML = '';
 
-            // Filtra i salmi in base all'anno selezionato
+            const anno = getQueryParams();
             const salmiFiltrati = salmi.filter(salmo => salmo.anno === anno);
 
-            console.log(salmiFiltrati);
-
-            // Crea elementi della lista per i salmi filtrati
-            salmiFiltrati.forEach(salmo => {
+            salmiFiltrati.forEach(function (salmo) {
                 const li = document.createElement('li');
                 const link = document.createElement('a');
                 link.href = salmo.download_link;
@@ -86,26 +72,21 @@
         }
 
         function caricaJsonSalmi() {
-            const anno = getQueryParams();
             const jsonFile = `../db/salmi/elenco_salmi.json`;
 
             fetch(jsonFile)
-                .then(response => response.json()) // Converte la risposta in JSON
+                .then(response => response.json())
                 .then(data => {
-                    console.log(data);
-                    console.log(data.salmi);
-                    caricaSalmi(data); // Passa i dati alla funzione che genera la lista
+                    caricaSalmi(data);
                 })
                 .catch(error => {
                     console.error('Errore durante il caricamento dei dati:', error);
                 });
         }
 
-        // Inizializza la lista al caricamento della pagina
         document.addEventListener('DOMContentLoaded', function () {
-            caricaJsonSalmi(getQueryParams());
+            caricaJsonSalmi();
         });
-
     </script>
 </body>
 <link rel="stylesheet" href="../styles/style_index.css">
