@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anno A</title>
+    <script src="../../javascript/js_search_bar.js"></script>
+    <link rel="stylesheet" href="../../styles/style_index.css">
+    <link rel="stylesheet" href="../../styles/style_lista.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Anno A</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button onclick="location.href='../../index.html'">Home</button>
+                <button onclick="location.href='../elenco_canti.html'">Elenco canti</button>
+                <button onclick="location.href='../spartiti_salmi.html'">Spartiti salmi</button>
+                <button onclick="location.href='../anno_liturgico.html'">Anno liturgico</button>
+                <button onclick="location.href='../eventi_speciali.html'">Eventi speciali</button>
+                <button onclick="location.href='../imp_supporto.html'">Impostazioni/Supporto</button>
+                <input type="text" placeholder="Cerca salmo...">
+            </div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
+
+            <ul id="cantiList">
+                <!-- Gli elementi verranno generati dinamicamente qui -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const anno = urlParams.get('anno');
+            return anno;
+        }
+
+        // Funzione che genera la lista di titoli delle celebrazioni
+        function generaListaCelebrazioni(celebrazioni) {
+            const lista = document.getElementById('cantiList');
+
+            // Pulisce la lista esistente
+            lista.innerHTML = '';
+
+            // Cicla attraverso tutte le celebrazioni nel JSON
+            celebrazioni.forEach(function (celebrazione) {
+                // Crea un nuovo elemento 'li'
+                const li = document.createElement('li');
+
+                // Crea un link (a) per rendere l'elemento cliccabile
+                const link = document.createElement('a');
+
+                link.textContent = celebrazione.title; // Imposta il titolo della celebrazione
+                // Collegamento dinamico alla pagina HTML con parametri della celebrazione
+                link.href = `celebrazioni.html?numero=${celebrazione.numero}&anno=${celebrazione.anno}&festivita=ordinario`;
+                link.className = 'celebrazione-link'; // Aggiungi una classe per styling, se necessario
+
+                // Aggiungi il link al 'li'
+                li.appendChild(link);
+
+                // Aggiungi il 'li' alla lista
+                lista.appendChild(li);
+            });
+        }
+
+
+        // Funzione che carica i dati dal file JSON
+        function caricaDatiCelebrazioni() {
+            const anno = getQueryParams();
+            const jsonFile = `../../db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            console.log("sofjnsdofnsdf", jsonFile);
+            fetch(jsonFile)
+                .then(response => response.json()) // Converte la risposta in JSON
+                .then(data => {
+                    generaListaCelebrazioni(data); // Passa i dati alla funzione che genera la lista
+                })
+                .catch(error => {
+                    console.error('Errore durante il caricamento dei dati:', error);
+                });
+        }
+
+        // Inizializza la lista al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function () {
+            caricaDatiCelebrazioni();
+        });
+
+    </script>
+</body>
+
+</html>
