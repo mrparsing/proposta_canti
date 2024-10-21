@@ -143,6 +143,28 @@
                 carica_canti();
             });
         }
+
+        function filter_search_bar() {
+            // Ottieni l'input dell'utente e convertilo in minuscolo per una ricerca case-insensitive
+            const input = document.getElementById('searchInput').value.toLowerCase();
+
+            // Seleziona tutti i link (a) nella lista di canti
+            const listItems = document.querySelectorAll('#list li a');
+
+            // Cicla attraverso tutti i link per verificare se corrispondono alla ricerca
+            listItems.forEach(function (item) {
+                // Ottieni il testo del link e lo converte in minuscolo
+                const text = item.textContent.toLowerCase();
+
+                // Mostra o nasconde l'elemento in base alla corrispondenza tra il testo e il filtro
+                if (text.includes(input)) {
+                    item.parentElement.style.display = ""; // Mostra l'elemento
+                } else {
+                    item.parentElement.style.display = "none"; // Nascondi l'elemento
+                }
+            });
+        }
+
     </script>
 </head>
 
