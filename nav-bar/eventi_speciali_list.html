@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventi speciali</title>
     <script src="../javascript/javascript.js"></script>
+    <script src="../javascript/js_elenco_canti.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
     <link rel="stylesheet" href="../styles/style_index.css">
 
@@ -86,86 +87,6 @@
             const navbar = document.getElementById('myNavbar');
             navbar.classList.toggle('active');
         }
-
-        function carica_canti() {
-            fetch('../db/canti_eventi_speciali.json')
-                .then(response => response.json())
-                .then(data => {
-                    const list = document.getElementById('list');
-                    const groupedCanti = groupCantiByLetter(data.canti);
-
-                    Object.keys(groupedCanti).forEach(letter => {
-                        const letterHeader = document.createElement('div');
-                        letterHeader.textContent = letter;
-                        letterHeader.className = 'letter-header';
-                        letterHeader.setAttribute('data-letter', letter);
-                        list.appendChild(letterHeader);
-                        console.log("sdfsd");
-                        groupedCanti[letter].forEach(canto => {
-                            const li = document.createElement('li');
-                            li.onclick = toggleDetails;
-                            li.setAttribute('data-letter', letter);
-                            li.setAttribute('data-author', canto.autore);
-                            li.setAttribute('data-type', canto.tipologia);
-                            li.setAttribute('data-tempo', canto.tempo);
-
-                            const span = document.createElement('span');
-                            span.textContent = canto.titolo;
-                            li.appendChild(span);
-
-                            const detailsDiv = document.createElement('div');
-                            detailsDiv.className = 'canto-details';
-                            detailsDiv.style.display = 'none';
-                            detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
-
-                            const linksDiv = document.createElement('div');
-                            const ascoltaLink = document.createElement('a');
-                            ascoltaLink.href = canto.ascolta;
-                            ascoltaLink.className = 'link-button';
-                            ascoltaLink.textContent = 'Ascolta';
-                            linksDiv.appendChild(ascoltaLink);
-
-                            const scaricaLink = document.createElement('a');
-                            scaricaLink.href = canto.download_link;
-                            scaricaLink.className = 'link-button';
-                            scaricaLink.textContent = 'Scarica';
-                            linksDiv.appendChild(scaricaLink);
-
-                            detailsDiv.appendChild(linksDiv);
-                            li.appendChild(detailsDiv);
-
-                            list.appendChild(li);
-                        });
-                    });
-                })
-                .catch(error => console.error('Errore nel caricamento del file JSON:', error));
-
-            document.addEventListener('DOMContentLoaded', function () {
-                carica_canti();
-            });
-        }
-
-        function filter_search_bar() {
-            // Ottieni l'input dell'utente e convertilo in minuscolo per una ricerca case-insensitive
-            const input = document.getElementById('searchInput').value.toLowerCase();
-
-            // Seleziona tutti i link (a) nella lista di canti
-            const listItems = document.querySelectorAll('#list li a');
-
-            // Cicla attraverso tutti i link per verificare se corrispondono alla ricerca
-            listItems.forEach(function (item) {
-                // Ottieni il testo del link e lo converte in minuscolo
-                const text = item.textContent.toLowerCase();
-
-                // Mostra o nasconde l'elemento in base alla corrispondenza tra il testo e il filtro
-                if (text.includes(input)) {
-                    item.parentElement.style.display = ""; // Mostra l'elemento
-                } else {
-                    item.parentElement.style.display = "none"; // Nascondi l'elemento
-                }
-            });
-        }
-
     </script>
 </head>
 
