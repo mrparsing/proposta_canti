@@ -1,54 +1,60 @@
-fetch('../db/canti.json')
-    .then(response => response.json())
-    .then(data => {
-        const cantiList = document.getElementById('cantiList');
-        const groupedCanti = groupCantiByLetter(data.canti);
+function carica_canti() {
+    fetch('../db/canti.json')
+        .then(response => response.json())
+        .then(data => {
+            const cantiList = document.getElementById('cantiList');
+            const groupedCanti = groupCantiByLetter(data.canti);
 
-        Object.keys(groupedCanti).forEach(letter => {
-            const letterHeader = document.createElement('div');
-            letterHeader.textContent = letter;
-            letterHeader.className = 'letter-header';
-            letterHeader.setAttribute('data-letter', letter);
-            cantiList.appendChild(letterHeader);
+            Object.keys(groupedCanti).forEach(letter => {
+                const letterHeader = document.createElement('div');
+                letterHeader.textContent = letter;
+                letterHeader.className = 'letter-header';
+                letterHeader.setAttribute('data-letter', letter);
+                cantiList.appendChild(letterHeader);
 
-            groupedCanti[letter].forEach(canto => {
-                const li = document.createElement('li');
-                li.onclick = toggleDetails;
-                li.setAttribute('data-letter', letter);
-                li.setAttribute('data-author', canto.autore);
-                li.setAttribute('data-type', canto.tipologia);
-                li.setAttribute('data-tempo', canto.tempo);
+                groupedCanti[letter].forEach(canto => {
+                    const li = document.createElement('li');
+                    li.onclick = toggleDetails;
+                    li.setAttribute('data-letter', letter);
+                    li.setAttribute('data-author', canto.autore);
+                    li.setAttribute('data-type', canto.tipologia);
+                    li.setAttribute('data-tempo', canto.tempo);
 
-                const span = document.createElement('span');
-                span.textContent = canto.titolo;
-                li.appendChild(span);
+                    const span = document.createElement('span');
+                    span.textContent = canto.titolo;
+                    li.appendChild(span);
 
-                const detailsDiv = document.createElement('div');
-                detailsDiv.className = 'canto-details';
-                detailsDiv.style.display = 'none';
-                detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
+                    const detailsDiv = document.createElement('div');
+                    detailsDiv.className = 'canto-details';
+                    detailsDiv.style.display = 'none';
+                    detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
 
-                const linksDiv = document.createElement('div');
-                const ascoltaLink = document.createElement('a');
-                ascoltaLink.href = canto.ascolta;
-                ascoltaLink.className = 'link-button';
-                ascoltaLink.textContent = 'Ascolta';
-                linksDiv.appendChild(ascoltaLink);
+                    const linksDiv = document.createElement('div');
+                    const ascoltaLink = document.createElement('a');
+                    ascoltaLink.href = canto.ascolta;
+                    ascoltaLink.className = 'link-button';
+                    ascoltaLink.textContent = 'Ascolta';
+                    linksDiv.appendChild(ascoltaLink);
 
-                const scaricaLink = document.createElement('a');
-                scaricaLink.href = canto.download_link;
-                scaricaLink.className = 'link-button';
-                scaricaLink.textContent = 'Scarica';
-                linksDiv.appendChild(scaricaLink);
+                    const scaricaLink = document.createElement('a');
+                    scaricaLink.href = canto.download_link;
+                    scaricaLink.className = 'link-button';
+                    scaricaLink.textContent = 'Scarica';
+                    linksDiv.appendChild(scaricaLink);
 
-                detailsDiv.appendChild(linksDiv);
-                li.appendChild(detailsDiv);
+                    detailsDiv.appendChild(linksDiv);
+                    li.appendChild(detailsDiv);
 
-                cantiList.appendChild(li);
+                    cantiList.appendChild(li);
+                });
             });
-        });
-    })
-    .catch(error => console.error('Errore nel caricamento del file JSON:', error));
+        })
+        .catch(error => console.error('Errore nel caricamento del file JSON:', error));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    carica_canti()
+});
 
 function toggleDetails(event) {
     const details = event.currentTarget.querySelector('.canto-details');
