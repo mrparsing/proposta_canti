@@ -1,0 +1,22 @@
+{
+    "salmi": [
+        {
+            "titolo": "Salmo I domenica tempo ordinario - A",
+            "anno": "A",
+            "autore": "Mauro Visconti",
+            "download_link": "../db/canti/noi_canteremo_gloria_a_te.pdf"
+        },
+        {
+            "titolo": "Salmo I domenica tempo ordinario - B",
+            "anno": "B",
+            "autore": "Mauro Visconti",
+            "download_link": "../db/canti/noi_canteremo_gloria_a_te.pdf"
+        },
+        {
+            "titolo": "Salmo I domenica tempo ordinario - A",
+            "anno": "C",
+            "autore": "Mauro Visconti",
+            "download_link": "../db/canti/noi_canteremo_gloria_a_te.pdf"
+        }
+    ]
+}

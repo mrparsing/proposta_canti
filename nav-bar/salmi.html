@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrazioni</title>
+    <script src="../../javascript/js_elenco_canti.js"></script>
+    <script src="../../javascript/javascript.js"></script>
+
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Salmi</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button onclick="location.href='../../index.html'">Home</button>
+                <button onclick="location.href='../elenco_canti.html'">Elenco canti</button>
+                <button onclick="location.href='../spartiti_salmi.html'">Spartiti salmi</button>
+                <button onclick="location.href='../anno_liturgico.html'">Anno liturgico</button>
+                <button onclick="location.href='../eventi_speciali.html'">Eventi speciali</button>
+                <button onclick="location.href='../imp_supporto.html'">Impostazioni/Supporto</button>
+                <input type="text" placeholder="Cerca salmo...">
+            </div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
+
+            <ul id="salmiList">
+                <!-- Gli elementi verranno generati dinamicamente qui -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Funzione che filtra gli elementi della lista basata sul testo inserito nella barra di ricerca
+        function filter_search_bar() {
+            // Ottieni l'input dell'utente e convertilo in minuscolo per una ricerca case-insensitive
+            const input = document.getElementById('searchInput').value.toLowerCase();
+
+            // Seleziona tutti i link (a) nella lista di canti
+            const listItems = document.querySelectorAll('#salmiList li a');
+
+            // Cicla attraverso tutti i link per verificare se corrispondono alla ricerca
+            listItems.forEach(function (item) {
+                // Ottieni il testo del link e lo converte in minuscolo
+                const text = item.textContent.toLowerCase();
+
+                // Mostra o nasconde l'elemento in base alla corrispondenza tra il testo e il filtro
+                if (text.includes(input)) {
+                    item.parentElement.style.display = ""; // Mostra l'elemento
+                } else {
+                    item.parentElement.style.display = "none"; // Nascondi l'elemento
+                }
+            });
+        }
+
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const anno = urlParams.get('anno');
+            return anno;
+        }
+
+        function caricaSalmi(anno) {
+            // Ottieni la lista HTML dove aggiungere i salmi
+            const salmiList = document.getElementById('salmiList');
+            // Pulisci la lista prima di aggiungere nuovi elementi
+            salmiList.innerHTML = '';
+
+            // Filtra i salmi in base all'anno selezionato
+            const salmiFiltrati = salmi.filter(salmo => salmo.anno === anno);
+
+            // Crea elementi della lista per i salmi filtrati
+            salmiFiltrati.forEach(salmo => {
+                const li = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = salmo.download_link;
+                link.textContent = `${salmo.titolo} - ${salmo.autore}`;
+                li.appendChild(link);
+                salmiList.appendChild(li);
+            });
+        }
+
+        function caricaJsonSalmi() {
+            const anno = getQueryParams();
+            const jsonFile = `../../db/salmi/elenco_salmi.json`;
+
+            console.log(jsonFile);
+
+            fetch(jsonFile)
+                .then(response => response.json()) // Converte la risposta in JSON
+                .then(data => {
+                    caricaSalmi(data.salmi); // Passa i dati alla funzione che genera la lista
+                })
+                .catch(error => {
+                    console.error('Errore durante il caricamento dei dati:', error);
+                });
+        }
+
+        // Inizializza la lista al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function () {
+            caricaJsonSalmi(getQueryParams());
+        });
+
+    </script>
+</body>
+<link rel="stylesheet" href="../../styles/style_index.css">
+<link rel="stylesheet" href="../../styles/style_lista.css">
+
+</html>
