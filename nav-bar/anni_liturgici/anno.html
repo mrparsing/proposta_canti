@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anno A</title>
     <script src="../../javascript/js_elenco_canti.js"></script>
+    <script src="../../javascript/javascript.js"></script>
+    <style>
+        #cantiList {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        #cantiList li {
+            margin: 10px 0;
+            padding: 15px;
+            background-color: var(--background-color);
+            /* Colore di sfondo che varia con il tema */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            /* Cambia il cursore per indicare la cliccabilità */
+            transition: background-color 0.3s, transform 0.3s;
+            /* Transizione per gli effetti */
+            color: var(--text-color);
+            /* Colore del testo che varia con il tema */
+        }
+
+        /* Effetto hover per il tema chiaro */
+        #cantiList li:hover {
+            background-color: #e9e9e9;
+            /* Colore di sfondo per l'hover nel tema chiaro */
+            transform: translateY(-2px);
+            /* Effetto di sollevamento */
+        }
+    </style>
 </head>
 
 <body>
