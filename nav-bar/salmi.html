@@ -72,12 +72,14 @@
             // Filtra i salmi in base all'anno selezionato
             const salmiFiltrati = salmi.filter(salmo => salmo.anno === anno);
 
+            console.log(salmiFiltrati);
+
             // Crea elementi della lista per i salmi filtrati
             salmiFiltrati.forEach(salmo => {
                 const li = document.createElement('li');
                 const link = document.createElement('a');
                 link.href = salmo.download_link;
-                link.textContent = `${salmo.titolo} - ${salmo.autore}`;
+                link.innerHTML = `${salmo.titolo}<br>${salmo.autore}`;
                 li.appendChild(link);
                 salmiList.appendChild(li);
             });
