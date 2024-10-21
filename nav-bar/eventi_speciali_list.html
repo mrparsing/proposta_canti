@@ -7,6 +7,7 @@
     <title>Eventi speciali</title>
     <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
+    <link rel="stylesheet" href="../styles/style_index.css">
 
     <style>
         .main-content {
@@ -99,7 +100,7 @@
                         letterHeader.className = 'letter-header';
                         letterHeader.setAttribute('data-letter', letter);
                         list.appendChild(letterHeader);
-
+                        console.log("sdfsd");
                         groupedCanti[letter].forEach(canto => {
                             const li = document.createElement('li');
                             li.onclick = toggleDetails;
