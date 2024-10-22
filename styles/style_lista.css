@@ -255,9 +255,10 @@
     position: relative;
 }
 @media (max-width: 768px) {
+
     /* Nascondi i filtri inizialmente */
     .filters-container {
-        display: flex;
+        display: none;
         flex-direction: column;
         background-color: var(--background-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -266,6 +267,7 @@
         left: 20%;
         top: 50px;
         z-index: 1000;
+        transition: width 0.3s ease, max-height 0.3s ease;
         max-height: 0;
         overflow: hidden;
     }
@@ -286,7 +288,7 @@
     /* Stile per menu attivo (filtri visibili) */
     .filters-container.show {
         display: block;
-        width: 380px;
+        width: 350px;
         padding: 20px;
         left: 50%;
         transform: translateX(-50%);
