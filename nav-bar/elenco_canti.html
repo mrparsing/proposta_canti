@@ -18,10 +18,10 @@
 
             if (filtersMenu.classList.contains('show')) {
                 toggleButton.textContent = 'Nascondi filtri';
-                mainContent.style.marginTop = `${filtersMenu.offsetHeight + pixel}px`; // Aggiunge un margine sotto il menu dei filtri
+                mainContent.style.marginTop = `${filtersMenu.offsetHeight + pixel}px`;
             } else {
                 toggleButton.textContent = 'Mostra filtri';
-                mainContent.style.marginTop = '0'; // Ripristina il margine quando il menu è nascosto
+                mainContent.style.marginTop = '0';
             }
         }
 
@@ -115,7 +115,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            setNavbarColor(festivita[0].tipologia); // Usa la variabile dopo aver verificato che esiste
+            setNavbarColor(festivita[0].tipologia);
             setDarkTheme()
         });
     </script>
