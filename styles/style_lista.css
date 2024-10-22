@@ -362,8 +362,6 @@
         /* Nascondi il pulsante sui desktop */
     }
 
-
-
     .filters-container #authorInput #typeSelect #tempoSelect {
         margin-right: 10px;
         position: relative;
@@ -421,7 +419,7 @@
 .search_bar_filtri {
     display: flex;
     flex-direction: row;
-    width: 500px;
+    width: 600px;
 }
 
 #filter_button_desktop {
