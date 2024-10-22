@@ -4,7 +4,7 @@
             "titolo": "Noi canteremo gloria a Te",
             "autore": "Loys Bourgeois",
             "tipologia": "Ingresso",
-            "tempo": "qualunque",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=CqgUU_lOJDk",
             "download_link": "../db/canti/noi_canteremo_gloria_a_te.pdf"
         },
@@ -13,13 +13,14 @@
             "autore": "Marco Frisina",
             "tipologia": "Ingresso",
             "ascolta": "https://www.youtube.com/watch?v=TuRebxVMCIg",
-            "tempo": "qualunque",
+            "tempo": "Qualunque",
             "download_link": "../db/canti/acclamate_al_signore.pdf"
         },
         {
             "titolo": "I cieli narrano",
             "autore": "Marco Frisina",
             "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=VVuplmEF2Ik",
             "download_link": "../db/canti/i_cieli_narrano.pdf"
         },
@@ -27,6 +28,7 @@
             "titolo": "Ti esalto, Dio mio Re",
             "autore": "Cavalieri, Uva",
             "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=AN409soM5X4",
             "download_link": "../db/canti/ti_esalto_dio_mio_re.pdf"
         },
@@ -41,6 +43,7 @@
             "titolo": "Dove la carità è vera",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=AmSLoX-F-b0",
             "download_link": "../db/canti/dove_la_carita_è_vera.pdf"
         },
@@ -48,6 +51,7 @@
             "titolo": "Benedici il Signore",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio, Comunione",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=oUbiqTndu14",
             "download_link": "../db/canti/benedici_il_signore.pdf"
         },
@@ -62,6 +66,7 @@
             "titolo": "Alleluia ed oggi ancora",
             "autore": "Sequeri",
             "tipologia": "Alleluia",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=JpCGtU2u7YM",
             "download_link": "../db/canti/alleluia_ed_oggi_ancora.pdf"
         },
@@ -69,6 +74,7 @@
             "titolo": "Ecco Signore",
             "autore": "Nino Mancuso",
             "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=mbaza6xCOGg",
             "download_link": "download10.html"
         },
@@ -76,950 +82,871 @@
             "titolo": "Alleluia, Tu sei Pietro",
             "autore": "Giuseppe Libero",
             "tipologia": "Alleluia",
+            "tempo": "Qualunque",
             "ascolta": "https://www.youtube.com/watch?v=tyeSixss7U4&t=58s",
             "download_link": "../db/canti/alleluia_tu_sei_pietro.pdf"
         },
         {
             "titolo": "Resta qui con noi",
-            "autore": "autore 12",
-            "tipologia": "tipologia 12",
-            "ascolta": "link12.html",
-            "download_link": "download12.html"
+            "autore": "Gen Rosso",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
+            "ascolta": "https://www.youtube.com/watch?v=39rBZFORuME",
+            "download_link": "../db/canti/resta_qui_con_noi.pdf"
         },
         {
             "titolo": "Non di solo pane",
-            "autore": "autore 13",
-            "tipologia": "tipologia 13",
-            "ascolta": "link13.html",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Quaresima",
+            "ascolta": "https://www.youtube.com/watch?v=9kK2vhBTZGs",
             "download_link": "download13.html"
         },
         {
             "titolo": "Miserere",
-            "autore": "autore 14",
-            "tipologia": "tipologia 14",
-            "ascolta": "link14.html",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Quaresima",
+            "ascolta": "https://www.youtube.com/watch?v=S8u2-oCmhX8",
             "download_link": "download14.html"
         },
         {
             "titolo": "Chi mi seguirà",
-            "autore": "autore 15",
-            "tipologia": "tipologia 15",
-            "ascolta": "link15.html",
-            "download_link": "download15.html"
+            "autore": "Antonio Parisi, Anna Maria Galliano",
+            "tipologia": "Ingresso",
+            "tempo": "Quaresima",
+            "ascolta": "https://www.youtube.com/watch?v=em0HgKY05_o",
+            "download_link": "../db/canti/chi_mi_seguira.pdf"
         },
         {
             "titolo": "O Signore nostro Dio",
-            "autore": "autore 16",
-            "tipologia": "tipologia 16",
+            "autore": "Marco Frisina",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link16.html",
             "download_link": "download16.html"
         },
         {
             "titolo": "Chi ci separerà",
-            "autore": "autore 17",
-            "tipologia": "tipologia 17",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link17.html",
             "download_link": "download17.html"
         },
         {
             "titolo": "Alto e glorioso Dio",
-            "autore": "autore 18",
-            "tipologia": "tipologia 18",
+            "autore": "Marco Frisina",
+            "tipologia": "Offertorio, Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link18.html",
             "download_link": "download18.html"
         },
         {
             "titolo": "Lodi all'Altissimo",
-            "autore": "autore 19",
-            "tipologia": "tipologia 19",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link19.html",
             "download_link": "download19.html"
         },
         {
             "titolo": "Pane di Vita nuova",
-            "autore": "autore 20",
-            "tipologia": "tipologia 20",
+            "autore": "Marco Frisina",
+            "tipologia": "Ingresso, Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link20.html",
             "download_link": "download20.html"
         },
         {
             "titolo": "Ecco l'acqua",
             "autore": "autore 21",
-            "tipologia": "tipologia 21",
+            "tipologia": "Aspersione",
+            "tempo": "Qualunque",
             "ascolta": "link21.html",
             "download_link": "download21.html"
         },
         {
             "titolo": "Cantate al Signore",
-            "autore": "autore 22",
-            "tipologia": "tipologia 22",
+            "autore": "Marco Frisina",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link22.html",
             "download_link": "download22.html"
         },
         {
             "titolo": "Eccomi",
-            "autore": "autore 23",
-            "tipologia": "tipologia 23",
+            "autore": "Marco Frisina",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "link23.html",
             "download_link": "download23.html"
         },
         {
             "titolo": "La vera gioia",
             "autore": "autore 24",
-            "tipologia": "tipologia 24",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link24.html",
             "download_link": "download24.html"
         },
         {
             "titolo": "Benedetto sei Tu Signore",
-            "autore": "autore 25",
-            "tipologia": "tipologia 25",
+            "autore": "Marco Frisina",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "link25.html",
             "download_link": "download25.html"
         },
         {
             "titolo": "Ti rendo grazie",
             "autore": "autore 26",
-            "tipologia": "tipologia 26",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link26.html",
             "download_link": "download26.html"
         },
         {
             "titolo": "Madre fiducia nostra",
             "autore": "autore 27",
-            "tipologia": "tipologia 27",
+            "tipologia": "Comunione",
+            "tempo": "Mariano",
             "ascolta": "link27.html",
             "download_link": "download27.html"
         },
         {
             "titolo": "Se m'accogli",
             "autore": "autore 28",
-            "tipologia": "tipologia 28",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "link28.html",
             "download_link": "download28.html"
         },
         {
             "titolo": "Santa Maria del cammino",
             "autore": "autore 29",
-            "tipologia": "tipologia 29",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "ascolta": "link29.html",
             "download_link": "download29.html"
         },
         {
             "titolo": "Giovanni",
             "autore": "autore 30",
-            "tipologia": "tipologia 30",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link30.html",
             "download_link": "download30.html"
         },
         {
             "titolo": "Alleluia gregoriano",
             "autore": "autore 31",
-            "tipologia": "tipologia 31",
+            "tipologia": "Alleluia",
+            "tempo": "Qualunque",
             "ascolta": "link31.html",
             "download_link": "download31.html"
         },
         {
             "titolo": "Riuniti nel nome del Signore",
             "autore": "autore 32",
-            "tipologia": "tipologia 32",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link32.html",
             "download_link": "download32.html"
         },
         {
             "titolo": "Alleluia Io sono il pane vivo",
-            "autore": "autore 33",
-            "tipologia": "tipologia 33",
+            "autore": "Marco Frisina",
+            "tipologia": "Alleluia",
+            "tempo": "Qualunque",
             "ascolta": "link33.html",
             "download_link": "download33.html"
         },
         {
             "titolo": "Magnificat - Dio si è fatto come noi",
             "autore": "autore 34",
-            "tipologia": "tipologia 34",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link34.html",
             "download_link": "download34.html"
         },
         {
             "titolo": "Noi veniamo a te",
             "autore": "autore 35",
-            "tipologia": "tipologia 35",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link35.html",
             "download_link": "download35.html"
         },
         {
             "titolo": "Tu sarai profeta",
             "autore": "autore 36",
-            "tipologia": "tipologia 36",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link36.html",
             "download_link": "download36.html"
         },
         {
             "titolo": "La vera Vite",
             "autore": "autore 37",
-            "tipologia": "tipologia 37",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link37.html",
             "download_link": "download37.html"
         },
         {
             "titolo": "Io sarò con Te",
             "autore": "autore 38",
-            "tipologia": "tipologia 38",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link38.html",
             "download_link": "download38.html"
         },
         {
             "titolo": "E' l'ora che pia",
             "autore": "autore 39",
-            "tipologia": "tipologia 39",
+            "tipologia": "Finale",
+            "tempo": "Mariano",
             "ascolta": "link39.html",
             "download_link": "download39.html"
         },
         {
             "titolo": "Lodate Dio",
             "autore": "autore 40",
-            "tipologia": "tipologia 40",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link40.html",
             "download_link": "download40.html"
         },
         {
             "titolo": "Lo spirito del Signore",
             "autore": "autore 41",
-            "tipologia": "tipologia 41",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link41.html",
             "download_link": "download41.html"
         },
         {
             "titolo": "Il tuo popolo in cammino",
             "autore": "autore 42",
-            "tipologia": "tipologia 42",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link42.html",
             "download_link": "download42.html"
         },
         {
             "titolo": "Accogli i nostri doni",
             "autore": "autore 43",
-            "tipologia": "tipologia 43",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "link43.html",
             "download_link": "download43.html"
         },
         {
             "titolo": "Lampada per i miei passi",
             "autore": "autore 44",
-            "tipologia": "tipologia 44",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link44.html",
             "download_link": "download44.html"
         },
         {
             "titolo": "O Sion loda il Salvatore",
-            "autore": "autore 45",
-            "tipologia": "tipologia 45",
+            "autore": "Marco Frisina",
+            "tipologia": "Sequenza",
+            "tempo": "Qualunque",
             "ascolta": "link45.html",
             "download_link": "download45.html"
         },
         {
             "titolo": "E' asceso alla gloria",
             "autore": "autore 46",
-            "tipologia": "tipologia 46",
+            "tipologia": "Ingresso, Offertorio, Comunione",
+            "tempo": "Ascensione",
             "ascolta": "link46.html",
             "download_link": "download46.html"
         },
         {
             "titolo": "Questo è il mio comandamento",
-            "autore": "autore 47",
-            "tipologia": "tipologia 47",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link47.html",
             "download_link": "download47.html"
         },
         {
             "titolo": "Cristo nostra Pasqua",
             "autore": "autore 48",
-            "tipologia": "tipologia 48",
+            "tipologia": "Ingresso, Offertorio, Comunione",
+            "tempo": "Pasqua",
             "ascolta": "link48.html",
             "download_link": "download48.html"
         },
         {
             "titolo": "La mia Pasqua è il Signore",
             "autore": "autore 49",
-            "tipologia": "tipologia 49",
+            "tipologia": "Comunione",
+            "tempo": "Pasqua",
             "ascolta": "link49.html",
             "download_link": "download49.html"
         },
         {
             "titolo": "Hosanna",
             "autore": "autore 50",
-            "tipologia": "tipologia 50",
+            "tipologia": "Ingresso",
+            "tempo": "Pasqua",
             "ascolta": "link50.html",
             "download_link": "download50.html"
         },
         {
             "titolo": "O Dio, Tu sei il mio Dio",
             "autore": "autore 51",
-            "tipologia": "tipologia 51",
+            "tipologia": "Offertorio, Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link51.html",
             "download_link": "download51.html"
         },
         {
             "titolo": "I miei occhi",
             "autore": "autore 52",
-            "tipologia": "tipologia 52",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link52.html",
             "download_link": "download52.html"
         },
         {
             "titolo": "M'invocherà e io lo esaudirò",
             "autore": "autore 53",
-            "tipologia": "tipologia 53",
+            "tipologia": "Ingresso",
+            "tempo": "Quaresima",
             "ascolta": "link53.html",
             "download_link": "download53.html"
         },
         {
             "titolo": "Ti seguirò",
-            "autore": "autore 54",
-            "tipologia": "tipologia 54",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link54.html",
             "download_link": "download54.html"
         },
         {
             "titolo": "Tu scendi dalle stelle",
             "autore": "autore 55",
-            "tipologia": "tipologia 55",
+            "tipologia": "Ingresso, Finale",
+            "tempo": "Natale",
             "ascolta": "link55.html",
             "download_link": "download55.html"
         },
         {
             "titolo": "Adeste Fideles",
             "autore": "autore 56",
-            "tipologia": "tipologia 56",
+            "tipologia": "Ingresso, Offertorio, Comunione",
+            "tempo": "Natale",
             "ascolta": "link56.html",
             "download_link": "download56.html"
         },
         {
             "titolo": "Vieni Signore",
             "autore": "autore 57",
-            "tipologia": "tipologia 57",
+            "tipologia": "Comunione",
+            "tempo": "Avvento",
             "ascolta": "link57.html",
             "download_link": "download57.html"
         },
         {
             "titolo": "Camminiamo incontro al Signore",
             "autore": "autore 58",
-            "tipologia": "tipologia 58",
+            "tipologia": "Comunione",
+            "tempo": "Avvento",
             "ascolta": "link58.html",
             "download_link": "download58.html"
         },
         {
             "titolo": "Maria porta dell'Avvento",
             "autore": "autore 59",
-            "tipologia": "tipologia 59",
+            "tipologia": "Comunione",
+            "tempo": "Avvento",
             "ascolta": "link59.html",
             "download_link": "download59.html"
         },
         {
             "titolo": "Re di Gloria",
             "autore": "autore 60",
-            "tipologia": "tipologia 60",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link60.html",
             "download_link": "download60.html"
         },
         {
             "titolo": "Dov'è carita e amore",
             "autore": "autore 61",
-            "tipologia": "tipologia 61",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "link61.html",
             "download_link": "download61.html"
         },
         {
             "titolo": "Ave Maris Stella",
             "autore": "autore 62",
-            "tipologia": "tipologia 62",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "ascolta": "link62.html",
             "download_link": "download62.html"
         },
         {
             "titolo": "All'agnello che è stato immolato",
             "autore": "autore 63",
-            "tipologia": "tipologia 63",
+            "tipologia": "Offertorio, Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link63.html",
             "download_link": "download63.html"
         },
         {
             "titolo": "Perché tu sei con me",
             "autore": "autore 64",
-            "tipologia": "tipologia 64",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link64.html",
             "download_link": "download64.html"
         },
         {
             "titolo": "Le mani alzate",
             "autore": "autore 65",
-            "tipologia": "tipologia 65",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "ascolta": "link65.html",
             "download_link": "download65.html"
         },
         {
             "titolo": "Accostiamoci tutti all'altar",
             "autore": "autore 66",
-            "tipologia": "tipologia 66",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "ascolta": "link66.html",
             "download_link": "download66.html"
         },
         {
             "titolo": "Regina caeli",
             "autore": "autore 67",
-            "tipologia": "tipologia 67",
+            "tipologia": "Finale",
+            "tempo": "Pasqua",
             "ascolta": "link67.html",
             "download_link": "download67.html"
         },
         {
             "titolo": "Sei luce splendida",
             "autore": "autore 68",
-            "tipologia": "tipologia 68",
+            "tipologia": "Accensione candela",
+            "tempo": "Avvento",
             "ascolta": "link68.html",
             "download_link": "download68.html"
         },
         {
             "titolo": "Accogli i nostri doni",
             "autore": "autore 43",
-            "tipologia": "tipologia 43",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "download": "download43.html"
 
         },
         {
-            "titolo": "Lampada per i miei passi",
-            "autore": "autore 44",
-            "tipologia": "tipologia 44",
-            "download_link": "download52.html"
-        },
-        {
-            "titolo": "O Sion loda il Salvatore",
-            "autore": "autore 45",
-            "tipologia": "tipologia 45",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "E' asceso alla gloria",
-            "autore": "autore 46",
-            "tipologia": "tipologia 46",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Questo è il mio comandamento",
-            "autore": "autore 47",
-            "tipologia": "tipologia 47",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Cristo nostra Pasqua",
-            "autore": "autore 48",
-            "tipologia": "tipologia 48",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "La mia Pasqua è il Signore",
-            "autore": "autore 49",
-            "tipologia": "tipologia 49",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Hosanna",
-            "autore": "autore 50",
-            "tipologia": "tipologia 50",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "O Dio, Tu sei il mio Dio",
-            "autore": "autore 51",
-            "tipologia": "tipologia 51",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "I miei occhi",
-            "autore": "autore 52",
-            "tipologia": "tipologia 52",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "M'invocherà e io lo esaudirò",
-            "autore": "autore 53",
-            "tipologia": "tipologia 53",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Ti seguirò",
-            "autore": "autore 54",
-            "tipologia": "tipologia 54",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Tu scendi dalle stelle",
-            "autore": "autore 55",
-            "tipologia": "tipologia 55",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Adeste Fideles",
-            "autore": "autore 56",
-            "tipologia": "tipologia 56",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Vieni Signore",
-            "autore": "autore 57",
-            "tipologia": "tipologia 57",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Camminiamo incontro al Signore",
-            "autore": "autore 58",
-            "tipologia": "tipologia 58",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Maria porta dell'Avvento",
-            "autore": "autore 59",
-            "tipologia": "tipologia 59",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Re di Gloria",
-            "autore": "autore 60",
-            "tipologia": "tipologia 60",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Dov'è carita e amore",
-            "autore": "autore 61",
-            "tipologia": "tipologia 61",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Ave Maris Stella",
-            "autore": "autore 62",
-            "tipologia": "tipologia 62",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "All'agnello che è stato immolato",
-            "autore": "autore 63",
-            "tipologia": "tipologia 63",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Perché tu sei con me",
-            "autore": "autore 64",
-            "tipologia": "tipologia 64",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Le mani alzate",
-            "autore": "autore 65",
-            "tipologia": "tipologia 65",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Accostiamoci tutti all'altar",
-            "autore": "autore 66",
-            "tipologia": "tipologia 66",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Regina caeli",
-            "autore": "autore 67",
-            "tipologia": "tipologia 67",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Sei luce splendida",
-            "autore": "autore 68",
-            "tipologia": "tipologia 68",
-            "download_link": "download52.html"
-            
-        },
-        {
             "titolo": "Alleluia",
             "autore": "autore 69",
-            "tipologia": "tipologia 69",
+            "tipologia": "Alleluia",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Tu quando verrai",
             "autore": "autore 70",
-            "tipologia": "tipologia 70",
+            "tipologia": "Ingresso, Offertorio, Comunione",
+            "tempo": "Avvento",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Astro del ciel",
             "autore": "autore 71",
-            "tipologia": "tipologia 71",
+            "tipologia": "Offertorio, Comunione",
+            "tempo": "Natale",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Andrò a vederla un dì",
             "autore": "autore 72",
-            "tipologia": "tipologia 72",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Inni e canti",
             "autore": "autore 73",
-            "tipologia": "tipologia 73",
+            "tipologia": "",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Fratello sole, sorella luna",
             "autore": "autore 74",
-            "tipologia": "tipologia 74",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Il Signore è la mia salvezza",
             "autore": "autore 75",
-            "tipologia": "tipologia 75",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Dell'aurora Tu sorgi più bella",
             "autore": "autore 76",
-            "tipologia": "tipologia 76",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "T'adoriam, Ostia divina",
             "autore": "autore 77",
-            "tipologia": "tipologia 77",
+            "tipologia": "",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Mira il tuo popolo",
             "autore": "autore 78",
-            "tipologia": "tipologia 78",
+            "tipologia": "Finale",
+            "tempo": "Mariano",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Il signore è vicino",
             "autore": "autore 79",
-            "tipologia": "tipologia 79",
+            "tipologia": "Ingresso",
+            "tempo": "Avvento",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Cielo nuovo",
             "autore": "autore 80",
-            "tipologia": "tipologia 80",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Frutto della nostra terra",
             "autore": "autore 81",
-            "tipologia": "tipologia 81",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Nel sole dell'aurora",
             "autore": "autore 82",
-            "tipologia": "tipologia 82",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Ti ringrazio, o mio Signore",
             "autore": "autore 83",
-            "tipologia": "tipologia 83",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Inno d'Amore",
             "autore": "autore 84",
-            "tipologia": "tipologia 84",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Vi darò un cuore nuovo",
             "autore": "autore 85",
-            "tipologia": "tipologia 85",
+            "tipologia": "",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Beati quelli che ascoltano",
             "autore": "autore 86",
-            "tipologia": "tipologia 86",
+            "tipologia": "Offertorio, Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Vieni ancora, Gesù",
             "autore": "autore 87",
-            "tipologia": "tipologia 87",
+            "tipologia": "Accensione candela",
+            "tempo": "Avvento",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Symbolum 77",
             "autore": "autore 88",
-            "tipologia": "tipologia 88",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Dio si è fatto come noi",
             "autore": "autore 89",
-            "tipologia": "tipologia 89",
+            "tipologia": "Ingresso, Offertorio, Comunione",
+            "tempo": "Natale",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Ecco quel che abbiamo",
             "autore": "autore 90",
-            "tipologia": "tipologia 90",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Credo in te Signore",
             "autore": "autore 91",
-            "tipologia": "tipologia 91",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Pane del Cielo",
             "autore": "autore 92",
-            "tipologia": "tipologia 92",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Salve Regina",
             "autore": "autore 93",
-            "tipologia": "tipologia 93",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "E' bello lodarti",
             "autore": "autore 94",
-            "tipologia": "tipologia 94",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "O cieli piovete dall'alto",
             "autore": "autore 95",
-            "tipologia": "tipologia 95",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Vieni Spirito d'Amore",
             "autore": "autore 96",
-            "tipologia": "tipologia 96",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Inni e canti",
-            "autore": "autore 97",
-            "tipologia": "tipologia 97",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Osanna al figlio di David",
             "autore": "autore 98",
-            "tipologia": "tipologia 98",
+            "tipologia": "Ingresso",
+            "tempo": "Quaresima",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Se qualcuno ha dei beni",
             "autore": "autore 99",
-            "tipologia": "tipologia 99",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "In notte placida",
             "autore": "autore 100",
-            "tipologia": "tipologia 100",
+            "tipologia": "Ingresso, Offertorio, Comunione",
+            "tempo": "Natale",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Madre mia bellissima",
             "autore": "autore 101",
-            "tipologia": "tipologia 101",
+            "tipologia": "Comunione",
+            "tempo": "Mariano",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Il pane del cammino",
             "autore": "autore 102",
-            "tipologia": "tipologia 102",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Immacolata vergine bella",
             "autore": "autore 103",
-            "tipologia": "tipologia 103",
+            "tipologia": "Finale",
+            "tempo": "Mariano",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Rallegrati Gerusalemme",
             "autore": "autore 104",
-            "tipologia": "tipologia 104",
+            "tipologia": "Ingresso",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Come tu mi vuoi",
             "autore": "autore 105",
-            "tipologia": "tipologia 105",
-            "download_link": "download52.html"
-            
-        },
-        {
-            "titolo": "Venite fedeli",
-            "autore": "autore 106",
-            "tipologia": "tipologia 106",
+            "tipologia": "",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Resta con noi Signore la sera",
             "autore": "autore 107",
-            "tipologia": "tipologia 107",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Andate per le strade",
             "autore": "autore 108",
-            "tipologia": "tipologia 108",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Gloria a te",
             "autore": "autore 109",
-            "tipologia": "tipologia 109",
+            "tipologia": "Finale",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Davanti al Re",
             "autore": "autore 110",
-            "tipologia": "tipologia 110",
+            "tipologia": "Adorazione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Te lodiamo Trinità",
             "autore": "autore 111",
-            "tipologia": "tipologia 111",
+            "tipologia": "Adorazione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Signore, da chi andremo",
             "autore": "autore 112",
-            "tipologia": "tipologia 112",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Come un fiore",
             "autore": "autore 113",
-            "tipologia": "tipologia 113",
+            "tipologia": "Comunione",
+            "tempo": "Mariano",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Ti ringrazio",
             "autore": "autore 114",
-            "tipologia": "tipologia 114",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Pange lingua",
             "autore": "autore 115",
-            "tipologia": "tipologia 115",
+            "tipologia": "Adorazione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Alleluia lodate il Signore",
             "autore": "autore 116",
-            "tipologia": "tipologia 116",
+            "tipologia": "Alleluia",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Sei tu Signore il pane",
             "autore": "autore 117",
-            "tipologia": "tipologia 117",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Guada questa offerta",
             "autore": "autore 118",
-            "tipologia": "tipologia 118",
+            "tipologia": "Offertorio",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Il Signore è il mio Pastore",
             "autore": "autore 119",
-            "tipologia": "tipologia 119",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         },
         {
             "titolo": "Te al centro del mio cuore",
             "autore": "autore 120",
-            "tipologia": "tipologia 120",
+            "tipologia": "Comunione",
+            "tempo": "Qualunque",
             "download_link": "download52.html"
             
         }
