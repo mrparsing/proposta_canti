@@ -256,7 +256,9 @@
 }
 
 @media (max-width: 768px) {
-
+    #filter_button_desktop {
+        display: none;
+    }
     /* Nascondi i filtri inizialmente */
     .filters-container {
         display: none;
@@ -320,17 +322,47 @@
 
 /* Stile per schermi grandi (desktop) */
 @media (min-width: 769px) {
+
+    .filters-container {
+        display: none; /* Nascondi di default */
+    }
+
+    .filters-container.show {
+        display: flex; /* Mostra i filtri quando la classe 'show' è attiva */
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    #searchInput {
+        width: calc(100% - 120px);
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #filter-btn {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        padding: 12px 20px;
+        font-size: 16px;
+        background-color: #4A90E2;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #filter-btn:hover {
+        background-color: #357ABD;
+    }
+
     #toggle-filters-btn {
         display: none;
         /* Nascondi il pulsante sui desktop */
     }
 
-    /* I filtri sono sempre visibili su desktop */
-    .filters-container {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-    }
+
 
     .filters-container #authorInput #typeSelect #tempoSelect {
         margin-right: 10px;
@@ -384,4 +416,21 @@
 /* Tema scuro per il menu */
 .dark-theme .filters-container {
     color: #f1f1f1;
+}
+
+.search_bar_filtri {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+}
+
+#filter_button_desktop {
+    width: 20%;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    height: 45px;
+    margin-right: 20px;
+    font-size: 16px;
+    border-radius: 10px;
 }

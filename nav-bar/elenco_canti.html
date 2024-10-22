@@ -26,6 +26,23 @@
             }
         }
 
+        function button_filter_desktop() {
+            const filtersMenu = document.getElementById('filtersMenu');
+            const toggleButton = document.getElementById('filter_button_desktop');
+
+            // Aggiungi/rimuovi la classe 'show' per mostrare/nascondere i filtri
+            filtersMenu.classList.toggle('show');
+
+            // Cambia il testo del pulsante in base alla visibilità dei filtri
+            if (filtersMenu.classList.contains('show')) {
+                toggleButton.textContent = 'Nascondi filtri';
+                mainContent.style.marginTop = `${filtersMenu.offsetHeight + 20}px`; // Aggiunge un margine sotto il menu dei filtri
+            } else {
+                toggleButton.textContent = 'Mostra filtri';
+                mainContent.style.marginTop = '0'; // Ripristina il margine quando il menu è nascosto
+            }
+        }
+
     </script>
     <style>
         .letter-header {
@@ -53,7 +70,7 @@
 <body>
     <div class="main-container">
         <div class="navbar" id="myNavbar">
-            <h1>Elenco canti</h1>
+            <h1>Eventi speciali</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
             <div class="navbar-buttons">
                 <button onclick="location.href='../index.html'">Home</button>
@@ -68,7 +85,10 @@
 
         <div class="main-content" id="main-content">
             <!-- Barra di ricerca -->
-            <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
+            <div class="search_bar_filtri">
+                <button id="filter_button_desktop" onclick="button_filter_desktop()">Mostra filtri</button>
+                <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
+            </div>
 
             <!-- Contenitore filtri -->
             <div class="filters-container-wrapper">
