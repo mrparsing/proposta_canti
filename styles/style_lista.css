@@ -290,7 +290,7 @@
     /* Stile per menu attivo (filtri visibili) */
     .filters-container.show {
         display: block;
-        width: 380px;
+        width: 300px;
         /* Percentuale per maggiore flessibilità */
         padding: 20px;
         left: 50%;
@@ -308,6 +308,16 @@
         margin-bottom: 20px; /* Aggiungi una distanza di 20px tra ogni input/selettore */
         padding: 5px;
         font-size: 16px;
+    }
+
+    .filters-container-wrapper {
+        margin-bottom: 0;
+        transition: margin-bottom 0.3s ease;
+    }
+
+    /* Quando il banner è visibile */
+    .filters-container.show + .main-content {
+        margin-top: 520px; /* Aggiunge spazio al contenuto principale per evitare sovrapposizione */
     }
 }
 
