@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../styles/style_index.css">
     <link rel="stylesheet" href="../styles/style_lista.css">
 
+    <script>
+        function toggleFilters() {
+    const filtersMenu = document.getElementById('filtersMenu');
+    filtersMenu.classList.toggle('show');
+}
+
+    </script>
     <style>
         .letter-header {
             font-size: 24px;
@@ -52,33 +59,36 @@
             <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
 
             <!-- Contenitore filtri -->
-            <div class="filters-container">
-                <label for="authorInput">Autore:</label>
-                <input type="text" id="authorInput" placeholder="Cerca per autore..." onkeyup="filter_search_bar_2()">
-
-                <label for="typeSelect">Tipologia:</label>
-                <select id="typeSelect" onchange="filter_search_bar_2()">
-                    <option value="">Tutti</option>
-                    <option value="Ingresso">Ingresso</option>
-                    <option value="Alleluia">Alleluia</option>
-                    <option value="Offertorio">Offertorio</option>
-                    <option value="Comunione">Comunione</option>
-                    <option value="Finale">Finale</option>
-                </select>
-
-                <label for="tempoSelect">Tempo:</label>
-                <select id="tempoSelect" onchange="filter_search_bar_2()">
-                    <option value="">Tutti</option>
-                    <option value="Ordinario">Ordinario</option>
-                    <option value="Pasqua">Pasqua</option>
-                    <option value="Quaresima">Quaresima</option>
-                    <option value="Natale">Natale</option>
-                    <option value="Avvento">Avvento</option>
-                </select>
-                <button id="resetFiltersBtn" onclick="resetFilters()">X</button>
-
+            <div class="filters-container-wrapper">
+                <button class="toggle-filters-btn" onclick="toggleFilters()">Mostra Filtri</button>
+                <div class="filters-container" id="filtersMenu">
+                    <label for="authorInput">Autore:</label>
+                    <input type="text" id="authorInput" placeholder="Cerca per autore..." onkeyup="filter_search_bar_2()">
+            
+                    <label for="typeSelect">Tipologia:</label>
+                    <select id="typeSelect" onchange="filter_search_bar_2()">
+                        <option value="">Tutti</option>
+                        <option value="Ingresso">Ingresso</option>
+                        <option value="Alleluia">Alleluia</option>
+                        <option value="Offertorio">Offertorio</option>
+                        <option value="Comunione">Comunione</option>
+                        <option value="Finale">Finale</option>
+                    </select>
+            
+                    <label for="tempoSelect">Tempo:</label>
+                    <select id="tempoSelect" onchange="filter_search_bar_2()">
+                        <option value="">Tutti</option>
+                        <option value="Ordinario">Ordinario</option>
+                        <option value="Pasqua">Pasqua</option>
+                        <option value="Quaresima">Quaresima</option>
+                        <option value="Natale">Natale</option>
+                        <option value="Avvento">Avvento</option>
+                    </select>
+            
+                    <button id="resetFiltersBtn" onclick="resetFilters()">X</button>
+                </div>
             </div>
-
+                        
             <!-- Elenco canti -->
             <ul id="list"></ul>
         </div>

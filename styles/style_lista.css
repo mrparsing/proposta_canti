@@ -158,6 +158,7 @@
 
 .filter-container {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-top: 20px;
     align-items: center;
@@ -247,4 +248,73 @@
 #resetFiltersBtn:hover {
     background-color: #c0392b;
     /* Cambia colore al passaggio del mouse */
+}
+/* Stile di default per il contenitore dei filtri */
+.filters-container-wrapper {
+    position: relative;
+}
+
+/* Nascondi i filtri di default su schermi piccoli */
+@media (max-width: 768px) {
+    /* Nascondi i filtri inizialmente e imposta larghezza più piccola */
+    .filters-container {
+        display: none;
+        flex-direction: column;
+        padding: 10px;
+        background-color: var(--background-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        width: 60%; /* Larghezza del menu quando è chiuso */
+        left: 20%;  /* Centra il menu */
+        top: 50px; /* Posizionato sotto il pulsante */
+        z-index: 1000;
+        transition: width 0.3s ease, max-height 0.3s ease;
+        max-height: 0; /* Nascondi il contenuto interno con altezza */
+        overflow: hidden;
+    }
+
+    /* Bottone per mostrare/nascondere i filtri */
+    .toggle-filters-btn {
+        display: block; /* Il pulsante è visibile solo su mobile */
+        width: 100%;
+        padding: 10px;
+        background-color: #4A90E2;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    /* Menu attivo (visibile) con larghezza espansa */
+    .filters-container.show {
+        display: flex;
+        width: 90%; /* Aumenta la larghezza quando il menu è aperto */
+        left: 5%; /* Mantieni il menu centrato */
+        max-height: 500px; /* Espandi per mostrare il contenuto */
+    }
+}
+
+/* Nascondi il pulsante quando il sito è a schermo intero (desktop) */
+@media (min-width: 769px) {
+    .toggle-filters-btn {
+        display: none; /* Nascondi il pulsante sui desktop */
+    }
+
+    /* I filtri devono essere sempre visibili su desktop */
+    .filters-container {
+        display: flex !important;
+        flex-direction: row;
+        gap: 10px;
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+/* Tema scuro per il menu */
+.dark-theme .filters-container {
+    background-color: #333;
+    color: #f1f1f1;
 }
