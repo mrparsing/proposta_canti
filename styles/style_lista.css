@@ -249,14 +249,16 @@
     background-color: #c0392b;
     /* Cambia colore al passaggio del mouse */
 }
-/* Stile di default per il contenitore dei filtri */
+
+/* Nascondi i filtri di default su schermi piccoli */
 .filters-container-wrapper {
     position: relative;
 }
 
-/* Nascondi i filtri di default su schermi piccoli */
+/* Stile per schermi piccoli */
 @media (max-width: 768px) {
-    /* Nascondi i filtri inizialmente e imposta larghezza più piccola */
+
+    /* Nascondi i filtri inizialmente */
     .filters-container {
         display: none;
         flex-direction: column;
@@ -264,18 +266,18 @@
         background-color: var(--background-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         position: absolute;
-        width: 60%; /* Larghezza del menu quando è chiuso */
-        left: 20%;  /* Centra il menu */
-        top: 50px; /* Posizionato sotto il pulsante */
+        width: 60%;
+        left: 20%;
+        top: 50px;
         z-index: 1000;
         transition: width 0.3s ease, max-height 0.3s ease;
-        max-height: 0; /* Nascondi il contenuto interno con altezza */
+        max-height: 0;
         overflow: hidden;
     }
 
     /* Bottone per mostrare/nascondere i filtri */
     .toggle-filters-btn {
-        display: block; /* Il pulsante è visibile solo su mobile */
+        display: block;
         width: 100%;
         padding: 10px;
         background-color: #4A90E2;
@@ -283,34 +285,96 @@
         border: none;
         font-size: 16px;
         cursor: pointer;
-        border-radius: 5px;
+        border-radius: 10px;
     }
 
-    /* Menu attivo (visibile) con larghezza espansa */
+    /* Stile per menu attivo (filtri visibili) */
     .filters-container.show {
-        display: flex;
-        width: 90%; /* Aumenta la larghezza quando il menu è aperto */
-        left: 5%; /* Mantieni il menu centrato */
-        max-height: 500px; /* Espandi per mostrare il contenuto */
+        display: block;
+        width: 450px;
+        /* Percentuale per maggiore flessibilità */
+        padding: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-height: 500px;
+        border-radius: 10px;
+    }
+    .filters-container label {
+        margin-bottom: 5px; /* Piccola distanza tra l'etichetta e il rispettivo input */
+        font-weight: bold;
+    }
+
+    .filters-container input,
+    .filters-container select {
+        margin-bottom: 20px; /* Aggiungi una distanza di 20px tra ogni input/selettore */
+        padding: 5px;
+        font-size: 16px;
     }
 }
 
-/* Nascondi il pulsante quando il sito è a schermo intero (desktop) */
+
+
+/* Stile per schermi grandi (desktop) */
 @media (min-width: 769px) {
     .toggle-filters-btn {
-        display: none; /* Nascondi il pulsante sui desktop */
+        display: none;
+        /* Nascondi il pulsante sui desktop */
     }
 
-    /* I filtri devono essere sempre visibili su desktop */
+    /* I filtri sono sempre visibili su desktop */
     .filters-container {
-        display: flex !important;
+        display: flex;
         flex-direction: row;
         gap: 10px;
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        padding: 0;
     }
+
+    .filters-container #authorInput #typeSelect #tempoSelect {
+        margin-right: 10px;
+        position: relative;
+        top: 7px;
+    }
+
+    .filters-container label,
+    .filters-container input,
+    .filters-container select {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+    }
+
+    /* Contenitore per allineare etichette e input */
+    .filters-container label {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    .filters-container input,
+    .filters-container select {
+        margin-right: 20px;
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    /* Specifico per l'allineamento con Flexbox */
+    .filters-container label,
+    .filters-container input,
+    .filters-container select {
+        display: flex;
+        align-items: center;
+    }
+
+    .filters-container label {
+        width: 100px;
+        /* Imposta una larghezza fissa per le etichette */
+    }
+
+    .filters-container input,
+    .filters-container select {
+        flex-grow: 1;
+        width: calc(100% - 120px);
+        /* Aggiusta la larghezza degli input rispetto alle etichette */
+    }
+
 }
 
 /* Tema scuro per il menu */
