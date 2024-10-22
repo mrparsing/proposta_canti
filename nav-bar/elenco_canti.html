@@ -10,9 +10,18 @@
 
     <script>
         function toggleFilters() {
-    const filtersMenu = document.getElementById('filtersMenu');
-    filtersMenu.classList.toggle('show');
-}
+            const filtersMenu = document.getElementById('filtersMenu');
+            const mainContent = document.getElementById('list');
+
+            filtersMenu.classList.toggle('show');
+
+            // Aggiungi margine dinamicamente quando il menu filtri è visibile
+            if (filtersMenu.classList.contains('show')) {
+                mainContent.style.marginTop = `${filtersMenu.offsetHeight + 20}px`; // Aggiunge un margine sotto il menu dei filtri
+            } else {
+                mainContent.style.marginTop = '0'; // Ripristina il margine quando il menu è nascosto
+            }
+        }
 
     </script>
     <style>
@@ -63,8 +72,9 @@
                 <button class="toggle-filters-btn" onclick="toggleFilters()">Mostra Filtri</button>
                 <div class="filters-container" id="filtersMenu">
                     <label for="authorInput">Autore:</label>
-                    <input type="text" id="authorInput" placeholder="Cerca per autore..." onkeyup="filter_search_bar_2()">
-            
+                    <input type="text" id="authorInput" placeholder="Cerca per autore..."
+                        onkeyup="filter_search_bar_2()">
+
                     <label for="typeSelect">Tipologia:</label>
                     <select id="typeSelect" onchange="filter_search_bar_2()">
                         <option value="">Tutti</option>
@@ -74,7 +84,7 @@
                         <option value="Comunione">Comunione</option>
                         <option value="Finale">Finale</option>
                     </select>
-            
+
                     <label for="tempoSelect">Tempo:</label>
                     <select id="tempoSelect" onchange="filter_search_bar_2()">
                         <option value="">Tutti</option>
@@ -84,11 +94,11 @@
                         <option value="Natale">Natale</option>
                         <option value="Avvento">Avvento</option>
                     </select>
-            
+
                     <button id="resetFiltersBtn" onclick="resetFilters()">Elimina filtri</button>
                 </div>
             </div>
-                        
+
             <!-- Elenco canti -->
             <ul id="list"></ul>
         </div>

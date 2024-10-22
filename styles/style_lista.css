@@ -254,13 +254,11 @@
 .filters-container-wrapper {
     position: relative;
 }
-
-/* Stile per schermi piccoli */
 @media (max-width: 768px) {
 
     /* Nascondi i filtri inizialmente */
     .filters-container {
-        display: flex;
+        display: none;
         flex-direction: column;
         background-color: var(--background-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -290,34 +288,24 @@
     /* Stile per menu attivo (filtri visibili) */
     .filters-container.show {
         display: block;
-        width: 300px;
-        /* Percentuale per maggiore flessibilità */
+        width: 350px;
         padding: 20px;
         left: 50%;
         transform: translateX(-50%);
         max-height: 500px;
         border-radius: 10px;
     }
+    
     .filters-container label {
-        margin-bottom: 5px; /* Piccola distanza tra l'etichetta e il rispettivo input */
+        margin-bottom: 5px;
         font-weight: bold;
     }
 
     .filters-container input,
     .filters-container select {
-        margin-bottom: 20px; /* Aggiungi una distanza di 20px tra ogni input/selettore */
+        margin-bottom: 20px;
         padding: 5px;
         font-size: 16px;
-    }
-
-    .filters-container-wrapper {
-        margin-bottom: 0;
-        transition: margin-bottom 0.3s ease;
-    }
-
-    /* Quando il banner è visibile */
-    .filters-container.show + .main-content {
-        margin-top: 520px; /* Aggiunge spazio al contenuto principale per evitare sovrapposizione */
     }
 }
 
