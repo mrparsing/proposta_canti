@@ -39,45 +39,45 @@
         },
         {
             "titolo": "Dove la carità è vera",
-            "autore": "autore 6",
-            "tipologia": "tipologia 6",
-            "ascolta": "link6.html",
-            "download_link": "download6.html"
+            "autore": "Marco Frisina",
+            "tipologia": "Offertorio",
+            "ascolta": "https://www.youtube.com/watch?v=AmSLoX-F-b0",
+            "download_link": "../db/canti/dove_la_carita_è_vera.pdf"
         },
         {
             "titolo": "Benedici il Signore",
-            "autore": "autore 7",
-            "tipologia": "tipologia 7",
-            "ascolta": "link7.html",
-            "download_link": "download7.html"
+            "autore": "Marco Frisina",
+            "tipologia": "Offertorio, Comunione",
+            "ascolta": "https://www.youtube.com/watch?v=oUbiqTndu14",
+            "download_link": "../db/canti/benedici_il_signore.pdf"
         },
         {
             "titolo": "Alleluia cantico all'Agnello",
-            "autore": "autore 8",
-            "tipologia": "tipologia 8",
-            "ascolta": "link8.html",
-            "download_link": "download8.html"
+            "autore": "Marco Frisina",
+            "tipologia": "Alleluia",
+            "ascolta": "https://www.youtube.com/watch?v=BKdNqlnLmjY",
+            "download_link": "../db/canti/alleluia_cantico_agnello.pdf"
         },
         {
             "titolo": "Alleluia ed oggi ancora",
-            "autore": "autore 9",
-            "tipologia": "tipologia 9",
-            "ascolta": "link9.html",
-            "download_link": "download9.html"
+            "autore": "Sequeri",
+            "tipologia": "Alleluia",
+            "ascolta": "https://www.youtube.com/watch?v=JpCGtU2u7YM",
+            "download_link": "../db/canti/alleluia_ed_oggi_ancora.pdf"
         },
         {
             "titolo": "Ecco Signore",
-            "autore": "autore 10",
-            "tipologia": "tipologia 10",
-            "ascolta": "link10.html",
+            "autore": "Nino Mancuso",
+            "tipologia": "Offertorio",
+            "ascolta": "https://www.youtube.com/watch?v=mbaza6xCOGg",
             "download_link": "download10.html"
         },
         {
             "titolo": "Alleluia, Tu sei Pietro",
-            "autore": "autore 11",
-            "tipologia": "tipologia 11",
-            "ascolta": "link11.html",
-            "download_link": "download11.html"
+            "autore": "Giuseppe Libero",
+            "tipologia": "Alleluia",
+            "ascolta": "https://www.youtube.com/watch?v=tyeSixss7U4&t=58s",
+            "download_link": "../db/canti/alleluia_tu_sei_pietro.pdf"
         },
         {
             "titolo": "Resta qui con noi",
