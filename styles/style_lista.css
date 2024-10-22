@@ -316,6 +316,12 @@
         background-color: #333;
         color: #f1f1f1;
     }
+
+    .search_bar_filtri {
+        display: flex;
+        flex-direction: row;
+        width: 530px;
+    }
 }
 
 
@@ -409,17 +415,17 @@
         /* Aggiusta la larghezza degli input rispetto alle etichette */
     }
 
+    .search_bar_filtri {
+        display: flex;
+        flex-direction: row;
+        width: 600px;
+    }
 }
 
 .dark-theme .filters-container {
     color: #f1f1f1;
 }
 
-.search_bar_filtri {
-    display: flex;
-    flex-direction: row;
-    width: 600px;
-}
 
 #filter_button_desktop {
     width: 20%;
