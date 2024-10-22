@@ -257,7 +257,7 @@
 @media (max-width: 768px) {
     /* Nascondi i filtri inizialmente */
     .filters-container {
-        display: none;
+        display: flex;
         flex-direction: column;
         background-color: var(--background-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
