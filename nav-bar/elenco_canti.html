@@ -9,24 +9,7 @@
     <link rel="stylesheet" href="../styles/style_lista.css">
 
     <script>
-        function toggleFilters() {
-            const filtersMenu = document.getElementById('filtersMenu');
-            const mainContent = document.getElementById('list');
-            const toggleButton = document.getElementById('toggle-filters-btn');
-
-            filtersMenu.classList.toggle('show');
-
-            // Aggiungi margine dinamicamente quando il menu filtri è visibile
-            if (filtersMenu.classList.contains('show')) {
-                toggleButton.textContent = 'Nascondi filtri';
-                mainContent.style.marginTop = `${filtersMenu.offsetHeight + 20}px`; // Aggiunge un margine sotto il menu dei filtri
-            } else {
-                toggleButton.textContent = 'Mostra filtri';
-                mainContent.style.marginTop = '0'; // Ripristina il margine quando il menu è nascosto
-            }
-        }
-
-        function button_filter_desktop(button, pixel) {
+            function button_filter_desktop(button, pixel) {
             const filtersMenu = document.getElementById('filtersMenu');
             const toggleButton = document.getElementById(button);
             const mainContent = document.getElementById('list');
@@ -85,7 +68,7 @@
         <div class="main-content" id="main-content">
             <!-- Barra di ricerca -->
             <div class="search_bar_filtri">
-                <button id="filter_button_desktop" onclick="button_filter_desktop('filter_button_desktop', 20)">Mostra filtri</button>
+                <button id="filter_button_desktop" onclick="button_filter_desktop('filter_button_desktop', 15)">Mostra filtri</button>
                 <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
             </div>
 
