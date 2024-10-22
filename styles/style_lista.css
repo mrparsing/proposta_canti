@@ -254,6 +254,7 @@
 .filters-container-wrapper {
     position: relative;
 }
+
 @media (max-width: 768px) {
 
     /* Nascondi i filtri inizialmente */
@@ -273,7 +274,7 @@
     }
 
     /* Bottone per mostrare/nascondere i filtri */
-    .toggle-filters-btn {
+    #toggle-filters-btn {
         display: block;
         width: 100%;
         padding: 10px;
@@ -295,7 +296,7 @@
         max-height: 500px;
         border-radius: 10px;
     }
-    
+
     .filters-container label {
         margin-bottom: 5px;
         font-weight: bold;
@@ -307,13 +308,19 @@
         padding: 5px;
         font-size: 16px;
     }
+
+    /* Tema scuro per il menu */
+    .dark-theme .filters-container {
+        background-color: #333;
+        color: #f1f1f1;
+    }
 }
 
 
 
 /* Stile per schermi grandi (desktop) */
 @media (min-width: 769px) {
-    .toggle-filters-btn {
+    #toggle-filters-btn {
         display: none;
         /* Nascondi il pulsante sui desktop */
     }
@@ -376,6 +383,5 @@
 
 /* Tema scuro per il menu */
 .dark-theme .filters-container {
-    background-color: #333;
     color: #f1f1f1;
 }

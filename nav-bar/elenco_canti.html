@@ -12,15 +12,16 @@
         function toggleFilters() {
             const filtersMenu = document.getElementById('filtersMenu');
             const mainContent = document.getElementById('list');
+            const toggleButton = document.getElementById('toggle-filters-btn');
 
             filtersMenu.classList.toggle('show');
 
             // Aggiungi margine dinamicamente quando il menu filtri è visibile
             if (filtersMenu.classList.contains('show')) {
-                //document.getElementById('toggle-filters-btn').textContent = 'Nascondi filtri';
-                mainContent.style.marginTop = `${filtersMenu.offsetHeight + 50}px`; // Aggiunge un margine sotto il menu dei filtri
+                toggleButton.textContent = 'Nascondi filtri';
+                mainContent.style.marginTop = `${filtersMenu.offsetHeight + 40}px`; // Aggiunge un margine sotto il menu dei filtri
             } else {
-                //document.getElementById('toggle-filters-btn').textContent = 'Mostra filtri';
+                toggleButton.textContent = 'Mostra filtri';
                 mainContent.style.marginTop = '0'; // Ripristina il margine quando il menu è nascosto
             }
         }
@@ -71,7 +72,7 @@
 
             <!-- Contenitore filtri -->
             <div class="filters-container-wrapper">
-                <button class="toggle-filters-btn" onclick="toggleFilters()">Filtri</button>
+                <button id="toggle-filters-btn" onclick="toggleFilters()">Mostra filtri</button>
                 <div class="filters-container" id="filtersMenu">
                     <label for="authorInput">Autore:</label>
                     <input type="text" id="authorInput" placeholder="Cerca per autore..."
