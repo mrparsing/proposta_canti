@@ -10,32 +10,32 @@
         },
         {
             "titolo": "Acclamate al Signore",
-            "autore": "autore 2",
-            "tipologia": "tipologia 2",
-            "ascolta": "link2.html",
+            "autore": "Marco Frisina",
+            "tipologia": "Ingresso",
+            "ascolta": "https://www.youtube.com/watch?v=TuRebxVMCIg",
             "tempo": "qualunque",
-            "download_link": "download2.html"
+            "download_link": "../db/canti/acclamate_al_signore.pdf"
         },
         {
             "titolo": "I cieli narrano",
-            "autore": "autore 3",
-            "tipologia": "tipologia 3",
-            "ascolta": "link3.html",
-            "download_link": "download3.html"
+            "autore": "Marco Frisina",
+            "tipologia": "Ingresso",
+            "ascolta": "https://www.youtube.com/watch?v=VVuplmEF2Ik",
+            "download_link": "../db/canti/i_cieli_narrano.pdf"
         },
         {
             "titolo": "Ti esalto, Dio mio Re",
-            "autore": "autore 4",
-            "tipologia": "tipologia 4",
-            "ascolta": "link4.html",
-            "download_link": "download4.html"
+            "autore": "Cavalieri, Uva",
+            "tipologia": "Ingresso",
+            "ascolta": "https://www.youtube.com/watch?v=AN409soM5X4",
+            "download_link": "../db/canti/ti_esalto_dio_mio_re.pdf"
         },
         {
             "titolo": "Gustate e vedete",
-            "autore": "autore 5",
-            "tipologia": "tipologia 5",
-            "ascolta": "link5.html",
-            "download_link": "download5.html"
+            "autore": "Marco Frisina",
+            "tipologia": "Offertorio, Comunione",
+            "ascolta": "https://www.youtube.com/watch?v=JN9WTx9H75w",
+            "download_link": "../db/canti/gustate_e_vedete.pdf"
         },
         {
             "titolo": "Dove la carità è vera",
