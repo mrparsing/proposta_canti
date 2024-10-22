@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style_index.css">
     <script src="javascript/theme.js"></script>
+    <script src="javascript/javascript.js"></script>
     <title>Proposta Canti - Domenica Tempo Ordinario</title>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setNavbarColor(festivita[0].tipologia); // Usa la variabile dopo aver verificato che esiste
+            setDarkTheme()
+        });
+    </script>
     <script>
         function getQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);

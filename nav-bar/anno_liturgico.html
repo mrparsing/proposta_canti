@@ -8,6 +8,12 @@
     <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setNavbarColor(festivita[0].tipologia); // Usa la variabile dopo aver verificato che esiste
+            setDarkTheme()
+        });
+    </script>
     <style>
         .main-content {
             display: flex;

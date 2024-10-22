@@ -216,18 +216,16 @@ function calcolaFestivita(anno) {
     return festivita;
 }
 
+const oggi = new Date();
+oggi.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
+const festivita = calcolaFestivita(oggi.getFullYear());
 
-document.addEventListener('DOMContentLoaded', function () {
-    window.onload = function () {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-theme');
-        }
-    }
-    const oggi = new Date();
-    oggi.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
-    const festivita = calcolaFestivita(oggi.getFullYear());
-    console.log(festivita);
+function avvia_index() {
+
+    setNavbarColor(festivita[0].tipologia)
+
+    setDarkTheme()
+    
     const prox_celebrazioni = [];
 
     for (const festivitaItem of festivita) {
@@ -240,13 +238,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    setNavbarColor(prox_celebrazioni[0].tipologia)
+    //setNavbarColor(prox_celebrazioni[0].tipologia)
 
     for (const festa of prox_celebrazioni) {
         inserisci_elemento_lista(festa.numero, festa.anno, festa.tipologia);
     }
-});
+}
 
+function setDarkTheme() {
+    window.onload = function () {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+    }
+}
 
 function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
@@ -266,12 +272,6 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
     }
     ul.appendChild(li);
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    festivita = calcolaFestivita(anno)
-    setNavbarColor(festivita[0].tipologia)
-});
-
 
 
 function setNavbarColor(tipologia) {
