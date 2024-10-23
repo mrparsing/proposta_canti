@@ -1,28 +1,27 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'v2'; // Aggiorna il numero di versione quando cambiano i file da cache
 const urlsToCache = [
   '/index.html',
   '/manifest.json',
-  '/styles/*.css',  // Aggiungi qui i tuoi file CSS
-  '/javascript/*.js'   // Aggiungi qui i tuoi file JS
+  '/styles/style_index.css',
+  '/javascript/javascript.js'
 ];
 
 // Installazione del service worker e caching dei file
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 
 // Intercetta le richieste e risponde con i file dalla cache
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        return response || fetch(event.request);
-      })
+    caches.match(event.request).then(function(response) {
+      // Controlla se la richiesta è in cache, altrimenti effettua una richiesta di rete
+      return response || fetch(event.request);
+    })
   );
 });
 
@@ -40,4 +39,11 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
+});
+
+// Notifica quando un nuovo service worker è attivo
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });

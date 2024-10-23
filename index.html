@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
+    <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
 
     <script>
@@ -14,13 +15,34 @@
         });
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js').then(function (registration) {
-                    console.log('Service Worker registrato con successo:', registration);
-                }, function (err) {
-                    console.log('Service Worker non registrato:', err);
-                });
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function (registration) {
+                        console.log('ServiceWorker registrato con successo:', registration);
+
+                        // Controlla gli aggiornamenti del service worker
+                        registration.onupdatefound = function () {
+                            const newWorker = registration.installing;
+                            newWorker.onstatechange = function () {
+                                if (newWorker.state === 'installed') {
+                                    if (navigator.serviceWorker.controller) {
+                                        // Nuovo service worker trovato, notifica all'utente
+                                        console.log('Nuovo aggiornamento disponibile!');
+                                        // Mostra un messaggio per ricaricare l'app
+                                        if (confirm('È disponibile una nuova versione dell\'app. Vuoi ricaricare?')) {
+                                            newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                            window.location.reload();
+                                        }
+                                    }
+                                }
+                            };
+                        };
+                    })
+                    .catch(function (error) {
+                        console.error('Registrazione del ServiceWorker fallita:', error);
+                    });
             });
         }
+
 
     </script>
 </head>
@@ -89,4 +111,5 @@
         </div>
     </div>
 </body>
+
 </html>
