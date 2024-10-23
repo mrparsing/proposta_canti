@@ -7,18 +7,18 @@ const urlsToCache = [
 ];
 
 // Installazione del service worker e caching dei file
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
+    caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll(urlsToCache);
     })
   );
 });
 
 // Intercetta le richieste e risponde con i file dalla cache
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function (event) {
   event.respondWith(
-    caches.match(event.request).then(function(response) {
+    caches.match(event.request).then(function (response) {
       // Controlla se la richiesta è in cache, altrimenti effettua una richiesta di rete
       return response || fetch(event.request);
     })
@@ -26,12 +26,12 @@ self.addEventListener('fetch', function(event) {
 });
 
 // Aggiornamento del service worker e gestione della cache
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', function (event) {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(function(cacheNames) {
+    caches.keys().then(function (cacheNames) {
       return Promise.all(
-        cacheNames.map(function(cacheName) {
+        cacheNames.map(function (cacheName) {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
@@ -42,8 +42,21 @@ self.addEventListener('activate', function(event) {
 });
 
 // Gestione dei messaggi per forzare l'installazione del nuovo Service Worker
-self.addEventListener('message', function(event) {
+self.addEventListener('message', function (event) {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+self.addEventListener('push', function (event) {
+  const data = event.data.json();
+  const options = {
+    body: data.body,
+    icon: 'styles/img/icone2.png', // Icona della notifica
+    badge: 'badge.png' // Badge della notifica
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
 });

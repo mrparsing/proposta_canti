@@ -50,6 +50,36 @@
         gtag('js', new Date());
 
         gtag('config', 'G-2J3NXSXK3Y');
+
+
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDwZWWhu25oE2dTojGJgS3n8WL0kWDEUeo",
+            authDomain: "proposta-canti.firebaseapp.com",
+            projectId: "proposta-canti",
+            storageBucket: "proposta-canti.appspot.com",
+            messagingSenderId: "191949474524",
+            appId: "1:191949474524:web:204eea9533ef7dbc738219",
+            measurementId: "G-NGRKE1NCGB"
+        };
+
+        // Inizializza Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+
+        messaging.requestPermission()
+            .then(() => {
+                console.log('Permesso notifiche ottenuto');
+                return messaging.getToken();
+            })
+            .then(token => {
+                console.log('Token del dispositivo:', token);
+                // Puoi inviare questo token al server per gestire le notifiche push
+            })
+            .catch(err => {
+                console.log('Permesso negato o errore:', err);
+            });
+
     </script>
 </head>
 
