@@ -69,7 +69,7 @@
             } else if (festivita === "quaresima") {
                 jsonFile = `db/tempi_liturgici/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
             }
-
+            console.log(jsonFile);
             fetch(jsonFile)
                 .then(response => response.json())
                 .then(data => {
