@@ -2,8 +2,8 @@ const CACHE_NAME = 'v1';
 const urlsToCache = [
   '/index.html',
   '/manifest.json',
-  '/styles/style_index.css',  // Aggiungi qui i tuoi file CSS
-  '/javascript/javascript.js'   // Aggiungi qui i tuoi file JS
+  '/styles/*.css',  // Aggiungi qui i tuoi file CSS
+  '/javascript/*.js'   // Aggiungi qui i tuoi file JS
 ];
 
 // Installazione del service worker e caching dei file
