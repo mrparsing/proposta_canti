@@ -6,21 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
-    <link rel="stylesheet" href="styles/style_index.css">
+    <!--<link rel="stylesheet" href="styles/style_index.css">-->
     <link rel="manifest" href="manifest.json">
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index()
-            if ('Notification' in window && navigator.serviceWorker) {
-                Notification.requestPermission().then(permission => {
-                    if (permission === 'granted') {
-                        console.log('Permesso per le notifiche concesso.');
-                    } else {
-                        console.log('Permesso per le notifiche negato.');
-                    }
-                });
-            }
         });
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
@@ -34,9 +25,10 @@
                             newWorker.onstatechange = function () {
                                 if (newWorker.state === 'installed') {
                                     if (navigator.serviceWorker.controller) {
-                                        // Nuovo service worker trovato, invia un messaggio
-                                        console.log('Nuovo aggiornamento disponibile!');
+                                        // Nuovo service worker trovato, attivalo immediatamente
                                         newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        // Ricarica la pagina
+                                        window.location.reload();
                                     }
                                 }
                             };
