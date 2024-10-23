@@ -40,3 +40,10 @@ self.addEventListener('activate', function(event) {
     })
   );
 });
+
+// Gestione dei messaggi per forzare l'installazione del nuovo Service Worker
+self.addEventListener('message', function(event) {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
