@@ -320,7 +320,7 @@
     .search_bar_filtri {
         display: flex;
         flex-direction: row;
-        width: 400px;
+        width: 380px;
     }
 }
 
