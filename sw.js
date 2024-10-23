@@ -3,10 +3,8 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/styles.css',  // Aggiungi qui i tuoi file CSS
-  '/script.js',   // Aggiungi qui i tuoi file JS
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/style/*.css',  // Aggiungi qui i tuoi file CSS
+  '/javascript/*.js'   // Aggiungi qui i tuoi file JS
 ];
 
 // Installazione del service worker e caching dei file
