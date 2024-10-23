@@ -1,19 +1,19 @@
 {
     "name": "Proposta Canti",
-    "short_name": "Canti",
+    "short_name": "Proposta Canti",
     "description": "Proposta canti per celebrazioni liturgiche",
     "start_url": "/proposta_canti/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#4CAF50",
+    "theme_color": "#2a9a5c",
     "icons": [
       {
-        "src": "styles/img/icon.png",
+        "src": "styles/img/matrimonio.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "styles/img/icone2.png",
+        "src": "styles/img/matrimonio.png",
         "type": "image/png",
         "sizes": "512x512"
       }
