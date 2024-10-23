@@ -8,6 +8,7 @@
     <script src="javascript/javascript.js"></script>
     <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -44,7 +45,11 @@
                     });
             });
         }
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'G-2J3NXSXK3Y');
     </script>
 </head>
 
