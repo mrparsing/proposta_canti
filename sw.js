@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v2'; // Aggiorna il numero di versione quando cambiano i file da cache
+const CACHE_NAME = 'v2'; // Aggiorna il numero di versione quando cambi i file da cache
 const urlsToCache = [
   '/index.html',
   '/manifest.json',
@@ -39,11 +39,4 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
-});
-
-// Notifica quando un nuovo service worker è attivo
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
 });

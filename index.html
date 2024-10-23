@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
+    <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
 
     <script>
@@ -18,30 +19,32 @@
                     .then(function (registration) {
                         console.log('ServiceWorker registrato con successo:', registration);
 
-                        // Controlla gli aggiornamenti del service worker
+                        // Controlla se ci sono aggiornamenti disponibili
                         registration.onupdatefound = function () {
                             const newWorker = registration.installing;
                             newWorker.onstatechange = function () {
                                 if (newWorker.state === 'installed') {
                                     if (navigator.serviceWorker.controller) {
-                                        // Nuovo service worker trovato, notifica all'utente
+                                        // Nuovo service worker trovato, attivalo immediatamente
                                         console.log('Nuovo aggiornamento disponibile!');
-                                        // Mostra un messaggio per ricaricare l'app
-                                        if (confirm('È disponibile una nuova versione dell\'app. Vuoi ricaricare?')) {
-                                            newWorker.postMessage({ type: 'SKIP_WAITING' });
-                                            window.location.reload();
-                                        }
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        // Ricarica la pagina
+                                        window.location.reload();
                                     }
                                 }
                             };
                         };
+
+                        // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
+                        setInterval(() => {
+                            registration.update();
+                        }, 10000); // Controlla ogni 10 secondi
                     })
                     .catch(function (error) {
                         console.error('Registrazione del ServiceWorker fallita:', error);
                     });
             });
         }
-
 
     </script>
 </head>
