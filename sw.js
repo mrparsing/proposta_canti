@@ -19,7 +19,6 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
-      // Controlla se la richiesta è in cache, altrimenti effettua una richiesta di rete
       return response || fetch(event.request);
     })
   );
@@ -46,4 +45,26 @@ self.addEventListener('message', function(event) {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+// Notifica di aggiornamento
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close();
+  event.waitUntil(
+    clients.openWindow('/') // Apri la pagina principale
+  );
+});
+
+// Mostra una notifica quando un nuovo Service Worker è attivo
+self.addEventListener('updatefound', function() {
+  const newWorker = registration.installing;
+  newWorker.onstatechange = function() {
+    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+      // Invia una notifica all'utente
+      self.registration.showNotification('E\' disponibile un nuovo aggiornamento!', {
+        body: 'Clicca per ricaricare l\'app.',
+        icon: '/icon.png' // Aggiungi un'icona per la notifica
+      });
+    }
+  };
 });
