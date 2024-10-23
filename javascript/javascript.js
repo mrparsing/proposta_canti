@@ -32,11 +32,11 @@ function calcolaDomenicheAvvento(anno) {
     quartaDomenicaAvvento.setDate(natale.getDate() - (natale.getDay() + 1)); // Domenica precedente Natale
 
     const terzaDomenicaAvvento = new Date(quartaDomenicaAvvento);
-    terzaDomenicaAvvento.setDate(quartaDomenicaAvvento.getDate() - 7);
+    terzaDomenicaAvvento.setDate(quartaDomenicaAvvento.getDate() - 6);
     const secondaDomenicaAvvento = new Date(quartaDomenicaAvvento);
-    secondaDomenicaAvvento.setDate(quartaDomenicaAvvento.getDate() - 14);
+    secondaDomenicaAvvento.setDate(quartaDomenicaAvvento.getDate() - 13);
     const primaDomenicaAvvento = new Date(quartaDomenicaAvvento);
-    primaDomenicaAvvento.setDate(quartaDomenicaAvvento.getDate() - 21);
+    primaDomenicaAvvento.setDate(quartaDomenicaAvvento.getDate() - 20);
 
     return [
         primaDomenicaAvvento,
@@ -180,6 +180,11 @@ function calcolaFestivita(anno) {
         festivita.push({ anno: tipologia_anno(anno), tipologia: "avvento", numero: `${index + 1}`, data: domenica });
     });
 
+    const cristoRe = new Date(domenicheAvvento[0]);
+    cristoRe.setDate(domenicheAvvento[0].getDate() - 7); // Sottrai 3 giorni
+
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: 'Solennità di Cristo Re', data: cristoRe });
+
     // Aggiungi inizio e fine Quaresima
     festivita.push({ anno: tipologia_anno(anno), tipologia: "quaresima", numero: 'Mercoledì delle Ceneri', data: quaresima.inizioQuaresima });
     festivita.push({ anno: tipologia_anno(anno), tipologia: "quaresima", numero: 'Domenica delle Palme', data: quaresima.fineQuaresima });
@@ -258,7 +263,11 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
     if (tipologia === "ordinario") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        if (numero==="Solennità di Cristo Re") {
+            li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
+        } else {
+            li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+        }
     } else if (tipologia === "avvento") {
         li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo d'avvento - anno: ${anno}</a>`;
     } else if (tipologia === "natale") {
