@@ -269,15 +269,15 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
         }
     } else if (tipologia === "avvento") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo d'avvento - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=avvento">${numero}° domenica tempo d'avvento - anno: ${anno}</a>`;
     } else if (tipologia === "natale") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=natale">${numero}</a>`;
     } else if (numero === "Mercoledì delle Ceneri") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ceneri">${numero}</a>`;
     } else if (tipologia === "quaresima") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}° domenica tempo di quaresima - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=quaresima">${numero}° domenica tempo di quaresima - anno: ${anno}</a>`;
     } else if (tipologia === "pasqua") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}">${numero}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=pasqua">${numero}</a>`;
     }
     ul.appendChild(li);
 }
