@@ -12,6 +12,16 @@
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index()
         });
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                    console.log('Service Worker registrato con successo:', registration);
+                }, function (err) {
+                    console.log('Service Worker non registrato:', err);
+                });
+            });
+        }
+
     </script>
 </head>
 
@@ -79,5 +89,6 @@
         </div>
     </div>
 </body>
+<link rel="manifest" href="/manifest.json">
 
 </html>
