@@ -8,6 +8,7 @@
     <script src="javascript/theme.js"></script>
     <script src="javascript/javascript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <title>Proposta Cantixs</title>
     <script>
@@ -21,46 +22,32 @@
 
                 const element = document.querySelector('.responsive-container');
 
-                // Get the text content of the element
-                const textContent = element.innerText || element.textContent;
+                // Use html2canvas to capture the content of the element
+                html2canvas(element).then((canvas) => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const imgWidth = 190; // Set the width for the image in PDF
+                    const pageHeight = doc.internal.pageSize.height;
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    let heightLeft = imgHeight;
 
-                // Log the text content
-                console.log(textContent);
+                    let position = 0;
 
-                // Define the maximum width for text to be wrapped
-                const maxWidth = 220; // Adjust based on your margin preferences
-                const marginTop = 10; // Top margin
-                const marginBottom = 10; // Bottom margin
-                const lineHeight = 10; // Height of each line
+                    // Add the image to the PDF
+                    doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
 
-                // Split the text into lines that fit within the specified max width
-                const lines = doc.splitTextToSize(textContent, maxWidth);
-
-                // Calculate the number of lines that fit on a single page
-                const linesPerPage = Math.floor((doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight);
-
-                let yPosition = marginTop; // Initialize yPosition for the first page
-
-                for (let i = 0; i < lines.length; i++) {
-                    // If we've reached the lines per page limit, add a new page and reset yPosition
-                    if (i > 0 && i % linesPerPage === 0) {
+                    // Add additional pages if the image is taller than the page height
+                    while (heightLeft >= 0) {
+                        position = heightLeft - imgHeight;
                         doc.addPage();
-                        yPosition = marginTop; // Reset yPosition to the top margin for the new page
+                        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                        heightLeft -= pageHeight;
                     }
 
-                    // Add the current line to the PDF
-                    doc.text(lines[i], 10, yPosition);
-
-                    // Update yPosition for the next line
-                    yPosition += lineHeight; // Move down for the next line
-                }
-
-                // Download the PDF
-                doc.save('documento.pdf');
+                    // Download the PDF
+                    doc.save('documento.pdf');
+                });
             });
-
-
-
         });
 
         function getQueryParams() {
