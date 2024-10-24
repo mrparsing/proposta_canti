@@ -83,9 +83,12 @@
 
         function generatePDF() {
             const element = document.querySelector('.responsive-container');
-            html2pdf()
-                .from(element)
-                .save('foglietto_messa.pdf');
+            console.log(element);
+            setTimeout(() => {
+                html2pdf()
+                    .from(element)
+                    .save('foglietto_messa.pdf');
+            }, 100);
         }
     </script>
 </head>
@@ -105,10 +108,9 @@
         <input type="text" placeholder="Cerca...">
     </div>
 
-    <div class="responsive-container">
-        <!-- Pulsante per scaricare il PDF -->
-        <button id="downloadPDF" onclick="generatePDF()">Scarica PDF</button>
+    <button id="downloadPDF" onclick="generatePDF()">Scarica PDF</button>
 
+    <div class="responsive-container">
         <h1 id="title"></h1>
 
         <h2>Antifona d'ingresso</h2>
