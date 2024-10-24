@@ -12,7 +12,18 @@
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
+            
+            document.getElementById('download').addEventListener('click', () => {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
 
+                const element = document.querySelector('.responsive-container')
+                console.log(element);
+                doc.text(element, 10, 10);
+
+                // Scarica il PDF
+                doc.save('documento.pdf');
+            });
         });
 
         function getQueryParams() {
@@ -81,17 +92,7 @@
                 });
         });
 
-        document.getElementById('download').addEventListener('click', () => {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
 
-            const element = document.querySelector('.responsive-container')
-            console.log(element);
-            doc.text(element, 10, 10);
-
-            // Scarica il PDF
-            doc.save('documento.pdf');
-        });
     </script>
 </head>
 
