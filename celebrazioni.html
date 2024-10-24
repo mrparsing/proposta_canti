@@ -19,13 +19,21 @@
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
 
-                const element = document.querySelector('.responsive-container')
-                console.log(element);
-                doc.text(element, 10, 10);
+                const element = document.querySelector('.responsive-container');
 
-                // Scarica il PDF
+                // Get the text content of the element
+                const textContent = element.innerText || element.textContent;
+
+                // Log the text content
+                console.log(textContent);
+
+                // Add the text content to the PDF
+                doc.text(textContent, 10, 10);
+
+                // Download the PDF
                 doc.save('documento.pdf');
             });
+
         });
 
         function getQueryParams() {
