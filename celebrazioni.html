@@ -21,11 +21,11 @@
 
                 const element = document.querySelector('.responsive-container');
 
-                // Get the text content of the element
-                const textContent = element.innerText || element.textContent;
+                // Get the HTML content of the element
+                const htmlContent = element.innerHTML;
 
-                // Log the text content
-                console.log(textContent);
+                // Log the HTML content
+                console.log(htmlContent);
 
                 // Define the maximum width for text to be wrapped
                 const maxWidth = 190; // Adjust based on your margin preferences
@@ -34,12 +34,39 @@
                 const lineHeight = 10; // Height of each line
 
                 // Split the text into lines that fit within the specified max width
-                const lines = doc.splitTextToSize(textContent, maxWidth);
+                const lines = doc.splitTextToSize(htmlContent.replace(/<[^>]*>/g, ''), maxWidth); // Strip HTML tags for line wrapping
 
                 // Calculate the number of lines that fit on a single page
                 const linesPerPage = Math.floor((doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight);
 
                 let yPosition = marginTop; // Initialize yPosition for the first page
+
+                // Function to handle text with formatting
+                const addFormattedText = (text, x, y) => {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = text; // Parse the HTML content
+
+                    Array.from(tempDiv.childNodes).forEach(node => {
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            // If it's a text node, add the text
+                            doc.text(node.textContent, x, y);
+                            y += lineHeight; // Move down for the next line
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            // Handle bold and italic formatting
+                            if (node.nodeName === 'B' || node.nodeName === 'STRONG') {
+                                doc.setFont('Helvetica', 'bold'); // Set bold font
+                            } else if (node.nodeName === 'I' || node.nodeName === 'EM') {
+                                doc.setFont('Helvetica', 'italic'); // Set italic font
+                            } else {
+                                doc.setFont('Helvetica', 'normal'); // Set normal font
+                            }
+                            doc.text(node.textContent, x, y);
+                            y += lineHeight; // Move down for the next line
+                        }
+                    });
+
+                    return y; // Return the new y position
+                };
 
                 for (let i = 0; i < lines.length; i++) {
                     // If we've reached the lines per page limit, add a new page and reset yPosition
@@ -48,18 +75,13 @@
                         yPosition = marginTop; // Reset yPosition to the top margin for the new page
                     }
 
-                    // Add the current line to the PDF
-                    doc.text(lines[i], 10, yPosition);
-
-                    // Update yPosition for the next line
-                    yPosition += lineHeight; // Move down for the next line
+                    // Add the formatted text to the PDF
+                    yPosition = addFormattedText(htmlContent, 10, yPosition);
                 }
 
                 // Download the PDF
                 doc.save('documento.pdf');
             });
-
-
 
         });
 
