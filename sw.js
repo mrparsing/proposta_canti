@@ -1,9 +1,9 @@
 const CACHE_NAME = 'v2'; // Aggiorna il numero di versione quando cambi i file da cache
 const urlsToCache = [
-  '/index.html',
-  '/manifest.json',
-  '/styles/style_index.css',
-  '/javascript/javascript.js'
+  'index.html',
+  'manifest.json',
+  'styles/style_index.css',
+  'javascript/javascript.js'
 ];
 
 // Installazione del service worker e caching dei file
