@@ -136,7 +136,8 @@ function filter_search_bar_2() {
 
         // Check if the entered author matches any of the authors in cantoAuthors
         const matchAuthor = !authorValue || cantoAuthors.split(',').map(author => author.trim()).includes(authorValue);
-
+        console.log(matchAuthor);
+        console.log(cantoAuthors);
         // Check if the selected type matches any of the types in the cantoType
         const matchType = !typeValue || cantoType.split(',').map(type => type.trim()).includes(typeValue);
         const matchTempo = !tempoValue || cantoTempo === tempoValue;
