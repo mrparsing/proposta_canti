@@ -22,22 +22,42 @@
 
                 const element = document.querySelector('.responsive-container');
 
-                // Usa html2canvas per catturare l'elemento HTML con lo stile
-                html2canvas(element).then((canvas) => {
-                    const imgData = canvas.toDataURL('image/png'); // Converte l'immagine in base64
+                // Get the text content of the element
+                const textContent = element.innerText || element.textContent;
 
-                    const imgWidth = 190; // Larghezza massima dell'immagine nel PDF
-                    const pageHeight = doc.internal.pageSize.height; // Altezza della pagina del PDF
-                    const imgHeight = (canvas.height * imgWidth) / canvas.width; // Altezza dell'immagine calcolata proporzionalmente
+                // Log the text content
+                console.log(textContent);
 
-                    const { jsPDF } = window.jspdf;
-                    var pdf = new jsPDF('p', 'mm', 'a4'); // Creazione del PDF in formato A4
+                // Define the maximum width for text to be wrapped
+                const maxWidth = 190; // Adjust based on your margin preferences
+                const marginTop = 10; // Top margin
+                const marginBottom = 10; // Bottom margin
+                const lineHeight = 10; // Height of each line
 
-                    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                // Split the text into lines that fit within the specified max width
+                const lines = doc.splitTextToSize(textContent, maxWidth);
 
-                    // Scarica il PDF
-                    doc.save('documento.pdf');
-                });
+                // Calculate the number of lines that fit on a single page
+                const linesPerPage = Math.floor((doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight);
+
+                let yPosition = marginTop; // Initialize yPosition for the first page
+
+                for (let i = 0; i < lines.length; i++) {
+                    // If we've reached the lines per page limit, add a new page and reset yPosition
+                    if (i > 0 && i % linesPerPage === 0) {
+                        doc.addPage();
+                        yPosition = marginTop; // Reset yPosition to the top margin for the new page
+                    }
+
+                    // Add the current line to the PDF
+                    doc.text(lines[i], 10, yPosition);
+
+                    // Update yPosition for the next line
+                    yPosition += lineHeight; // Move down for the next line
+                }
+
+                // Download the PDF
+                doc.save('foglietto messa.pdf');
             });
         });
 
