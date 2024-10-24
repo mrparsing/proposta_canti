@@ -22,27 +22,27 @@
 
                 const element = document.querySelector('.responsive-container');
 
-                // Usa html2canvas per catturare il contenuto HTML con lo stile
+                // Usa html2canvas per catturare l'elemento HTML con lo stile
                 html2canvas(element).then((canvas) => {
                     const imgData = canvas.toDataURL('image/png'); // Converte l'immagine in base64
 
                     const imgWidth = 190; // Larghezza massima dell'immagine nel PDF
-                    const pageHeight = doc.internal.pageSize.height;
-                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                    const pageHeight = doc.internal.pageSize.height; // Altezza della pagina del PDF
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width; // Altezza dell'immagine calcolata proporzionalmente
 
-                    let heightLeft = imgHeight;
-                    let position = 0;
+                    let heightLeft = imgHeight; // Altezza rimanente dell'immagine
+                    let position = 10; // Posizione iniziale sulla pagina (margine superiore)
 
                     // Aggiunge l'immagine generata al PDF
                     doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
+                    heightLeft -= pageHeight; // Sottrae l'altezza della pagina dall'altezza totale dell'immagine
 
-                    // Se l'immagine supera la dimensione di una pagina, aggiungi una nuova pagina
-                    while (heightLeft >= 0) {
-                        position = heightLeft - imgHeight;
+                    // Se l'immagine supera la dimensione di una pagina, aggiunge una nuova pagina
+                    while (heightLeft > 0) {
+                        position = heightLeft - imgHeight; // Calcola la nuova posizione
                         doc.addPage();
-                        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-                        heightLeft -= pageHeight;
+                        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight); // Aggiunge l'immagine alla nuova pagina
+                        heightLeft -= pageHeight; // Aggiorna l'altezza rimanente
                     }
 
                     // Scarica il PDF
