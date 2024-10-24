@@ -8,6 +8,8 @@
     <script src="javascript/theme.js"></script>
     <script src="javascript/javascript.js"></script>
     <title>Proposta Cantixs</title>
+    <!-- Load html2canvas and jsPDF from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -15,24 +17,34 @@
             setDarkTheme();
 
             document.getElementById('download-pdf').addEventListener('click', function () {
-                const element = document.querySelector('.responsive-container');
+                const element = document.querySelector('.responsive-container'); // The content to convert
                 generatePDF(element);
             });
         });
 
         function generatePDF(element) {
-            const { jsPDF } = window.jspdf;
-            const pdf = new jsPDF();
+            // Use html2canvas to capture the content
+            html2canvas(element).then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                const imgWidth = 190; // Adjust width as needed
+                const pageHeight = pdf.internal.pageSize.height;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
 
-            // Aggiungi il contenuto HTML al PDF
-            pdf.html(element, {
-                callback: function (doc) {
-                    doc.save('documento.pdf');
-                },
-                x: 10,
-                y: 10,
-                width: 190, // La larghezza del PDF
-                windowWidth: 650 // La larghezza della finestra per la conversione
+                let position = 0;
+
+                pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save('documento.pdf'); // Save the PDF with a filename
             });
         }
 
