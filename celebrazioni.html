@@ -29,11 +29,10 @@
                 const lineHeight = 10; // Altezza delle righe
 
                 // Modifica del font e della dimensione del testo
-                doc.setFont('helvetica', 'bold'); // Puoi usare 'normal', 'bold', 'italic'
+                doc.setFont('helvetica'); // Puoi usare 'normal', 'bold', 'italic'
                 doc.setFontSize(12); // Imposta la dimensione del testo
 
                 // Imposta il colore del testo (RGB)
-                doc.setTextColor(0, 0, 255); // Imposta il colore del testo (in questo caso, blu)
 
                 const lines = doc.splitTextToSize(textContent, maxWidth);
                 const linesPerPage = Math.floor((doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight);
