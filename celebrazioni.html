@@ -8,20 +8,34 @@
     <script src="javascript/theme.js"></script>
     <script src="javascript/javascript.js"></script>
     <title>Proposta Cantixs</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"
+        integrity="sha384-BHaB2q8h85UE54PfL6OiUI+O0wG8LC9Kj2Hkn8dyC2w8vZmhVNeOh9Quy+7yU2xD" crossorigin="anonymous"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
 
             document.getElementById('download-pdf').addEventListener('click', function () {
-                const element = document.querySelector('.responsive-container'); // The content to convert
-                console.log(element, "sfs");
-                html2pdf(element)
+                const element = document.querySelector('.responsive-container');
+                generatePDF(element);
             });
         });
+
+        function generatePDF(element) {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            // Aggiungi il contenuto HTML al PDF
+            pdf.html(element, {
+                callback: function (doc) {
+                    doc.save('documento.pdf');
+                },
+                x: 10,
+                y: 10,
+                width: 190, // La larghezza del PDF
+                windowWidth: 650 // La larghezza della finestra per la conversione
+            });
+        }
 
         function getQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -88,7 +102,6 @@
                     document.body.innerHTML = `<p class="error">Si è verificato un errore durante il caricamento delle informazioni. Riprova più tardi.</p>`;
                 });
         });
-
 
     </script>
 </head>
