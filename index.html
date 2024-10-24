@@ -50,6 +50,21 @@
         gtag('js', new Date());
 
         gtag('config', 'G-2J3NXSXK3Y');
+
+
+        // Chiedi il permesso per le notifiche push
+        messaging.requestPermission().then(function () {
+            console.log('Permesso per le notifiche concesso.');
+
+            // Ottieni il token per l'utente
+            return messaging.getToken({ vapidKey: 'BPB785IXOrFq_9KsOEiAjO8qENk5QEwPz-epM_S8OFrJhZyiRb-BYhv526RnoDnXYso7m-ZA5HJ_HCY6lntNxfw' });
+        }).then(function (token) {
+            console.log('Token FCM generato:', token);
+            // Salva questo token nel tuo backend per inviare notifiche push in futuro
+        }).catch(function (err) {
+            console.log('Errore nel richiedere le notifiche:', err);
+        });
+
     </script>
 </head>
 
