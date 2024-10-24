@@ -219,15 +219,15 @@
             "autore": "autore 28",
             "tipologia": "Offertorio",
             "tempo": "Qualsiasi",
-            "ascolta": "link28.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=rxXtG6anu_0",
+            "download_link": "../db/canti/se_maccogli.pdf"
         },
         {
             "titolo": "Santa Maria del cammino",
             "autore": "autore 29",
             "tipologia": "Finale",
             "tempo": "Qualsiasi",
-            "ascolta": "link29.html",
+            "ascolta": "https://www.youtube.com/watch?v=dWlhPUKDfDQ",
             "download_link": "../db/canti/"
         },
         {
@@ -236,143 +236,143 @@
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
             "ascolta": "link30.html",
-            "download_link": "../db/canti/"
+            "download_link": "../db/canti/santa_maria_del_cammino.pdf"
         },
         {
             "titolo": "Alleluia gregoriano",
-            "autore": "autore 31",
+            "autore": "",
             "tipologia": "Alleluia",
             "tempo": "Qualsiasi",
-            "ascolta": "link31.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=k8gW7nIodv8",
+            "download_link": "-"
         },
         {
             "titolo": "Riuniti nel nome del Signore",
-            "autore": "autore 32",
+            "autore": "Palazon",
             "tipologia": "Ingresso",
             "tempo": "Qualsiasi",
-            "ascolta": "link32.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=jl6VcCyf-0g",
+            "download_link": "../db/canti/riuniti.pdf"
         },
         {
             "titolo": "Alleluia Io sono il pane vivo",
             "autore": "Marco Frisina",
             "tipologia": "Alleluia",
             "tempo": "Qualsiasi",
-            "ascolta": "link33.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=SAdg3mZ5LBc",
+            "download_link": "../db/canti/alleluia_io_sono_il_pane_vivo.pdf"
         },
         {
             "titolo": "Magnificat - Dio si è fatto come noi",
-            "autore": "autore 34",
+            "autore": "",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link34.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=vmaIvtnNBH4",
+            "download_link": ""
         },
         {
             "titolo": "Noi veniamo a te",
-            "autore": "autore 35",
+            "autore": "Buttazzo",
             "tipologia": "Ingresso",
             "tempo": "Qualsiasi",
-            "ascolta": "link35.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=whxxX-YI1vA",
+            "download_link": "../db/canti/Vita nuova con te.pdf"
         },
         {
             "titolo": "Tu sarai profeta",
-            "autore": "autore 36",
+            "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link36.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=prmJAumI5y8",
+            "download_link": "../db/canti/tu_sarai_profeta.pdf"
         },
         {
             "titolo": "La vera Vite",
-            "autore": "autore 37",
+            "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link37.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=yvy-9GH-7ZU",
+            "download_link": "../db/canti/la_vera_vite.pdf"
         },
         {
             "titolo": "Io sarò con Te",
-            "autore": "autore 38",
+            "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link38.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=oWtdlQAaOCE",
+            "download_link": ""
         },
         {
             "titolo": "E' l'ora che pia",
-            "autore": "autore 39",
+            "autore": "",
             "tipologia": "Finale",
             "tempo": "Mariano",
-            "ascolta": "link39.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=r4jj3wy5qCo",
+            "download_link": "../db/canti/è_lora_che_pia.pdf"
         },
         {
             "titolo": "Lodate Dio",
-            "autore": "autore 40",
+            "autore": "J.S.Bach",
             "tipologia": "Ingresso",
             "tempo": "Qualsiasi",
-            "ascolta": "link40.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=FkkfCF-cY9k",
+            "download_link": "../db/canti/lodate_dio.pdf"
         },
         {
             "titolo": "Lo spirito del Signore",
-            "autore": "autore 41",
+            "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link41.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=oK66pWr3Lg0",
+            "download_link": "../db/canti/lo_spirito_del_signore.pdf"
         },
         {
             "titolo": "Il tuo popolo in cammino",
-            "autore": "autore 42",
+            "autore": "Sequeri",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link42.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=5EDUSqs3_zU",
+            "download_link": "../db/canti/il_tuo_popolo_in_cammino.pdf"
         },
         {
             "titolo": "Accogli i nostri doni",
-            "autore": "autore 43",
+            "autore": "Buttazzo",
             "tipologia": "Offertorio",
             "tempo": "Qualsiasi",
-            "ascolta": "link43.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=ckeCH4Wclpw",
+            "download_link": "../db/canti/accogli_i_nostri_doni.pdf"
         },
         {
             "titolo": "Lampada per i miei passi",
-            "autore": "autore 44",
+            "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link44.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=KJQsfannaqI",
+            "download_link": "../db/canti/lampada_per_i_miei_passi.pdf"
         },
         {
             "titolo": "O Sion loda il Salvatore",
             "autore": "Marco Frisina",
             "tipologia": "Sequenza",
             "tempo": "Qualsiasi",
-            "ascolta": "link45.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=S4JJ2w2HjRo",
+            "download_link": "../db/canti/o_sion_loda_il_salvatore.pdf"
         },
         {
             "titolo": "E' asceso alla gloria",
-            "autore": "autore 46",
+            "autore": "Coro Rabbuini",
             "tipologia": "Ingresso, Offertorio, Comunione",
             "tempo": "Ascensione",
-            "ascolta": "link46.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=1F2A57lcTxM",
+            "download_link": ""
         },
         {
             "titolo": "Questo è il mio comandamento",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link47.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=4hvAR40wjfs",
+            "download_link": "../db/canti/questo_è_il_mio_comandamento.pdf"
         },
         {
             "titolo": "Cristo nostra Pasqua",
