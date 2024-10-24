@@ -134,11 +134,14 @@ function filter_search_bar_2() {
 
         const matchSearch = cantoText.includes(searchValue);
         const matchAuthor = cantoAuthor.includes(authorValue);
-        const matchType = !typeValue || cantoType === typeValue;
+
+        // Check if the selected type matches any of the types in the cantoType
+        const matchType = !typeValue || cantoType.split(',').map(type => type.trim()).includes(typeValue);
         const matchTempo = !tempoValue || cantoTempo === tempoValue;
 
         if (matchSearch && matchAuthor && matchType && matchTempo) {
             canto.style.display = ''; // Mostra l'elemento
+
             // Mostra anche la lettera corrispondente (intestazione)
             const letter = canto.getAttribute('data-letter');
             const header = document.querySelector(`.letter-header[data-letter="${letter}"]`);
