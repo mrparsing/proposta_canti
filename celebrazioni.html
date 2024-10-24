@@ -16,6 +16,7 @@
 
             document.getElementById('download-pdf').addEventListener('click', function () {
                 const element = document.querySelector('.responsive-container'); // The content to convert
+                console.log(element, "sfs");
                 html2pdf()
                     .from(element)
                     .save(`celebrazione_${document.querySelector('#title').innerText}.pdf`);
