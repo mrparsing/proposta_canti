@@ -137,6 +137,8 @@ function filter_search_bar_2() {
 
         // Check if the selected type matches any of the types in the cantoType
         const matchType = !typeValue || cantoType.split(',').map(type => type.trim()).includes(typeValue);
+        console.log("cantotype", cantoType);
+        console.log(matchType);
         const matchTempo = !tempoValue || cantoTempo === tempoValue;
 
         if (matchSearch && matchAuthor && matchType && matchTempo) {
