@@ -36,26 +36,29 @@
                 // Split the text into lines that fit within the specified max width
                 const lines = doc.splitTextToSize(textContent, maxWidth);
 
-                // Determine the total number of lines and calculate pages
-                const totalLines = lines.length;
-                const linesPerPage = (doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight;
+                // Calculate the number of lines that fit on a single page
+                const linesPerPage = Math.floor((doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight);
 
-                for (let i = 0; i < totalLines; i++) {
-                    // If we've reached the lines per page limit, add a new page
+                let yPosition = marginTop; // Initialize yPosition for the first page
+
+                for (let i = 0; i < lines.length; i++) {
+                    // If we've reached the lines per page limit, add a new page and reset yPosition
                     if (i > 0 && i % linesPerPage === 0) {
                         doc.addPage();
+                        yPosition = marginTop; // Reset yPosition to the top margin for the new page
                     }
-
-                    // Calculate the y position for the current line
-                    const yPosition = marginTop + (i % linesPerPage) * lineHeight;
 
                     // Add the current line to the PDF
                     doc.text(lines[i], 10, yPosition);
+
+                    // Update yPosition for the next line
+                    yPosition += lineHeight; // Move down for the next line
                 }
 
                 // Download the PDF
                 doc.save('documento.pdf');
             });
+
 
 
         });
