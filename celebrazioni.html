@@ -27,12 +27,32 @@
                 // Log the text content
                 console.log(textContent);
 
-                // Add the text content to the PDF
-                doc.text(textContent, 10, 10);
+                // Define the maximum width for text to be wrapped
+                const maxWidth = 190; // You can adjust this based on your margin preferences
+                const marginTop = 10; // Top margin
+                const marginBottom = 10; // Bottom margin
+                const lineHeight = 10; // Height of each line
+
+                // Split the text into lines that fit within the specified max width
+                const lines = doc.splitTextToSize(textContent, maxWidth);
+
+                // Check how many lines will fit on a page
+                const linesPerPage = (doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight;
+
+                // Add lines to the PDF, adding a new page if necessary
+                for (let i = 0; i < lines.length; i++) {
+                    // If we've reached the lines per page limit, add a new page
+                    if (i > 0 && i % linesPerPage === 0) {
+                        doc.addPage();
+                    }
+                    // Add the current line to the PDF
+                    doc.text(lines[i], 10, marginTop + (i % linesPerPage) * lineHeight);
+                }
 
                 // Download the PDF
                 doc.save('documento.pdf');
             });
+
 
         });
 
