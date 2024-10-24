@@ -139,9 +139,7 @@ function filter_search_bar_2() {
 
         // Check if the selected type matches any of the types in the cantoType
         const matchType = !typeValue || cantoType.split(',').map(type => type.trim()).includes(typeValue);
-
-        // Adjusting the tempo match condition
-        const matchTempo = (tempoValue === "Qualsiasi") || (!tempoValue || cantoTempo === tempoValue);
+        const matchTempo = !tempoValue || cantoTempo === tempoValue;
 
         if (matchSearch && matchAuthor && matchType && matchTempo) {
             canto.style.display = ''; // Mostra l'elemento
