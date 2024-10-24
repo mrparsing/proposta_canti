@@ -4,7 +4,7 @@
             "titolo": "Noi canteremo gloria a Te",
             "autore": "Loys Bourgeois",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=CqgUU_lOJDk",
             "download_link": "../db/canti/noi_canteremo_gloria_a_te.pdf"
         },
@@ -13,14 +13,14 @@
             "autore": "Marco Frisina",
             "tipologia": "Ingresso",
             "ascolta": "https://www.youtube.com/watch?v=TuRebxVMCIg",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/acclamate_al_signore.pdf"
         },
         {
             "titolo": "I cieli narrano",
             "autore": "Marco Frisina",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=VVuplmEF2Ik",
             "download_link": "../db/canti/i_cieli_narrano.pdf"
         },
@@ -28,7 +28,7 @@
             "titolo": "Ti esalto, Dio mio Re",
             "autore": "Cavalieri, Uva",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=AN409soM5X4",
             "download_link": "../db/canti/ti_esalto_dio_mio_re.pdf"
         },
@@ -43,7 +43,7 @@
             "titolo": "Dove la carità è vera",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=AmSLoX-F-b0",
             "download_link": "../db/canti/dove_la_carita_è_vera.pdf"
         },
@@ -51,7 +51,7 @@
             "titolo": "Benedici il Signore",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio, Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=oUbiqTndu14",
             "download_link": "../db/canti/benedici_il_signore.pdf"
         },
@@ -66,7 +66,7 @@
             "titolo": "Alleluia ed oggi ancora",
             "autore": "Sequeri",
             "tipologia": "Alleluia",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=JpCGtU2u7YM",
             "download_link": "../db/canti/alleluia_ed_oggi_ancora.pdf"
         },
@@ -74,7 +74,7 @@
             "titolo": "Ecco Signore",
             "autore": "Nino Mancuso",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=mbaza6xCOGg",
             "download_link": "download10.html"
         },
@@ -82,7 +82,7 @@
             "titolo": "Alleluia, Tu sei Pietro",
             "autore": "Giuseppe Libero",
             "tipologia": "Alleluia",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=tyeSixss7U4&t=58s",
             "download_link": "../db/canti/alleluia_tu_sei_pietro.pdf"
         },
@@ -90,7 +90,7 @@
             "titolo": "Resta qui con noi",
             "autore": "Gen Rosso",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=39rBZFORuME",
             "download_link": "../db/canti/resta_qui_con_noi.pdf"
         },
@@ -122,7 +122,7 @@
             "titolo": "O Signore nostro Dio",
             "autore": "Marco Frisina",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=SKrRIFda5mo",
             "download_link": "../db/canti/o_signore_nostro_dio.pdf"
         },
@@ -130,7 +130,7 @@
             "titolo": "Chi ci separerà",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=U9CSP1gXXGM",
             "download_link": "../db/canti/chi_ci_separera.pdf"
         },
@@ -138,7 +138,7 @@
             "titolo": "Alto e glorioso Dio",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio, Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=ABbrXiYkKsQ",
             "download_link": "../db/canti/alto_e_glorioso_dio.pdf"
         },
@@ -146,7 +146,7 @@
             "titolo": "Lodi all'Altissimo",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=EWoNIf476Qc",
             "download_link": "../db/canti/lodi_all_altissimo.pdf"
         },
@@ -154,7 +154,7 @@
             "titolo": "Pane di Vita nuova",
             "autore": "Marco Frisina",
             "tipologia": "Ingresso, Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=2TjvpY5dqTU",
             "download_link": "../db/canti/pane_di_vita_nuova.pdf"
         },
@@ -162,7 +162,7 @@
             "titolo": "Ecco l'acqua",
             "autore": "Antonio Parisi",
             "tipologia": "Aspersione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=_h1TjZoTIIg",
             "download_link": "../db/canti/ecco_l_acqua.pdf"
         },
@@ -170,7 +170,7 @@
             "titolo": "Cantate al Signore",
             "autore": "Marco Frisina",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=aC4c4ENu8lg",
             "download_link": "../db/canti/cantate_al_signore.pdf"
         },
@@ -178,7 +178,7 @@
             "titolo": "Eccomi",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=02yZucu1QyI",
             "download_link": "../db/canti/eccomi.pdf"
         },
@@ -186,7 +186,7 @@
             "titolo": "La vera gioia",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=ZR7JPMB3O7c",
             "download_link": "../db/canti/la_vera_gioia.pdf"
         },
@@ -194,7 +194,7 @@
             "titolo": "Benedetto sei Tu Signore",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=o4TFq2nA5-E",
             "download_link": "../db/canti/benedetto_sei_tu_signore.pdf"
         },
@@ -202,7 +202,7 @@
             "titolo": "Ti rendo grazie",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=J5Xu2_MuTNE",
             "download_link": "../db/canti/ti_rendo_grazie.pdf"
         },
@@ -218,7 +218,7 @@
             "titolo": "Se m'accogli",
             "autore": "autore 28",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link28.html",
             "download_link": "../db/canti/"
         },
@@ -226,7 +226,7 @@
             "titolo": "Santa Maria del cammino",
             "autore": "autore 29",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link29.html",
             "download_link": "../db/canti/"
         },
@@ -234,7 +234,7 @@
             "titolo": "Giovanni",
             "autore": "autore 30",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link30.html",
             "download_link": "../db/canti/"
         },
@@ -242,7 +242,7 @@
             "titolo": "Alleluia gregoriano",
             "autore": "autore 31",
             "tipologia": "Alleluia",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link31.html",
             "download_link": "../db/canti/"
         },
@@ -250,7 +250,7 @@
             "titolo": "Riuniti nel nome del Signore",
             "autore": "autore 32",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link32.html",
             "download_link": "../db/canti/"
         },
@@ -258,7 +258,7 @@
             "titolo": "Alleluia Io sono il pane vivo",
             "autore": "Marco Frisina",
             "tipologia": "Alleluia",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link33.html",
             "download_link": "../db/canti/"
         },
@@ -266,7 +266,7 @@
             "titolo": "Magnificat - Dio si è fatto come noi",
             "autore": "autore 34",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link34.html",
             "download_link": "../db/canti/"
         },
@@ -274,7 +274,7 @@
             "titolo": "Noi veniamo a te",
             "autore": "autore 35",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link35.html",
             "download_link": "../db/canti/"
         },
@@ -282,7 +282,7 @@
             "titolo": "Tu sarai profeta",
             "autore": "autore 36",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link36.html",
             "download_link": "../db/canti/"
         },
@@ -290,7 +290,7 @@
             "titolo": "La vera Vite",
             "autore": "autore 37",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link37.html",
             "download_link": "../db/canti/"
         },
@@ -298,7 +298,7 @@
             "titolo": "Io sarò con Te",
             "autore": "autore 38",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link38.html",
             "download_link": "../db/canti/"
         },
@@ -314,7 +314,7 @@
             "titolo": "Lodate Dio",
             "autore": "autore 40",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link40.html",
             "download_link": "../db/canti/"
         },
@@ -322,7 +322,7 @@
             "titolo": "Lo spirito del Signore",
             "autore": "autore 41",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link41.html",
             "download_link": "../db/canti/"
         },
@@ -330,7 +330,7 @@
             "titolo": "Il tuo popolo in cammino",
             "autore": "autore 42",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link42.html",
             "download_link": "../db/canti/"
         },
@@ -338,7 +338,7 @@
             "titolo": "Accogli i nostri doni",
             "autore": "autore 43",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link43.html",
             "download_link": "../db/canti/"
         },
@@ -346,7 +346,7 @@
             "titolo": "Lampada per i miei passi",
             "autore": "autore 44",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link44.html",
             "download_link": "../db/canti/"
         },
@@ -354,7 +354,7 @@
             "titolo": "O Sion loda il Salvatore",
             "autore": "Marco Frisina",
             "tipologia": "Sequenza",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link45.html",
             "download_link": "../db/canti/"
         },
@@ -370,7 +370,7 @@
             "titolo": "Questo è il mio comandamento",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link47.html",
             "download_link": "../db/canti/"
         },
@@ -402,7 +402,7 @@
             "titolo": "O Dio, Tu sei il mio Dio",
             "autore": "autore 51",
             "tipologia": "Offertorio, Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link51.html",
             "download_link": "../db/canti/"
         },
@@ -410,7 +410,7 @@
             "titolo": "I miei occhi",
             "autore": "autore 52",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link52.html",
             "download_link": "../db/canti/"
         },
@@ -426,7 +426,7 @@
             "titolo": "Ti seguirò",
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link54.html",
             "download_link": "../db/canti/"
         },
@@ -474,7 +474,7 @@
             "titolo": "Re di Gloria",
             "autore": "autore 60",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link60.html",
             "download_link": "../db/canti/"
         },
@@ -482,7 +482,7 @@
             "titolo": "Dov'è carita e amore",
             "autore": "autore 61",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link61.html",
             "download_link": "../db/canti/"
         },
@@ -490,7 +490,7 @@
             "titolo": "Ave Maris Stella",
             "autore": "autore 62",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link62.html",
             "download_link": "../db/canti/"
         },
@@ -498,7 +498,7 @@
             "titolo": "All'agnello che è stato immolato",
             "autore": "autore 63",
             "tipologia": "Offertorio, Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link63.html",
             "download_link": "../db/canti/"
         },
@@ -506,7 +506,7 @@
             "titolo": "Perché tu sei con me",
             "autore": "autore 64",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link64.html",
             "download_link": "../db/canti/"
         },
@@ -514,7 +514,7 @@
             "titolo": "Le mani alzate",
             "autore": "autore 65",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link65.html",
             "download_link": "../db/canti/"
         },
@@ -522,7 +522,7 @@
             "titolo": "Accostiamoci tutti all'altar",
             "autore": "autore 66",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "ascolta": "link66.html",
             "download_link": "../db/canti/"
         },
@@ -546,7 +546,7 @@
             "titolo": "Accogli i nostri doni",
             "autore": "autore 43",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download": "../db/canti/"
 
         },
@@ -554,7 +554,7 @@
             "titolo": "Alleluia",
             "autore": "autore 69",
             "tipologia": "Alleluia",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -578,7 +578,7 @@
             "titolo": "Andrò a vederla un dì",
             "autore": "autore 72",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -586,7 +586,7 @@
             "titolo": "Inni e canti",
             "autore": "autore 73",
             "tipologia": "",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -594,7 +594,7 @@
             "titolo": "Fratello sole, sorella luna",
             "autore": "autore 74",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -602,7 +602,7 @@
             "titolo": "Il Signore è la mia salvezza",
             "autore": "autore 75",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -610,7 +610,7 @@
             "titolo": "Dell'aurora Tu sorgi più bella",
             "autore": "autore 76",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -618,7 +618,7 @@
             "titolo": "T'adoriam, Ostia divina",
             "autore": "autore 77",
             "tipologia": "",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -642,7 +642,7 @@
             "titolo": "Cielo nuovo",
             "autore": "autore 80",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -650,7 +650,7 @@
             "titolo": "Frutto della nostra terra",
             "autore": "autore 81",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -658,7 +658,7 @@
             "titolo": "Nel sole dell'aurora",
             "autore": "autore 82",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -666,7 +666,7 @@
             "titolo": "Ti ringrazio, o mio Signore",
             "autore": "autore 83",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -674,7 +674,7 @@
             "titolo": "Inno d'Amore",
             "autore": "autore 84",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -682,7 +682,7 @@
             "titolo": "Vi darò un cuore nuovo",
             "autore": "autore 85",
             "tipologia": "",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -690,7 +690,7 @@
             "titolo": "Beati quelli che ascoltano",
             "autore": "autore 86",
             "tipologia": "Offertorio, Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -706,7 +706,7 @@
             "titolo": "Symbolum 77",
             "autore": "autore 88",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -722,7 +722,7 @@
             "titolo": "Ecco quel che abbiamo",
             "autore": "autore 90",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -730,7 +730,7 @@
             "titolo": "Credo in te Signore",
             "autore": "autore 91",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -738,7 +738,7 @@
             "titolo": "Pane del Cielo",
             "autore": "autore 92",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -746,7 +746,7 @@
             "titolo": "Salve Regina",
             "autore": "autore 93",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -754,7 +754,7 @@
             "titolo": "E' bello lodarti",
             "autore": "autore 94",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -762,7 +762,7 @@
             "titolo": "O cieli piovete dall'alto",
             "autore": "autore 95",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -770,7 +770,7 @@
             "titolo": "Vieni Spirito d'Amore",
             "autore": "autore 96",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -786,7 +786,7 @@
             "titolo": "Se qualcuno ha dei beni",
             "autore": "autore 99",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -810,7 +810,7 @@
             "titolo": "Il pane del cammino",
             "autore": "autore 102",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -826,7 +826,7 @@
             "titolo": "Rallegrati Gerusalemme",
             "autore": "autore 104",
             "tipologia": "Ingresso",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -834,7 +834,7 @@
             "titolo": "Come tu mi vuoi",
             "autore": "autore 105",
             "tipologia": "",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -842,7 +842,7 @@
             "titolo": "Resta con noi Signore la sera",
             "autore": "autore 107",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -850,7 +850,7 @@
             "titolo": "Andate per le strade",
             "autore": "autore 108",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -858,7 +858,7 @@
             "titolo": "Gloria a te",
             "autore": "autore 109",
             "tipologia": "Finale",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -866,7 +866,7 @@
             "titolo": "Davanti al Re",
             "autore": "autore 110",
             "tipologia": "Adorazione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -874,7 +874,7 @@
             "titolo": "Te lodiamo Trinità",
             "autore": "autore 111",
             "tipologia": "Adorazione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -882,7 +882,7 @@
             "titolo": "Signore, da chi andremo",
             "autore": "autore 112",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -898,7 +898,7 @@
             "titolo": "Ti ringrazio",
             "autore": "autore 114",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -906,7 +906,7 @@
             "titolo": "Pange lingua",
             "autore": "autore 115",
             "tipologia": "Adorazione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -914,7 +914,7 @@
             "titolo": "Alleluia lodate il Signore",
             "autore": "autore 116",
             "tipologia": "Alleluia",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -922,7 +922,7 @@
             "titolo": "Sei tu Signore il pane",
             "autore": "autore 117",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -930,7 +930,7 @@
             "titolo": "Guada questa offerta",
             "autore": "autore 118",
             "tipologia": "Offertorio",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -938,7 +938,7 @@
             "titolo": "Il Signore è il mio Pastore",
             "autore": "autore 119",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         },
@@ -946,7 +946,7 @@
             "titolo": "Te al centro del mio cuore",
             "autore": "autore 120",
             "tipologia": "Comunione",
-            "tempo": "Qualunque",
+            "tempo": "Qualsiasi",
             "download_link": "../db/canti/"
             
         }

@@ -7,10 +7,11 @@
     <title>Supporto</title>
     <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            setNavbarColor(festivita[0].tipologia); // Usa la variabile dopo aver verificato che esiste
+            setNavbarColor(festivita[0].tipologia);
             setDarkTheme()
         });
     </script>
@@ -95,7 +96,7 @@
             text-align: center;
             max-width: 1000px;
             margin-bottom: 30px;
-            margin-top: 40px;
+            margin-top: 30px;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 15px rgba(122, 122, 122, 0.2);
@@ -170,9 +171,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 400px; /* Added max-width for better proportions */
-            width: 100%; /* Full width for smaller screens */
-            margin: 0 auto; /* Center the form */
+            max-width: 400px;
+            /* Added max-width for better proportions */
+            width: 100%;
+            /* Full width for smaller screens */
+            margin: 0 auto;
+            /* Center the form */
         }
 
         form input {
@@ -181,17 +185,20 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px; /* Increased font size for better visibility */
+            font-size: 16px;
+            /* Increased font size for better visibility */
         }
 
         form textarea {
             width: 100%;
-            height: 150px; /* Adjusted height for better proportions */
+            height: 150px;
+            /* Adjusted height for better proportions */
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px; /* Increased font size for better visibility */
+            font-size: 16px;
+            /* Increased font size for better visibility */
         }
 
         form button {
@@ -202,11 +209,38 @@
             background-color: #2196F3;
             color: white;
             cursor: pointer;
-            font-size: 16px; /* Increased font size for better visibility */
+            font-size: 16px;
+            /* Increased font size for better visibility */
         }
 
         form button:hover {
             background-color: #1a8cff;
+        }
+
+        .social-share {
+            text-align: center;
+        }
+
+        .social-share h4 {
+            margin-bottom: 10px;
+        }
+
+        .social-button {
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-button:hover {
+            color: wheat;
+        }
+
+        .social-button i {
+            vertical-align: middle;
         }
     </style>
     <script>
@@ -261,8 +295,8 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            
-            
+
+
 
             <div class="section">
                 <h3>Contatti</h3>
@@ -275,6 +309,27 @@
                     <button type="submit">Invia</button>
                 </form>
             </div>
+
+            <div class="social-share">
+                <h4>Condividi sui social:</h4>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://https://mrparsing.github.io/proposta_canti"
+                    target="_blank" class="social-button" title="Condividi su Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https://mrparsing.github.io/proposta_canti&text=Guarda questo!"
+                    target="_blank" class="social-button" title="Condividi su Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=Guarda questo: https://mrparsing.github.io/proposta_canti"
+                    target="_blank" class="social-button" title="Condividi su WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://mrparsing.github.io/proposta_canti&title=Guarda%20questo!"
+                    target="_blank" class="social-button" title="Condividi su LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+
         </div>
     </div>
 </body>

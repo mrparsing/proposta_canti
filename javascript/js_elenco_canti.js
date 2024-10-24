@@ -27,7 +27,7 @@ function carica_canti() {
                     const detailsDiv = document.createElement('div');
                     detailsDiv.className = 'canto-details';
                     detailsDiv.style.display = 'none';
-                    detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia}`;
+                    detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia} | <strong>Tempo:</strong> ${canto.tempo}`;
 
                     const linksDiv = document.createElement('div');
                     const ascoltaLink = document.createElement('a');
