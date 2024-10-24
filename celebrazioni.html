@@ -21,44 +21,44 @@
                 const doc = new jsPDF();
 
                 const element = document.querySelector('.responsive-container');
-
-                // Get the text content of the element
                 const textContent = element.innerText || element.textContent;
 
-                // Log the text content
-                console.log(textContent);
+                const maxWidth = 190; // Larghezza massima per il testo
+                const marginTop = 10; // Margine superiore
+                const marginBottom = 10; // Margine inferiore
+                const lineHeight = 10; // Altezza delle righe
 
-                // Define the maximum width for text to be wrapped
-                const maxWidth = 190; // Adjust based on your margin preferences
-                const marginTop = 10; // Top margin
-                const marginBottom = 10; // Bottom margin
-                const lineHeight = 10; // Height of each line
+                // Modifica del font e della dimensione del testo
+                doc.setFont('helvetica', 'bold'); // Puoi usare 'normal', 'bold', 'italic'
+                doc.setFontSize(12); // Imposta la dimensione del testo
 
-                // Split the text into lines that fit within the specified max width
+                // Imposta il colore del testo (RGB)
+                doc.setTextColor(0, 0, 255); // Imposta il colore del testo (in questo caso, blu)
+
                 const lines = doc.splitTextToSize(textContent, maxWidth);
-
-                // Calculate the number of lines that fit on a single page
                 const linesPerPage = Math.floor((doc.internal.pageSize.height - marginTop - marginBottom) / lineHeight);
-
-                let yPosition = marginTop; // Initialize yPosition for the first page
+                let yPosition = marginTop;
 
                 for (let i = 0; i < lines.length; i++) {
-                    // If we've reached the lines per page limit, add a new page and reset yPosition
                     if (i > 0 && i % linesPerPage === 0) {
                         doc.addPage();
-                        yPosition = marginTop; // Reset yPosition to the top margin for the new page
+                        yPosition = marginTop;
                     }
 
-                    // Add the current line to the PDF
-                    doc.text(lines[i], 10, yPosition);
+                    // Aggiunge il testo con un allineamento centrato (opzionale)
+                    const textWidth = doc.getStringUnitWidth(lines[i]) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+                    const xPosition = (doc.internal.pageSize.width - textWidth) / 2; // Centra il testo
 
-                    // Update yPosition for the next line
-                    yPosition += lineHeight; // Move down for the next line
+                    // Aggiungi la riga corrente al PDF
+                    doc.text(lines[i], xPosition, yPosition);
+
+                    yPosition += lineHeight;
                 }
 
-                // Download the PDF
-                doc.save('foglietto messa.pdf');
+                // Salva il PDF
+                doc.save('foglietto_messa.pdf');
             });
+
         });
 
         function getQueryParams() {
