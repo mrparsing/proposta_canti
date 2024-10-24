@@ -13,6 +13,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
+
+            document.getElementById('download-pdf').addEventListener('click', function () {
+                const element = document.querySelector('.responsive-container'); // The content to convert
+                html2pdf()
+                    .from(element)
+                    .save(`celebrazione_${document.querySelector('#title').innerText}.pdf`);
+            });
         });
 
         function getQueryParams() {
@@ -81,13 +88,7 @@
                 });
         });
 
-        // Function to download PDF
-        document.getElementById('download-pdf').addEventListener('click', function () {
-            const element = document.querySelector('.responsive-container'); // The content to convert
-            html2pdf()
-                .from(element)
-                .save(`celebrazione_${document.querySelector('#title').innerText}.pdf`);
-        });
+
     </script>
 </head>
 
