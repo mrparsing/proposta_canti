@@ -8,18 +8,18 @@
     <script src="javascript/theme.js"></script>
     <script src="javascript/javascript.js"></script>
     <title>Proposta Canti - Domenica Tempo Ordinario</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia); // Usa la variabile dopo aver verificato che esiste
-            setDarkTheme()
+            setDarkTheme();
         });
-    </script>
-    <script>
+
         function getQueryParams() {
             const urlParams = new URLSearchParams(window.location.search);
             const numero = urlParams.get('numero');
             const anno = urlParams.get('anno');
-            const festivita = urlParams.get('festivita')
+            const festivita = urlParams.get('festivita');
             return { numero, anno, festivita };
         }
 
@@ -59,7 +59,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const { numero, anno, festivita } = getQueryParams();
-            let jsonFile = ""
+            let jsonFile = "";
             if (festivita === "ordinario") {
                 jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
             } else if (festivita === "natale") {
@@ -80,6 +80,13 @@
                     document.body.innerHTML = `<p class="error">Si è verificato un errore durante il caricamento delle informazioni. Riprova più tardi.</p>`;
                 });
         });
+
+        function generatePDF() {
+            const element = document.querySelector('.responsive-container');
+            html2pdf()
+                .from(element)
+                .save('foglietto_messa.pdf');
+        }
     </script>
 </head>
 
@@ -99,6 +106,9 @@
     </div>
 
     <div class="responsive-container">
+        <!-- Pulsante per scaricare il PDF -->
+        <button id="downloadPDF" onclick="generatePDF()">Scarica PDF</button>
+
         <h1 id="title"></h1>
 
         <h2>Antifona d'ingresso</h2>
@@ -135,6 +145,7 @@
 
         <h2>Antifona alla Comunione</h2>
         <p id="antifona-alla-comunione"></p>
+
     </div>
 
     <script>
