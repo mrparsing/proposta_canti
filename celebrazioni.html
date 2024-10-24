@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="styles/style_index.css">
     <script src="javascript/theme.js"></script>
     <script src="javascript/javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <title>Proposta Cantixs</title>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
-            
+
             document.getElementById('download').addEventListener('click', () => {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
