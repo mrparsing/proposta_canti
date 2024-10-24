@@ -10,9 +10,34 @@
     <title>Proposta Canti - Domenica Tempo Ordinario</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
+        let isDataLoaded = false; // Variabile di stato
+
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia); // Usa la variabile dopo aver verificato che esiste
             setDarkTheme();
+
+            const { numero, anno, festivita } = getQueryParams();
+            let jsonFile = "";
+            if (festivita === "ordinario") {
+                jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            } else if (festivita === "natale") {
+                // gestisci natale
+            } else if (festivita === "avvento") {
+                jsonFile = `db/tempi_liturgici/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            } else if (festivita === "quaresima") {
+                jsonFile = `db/tempi_liturgici/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
+            }
+            console.log(jsonFile);
+
+            fetch(jsonFile)
+                .then(response => response.json())
+                .then(data => {
+                    populatePage(data, numero, anno);
+                })
+                .catch(error => {
+                    console.error('Errore nel caricamento del JSON:', error);
+                    document.body.innerHTML = `<p class="error">Si è verificato un errore durante il caricamento delle informazioni. Riprova più tardi.</p>`;
+                });
         });
 
         function getQueryParams() {
@@ -52,43 +77,23 @@
                 document.querySelector('#canto-offertorio').innerHTML = celebrazione.canto_offertorio;
                 document.querySelector('#canto-comunione').innerHTML = celebrazione.canto_comunione;
                 document.querySelector('#antifona-alla-comunione').innerHTML = celebrazione.antifona_alla_comunione;
+
+                isDataLoaded = true; // Imposta a true se i dati sono stati caricati
             } else {
                 document.body.innerHTML = `<p class="error">Errore: Celebrazione non trovata per numero ${numero} e anno ${anno}.</p>`;
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const { numero, anno, festivita } = getQueryParams();
-            let jsonFile = "";
-            if (festivita === "ordinario") {
-                jsonFile = `db/tempi_liturgici/tempo_ordinario/celebrazioni_anno_${anno.toLowerCase()}.json`;
-            } else if (festivita === "natale") {
-                // gestisci natale
-            } else if (festivita === "avvento") {
-                jsonFile = `db/tempi_liturgici/avvento/celebrazioni_anno_${anno.toLowerCase()}.json`;
-            } else if (festivita === "quaresima") {
-                jsonFile = `db/tempi_liturgici/quaresima/celebrazioni_anno_${anno.toLowerCase()}.json`;
-            }
-            console.log(jsonFile);
-            fetch(jsonFile)
-                .then(response => response.json())
-                .then(data => {
-                    populatePage(data, numero, anno);
-                })
-                .catch(error => {
-                    console.error('Errore nel caricamento del JSON:', error);
-                    document.body.innerHTML = `<p class="error">Si è verificato un errore durante il caricamento delle informazioni. Riprova più tardi.</p>`;
-                });
-        });
-
         function generatePDF() {
+            if (!isDataLoaded) {
+                alert('Il contenuto non è ancora disponibile. Attendere il caricamento completo.');
+                return;
+            }
+
             const element = document.querySelector('.responsive-container');
-            console.log(element);
-            setTimeout(() => {
-                html2pdf()
-                    .from(element)
-                    .save('foglietto_messa.pdf');
-            }, 100);
+            html2pdf()
+                .from(element)
+                .save('foglietto_messa.pdf');
         }
     </script>
 </head>
