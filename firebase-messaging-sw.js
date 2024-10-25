@@ -1,3 +1,6 @@
+importScripts('firebase-app.js');
+importScripts('firebase-messaging.js');
+
 // Configurazione Firebase per il Service Worker
 firebase.initializeApp({
   apiKey: "AIzaSyBx_UoPuW9mrnOgl2ymvFLdhc6o942NLO0",
