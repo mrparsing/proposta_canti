@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
+    <script src="javascript/js_global_search.js"></script>
     <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
@@ -52,7 +53,7 @@
                         newWorker.onstatechange = function () {
                             if (newWorker.state === 'installed') {
                                 if (navigator.serviceWorker.controller) {
-                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' }); // Invia un messaggio se c'è un aggiornamento
+                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
                                 }
                             }
                         };
@@ -71,56 +72,13 @@
                 });
             });
         }
-        
+
         // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2J3NXSXK3Y');
     </script>
-
-    <style>
-        .update-banner {
-            background-color: #4CAF50; /* Colore di sfondo verde */
-            color: white; /* Colore del testo bianco */
-            padding: 20px; /* Maggiore spaziatura */
-            text-align: center; /* Testo centrato */
-            position: fixed; /* Fisso in alto */
-            top: 0; /* In cima alla pagina */
-            left: 0; /* Allineato a sinistra */
-            width: 100%; /* Larghezza completa */
-            z-index: 1000; /* In cima agli altri elementi */
-            display: none; /* Nascondi di default */
-            border-bottom: 5px solid #388E3C; /* Bordo inferiore verde scuro */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Ombra per profondità */
-            border-radius: 5px; /* Angoli arrotondati */
-            transition: transform 0.3s ease; /* Transizione per animazioni */
-        }
-
-        .update-banner.show {
-            display: block; /* Mostra il banner */
-            transform: translateY(0); /* Ritorna alla posizione originale */
-        }
-
-        .update-banner span {
-            display: inline-block; /* Per il padding interno */
-        }
-
-        .update-banner button {
-            background-color: #FF5722; /* Colore del bottone */
-            color: white; /* Colore del testo del bottone */
-            border: none; /* Nessun bordo */
-            padding: 10px 15px; /* Spaziatura interna */
-            margin-left: 10px; /* Margine a sinistra */
-            border-radius: 5px; /* Angoli arrotondati */
-            cursor: pointer; /* Cambia il cursore */
-            transition: background-color 0.3s ease; /* Transizione al passaggio del mouse */
-        }
-
-        .update-banner button:hover {
-            background-color: #E64A19; /* Colore più scuro al passaggio del mouse */
-        }
-    </style>
 </head>
 
 <body>
@@ -142,7 +100,7 @@
                 <button onclick="location.href='nav-bar/eventi_speciali.html'">Eventi speciali</button>
                 <button onclick="location.href='nav-bar/imp_supporto.html'">Impostazioni/Supporto</button>
             </div>
-            <input class="ricerca" type="text" placeholder="Cerca..." id="searchInput" onkeyup="searchCanti()">
+            <input class="ricerca" type="text" placeholder="Cerca..." id="global_search" onkeyup="searchCanti()">
             <div id="searchResults" class="search-results"></div>
         </div>
 
@@ -150,7 +108,8 @@
             <div class="slogan-div">
                 <p>Questo è uno strumento pensato per supportare la scelta dei canti liturgici più adatti in base al
                     calendario liturgico. Questa proposta di canti vuole essere una traccia offerta a tutti gli
-                    animatori liturgico-musicali per la scelta delle parti canore per l’Ingresso, l’Offertorio, la Comunione e il
+                    animatori liturgico-musicali per la scelta delle parti canore per l’Ingresso, l’Offertorio, la
+                    Comunione e il
                     Congedo, in modo che siano pertinenti ai testi proposti dal Messale e alla Parola di Dio proclamata.
                 </p>
                 <p>Il sito fornisce suggerimenti sui canti da proporre per le varie domeniche e festività dell’anno
