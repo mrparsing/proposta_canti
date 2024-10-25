@@ -12,7 +12,6 @@
 
 
     <script>
-        // Versione corrente del contenuto
         const currentVersion = '1.0.0'; // Versione attuale del contenuto
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -21,63 +20,59 @@
             // Controlla se la versione è cambiata
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
-                // Mostra la modale
-                const updateModal = document.getElementById('updateModal');
-                updateModal.style.display = 'flex'; // Mostra la modale
-
-                // Aggiungi un listener per il pulsante di chiusura
-                document.getElementById('closeModal').onclick = function () {
-                    updateModal.style.display = 'none'; // Nascondi la modale
-                };
-
-                // Aggiungi un listener per ricaricare la pagina
-                document.getElementById('reloadPage').onclick = function () {
-                    window.location.reload(); // Ricarica la pagina
-                };
-
-                // Salva la nuova versione nel local storage
+                // Mostra il banner informativo se la versione è cambiata
+                showUpdateBanner();
                 localStorage.setItem('appVersion', currentVersion);
+            }
+
+            // Ascolta i messaggi dal Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.addEventListener('message', function (event) {
+                    if (event.data.type === 'UPDATE_AVAILABLE') {
+                        showUpdateBanner();
+                    }
+                });
             }
         });
 
+        function showUpdateBanner() {
+            const updateBanner = document.getElementById('updateBanner');
+            updateBanner.style.display = 'block'; // Mostra il banner
 
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js')
-                    .then(function (registration) {
-                        console.log('ServiceWorker registrato con successo:', registration);
-
-                        // Controlla se ci sono aggiornamenti disponibili
-                        registration.onupdatefound = function () {
-                            const newWorker = registration.installing;
-                            newWorker.onstatechange = function () {
-                                if (newWorker.state === 'installed') {
-                                    if (navigator.serviceWorker.controller) {
-                                        // Nuovo service worker trovato, attivalo immediatamente
-                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
-
-                                        // Mostra un alert per informare l'utente
-                                        alert('È disponibile un aggiornamento dell\'app. La pagina verrà ricaricata.');
-
-                                        // Ricarica la pagina
-                                        window.location.reload();
-                                    }
-                                }
-                            };
-                        };
-
-                        // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
-                        setInterval(() => {
-                            registration.update();
-                        }, 10000); // Controlla ogni 10 secondi
-                    })
-                    .catch(function (error) {
-                        console.error('Registrazione del ServiceWorker fallita:', error);
-                    });
-            });
+            // Aggiungi un listener per il pulsante di chiusura
+            document.getElementById('closeBanner').onclick = function () {
+                updateBanner.style.display = 'none'; // Nascondi il banner quando si clicca
+            };
         }
 
+        // Registrazione del Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    console.log('ServiceWorker registrato con successo:', registration);
+
+                    // Controlla se ci sono aggiornamenti disponibili
+                    registration.onupdatefound = function () {
+                        const newWorker = registration.installing;
+                        newWorker.onstatechange = function () {
+                            if (newWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    // Invia un messaggio al client
+                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
+                                }
+                            }
+                        };
+                    };
+
+                    // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
+                    setInterval(() => {
+                        registration.update();
+                    }, 10000); // Controlla ogni 10 secondi
+                }).catch(function (error) {
+                    console.error('Registrazione del ServiceWorker fallita:', error);
+                });
+            });
+        }
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());

@@ -40,3 +40,18 @@ self.addEventListener('activate', function (event) {
     })
   );
 });
+
+self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Forza l'attivazione del nuovo Service Worker
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim()); // Assicura che il nuovo SW prenda il controllo
+});
+
+// Invia un messaggio al client quando l'installazione è completata
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
