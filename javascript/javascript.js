@@ -304,38 +304,3 @@ function toggleMenu() {
     const navbar = document.getElementById('myNavbar');
     navbar.classList.toggle('active');
 }
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js";
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBx_UoPuW9mrnOgl2ymvFLdhc6o942NLO0",
-    authDomain: "proposta-canti-54afe.firebaseapp.com",
-    projectId: "proposta-canti-54afe",
-    storageBucket: "proposta-canti-54afe.appspot.com",
-    messagingSenderId: "1026968544457",
-    appId: "1:1026968544457:web:62b8ef49599053ef311918",
-    measurementId: "G-96G84RLQJ3"
-};
-
-const app = initializeApp(firebaseConfig)
-
-// Inizializza Firebase Cloud Messaging
-const messaging = firebase.messaging();
-getToken(messaging, { vapidKey: 'BJwUefH5Wr--tR2IhPZcMAoZqSeKrZ6aNbqjKaPK5C--oxZG_qQ_WyhNfgukWZtFt15TGdKDmVAeQAUI1dBHKBo' });
-
-function requestPermission(params) {
-    console.log('Requesting permission...')
-    Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-            console.log("Notification permission granted.");
-        }
-    })
-}
-
-onMessage(messaging, (payload) => {
-  console.log('Message received. ', payload);
-  // ...
-});
