@@ -19,24 +19,15 @@
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js')
-                    .then(function (registration) {
-                        console.log('ServiceWorker registrato con successo:', registration);
-                    })
-                    .catch(function (error) {
-                        console.error('Registrazione del ServiceWorker fallita:', error);
-                    });
-
                 navigator.serviceWorker.register('firebase-messaging-sw.js')
                     .then(registration => {
-                        console.log('Firebase Messaging Service Worker registrato con successo:', registration);
+                        console.log('Service Worker registrato con successo:', registration);
                     })
                     .catch(error => {
-                        console.error('Errore nella registrazione di Firebase Messaging Service Worker:', error);
+                        console.error('Errore nella registrazione del Service Worker:', error);
                     });
             });
         }
-
 
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
