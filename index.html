@@ -10,6 +10,7 @@
     <link rel="manifest" href="manifest.json">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index()
@@ -44,6 +45,17 @@
                         console.error('Registrazione del ServiceWorker fallita:', error);
                     });
             });
+        }
+
+        // Registra il service worker per Firebase Messaging
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('firebase-messaging-sw.js')
+                .then(registration => {
+                    console.log('Firebase Messaging Service Worker registrato con successo:', registration);
+                })
+                .catch(error => {
+                    console.error('Errore nella registrazione di Firebase Messaging Service Worker:', error);
+                });
         }
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
