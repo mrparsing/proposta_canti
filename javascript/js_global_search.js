@@ -5,7 +5,7 @@ async function searchCanti() {
 
     // Verifica se l'input contiene la parola "salmo"
     if (input.includes("salmo")) {
-        const jsonFile = "../db/salmi/elenco_salmi.json";
+        const jsonFile = "db/salmi/elenco_salmi.json";
 
         try {
             const response = await fetch(jsonFile);
