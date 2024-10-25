@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
+    <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
 
     <script>
         // Versione corrente del contenuto
-        const currentVersion = '1.0.1'; // Aggiorna questa versione quando i contenuti cambiano
+        const currentVersion = '1.0.0'; // Versione attuale del contenuto
 
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index();
@@ -20,13 +21,26 @@
             // Controlla se la versione è cambiata
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
-                // Mostra un alert che informa l'utente di un aggiornamento
-                alert('Sono stati aggiunti nuovi contenuti o modifiche. Aggiorna la pagina per visualizzarli.');
+                // Mostra la modale
+                const updateModal = document.getElementById('updateModal');
+                updateModal.style.display = 'flex'; // Mostra la modale
+
+                // Aggiungi un listener per il pulsante di chiusura
+                document.getElementById('closeModal').onclick = function () {
+                    updateModal.style.display = 'none'; // Nascondi la modale
+                };
+
+                // Aggiungi un listener per ricaricare la pagina
+                document.getElementById('reloadPage').onclick = function () {
+                    window.location.reload(); // Ricarica la pagina
+                };
 
                 // Salva la nuova versione nel local storage
                 localStorage.setItem('appVersion', currentVersion);
             }
         });
+
+
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
@@ -70,10 +84,64 @@
 
         gtag('config', 'G-2J3NXSXK3Y');
     </script>
+
+    <style>
+        .update-modal {
+            display: flex;
+            /* Usa il Flexbox per centrare */
+            position: fixed;
+            /* Fisso al centro dello schermo */
+            z-index: 1000;
+            /* Sovrapposizione sopra altri elementi */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Larghezza al 100% */
+            height: 100%;
+            /* Altezza al 100% */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Sfondo semi-trasparente */
+            justify-content: center;
+            /* Centra orizzontalmente */
+            align-items: center;
+            /* Centra verticalmente */
+        }
+
+        .modal-content {
+            background-color: white;
+            /* Sfondo bianco */
+            padding: 20px;
+            /* Spaziatura interna */
+            border-radius: 5px;
+            /* Angoli arrotondati */
+            text-align: center;
+            /* Centrato */
+        }
+
+        .close-button {
+            color: red;
+            /* Colore rosso per il pulsante di chiusura */
+            float: right;
+            /* Posiziona a destra */
+            font-size: 28px;
+            /* Dimensione del testo */
+            font-weight: bold;
+            /* Testo in grassetto */
+        }
+    </style>
 </head>
 
 <body>
     <div class="main-container">
+        <div id="updateModal" class="update-modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeModal">&times;</span>
+                <h2>Nuovi Aggiornamenti Disponibili!</h2>
+                <p>Sono stati aggiunti nuovi contenuti o modifiche. Aggiorna la pagina per visualizzarli.</p>
+                <button id="reloadPage">Aggiorna Ora</button>
+            </div>
+        </div>
+
         <div class="navbar" id="myNavbar">
             <h1>Proposta canti</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
