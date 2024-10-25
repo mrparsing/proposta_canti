@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
+    <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
+
     <script>
-        const currentVersion = '1.0.2'; // Versione attuale del contenuto
+        // Versione corrente del contenuto
+        const currentVersion = '1.2.0'; // Aggiorna questa versione quando i contenuti cambiano
 
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index();
@@ -18,57 +21,54 @@
             // Controlla se la versione è cambiata
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
-                // Mostra il banner informativo se la versione è cambiata
-                showUpdateBanner();
-                localStorage.setItem('appVersion', currentVersion);
-            }
+                // Mostra il banner informativo
+                const updateBanner = document.getElementById('updateBanner');
+                updateBanner.style.display = 'block'; // Mostra il banner
 
-            // Ascolta i messaggi dal Service Worker
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.addEventListener('message', function (event) {
-                    if (event.data.type === 'UPDATE_AVAILABLE') {
-                        showUpdateBanner();
-                    }
-                });
+                // Aggiungi un listener per il pulsante di chiusura
+                document.getElementById('closeBanner').onclick = function () {
+                    updateBanner.style.display = 'none'; // Nascondi il banner quando si clicca
+                };
+
+                // Salva la nuova versione nel local storage
+                localStorage.setItem('appVersion', currentVersion);
             }
         });
 
-        function showUpdateBanner() {
-            const updateBanner = document.getElementById('updateBanner');
-            updateBanner.style.display = 'flex'; // Mostra il banner (usiamo flex per centrarlo)
 
-            // Aggiungi un listener per il pulsante di chiusura
-            document.getElementById('closeBanner').onclick = function () {
-                updateBanner.style.display = 'none'; // Nascondi il banner quando si clicca
-            };
-        }
-
-        // Registrazione del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js').then(function (registration) {
-                    console.log('ServiceWorker registrato con successo:', registration);
+                navigator.serviceWorker.register('sw.js')
+                    .then(function (registration) {
+                        console.log('ServiceWorker registrato con successo:', registration);
 
-                    // Controlla se ci sono aggiornamenti disponibili
-                    registration.onupdatefound = function () {
-                        const newWorker = registration.installing;
-                        newWorker.onstatechange = function () {
-                            if (newWorker.state === 'installed') {
-                                if (navigator.serviceWorker.controller) {
-                                    // Invia un messaggio al client
-                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
+                        // Controlla se ci sono aggiornamenti disponibili
+                        registration.onupdatefound = function () {
+                            const newWorker = registration.installing;
+                            newWorker.onstatechange = function () {
+                                if (newWorker.state === 'installed') {
+                                    if (navigator.serviceWorker.controller) {
+                                        // Nuovo service worker trovato, attivalo immediatamente
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+
+                                        // Mostra un alert per informare l'utente
+                                        alert('È disponibile un aggiornamento dell\'app. La pagina verrà ricaricata.');
+
+                                        // Ricarica la pagina
+                                        window.location.reload();
+                                    }
                                 }
-                            }
+                            };
                         };
-                    };
 
-                    // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
-                    setInterval(() => {
-                        registration.update();
-                    }, 10000); // Controlla ogni 10 secondi
-                }).catch(function (error) {
-                    console.error('Registrazione del ServiceWorker fallita:', error);
-                });
+                        // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
+                        setInterval(() => {
+                            registration.update();
+                        }, 10000); // Controlla ogni 10 secondi
+                    })
+                    .catch(function (error) {
+                        console.error('Registrazione del ServiceWorker fallita:', error);
+                    });
             });
         }
 
@@ -80,43 +80,60 @@
     </script>
 
     <style>
-        .update-banner {
-            display: none;
-            /* Inizialmente nascosto */
+        .update-modal {
+            display: flex;
+            /* Usa il Flexbox per centrare */
             position: fixed;
-            /* Posiziona in modo fisso */
+            /* Fisso al centro dello schermo */
             z-index: 1000;
             /* Sovrapposizione sopra altri elementi */
             left: 0;
             top: 0;
             width: 100%;
             /* Larghezza al 100% */
-            padding: 10px;
-            /* Padding interno */
-            background-color: rgba(255, 255, 255, 0.9);
-            /* Sfondo bianco semi-trasparente */
+            height: 100%;
+            /* Altezza al 100% */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Sfondo semi-trasparente */
+            justify-content: center;
+            /* Centra orizzontalmente */
+            align-items: center;
+            /* Centra verticalmente */
+        }
+
+        .modal-content {
+            background-color: white;
+            /* Sfondo bianco */
+            padding: 20px;
+            /* Spaziatura interna */
+            border-radius: 5px;
+            /* Angoli arrotondati */
             text-align: center;
-            /* Centra il testo */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            /* Ombra per un effetto visivo */
+            /* Centrato */
         }
 
         .close-button {
             color: red;
+            /* Colore rosso per il pulsante di chiusura */
+            float: right;
+            /* Posiziona a destra */
+            font-size: 28px;
+            /* Dimensione del testo */
             font-weight: bold;
-            cursor: pointer;
-            margin-left: 10px;
-            /* Distanza dal testo */
+            /* Testo in grassetto */
         }
     </style>
 </head>
 
 <body>
     <div class="main-container">
-        <div id="updateBanner" class="update-banner">
-            <span>🎉 Sono stati aggiunti nuovi contenuti o modifiche. 
-                <span id="closeBanner" class="close-button">Chiudi</span>
-            </span>
+        <div id="updateModal" class="update-modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeModal">&times;</span>
+                <h2>Nuovi Aggiornamenti Disponibili!</h2>
+                <p>Sono stati aggiunti nuovi contenuti o modifiche. Aggiorna la pagina per visualizzarli.</p>
+                <button id="reloadPage">Aggiorna Ora</button>
+            </div>
         </div>
 
         <div class="navbar" id="myNavbar">
@@ -132,6 +149,7 @@
             </div>
             <input class="ricerca" type="text" placeholder="Cerca..." id="searchInput" onkeyup="searchCanti()">
             <div id="searchResults" class="search-results"></div>
+
         </div>
 
         <div class="main-content" id="main-content">
@@ -179,4 +197,6 @@
             </div>
         </div>
     </div>
-</body
+</body>
+
+</html>
