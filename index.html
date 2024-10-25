@@ -10,7 +10,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
     <script>
-        const currentVersion = '1.0.2'; // Versione attuale del contenuto
+        const currentVersion = '1.0.0'; // Versione attuale del contenuto
 
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index();
@@ -18,26 +18,20 @@
             // Controlla se la versione è cambiata
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
+                // Mostra il banner informativo se la versione è cambiata
                 showUpdateBanner();
                 localStorage.setItem('appVersion', currentVersion);
             }
 
-            // Polling per verificare se ci sono aggiornamenti
-            setInterval(checkForUpdates, 10000); // Controlla ogni 10 secondi
-        });
-
-        // Funzione per controllare gli aggiornamenti
-        function checkForUpdates() {
-            fetch('version.json') // Sostituisci con il tuo URL
-                .then(response => response.json())
-                .then(data => {
-                    if (data.version !== currentVersion) { // Se la versione è diversa
+            // Ascolta i messaggi dal Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.addEventListener('message', function (event) {
+                    if (event.data.type === 'UPDATE_AVAILABLE') {
                         showUpdateBanner();
-                        localStorage.setItem('appVersion', data.version); // Aggiorna la versione salvata
                     }
-                })
-                .catch(error => console.error('Errore nel controllo degli aggiornamenti:', error));
-        }
+                });
+            }
+        });
 
         function showUpdateBanner() {
             const updateBanner = document.getElementById('updateBanner');
@@ -49,6 +43,35 @@
             };
         }
 
+        // Registrazione del Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    console.log('ServiceWorker registrato con successo:', registration);
+
+                    // Controlla se ci sono aggiornamenti disponibili
+                    registration.onupdatefound = function () {
+                        const newWorker = registration.installing;
+                        newWorker.onstatechange = function () {
+                            if (newWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    // Invia un messaggio al client
+                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
+                                }
+                            }
+                        };
+                    };
+
+                    // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
+                    setInterval(() => {
+                        registration.update();
+                    }, 10000); // Controlla ogni 10 secondi
+                }).catch(function (error) {
+                    console.error('Registrazione del ServiceWorker fallita:', error);
+                });
+            });
+        }
+
         // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -58,24 +81,33 @@
 
     <style>
         .update-banner {
-            background-color: #4CAF50; /* Colore di sfondo verde */
-            color: white; /* Colore del testo bianco */
-            padding: 15px; /* Spaziatura interna */
-            text-align: center; /* Centrato */
-            position: fixed; /* Fisso nella parte superiore */
-            top: 0; /* Posizionato in alto */
-            left: 0; /* A sinistra */
-            width: 100%; /* Larghezza al 100% */
-            z-index: 1000; /* Sovrapposizione sopra altri elementi */
-            transition: transform 0.3s ease; /* Transizione dolce */
-            display: none; /* Inizialmente nascosto */
+            background-color: #4CAF50;
+            /* Colore di sfondo verde */
+            color: white;
+            /* Colore del testo bianco */
+            padding: 15px;
+            /* Spaziatura interna */
+            text-align: center;
+            /* Centrato */
+            position: fixed;
+            /* Fisso nella parte superiore */
+            top: 0;
+            /* Posizionato in alto */
+            left: 0;
+            /* A sinistra */
+            width: 100%;
+            /* Larghezza al 100% */
+            z-index: 1000;
+            /* Sovrapposizione sopra altri elementi */
+            transition: transform 0.3s ease;
+            /* Transizione dolce */
         }
     </style>
 </head>
 
 <body>
     <div class="main-container">
-        <div id="updateBanner" class="update-banner">
+        <div id="updateBanner" class="update-banner" style="display: none;">
             <span>🎉 Sono stati aggiunti nuovi contenuti o modifiche. <button id="closeBanner">Chiudi</button></span>
         </div>
 
@@ -97,14 +129,16 @@
         <div class="main-content" id="main-content">
             <div class="slogan-div">
                 <p>Questo è uno strumento pensato per supportare la scelta dei canti liturgici più adatti in base al
-                    calendario liturgico. Questa proposta di canti vuole essere una traccia offerta a tutti gli animatori
+                    calendario liturgico. Questa proposta di canti vuole essere una traccia offerta a tutti gli
+                    animatori
                     liturgico-musicali per la scelta delle parti canore per l’Ingresso, l’Offertorio, la Comunione e il
                     Congedo, in modo che siano pertinenti ai testi proposti dal Messale e alla Parola di Dio
                     proclamata.
                 </p>
                 <p>Il sito fornisce suggerimenti sui canti da proporre per le varie domeniche e festività dell’anno
                     liturgico, rispettando le stagioni liturgiche come l’<b>Avvento</b>, il <b>Natale</b>, la
-                    <b>Quaresima</b> e il <b>Tempo Ordinario</b>. Grazie a questo strumento, sarà possibile pianificare con
+                    <b>Quaresima</b> e il <b>Tempo Ordinario</b>. Grazie a questo strumento, sarà possibile pianificare
+                    con
                     maggiore facilità i canti più appropriati per la celebrazione eucaristica, tenendo conto delle
                     letture del giorno, dei temi liturgici e della tradizione musicale religiosa.
                 </p>
