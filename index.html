@@ -18,14 +18,14 @@
 
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
-                showUpdateBanner();
+                showUpdateBanner(); // Mostra il banner solo se la versione è cambiata
                 localStorage.setItem('appVersion', currentVersion);
             }
 
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.addEventListener('message', function (event) {
                     if (event.data.type === 'UPDATE_AVAILABLE') {
-                        showUpdateBanner();
+                        showUpdateBanner(); // Mostra il banner quando un aggiornamento è disponibile
                     }
                 });
             }
@@ -36,7 +36,7 @@
             if (updateBanner) {
                 updateBanner.style.display = 'block';
                 document.getElementById('closeBanner').onclick = function () {
-                    updateBanner.style.display = 'none';
+                    updateBanner.style.display = 'none'; // Chiudi il banner
                 };
                 document.getElementById('reloadPage').onclick = function () {
                     location.reload(); // Ricarica la pagina
@@ -44,6 +44,7 @@
             }
         }
 
+        // Registrazione del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js').then(function (registration) {
@@ -54,21 +55,27 @@
                         newWorker.onstatechange = function () {
                             if (newWorker.state === 'installed') {
                                 if (navigator.serviceWorker.controller) {
-                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
+                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' }); // Invia un messaggio se c'è un aggiornamento
                                 }
                             }
                         };
                     };
 
+                    // Controlla aggiornamenti ogni 10 secondi
                     setInterval(() => {
-                        registration.update();
+                        registration.update().then(() => {
+                            if (registration.waiting) {
+                                registration.waiting.postMessage({ type: 'UPDATE_AVAILABLE' });
+                            }
+                        });
                     }, 10000);
                 }).catch(function (error) {
                     console.error('Registrazione del ServiceWorker fallita:', error);
                 });
             });
         }
-
+        
+        // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
@@ -94,7 +101,7 @@
 <body>
     <div class="main-container">
         <div id="updateBanner" class="update-banner">
-            <span>🎉 Sono stati aggiunti nuovi contenuti o modifiche. 
+            <span>🎉 Sono stati aggiunti nuovi contenuti o modifiche.
                 <button id="reloadPage">Ricarica</button>
                 <button id="closeBanner">Chiudi</button>
             </span>
@@ -119,16 +126,13 @@
             <div class="slogan-div">
                 <p>Questo è uno strumento pensato per supportare la scelta dei canti liturgici più adatti in base al
                     calendario liturgico. Questa proposta di canti vuole essere una traccia offerta a tutti gli
-                    animatori
-                    liturgico-musicali per la scelta delle parti canore per l’Ingresso, l’Offertorio, la Comunione e il
-                    Congedo, in modo che siano pertinenti ai testi proposti dal Messale e alla Parola di Dio
-                    proclamata.
+                    animatori liturgico-musicali per la scelta delle parti canore per l’Ingresso, l’Offertorio, la Comunione e il
+                    Congedo, in modo che siano pertinenti ai testi proposti dal Messale e alla Parola di Dio proclamata.
                 </p>
                 <p>Il sito fornisce suggerimenti sui canti da proporre per le varie domeniche e festività dell’anno
                     liturgico, rispettando le stagioni liturgiche come l’<b>Avvento</b>, il <b>Natale</b>, la
                     <b>Quaresima</b> e il <b>Tempo Ordinario</b>. Grazie a questo strumento, sarà possibile pianificare
-                    con
-                    maggiore facilità i canti più appropriati per la celebrazione eucaristica, tenendo conto delle
+                    con maggiore facilità i canti più appropriati per la celebrazione eucaristica, tenendo conto delle
                     letture del giorno, dei temi liturgici e della tradizione musicale religiosa.
                 </p>
 
