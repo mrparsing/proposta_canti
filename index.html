@@ -6,24 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
     <script src="javascript/javascript.js"></script>
+    <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
     <script>
-        const currentVersion = '1.0.2'; // Versione attuale del contenuto
+        const currentVersion = '1.0.0';
 
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index();
 
-            // Controlla se la versione è cambiata
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
-                // Mostra il banner informativo se la versione è cambiata
                 showUpdateBanner();
                 localStorage.setItem('appVersion', currentVersion);
             }
 
-            // Ascolta i messaggi dal Service Worker
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.addEventListener('message', function (event) {
                     if (event.data.type === 'UPDATE_AVAILABLE') {
@@ -35,44 +33,42 @@
 
         function showUpdateBanner() {
             const updateBanner = document.getElementById('updateBanner');
-            updateBanner.style.display = 'block'; // Mostra il banner
-
-            // Aggiungi un listener per il pulsante di chiusura
-            document.getElementById('closeBanner').onclick = function () {
-                updateBanner.style.display = 'none'; // Nascondi il banner quando si clicca
-            };
+            if (updateBanner) {
+                updateBanner.style.display = 'block';
+                document.getElementById('closeBanner').onclick = function () {
+                    updateBanner.style.display = 'none';
+                };
+                document.getElementById('reloadPage').onclick = function () {
+                    location.reload(); // Ricarica la pagina
+                };
+            }
         }
 
-        // Registrazione del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js').then(function (registration) {
                     console.log('ServiceWorker registrato con successo:', registration);
 
-                    // Controlla se ci sono aggiornamenti disponibili
                     registration.onupdatefound = function () {
                         const newWorker = registration.installing;
                         newWorker.onstatechange = function () {
                             if (newWorker.state === 'installed') {
                                 if (navigator.serviceWorker.controller) {
-                                    // Invia un messaggio al client
                                     newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
                                 }
                             }
                         };
                     };
 
-                    // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
                     setInterval(() => {
                         registration.update();
-                    }, 10000); // Controlla ogni 10 secondi
+                    }, 10000);
                 }).catch(function (error) {
                     console.error('Registrazione del ServiceWorker fallita:', error);
                 });
             });
         }
 
-        // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
@@ -82,33 +78,26 @@
     <style>
         .update-banner {
             background-color: #4CAF50;
-            /* Colore di sfondo verde */
             color: white;
-            /* Colore del testo bianco */
             padding: 15px;
-            /* Spaziatura interna */
             text-align: center;
-            /* Centrato */
             position: fixed;
-            /* Fisso nella parte superiore */
             top: 0;
-            /* Posizionato in alto */
             left: 0;
-            /* A sinistra */
             width: 100%;
-            /* Larghezza al 100% */
             z-index: 1000;
-            /* Sovrapposizione sopra altri elementi */
-            transition: transform 0.3s ease;
-            /* Transizione dolce */
+            display: none; /* Nascondi di default */
         }
     </style>
 </head>
 
 <body>
     <div class="main-container">
-        <div id="updateBanner" class="update-banner" style="display: none;">
-            <span>🎉 Sono stati aggiunti nuovi contenuti o modifiche. <button id="closeBanner">Chiudi</button></span>
+        <div id="updateBanner" class="update-banner">
+            <span>🎉 Sono stati aggiunti nuovi contenuti o modifiche. 
+                <button id="reloadPage">Ricarica</button>
+                <button id="closeBanner">Chiudi</button>
+            </span>
         </div>
 
         <div class="navbar" id="myNavbar">
