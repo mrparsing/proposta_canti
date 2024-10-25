@@ -15,48 +15,29 @@
         document.addEventListener('DOMContentLoaded', function () {
             avvia_index()
         });
+
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js')
                     .then(function (registration) {
                         console.log('ServiceWorker registrato con successo:', registration);
-
-                        // Controlla se ci sono aggiornamenti disponibili
-                        registration.onupdatefound = function () {
-                            const newWorker = registration.installing;
-                            newWorker.onstatechange = function () {
-                                if (newWorker.state === 'installed') {
-                                    if (navigator.serviceWorker.controller) {
-                                        // Nuovo service worker trovato, attivalo immediatamente
-                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
-                                        // Ricarica la pagina
-                                        window.location.reload();
-                                    }
-                                }
-                            };
-                        };
-
-                        // Forza il controllo degli aggiornamenti ogni volta che si carica la pagina
-                        setInterval(() => {
-                            registration.update();
-                        }, 10000); // Controlla ogni 10 secondi
                     })
                     .catch(function (error) {
                         console.error('Registrazione del ServiceWorker fallita:', error);
                     });
+
+                navigator.serviceWorker.register('firebase-messaging-sw.js')
+                    .then(registration => {
+                        console.log('Firebase Messaging Service Worker registrato con successo:', registration);
+                    })
+                    .catch(error => {
+                        console.error('Errore nella registrazione di Firebase Messaging Service Worker:', error);
+                    });
             });
         }
 
-        // Registra il service worker per Firebase Messaging
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('firebase-messaging-sw.js')
-                .then(registration => {
-                    console.log('Firebase Messaging Service Worker registrato con successo:', registration);
-                })
-                .catch(error => {
-                    console.error('Errore nella registrazione di Firebase Messaging Service Worker:', error);
-                });
-        }
+
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());

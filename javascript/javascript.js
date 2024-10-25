@@ -230,7 +230,7 @@ function avvia_index() {
     setNavbarColor(festivita[0].tipologia)
 
     setDarkTheme()
-    
+
     const prox_celebrazioni = [];
 
     for (const festivitaItem of festivita) {
@@ -263,7 +263,7 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
     if (tipologia === "ordinario") {
-        if (numero==="Solennità di Cristo Re") {
+        if (numero === "Solennità di Cristo Re") {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
         } else {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
@@ -304,3 +304,39 @@ function toggleMenu() {
     const navbar = document.getElementById('myNavbar');
     navbar.classList.toggle('active');
 }
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js";
+
+// Configurazione Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyBx_UoPuW9mrnOgl2ymvFLdhc6o942NLO0",
+    authDomain: "proposta-canti-54afe.firebaseapp.com",
+    projectId: "proposta-canti-54afe",
+    storageBucket: "proposta-canti-54afe.appspot.com",
+    messagingSenderId: "1026968544457",
+    appId: "1:1026968544457:web:62b8ef49599053ef311918",
+    measurementId: "G-96G84RLQJ3"
+};
+
+// Inizializza Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const messaging = getMessaging(app);
+
+// Funzione per richiedere il permesso per le notifiche
+async function requestPermission() {
+    const permission = await Notification.requestPermission();
+    if (permission === 'granted') {
+        console.log('Permesso per le notifiche concesso');
+        const token = await getToken(messaging, { vapidKey: 'BJwUefH5Wr--tR2IhPZcMAoZqSeKrZ6aNbqjKaPK5C--oxZG_qQ_WyhNfgukWZtFt15TGdKDmVAeQAUI1dBHKBo' });
+        console.log('Token FCM:', token);
+        // Invia il token al server (se hai un server per gestire le notifiche)
+    } else {
+        console.log('Permesso per le notifiche negato');
+    }
+}
+
+// Chiamata alla funzione di richiesta permesso
+requestPermission().catch(error => console.error('Errore nella richiesta di permesso', error));
