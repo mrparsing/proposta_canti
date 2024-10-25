@@ -1,7 +1,3 @@
-// Importa le librerie Firebase necessarie
-importScripts('https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js');
-
 // Configurazione Firebase per il Service Worker
 firebase.initializeApp({
   apiKey: "AIzaSyBx_UoPuW9mrnOgl2ymvFLdhc6o942NLO0",
