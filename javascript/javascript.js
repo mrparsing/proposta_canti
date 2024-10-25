@@ -309,7 +309,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js";
 
-// Configurazione Firebase
+
 const firebaseConfig = {
     apiKey: "AIzaSyBx_UoPuW9mrnOgl2ymvFLdhc6o942NLO0",
     authDomain: "proposta-canti-54afe.firebaseapp.com",
@@ -320,23 +320,22 @@ const firebaseConfig = {
     measurementId: "G-96G84RLQJ3"
 };
 
-// Inizializza Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const messaging = getMessaging(app);
+const app = initializeApp(firebaseConfig)
 
-// Funzione per richiedere il permesso per le notifiche
-async function requestPermission() {
-    const permission = await Notification.requestPermission();
-    if (permission === 'granted') {
-        console.log('Permesso per le notifiche concesso');
-        const token = await getToken(messaging, { vapidKey: 'BJwUefH5Wr--tR2IhPZcMAoZqSeKrZ6aNbqjKaPK5C--oxZG_qQ_WyhNfgukWZtFt15TGdKDmVAeQAUI1dBHKBo' });
-        console.log('Token FCM:', token);
-        // Invia il token al server (se hai un server per gestire le notifiche)
-    } else {
-        console.log('Permesso per le notifiche negato');
-    }
+// Inizializza Firebase Cloud Messaging
+const messaging = firebase.messaging();
+getToken(messaging, { vapidKey: 'BJwUefH5Wr--tR2IhPZcMAoZqSeKrZ6aNbqjKaPK5C--oxZG_qQ_WyhNfgukWZtFt15TGdKDmVAeQAUI1dBHKBo' });
+
+function requestPermission(params) {
+    console.log('Requesting permission...')
+    Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+            console.log("Notification permission granted.");
+        }
+    })
 }
 
-// Chiamata alla funzione di richiesta permesso
-requestPermission().catch(error => console.error('Errore nella richiesta di permesso', error));
+onMessage(messaging, (payload) => {
+  console.log('Message received. ', payload);
+  // ...
+});

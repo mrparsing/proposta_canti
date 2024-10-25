@@ -53,6 +53,63 @@
 
         gtag('config', 'G-2J3NXSXK3Y');
     </script>
+
+
+    <script>
+        // app.js
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("firebase-messaging-sw.js")
+                .then((registration) => {
+                    console.log("Service Worker registrato con successo:", registration);
+                    messaging.useServiceWorker(registration);
+                })
+                .catch((error) => console.error("Service Worker registration failed:", error));
+        }
+
+        // Richiedi permesso per le notifiche
+        const messaging = firebase.messaging();
+
+        function askPermission() {
+            Notification.requestPermission().then((permission) => {
+                if (permission === "granted") {
+                    console.log("Permesso notifiche concesso.");
+                    subscribeUserToPush();
+                } else {
+                    console.error("Permesso notifiche negato.");
+                }
+            });
+        }
+
+        // Ottieni il token per le notifiche
+        function subscribeUserToPush() {
+            messaging
+                .getToken({ vapidKey: "BJwUefH5Wr--tR2IhPZcMAoZqSeKrZ6aNbqjKaPK5C--oxZG_qQ_WyhNfgukWZtFt15TGdKDmVAeQAUI1dBHKBo" })
+                .then((currentToken) => {
+                    if (currentToken) {
+                        console.log("Token per le notifiche push:", currentToken);
+                        // Salva questo token sul server per l'invio delle notifiche
+                    } else {
+                        console.warn("Nessun token disponibile.");
+                    }
+                })
+                .catch((err) => {
+                    console.error("Errore ottenimento token:", err);
+                });
+        }
+
+        // app.js (continua)
+
+        messaging.onMessage((payload) => {
+            console.log("Messaggio ricevuto:", payload);
+            // Mostra la notifica direttamente
+            new Notification(payload.notification.title, {
+                body: payload.notification.body,
+                icon: payload.notification.icon,
+            });
+        });
+    </script>
 </head>
 
 <body>
