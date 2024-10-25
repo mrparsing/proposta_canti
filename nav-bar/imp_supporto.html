@@ -107,7 +107,6 @@
             display: inline-block;
             width: 60px;
             height: 34px;
-            margin-top: 20px;
             margin-bottom: 20px;
         }
 
@@ -229,13 +228,18 @@
             margin: 0 10px;
             text-decoration: none;
             font-size: 24px;
-            color: #fff;
             padding: 10px;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
+            color: #333333;
+            /* colore scuro per il tema chiaro */
+            transition: color 0.3s ease;
         }
 
+
         .social-button:hover {
+            color: wheat;
+        }
+
+        .dark-theme .social-button:hover {
             color: wheat;
         }
 
@@ -289,7 +293,7 @@
 
         <div class="main-content" id="main-content">
             <div style="display: flex; align-items: center;">
-                <p style="margin-right: 10px; position: relative; top: 7px;">Attiva il tema scuro:</p>
+                <p style="margin-right: 10px; position: relative; top: -2px;">Attiva il tema scuro:</p>
                 <label class="theme-switch">
                     <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
                     <span class="slider"></span>

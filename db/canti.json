@@ -376,35 +376,35 @@
         },
         {
             "titolo": "Cristo nostra Pasqua",
-            "autore": "autore 48",
+            "autore": "Antonio Parisi",
             "tipologia": "Ingresso, Offertorio, Comunione",
             "tempo": "Pasqua",
-            "ascolta": "link48.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=ua-Vwlug9M8",
+            "download_link": "../db/canti/cristo_nostra_pasqua.pdf"
         },
         {
             "titolo": "La mia Pasqua è il Signore",
-            "autore": "autore 49",
+            "autore": "Anna Maria Galliano, Rino Farruggio",
             "tipologia": "Comunione",
             "tempo": "Pasqua",
-            "ascolta": "link49.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=YjXi5iRvn2M",
+            "download_link": "../db/canti/la_mia_pasqua_è_il_signore.pdf"
         },
         {
             "titolo": "Hosanna",
-            "autore": "autore 50",
+            "autore": "Marco Frisina",
             "tipologia": "Ingresso",
             "tempo": "Pasqua",
-            "ascolta": "link50.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=qTIovLZjjyQ",
+            "download_link": "../db/canti/Hosanna"
         },
         {
             "titolo": "O Dio, Tu sei il mio Dio",
-            "autore": "autore 51",
+            "autore": "Marco Frisina",
             "tipologia": "Offertorio, Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link51.html",
-            "download_link": "../db/canti/"
+            "ascolta": "https://www.youtube.com/watch?v=_1UjszncdZU",
+            "download_link": "../db/canti/o_dio_tu_sei_il_mio_dio"
         },
         {
             "titolo": "I miei occhi",
