@@ -12,13 +12,16 @@
     <style>
         /* Stile della tabella */
         #resultsContainer {
-            overflow-x: auto; /* Permette lo scroll orizzontale */
-            margin: 20px auto; /* Centratura del contenitore */
+            overflow-x: auto;
+            /* Permette lo scroll orizzontale */
+            margin: 20px auto;
+            /* Centratura del contenitore */
             width: 90%;
         }
 
         #resultsTable {
-            width: 100%; /* La tabella occupa il 100% del contenitore */
+            width: 100%;
+            /* La tabella occupa il 100% del contenitore */
             border-collapse: collapse;
             font-family: Arial, sans-serif;
             font-size: 16px;
@@ -78,11 +81,27 @@
 
         /* Media query per schermi piccoli */
         @media (max-width: 600px) {
+
             #resultsTable th,
             #resultsTable td {
-                font-size: 14px; /* Riduce la dimensione del font per schermi piccoli */
-                padding: 8px; /* Riduce il padding */
+                font-size: 14px;
+                /* Riduce la dimensione del font per schermi piccoli */
+                padding: 8px;
+                /* Riduce il padding */
             }
+        }
+
+        /* Stile righe tabella in modalità scura */
+        .dark-theme #resultsTable tbody tr:nth-child(even) {
+            background-color: #333;
+        }
+
+        .dark-theme #resultsTable tbody tr:nth-child(odd) {
+            background-color: #2a2a2a;
+        }
+
+        .dark-theme #resultsTable tbody tr:hover {
+            background-color: #444;
         }
     </style>
 
