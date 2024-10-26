@@ -11,9 +11,14 @@
 
     <style>
         /* Stile della tabella */
-        #resultsTable {
+        #resultsContainer {
+            overflow-x: auto; /* Permette lo scroll orizzontale */
+            margin: 20px auto; /* Centratura del contenitore */
             width: 90%;
-            margin: 20px auto;
+        }
+
+        #resultsTable {
+            width: 100%; /* La tabella occupa il 100% del contenitore */
             border-collapse: collapse;
             font-family: Arial, sans-serif;
             font-size: 16px;
@@ -65,6 +70,15 @@
             color: #888;
             font-style: italic;
         }
+
+        /* Media query per schermi piccoli */
+        @media (max-width: 600px) {
+            #resultsTable th,
+            #resultsTable td {
+                font-size: 14px; /* Riduce la dimensione del font per schermi piccoli */
+                padding: 8px; /* Riduce il padding */
+            }
+        }
     </style>
 
     <script>
@@ -98,14 +112,16 @@
         </div>
     </div>
 
-    <table id="resultsTable">
-        <thead>
-            <tr id="tableHeader">
-                <!-- Le intestazioni verranno impostate tramite JavaScript -->
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div id="resultsContainer"> <!-- Contenitore per la tabella -->
+        <table id="resultsTable">
+            <thead>
+                <tr id="tableHeader">
+                    <!-- Le intestazioni verranno impostate tramite JavaScript -->
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
     <script>
         // Recupera i risultati da localStorage
@@ -188,7 +204,7 @@
             <td>${canto.tipologia}</td>
             <td>${canto.tempo}</td>
             <td><a href="${canto.ascolta}">Ascolta</a></td>
-            <td>Spartito non disponibile</a></td>
+            <td>Spartito non disponibile</td>
             `;
                     } else {
                         row.innerHTML = `
