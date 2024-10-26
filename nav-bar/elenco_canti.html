@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elenco canti</title>
+    <script src="javascript/js_global_search.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
     <link rel="stylesheet" href="../styles/style_lista.css">
 
     <script>
-            function button_filter_desktop(button, pixel) {
+        function button_filter_desktop(button, pixel) {
             const filtersMenu = document.getElementById('filtersMenu');
             const toggleButton = document.getElementById(button);
             const mainContent = document.getElementById('list');
@@ -62,19 +63,21 @@
                 <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
                 <button onclick="location.href='imp_supporto.html'">Impostazioni/Supporto</button>
             </div>
-            <input class="ricerca" type="text" placeholder="Cerca..." id="global_search" onkeyup="searchCanti()">
+            <input type="text" id="global_search" onkeyup="searchCanti(event)" placeholder="Cerca...">
         </div>
 
         <div class="main-content" id="main-content">
             <!-- Barra di ricerca -->
             <div class="search_bar_filtri">
-                <button id="filter_button_desktop" onclick="button_filter_desktop('filter_button_desktop', 0)">Mostra filtri</button>
+                <button id="filter_button_desktop" onclick="button_filter_desktop('filter_button_desktop', 0)">Mostra
+                    filtri</button>
                 <input type="text" id="searchInput" placeholder="Cerca canti..." onkeyup="filter_search_bar()">
             </div>
 
             <!-- Contenitore filtri -->
             <div class="filters-container-wrapper">
-                <button id="toggle-filters-btn" onclick="button_filter_desktop('toggle-filters-btn', 40)">Mostra filtri</button>
+                <button id="toggle-filters-btn" onclick="button_filter_desktop('toggle-filters-btn', 40)">Mostra
+                    filtri</button>
                 <div class="filters-container" id="filtersMenu">
                     <label for="authorInput">Autore:</label>
                     <input type="text" id="authorInput" placeholder="Cerca per autore..."
