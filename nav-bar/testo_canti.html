@@ -28,7 +28,7 @@
                         data.canti.forEach(canto => {
                             if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
                                 document.getElementById('titolo').innerText = canto.titolo;
-
+                                console.log(canto.titolo);
                                 // Crea i link da aggiungere in info-canto
                                 const infoCantoElement = document.getElementById('info-canto');
                                 infoCantoElement.innerHTML = `
