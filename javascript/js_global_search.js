@@ -56,6 +56,7 @@ async function searchCanti(event, page) {
 
                 // Salva i risultati in localStorage
                 localStorage.setItem("searchResults", JSON.stringify(results));
+                localStorage.setItem("tipologia", "salmo");
 
                 // Reindirizza alla pagina dei risultati
                 window.location.href = linkRisultati;
@@ -131,8 +132,8 @@ async function searchCanti(event, page) {
 
                         // Stampa i risultati
                         if (results.length > 0) {
-                            console.log("Risultati trovati:", results);
                             localStorage.setItem("searchResults", JSON.stringify(results));
+                            localStorage.setItem("tipologia", "messa");
 
                             // Reindirizza alla pagina dei risultati
                             window.location.href = linkRisultati;

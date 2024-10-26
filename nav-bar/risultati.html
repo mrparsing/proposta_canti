@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risultati ricerca</title>
     <script src="../javascript/javascript.js"></script>
-    <script src="../javascript/js_global_search.js"></script>    
+    <script src="../javascript/js_global_search.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
 
     <style>
@@ -100,36 +100,68 @@
     </div>
 
     <table id="resultsTable">
-        <thead>
-            <tr>
-                <th>Titolo</th>
-                <th>Anno</th>
-                <th>Autore</th>
-                <th>Link</th>
-            </tr>
-        </thead>
+
         <tbody></tbody>
     </table>
 
     <script>
         // Recupera i risultati da localStorage
         const results = JSON.parse(localStorage.getItem("searchResults"));
+        const tipologia = JSON.parse(localStorage.getItem("tipologia"));
         const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
-        if (results && results.length > 0) {
-            results.forEach(salmo => {
-                console.log(salmo.download_link);
 
-                const row = resultsTable.insertRow();
-                row.innerHTML = `
+        if (tipologia === "salmo") {
+            if (results && results.length > 0) {
+                results.forEach(salmo => {
+                    console.log(salmo.download_link);
+
+                    const row = resultsTable.insertRow();
+                    row.innerHTML = `
                     <td>${salmo.titolo}</td>
                     <td>${salmo.anno}</td>
                     <td>${salmo.autore}</td>
                     <td><a href="${salmo.download_link}">Download</a></td>
                 `;
-            });
-        } else {
-            resultsTable.innerHTML = "<tr><td colspan='4'>Nessun risultato trovato.</td></tr>";
+                });
+            } else {
+                resultsTable.innerHTML = "<tr><td colspan='4'>Nessun risultato trovato.</td></tr>";
+            }
+        } else if (tipologia === "messa") {
+            if (results && results.length > 0) {
+                results.forEach(messa => {
+                    const row = resultsTable.insertRow();
+                    if (messa.title.includes("ordinario")) {
+                        row.innerHTML = `
+                        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=ordinario">
+                        <td>${messa.title}</td>
+                        <td>${messa.numero}</td>
+                        <td>${messa.anno}</td>
+                        numero, anno, festività
+                    `;
+                    } else if (messa.title.includes("avvento")) {
+                        row.innerHTML = `
+                        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=avvento">
+                        <td>${messa.title}</td>
+                        <td>${messa.numero}</td>
+                        <td>${messa.anno}</td>
+                        numero, anno, festività
+                    `;
+                    } else if (messa.title.includes("quaresima")) {
+                        row.innerHTML = `
+                        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=quaresima">
+                        <td>${messa.title}</td>
+                        <td>${messa.numero}</td>
+                        <td>${messa.anno}</td>
+                        numero, anno, festività
+                    `;
+                    }
+                });
+            } else {
+                resultsTable.innerHTML = "<tr><td colspan='4'>Nessun risultato trovato.</td></tr>";
+            }
         }
+
+
     </script>
 </body>
 
