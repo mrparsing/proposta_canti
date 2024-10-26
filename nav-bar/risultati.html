@@ -107,8 +107,9 @@
         const results = JSON.parse(localStorage.getItem("searchResults"));
         const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
         if (results && results.length > 0) {
-            console.log(salmo.download_link);
             results.forEach(salmo => {
+                console.log(salmo.download_link);
+
                 const row = resultsTable.insertRow();
                 row.innerHTML = `
                     <td>${salmo.titolo}</td>
