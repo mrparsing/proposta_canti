@@ -107,7 +107,7 @@
     <script>
         // Recupera i risultati da localStorage
         const results = JSON.parse(localStorage.getItem("searchResults"));
-        const tipologia = JSON.parse(localStorage.getItem("tipologia"));
+        const tipologia = localStorage.getItem("tipologia");
         const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
 
         if (tipologia === "salmo") {
