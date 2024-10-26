@@ -132,30 +132,6 @@ async function searchCanti(event, page) {
             }
 
         }
-
-        // Funzione per convertire i numeri romani in arabi
-        function convertRomanToInt(roman) {
-            const romanNumerals = {
-                'i': 1,
-                'v': 5,
-                'x': 10,
-            };
-
-            let total = 0;
-            let prevValue = 0;
-
-            for (let char of roman) {
-                const currentValue = romanNumerals[char.toLowerCase()];
-                if (currentValue > prevValue) {
-                    total += currentValue - 2 * prevValue; // Sottrai il valore precedente se necessario
-                } else {
-                    total += currentValue;
-                }
-                prevValue = currentValue;
-            }
-
-            return total;
-        }
     }
 }
 
@@ -184,5 +160,27 @@ function cerca(jsonFile, arabicNumbers, numeriRomani) {
     }
 
     return results
+}
 
+function convertRomanToInt(roman) {
+    const romanNumerals = {
+        'i': 1,
+        'v': 5,
+        'x': 10,
+    };
+
+    let total = 0;
+    let prevValue = 0;
+
+    for (let char of roman) {
+        const currentValue = romanNumerals[char.toLowerCase()];
+        if (currentValue > prevValue) {
+            total += currentValue - 2 * prevValue; // Sottrai il valore precedente se necessario
+        } else {
+            total += currentValue;
+        }
+        prevValue = currentValue;
+    }
+
+    return total;
 }
