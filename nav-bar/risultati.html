@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
-    <title>Risultati di ricerca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati ricerca</title>
+    <script src="../javascript/javascript.js"></script>
+    <link rel="stylesheet" href="../styles/style_index.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setNavbarColor(festivita[0].tipologia);
+            setDarkTheme()
+        });
+    </script>
 </head>
+
 <body>
-    <h1>Risultati della ricerca</h1>
+    <div class="main-container">
+        <div class="navbar" id="myNavbar">
+            <h1>Supporto</h1>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <div class="navbar-buttons">
+                <button onclick="location.href='../index.html'">Home</button>
+                <button onclick="location.href='elenco_canti.html'">Elenco canti</button>
+                <button onclick="location.href='spartiti_salmi.html'">Spartiti salmi</button>
+                <button onclick="location.href='anno_liturgico.html'">Anno liturgico</button>
+                <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
+                <button onclick="location.href='imp_supporto.html'">Impostazioni/Supporto</button>
+            </div>
+            <input type="text" id="global_search" onkeyup="searchCanti(event, 'supporto')" placeholder="Cerca...">
+        </div>
+    </div>
+
     <table id="resultsTable">
         <thead>
             <tr>
                 <th>Titolo</th>
                 <th>Anno</th>
-                <th>Numero</th>
                 <th>Autore</th>
                 <th>Link</th>
             </tr>
@@ -31,7 +57,6 @@
                 row.innerHTML = `
                     <td>${salmo.titolo}</td>
                     <td>${salmo.anno}</td>
-                    <td>${salmo.numero_arabo}</td>
                     <td>${salmo.autore}</td>
                     <td><a href="${salmo.download_link.replace(/^\.{2}\//, '')}">Download</a></td>
                 `;
@@ -41,4 +66,5 @@
         }
     </script>
 </body>
+
 </html>
