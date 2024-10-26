@@ -10,82 +10,66 @@
     <link rel="stylesheet" href="../styles/style_index.css">
 
     <style>
+        /* Stile del contenitore della tabella */
         #resultsContainer {
             overflow-x: auto;
             margin: 20px auto;
             width: 90%;
         }
-
+    
         /* Stile della tabella */
         #resultsTable {
             width: 100%;
             border-collapse: collapse;
             font-family: Arial, sans-serif;
             font-size: 16px;
+            background-color: #1e1e1e; /* Sfondo scuro */
+            color: #f1f1f1; /* Testo chiaro */
         }
 
-        /* Temi per tabella */
         .dark-theme #resultsTable {
-            background-color: #1e1e1e;
-            color: #f1f1f1;
+            color: #252525;
         }
-
-        .dark-theme #resultsTable thead tr {
+    
+        /* Header della tabella */
+        #resultsTable thead tr {
             background-color: #333333;
             color: #ffffff;
+            text-align: left;
+            font-weight: bold;
         }
-
-        .dark-theme #resultsTable th,
-        .dark-theme #resultsTable td {
+    
+        /* Celle della tabella */
+        #resultsTable th,
+        #resultsTable td {
+            padding: 12px 15px;
             border: 1px solid #444444;
         }
-
-        .dark-theme #resultsTable tbody tr:nth-child(even) {
+    
+        /* Righe alternate per il tema scuro */
+        #resultsTable tbody tr:nth-child(even) {
             background-color: #2a2a2a;
         }
-
-        .dark-theme #resultsTable tbody tr:nth-child(odd) {
+    
+        #resultsTable tbody tr:nth-child(odd) {
             background-color: #252525;
         }
-
-        .dark-theme #resultsTable tbody tr:hover {
+    
+        /* Hover effetto per righe */
+        #resultsTable tbody tr:hover {
             background-color: #444444;
         }
-
-        /* Tema chiaro */
-        .light-theme #resultsTable {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .light-theme #resultsTable thead tr {
-            background-color: #e0e0e0;
-            color: #333333;
-        }
-
-        .light-theme #resultsTable th,
-        .light-theme #resultsTable td {
-            border: 1px solid #cccccc;
-        }
-
-        .light-theme #resultsTable tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .light-theme #resultsTable tbody tr:nth-child(odd) {
-            background-color: #ffffff;
-        }
-
+    
         /* Stile dei link */
         #resultsTable a {
             color: #58a6ff;
             text-decoration: none;
         }
-
+    
         #resultsTable a:hover {
             text-decoration: underline;
         }
-
+    
         /* Messaggio quando nessun risultato è presente */
         #resultsTable td[colspan="4"],
         #resultsTable td[colspan="3"] {
@@ -93,10 +77,9 @@
             color: #888888;
             font-style: italic;
         }
-
+    
         /* Media query per schermi piccoli */
         @media (max-width: 600px) {
-
             #resultsTable th,
             #resultsTable td {
                 font-size: 14px;
@@ -104,28 +87,10 @@
             }
         }
     </style>
-
     <script>
-        function setDarkTheme() {
-            document.body.classList.add('dark-theme');
-            document.body.classList.remove('light-theme');
-            toggleTableTheme();
-        }
-
-        function setLightTheme() {
-            document.body.classList.add('light-theme');
-            document.body.classList.remove('dark-theme');
-            toggleTableTheme();
-        }
-
-        function toggleTableTheme() {
-            const isDarkMode = document.body.classList.contains('dark-theme');
-            document.querySelector('#resultsTable').style.color = isDarkMode ? '#f1f1f1' : '#000000';
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
-            const isDarkTheme = localStorage.getItem('theme') === 'dark';
-            isDarkTheme ? setDarkTheme() : setLightTheme();
+            setNavbarColor(festivita[0].tipologia);
+            setDarkTheme();
 
             const searchInput = localStorage.getItem("searchInput");
             console.log("searchInput", searchInput);
