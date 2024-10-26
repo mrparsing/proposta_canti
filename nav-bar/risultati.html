@@ -8,10 +8,67 @@
     <script src="../javascript/javascript.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
 
+    <style>
+        /* Stile della tabella */
+        #resultsTable {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        /* Header della tabella */
+        #resultsTable thead tr {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /* Stile delle celle della tabella */
+        #resultsTable th,
+        #resultsTable td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+        }
+
+        /* Righe della tabella alternate */
+        #resultsTable tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #resultsTable tbody tr:nth-child(odd) {
+            background-color: #e9e9e9;
+        }
+
+        /* Hover effetto */
+        #resultsTable tbody tr:hover {
+            background-color: #d1e7dd;
+        }
+
+        /* Stile dei link */
+        #resultsTable a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #resultsTable a:hover {
+            text-decoration: underline;
+        }
+
+        /* Messaggio quando nessun risultato è presente */
+        #resultsTable td[colspan="5"] {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
-            setDarkTheme()
+            setDarkTheme();
         });
     </script>
 </head>
@@ -53,7 +110,6 @@
         if (results && results.length > 0) {
             results.forEach(salmo => {
                 const row = resultsTable.insertRow();
-
                 row.innerHTML = `
                     <td>${salmo.titolo}</td>
                     <td>${salmo.anno}</td>
@@ -62,7 +118,7 @@
                 `;
             });
         } else {
-            resultsTable.innerHTML = "<tr><td colspan='5'>Nessun risultato trovato.</td></tr>";
+            resultsTable.innerHTML = "<tr><td colspan='4'>Nessun risultato trovato.</td></tr>";
         }
     </script>
 </body>
