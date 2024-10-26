@@ -38,7 +38,7 @@ async function searchCanti(event) {
                 localStorage.setItem("searchResults", JSON.stringify(results));
 
                 // Reindirizza alla pagina dei risultati
-                window.location.href = "risultati.html";
+                window.location.href = "nav-bar/risultati.html";
             } catch (error) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
