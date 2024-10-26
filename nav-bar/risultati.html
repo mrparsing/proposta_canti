@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Risultati ricerca</title>
     <script src="../javascript/javascript.js"></script>
+    <script src="../javascript/js_global_search.js"></script>    
     <link rel="stylesheet" href="../styles/style_index.css">
 
     <style>
@@ -69,14 +70,21 @@
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
+
+            const searchInput = localStorage.getItem("searchInput");
+            if (searchInput) {
+                document.getElementById("global_search").value = searchInput;
+            }
+
         });
+    </script>
     </script>
 </head>
 
 <body>
     <div class="main-container">
         <div class="navbar" id="myNavbar">
-            <h1>Supporto</h1>
+            <h1>Risultati</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
             <div class="navbar-buttons">
                 <button onclick="location.href='../index.html'">Home</button>
@@ -86,7 +94,7 @@
                 <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
                 <button onclick="location.href='imp_supporto.html'">Impostazioni/Supporto</button>
             </div>
-            <input type="text" id="global_search" onkeyup="searchCanti(event, 'supporto')" placeholder="Cerca...">
+            <input type="text" id="global_search" onkeyup="searchCanti(event, 'risultati')" placeholder="Cerca...">
         </div>
     </div>
 

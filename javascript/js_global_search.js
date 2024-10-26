@@ -4,10 +4,14 @@ async function searchCanti(event, page) {
     if (event.key === "Enter") {
         const input = document.getElementById("global_search").value.toLowerCase();
 
+        // Salva l'input nella memoria locale
+        localStorage.setItem("searchInput", input);
+
+        
         if (input.includes("salmo")) {
             let jsonFile = ""
             let linkRisultati = ""
-            if (page==="index" | page==="celebrazioni") {
+            if (page === "index" | page === "celebrazioni") {
                 jsonFile = "db/salmi/elenco_salmi.json";
                 linkRisultati = "nav-bar/risultati.html"
             } else if (page === "anno") {
