@@ -116,7 +116,62 @@ async function searchCanti(event, page) {
                 console.log("Numeri romani trovati:", numeriRomani);
             }
 
-            console.log(jsonFile);
+            // Esegui la ricerca nei file JSON
+            if (jsonFile) {
+                fetch(jsonFile)
+                    .then(response => response.json())
+                    .then(data => {
+                        const results = []; // Lista per raccogliere i risultati
+                        const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
+
+                        data.celebrazioni.forEach(item => {
+                            // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
+                            if ((numeroDomenica && item.numero === numeroDomenica && item.anno === (match ? match[1].toUpperCase() : '')) ||
+                                (match && item.anno === match[1].toUpperCase())) {
+                                results.push(item);
+                            }
+                        });
+
+                        // Stampa i risultati
+                        if (results.length > 0) {
+                            console.log("Risultati trovati:", results);
+                            // Qui puoi popolare la tua tabella o lista con i risultati
+                        } else {
+                            console.log("Nessun risultato trovato.");
+                        }
+                    })
+                    .catch(error => console.error('Errore nel fetching dei dati:', error));
+            } else {
+                console.log("Nessun file JSON specificato per la ricerca.");
+            }
+        }
+
+        // Funzione per convertire i numeri romani in arabi
+        function convertRomanToInt(roman) {
+            const romanNumerals = {
+                'i': 1,
+                'v': 5,
+                'x': 10,
+                'l': 50,
+                'c': 100,
+                'd': 500,
+                'm': 1000
+            };
+
+            let total = 0;
+            let prevValue = 0;
+
+            for (let char of roman) {
+                const currentValue = romanNumerals[char.toLowerCase()];
+                if (currentValue > prevValue) {
+                    total += currentValue - 2 * prevValue; // Sottrai il valore precedente se necessario
+                } else {
+                    total += currentValue;
+                }
+                prevValue = currentValue;
+            }
+
+            return total;
         }
     }
 }
