@@ -132,28 +132,28 @@
                     const row = resultsTable.insertRow();
                     if (messa.title.includes("ordinario")) {
                         row.innerHTML = `
-                        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=ordinario">
-                        <td>${messa.title}</td>
-                        <td>${messa.numero}</td>
-                        <td>${messa.anno}</td>
-                        numero, anno, festività
-                    `;
+        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=ordinario" style="text-decoration: none; color: inherit;">
+            <td>${messa.title}</td>
+            <td>${messa.numero}</td>
+            <td>${messa.anno}</td>
+        </a>
+    `;
                     } else if (messa.title.includes("avvento")) {
                         row.innerHTML = `
-                        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=avvento">
-                        <td>${messa.title}</td>
-                        <td>${messa.numero}</td>
-                        <td>${messa.anno}</td>
-                        numero, anno, festività
-                    `;
+        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=avvento" style="text-decoration: none; color: inherit;">
+            <td>${messa.title}</td>
+            <td>${messa.numero}</td>
+            <td>${messa.anno}</td>
+        </a>
+    `;
                     } else if (messa.title.includes("quaresima")) {
                         row.innerHTML = `
-                        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=quaresima">
-                        <td>${messa.title}</td>
-                        <td>${messa.numero}</td>
-                        <td>${messa.anno}</td>
-                        numero, anno, festività
-                    `;
+        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=quaresima" style="text-decoration: none; color: inherit;">
+            <td>${messa.title}</td>
+            <td>${messa.numero}</td>
+            <td>${messa.anno}</td>
+        </a>
+    `;
                     }
                 });
             } else {
