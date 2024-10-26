@@ -139,10 +139,11 @@ async function searchCanti(event, page) {
                 linkRisultati = "risultati.html";
             }
 
+            const results = []
+
             try {
                 const response = await fetch(jsonFile);
                 const data = await response.json();
-                const results = []
 
                 data.canti.forEach(item => {
                     if (input.toLowerCase() === item.titolo.toLowerCase()) {
