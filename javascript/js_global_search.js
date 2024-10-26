@@ -73,7 +73,7 @@ async function searchCanti(event, page) {
         let jsonFile = "";
         let linkRisultati = "";
 
-        if ((input.includes("messa") || input.includes("celebrazione")) && !input.includes("salmo")) {
+        if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
             for (const [key, value] of Object.entries(jsonPaths)) {
                 if (input.includes(key)) {
                     jsonFile = (page === "index" || page === "celebrazioni") ? value
