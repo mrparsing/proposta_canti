@@ -13,16 +13,16 @@ async function searchCanti(event) {
                 const salmi = data.salmi;
 
                 const words = input.split(" ");
-                const filters = { number: null, year: null, romanNumber: null, season: null };
+                const filters = { number: null, romanNumber: null, year: null, season: null };
 
-                // Analizza le parole per numero arabo, numero romano, anno e tempo liturgico
+                // Analizza l'input per numero arabo, numero romano, anno e tempo liturgico
                 words.forEach(word => {
                     if (/^\d+$/.test(word)) {
                         filters.number = word; // Numero arabo
                     } else if (/^(i|ii|iii|iv|v|vi|vii|viii|ix|x)$/i.test(word)) {
                         filters.romanNumber = word.toLowerCase(); // Numero romano
-                    } else if (word.includes("anno") || ["a", "b", "c"].includes(word)) {
-                        filters.year = word.replace("anno", "").trim().toUpperCase(); // Anno
+                    } else if (["a", "b", "c"].includes(word)) {
+                        filters.year = word.toUpperCase(); // Anno
                     } else if (["ordinario", "quaresima", "pasqua", "avvento"].includes(word)) {
                         filters.season = word; // Tempo liturgico
                     }
@@ -30,7 +30,7 @@ async function searchCanti(event) {
 
                 // Filtra i salmi in base ai criteri
                 const results = salmi.filter(salmo => {
-                    const matchesTitle = salmo.titolo.toLowerCase().includes(input);
+                    const matchesTitle = salmo.titolo.toLowerCase().includes("salmo");
                     const matchesNumber = filters.number ? salmo.numero_arabo === filters.number : true;
                     const matchesRomanNumber = filters.romanNumber ? salmo.numero_romano === filters.romanNumber : true;
                     const matchesYear = filters.year ? salmo.anno === filters.year : true;
