@@ -15,6 +15,7 @@
             setDarkTheme();
 
             const titolo = localStorage.getItem("titolo");
+            console.log(titolo);
             if (titolo) {
                 document.getElementById('titolo').innerText = titolo;
             }
@@ -28,7 +29,7 @@
                         data.canti.forEach(canto => {
                             if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
                                 document.getElementById('titolo').innerText = canto.titolo;
-                                console.log(canto.titolo);
+
                                 // Crea i link da aggiungere in info-canto
                                 const infoCantoElement = document.getElementById('info-canto');
                                 infoCantoElement.innerHTML = `
@@ -52,7 +53,7 @@
 <body>
     <div class="main-container">
         <div class="navbar" id="myNavbar">
-            <h1>Risultati</h1>
+            <h1>Testo</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
             <div class="navbar-buttons">
                 <button onclick="location.href='../index.html'">Home</button>
