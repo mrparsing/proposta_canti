@@ -44,25 +44,42 @@ body {
 
 .navbar button,
 .navbar input[type="text"] {
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bolder;
+    padding: 10px 10px;
+    font-size: 16px;
     cursor: pointer;
     margin: 5px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
-    color: #000000;
-    background-color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease, max-width 0.3s ease;
+    color: white;
+    background-color: transparent;
+    /* Rimuove lo sfondo */
+    transition: background-color 0.3s ease, transform 0.2s ease;
     min-width: 120px;
-    max-width: 250px;
-    width: 100%;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.navbar input[type="text"] {
+    color: #000000;
 }
 
 .navbar button:hover {
     background-color: transparent;
+    /* Sfondo trasparente */
     color: #c1bdbd;
+    /* Cambia il colore del testo */
     transform: scale(1.05);
+    /* Mantiene l'effetto di ingrandimento */
+}
+
+.navbar input[type="text"] {
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 250px;
+    transition: max-width 0.3s ease;
+    padding: 10px;
 }
 
 .menu-toggle {
