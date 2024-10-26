@@ -93,7 +93,7 @@ async function searchCanti(event, page) {
             // Verifica se l'input contiene l'anno (a, b, c)
             const match = input.match(/\b([abc])\b/); // Trova l'anno
             if (match) {
-                anno = match[1].toUpperCase(); // Prendi l'anno trovato e rendilo maiuscolo
+                anno = match[1].toLowerCase(); // Prendi l'anno trovato e rendilo maiuscolo
             }
 
             // Costruisci il percorso JSON completo se abbiamo trovato un anno
