@@ -106,15 +106,15 @@
         // Recupera i risultati da localStorage
         const results = JSON.parse(localStorage.getItem("searchResults"));
         const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
-
         if (results && results.length > 0) {
+            console.log(salmo.download_link);
             results.forEach(salmo => {
                 const row = resultsTable.insertRow();
                 row.innerHTML = `
                     <td>${salmo.titolo}</td>
                     <td>${salmo.anno}</td>
                     <td>${salmo.autore}</td>
-                    <td><a href="${salmo.download_link.replace(/^\.\.\//, '')}">Download</a></td>
+                    <td><a href="${salmo.download_link}">Download</a></td>
                 `;
             });
         } else {
