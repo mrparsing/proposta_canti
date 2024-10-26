@@ -106,14 +106,14 @@ async function searchCanti(event, page) {
 
             // Controllo per numeri arabi e romani
             const arabicNumbers = input.match(/\b\d+\b/g); // Trova numeri arabi
-            const romanNumbers = input.match(/\b(M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))\b/g); // Trova numeri romani
+            const numeriRomani = input.match(/\b(xxx|xx|x|iii|ii|i|iv|v|vi|vii|viii|ix|xi|xii|xiii|xiv|xv|xvi|xvii|xviii|xix|xx|xxx|xxxii|xxxiii)\b/);
 
             if (arabicNumbers) {
                 console.log("Numeri arabi trovati:", arabicNumbers);
             }
 
-            if (romanNumbers) {
-                console.log("Numeri romani trovati:", romanNumbers);
+            if (numeriRomani) {
+                console.log("Numeri romani trovati:", numeriRomani);
             }
 
             console.log(jsonFile);
