@@ -7,19 +7,20 @@ async function searchCanti(event, page) {
         // Salva l'input nella memoria locale
         localStorage.setItem("searchInput", input);
 
-
         if (input.includes("salmo")) {
-            let jsonFile = ""
-            let linkRisultati = ""
-            if (page === "index" | page === "celebrazioni") {
+            let jsonFile = "";
+            let linkRisultati = "";
+
+            // Determina il percorso del file JSON e il link ai risultati in base alla pagina
+            if (page === "index" || page === "celebrazioni") {
                 jsonFile = "db/salmi/elenco_salmi.json";
-                linkRisultati = "nav-bar/risultati.html"
+                linkRisultati = "nav-bar/risultati.html";
             } else if (page === "anno") {
                 jsonFile = "../../db/salmi/elenco_salmi.json";
-                linkRisultati = "../risultati.html"
+                linkRisultati = "../risultati.html";
             } else {
                 jsonFile = "../db/salmi/elenco_salmi.json";
-                linkRisultati = "risultati.html"
+                linkRisultati = "risultati.html";
             }
 
             try {
@@ -64,14 +65,12 @@ async function searchCanti(event, page) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
         }
+
         const jsonPaths = {
             "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
             "avvento": "db/tempi_liturgici/avvento/*.json",
             "quaresima": "db/tempi_liturgici/quaresima/*.json"
         };
-
-        let jsonFile = "";
-        let linkRisultati = "";
 
         let arabicNumbers = input.match(/\b(\d+)\b/g); // Trova i numeri arabi nell'input
         let numeriRomani = input.match(/\b([ivxlc]+)\b/gi); // Trova i numeri romani nell'input
@@ -97,22 +96,22 @@ async function searchCanti(event, page) {
             // Verifica se l'input contiene l'anno (a, b, c)
             const match = input.match(/\b([abc])\b/); // Trova l'anno
             if (match) {
-                anno = match[1].toLowerCase(); // Prendi l'anno trovato e rendilo maiuscolo
+                anno = match[1].toLowerCase(); // Prendi l'anno trovato
             }
 
             let results = []; // o un altro valore iniziale appropriato
 
             if (found && anno) {
                 jsonFile = jsonFile.replace('*.json', `celebrazioni_anno_${anno}.json`);
-                results = results.concat(cerca(jsonFile, arabicNumbers, numeriRomani)); // Costruisci il percorso JSON completo se abbiamo trovato un anno
+                results = await cerca(jsonFile, arabicNumbers, numeriRomani, anno); // Costruisci il percorso JSON completo
             } else if (!anno) {
                 // Se non abbiamo trovato il valore anno itera su tutti i file
                 const jsonFile_a = jsonFile.replace('*.json', `celebrazioni_anno_a.json`);
-                results = results.concat(cerca(jsonFile_a, arabicNumbers, numeriRomani));
-                const jsonFile_b = jsonFile.replace('*.json', `celebrazioni_anno_a.json`);
-                results = results.concat(cerca(jsonFile_b, arabicNumbers, numeriRomani));
+                results = results.concat(await cerca(jsonFile_a, arabicNumbers, numeriRomani, 'a'));
+                const jsonFile_b = jsonFile.replace('*.json', `celebrazioni_anno_b.json`);
+                results = results.concat(await cerca(jsonFile_b, arabicNumbers, numeriRomani, 'b'));
                 const jsonFile_c = jsonFile.replace('*.json', `celebrazioni_anno_c.json`);
-                results = results.concat(cerca(jsonFile_c, arabicNumbers, numeriRomani));
+                results = results.concat(await cerca(jsonFile_c, arabicNumbers, numeriRomani, 'c'));
             }
 
             // Imposta il link dei risultati
@@ -130,36 +129,36 @@ async function searchCanti(event, page) {
             } else {
                 console.log("Nessun risultato trovato.");
             }
-
         }
     }
 }
 
-function cerca(jsonFile, arabicNumbers, numeriRomani) {
+async function cerca(jsonFile, arabicNumbers, numeriRomani, anno) {
     const results = []; // Lista per raccogliere i risultati
 
     if (jsonFile) {
-        fetch(jsonFile)
-            .then(response => response.json())
-            .then(data => {
-                const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
-                console.log(numeroDomenica, "numero domenica");
-                data.celebrazioni.forEach(item => {
-                    console.log(item.numero);
-                    // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
-                    if (item.numero === numeroDomenica && item.anno.toLowerCase() === anno) {
-                        console.log("item", item);
-                        results.push(item);
-                    }
-                });
+        try {
+            const response = await fetch(jsonFile);
+            const data = await response.json();
+            const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
+            console.log(numeroDomenica, "numero domenica");
 
-            })
-            .catch(error => console.error('Errore nel fetching dei dati:', error));
+            data.celebrazioni.forEach(item => {
+                console.log(item.numero);
+                // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
+                if (item.numero === numeroDomenica && item.anno.toLowerCase() === anno) {
+                    console.log("item", item);
+                    results.push(item);
+                }
+            });
+        } catch (error) {
+            console.error('Errore nel fetching dei dati:', error);
+        }
     } else {
         console.log("Nessun file JSON specificato per la ricerca.");
     }
 
-    return results
+    return results;
 }
 
 function convertRomanToInt(roman) {
