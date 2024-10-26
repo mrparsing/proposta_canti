@@ -7,20 +7,19 @@ async function searchCanti(event, page) {
         // Salva l'input nella memoria locale
         localStorage.setItem("searchInput", input);
 
-        // Gestione della ricerca dei Salmi
-        if (input.includes("salmo")) {
-            let jsonFile = "";
-            let linkRisultati = "";
 
-            if (page === "index" || page === "celebrazioni") {
+        if (input.includes("salmo")) {
+            let jsonFile = ""
+            let linkRisultati = ""
+            if (page === "index" | page === "celebrazioni") {
                 jsonFile = "db/salmi/elenco_salmi.json";
-                linkRisultati = "nav-bar/risultati.html";
+                linkRisultati = "nav-bar/risultati.html"
             } else if (page === "anno") {
                 jsonFile = "../../db/salmi/elenco_salmi.json";
-                linkRisultati = "../risultati.html";
+                linkRisultati = "../risultati.html"
             } else {
                 jsonFile = "../db/salmi/elenco_salmi.json";
-                linkRisultati = "risultati.html";
+                linkRisultati = "risultati.html"
             }
 
             try {
@@ -28,109 +27,161 @@ async function searchCanti(event, page) {
                 const data = await response.json();
                 const salmi = data.salmi;
 
-                // Filtri di ricerca
                 const words = input.split(" ");
                 const filters = { number: null, romanNumber: null, year: null, season: null };
 
+                // Analizza l'input per numero arabo, numero romano, anno e tempo liturgico
                 words.forEach(word => {
                     if (/^\d+$/.test(word)) {
-                        filters.number = word;
+                        filters.number = word; // Numero arabo
                     } else if (/^(i|ii|iii|iv|v|vi|vii|viii|ix|x|xi|xii|xiii|xiv|xv|xvi|xvii|xviii|xix|xx|xxi|xxii|xxiii|xxiv|xxv|xxvi|xxvii|xxviii|xxix|xxx|xxxi|xxxii|xxxiii)$/i.test(word)) {
-                        filters.romanNumber = word.toLowerCase();
+                        filters.romanNumber = word.toLowerCase(); // Numero romano
                     } else if (["a", "b", "c"].includes(word)) {
-                        filters.year = word.toUpperCase();
+                        filters.year = word.toUpperCase(); // Anno
                     } else if (["ordinario", "quaresima", "pasqua", "avvento"].includes(word)) {
-                        filters.season = word;
+                        filters.season = word; // Tempo liturgico
                     }
                 });
 
+                // Filtra i salmi in base ai criteri
                 const results = salmi.filter(salmo => {
-                    return (
-                        salmo.titolo.toLowerCase().includes("salmo") &&
-                        (!filters.number || salmo.numero_arabo === filters.number) &&
-                        (!filters.romanNumber || salmo.numero_romano === filters.romanNumber) &&
-                        (!filters.year || salmo.anno === filters.year) &&
-                        (!filters.season || salmo.titolo.toLowerCase().includes(filters.season))
-                    );
+                    const matchesTitle = salmo.titolo.toLowerCase().includes("salmo");
+                    const matchesNumber = filters.number ? salmo.numero_arabo === filters.number : true;
+                    const matchesRomanNumber = filters.romanNumber ? salmo.numero_romano === filters.romanNumber : true;
+                    const matchesYear = filters.year ? salmo.anno === filters.year : true;
+                    const matchesSeason = filters.season ? salmo.titolo.toLowerCase().includes(filters.season) : true;
+
+                    return matchesTitle && matchesNumber && matchesRomanNumber && matchesYear && matchesSeason;
                 });
 
+                // Salva i risultati in localStorage
                 localStorage.setItem("searchResults", JSON.stringify(results));
                 localStorage.setItem("tipologia", "salmo");
 
+                // Reindirizza alla pagina dei risultati
                 window.location.href = linkRisultati;
             } catch (error) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
-        } else if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
-            const jsonPaths = {
-                "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
-                "avvento": "db/tempi_liturgici/avvento/*.json",
-                "quaresima": "db/tempi_liturgici/quaresima/*.json"
-            };
+        }
+        const jsonPaths = {
+            "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
+            "avvento": "db/tempi_liturgici/avvento/*.json",
+            "quaresima": "db/tempi_liturgici/quaresima/*.json"
+        };
 
-            let paths = [];
-            let year = input.match(/\b([abc])\b/);
+        let jsonFile = "";
+        let linkRisultati = "";
 
-            for (const [key, path] of Object.entries(jsonPaths)) {
+        let arabicNumbers = input.match(/\b(\d+)\b/g); // Trova i numeri arabi nell'input
+        let numeriRomani = input.match(/\b([ivxlc]+)\b/gi); // Trova i numeri romani nell'input
+
+        if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
+            let found = false; // Variabile per controllare se è stato trovato un percorso
+
+            // Variabile per l'anno
+            let anno = '';
+
+            // Controlla l'input per trovare il tempo liturgico e l'anno
+            for (const [key, value] of Object.entries(jsonPaths)) {
                 if (input.includes(key)) {
-                    paths.push((page === "index" || page === "celebrazioni") ? path
-                        : (page === "anno") ? "../../" + path
-                            : "../" + path);
+                    jsonFile = (page === "index" || page === "celebrazioni") ? value
+                        : (page === "anno") ? "../../" + value
+                            : "../" + value;
+
+                    found = true;
+                    break;
                 }
             }
 
-            if (paths.length && year) {
-                paths = paths.map(path => path.replace('*.json', `celebrazioni_anno_${year[1].toLowerCase()}.json`));
-            } else if (year) {
-                paths.push(`db/tempi_liturgici/celebrazioni_anno_${year[1].toLowerCase()}.json`);
+            // Verifica se l'input contiene l'anno (a, b, c)
+            const match = input.match(/\b([abc])\b/); // Trova l'anno
+            if (match) {
+                anno = match[1].toLowerCase(); // Prendi l'anno trovato e rendilo maiuscolo
             }
 
+            let results = []; // o un altro valore iniziale appropriato
+
+            if (found && anno) {
+                jsonFile = jsonFile.replace('*.json', `celebrazioni_anno_${anno}.json`);
+                results = results.concat(cerca(jsonFile)); // Costruisci il percorso JSON completo se abbiamo trovato un anno
+            } else if (!anno) {
+                // Se non abbiamo trovato il valore anno itera su tutti i file
+                const jsonFile_a = jsonFile.replace('*.json', `celebrazioni_anno_a.json`);
+                results = results.concat(cerca(jsonFile_a));
+                const jsonFile_b = jsonFile.replace('*.json', `celebrazioni_anno_a.json`);
+                results = results.concat(cerca(jsonFile_b));
+                const jsonFile_c = jsonFile.replace('*.json', `celebrazioni_anno_c.json`);
+                results = results.concat(cerca(jsonFile_c));
+            }
+
+            // Imposta il link dei risultati
             linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
                 : (page === "anno") ? "../risultati.html"
                     : "risultati.html";
 
-            if (paths.length) {
-                try {
-                    const dataArray = await Promise.all(paths.map(path => fetch(path).then(response => response.json())));
+            // Stampa i risultati
+            if (results.length > 0) {
+                localStorage.setItem("searchResults", JSON.stringify(results));
+                localStorage.setItem("tipologia", "messa");
 
-                    const results = [];
-                    const numeroDomenica = parseInt(input.match(/\b(\d+)\b/)) || convertRomanToInt(input.match(/\b([ivxlc]+)\b/gi)[0]);
-
-                    dataArray.forEach(data => {
-                        data.celebrazioni.forEach(item => {
-                            if (item.numero === numeroDomenica && item.anno.toLowerCase() === year[1].toLowerCase()) {
-                                results.push(item);
-                            }
-                        });
-                    });
-
-                    if (results.length > 0) {
-                        localStorage.setItem("searchResults", JSON.stringify(results));
-                        localStorage.setItem("tipologia", "messa");
-                        window.location.href = linkRisultati;
-                    } else {
-                        console.log("Nessun risultato trovato.");
-                    }
-                } catch (error) {
-                    console.error('Errore nel caricamento dei dati JSON:', error);
-                }
+                // Reindirizza alla pagina dei risultati
+                window.location.href = linkRisultati;
             } else {
-                console.log("Nessun file JSON specificato per la ricerca.");
+                console.log("Nessun risultato trovato.");
             }
-        }
-    }
 
-    function convertRomanToInt(roman) {
-        const romanNumerals = { 'i': 1, 'v': 5, 'x': 10 };
-        let total = 0;
-        let prevValue = 0;
-
-        for (let char of roman) {
-            const currentValue = romanNumerals[char.toLowerCase()];
-            total += currentValue > prevValue ? currentValue - 2 * prevValue : currentValue;
-            prevValue = currentValue;
         }
 
-        return total;
+        // Funzione per convertire i numeri romani in arabi
+        function convertRomanToInt(roman) {
+            const romanNumerals = {
+                'i': 1,
+                'v': 5,
+                'x': 10,
+            };
+
+            let total = 0;
+            let prevValue = 0;
+
+            for (let char of roman) {
+                const currentValue = romanNumerals[char.toLowerCase()];
+                if (currentValue > prevValue) {
+                    total += currentValue - 2 * prevValue; // Sottrai il valore precedente se necessario
+                } else {
+                    total += currentValue;
+                }
+                prevValue = currentValue;
+            }
+
+            return total;
+        }
     }
+}
+
+function cerca(jsonFile) {
+    if (jsonFile) {
+        fetch(jsonFile)
+            .then(response => response.json())
+            .then(data => {
+                const results = []; // Lista per raccogliere i risultati
+                const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
+                console.log(numeroDomenica, "numero domenica");
+                data.celebrazioni.forEach(item => {
+                    console.log(item.numero);
+                    // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
+                    if (item.numero === numeroDomenica && item.anno.toLowerCase() === anno) {
+                        console.log("item", item);
+                        results.push(item);
+                    }
+                });
+
+            })
+            .catch(error => console.error('Errore nel fetching dei dati:', error));
+    } else {
+        console.log("Nessun file JSON specificato per la ricerca.");
+    }
+
+    return results
+
 }
