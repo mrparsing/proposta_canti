@@ -63,7 +63,6 @@ async function searchCanti(event, page) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
         }
-
         const jsonPaths = {
             "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
             "avvento": "db/tempi_liturgici/avvento/*.json",
@@ -74,6 +73,8 @@ async function searchCanti(event, page) {
         let linkRisultati = "";
 
         if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
+            let found = false; // Variabile per controllare se è stato trovato un percorso
+
             for (const [key, value] of Object.entries(jsonPaths)) {
                 if (input.includes(key)) {
                     jsonFile = (page === "index" || page === "celebrazioni") ? value
@@ -84,9 +85,37 @@ async function searchCanti(event, page) {
                     linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
                         : (page === "anno") ? "../risultati.html"
                             : "risultati.html";
+                    found = true; // Segna che abbiamo trovato un percorso
                     break;
                 }
             }
+
+            // Verifica se l'input contiene l'anno (a, b, c)
+            const match = input.match(/\b([abc])\b/); // Trova l'anno
+            if (match) {
+                const anno = match[1]; // Prendi l'anno trovato
+                jsonFile = `db/tempi_liturgici/celebrazioni_anno_${anno}.json`;
+                linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
+                    : (page === "anno") ? "../risultati.html"
+                        : "risultati.html";
+            } else if (!found) {
+                // Se non abbiamo trovato alcun percorso e non ci sono specifiche sull'anno,
+                // possiamo lasciare jsonFile vuoto per indicare che non c'è un file specifico
+                jsonFile = ""; // Puoi impostare qui il valore che preferisci
+            }
+
+            // Controllo per numeri arabi e romani
+            const arabicNumbers = input.match(/\b\d+\b/g); // Trova numeri arabi
+            const romanNumbers = input.match(/\b(M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))\b/g); // Trova numeri romani
+
+            if (arabicNumbers) {
+                console.log("Numeri arabi trovati:", arabicNumbers);
+            }
+
+            if (romanNumbers) {
+                console.log("Numeri romani trovati:", romanNumbers);
+            }
+
             console.log(jsonFile);
         }
     }
