@@ -75,16 +75,16 @@ async function searchCanti(event, page) {
         if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
             let found = false; // Variabile per controllare se è stato trovato un percorso
 
+            // Variabile per l'anno
+            let anno = '';
+
+            // Controlla l'input per trovare il tempo liturgico e l'anno
             for (const [key, value] of Object.entries(jsonPaths)) {
                 if (input.includes(key)) {
                     jsonFile = (page === "index" || page === "celebrazioni") ? value
                         : (page === "anno") ? "../../" + value
                             : "../" + value;
 
-                    // Imposta il link dei risultati
-                    linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
-                        : (page === "anno") ? "../risultati.html"
-                            : "risultati.html";
                     found = true; // Segna che abbiamo trovato un percorso
                     break;
                 }
@@ -93,30 +93,23 @@ async function searchCanti(event, page) {
             // Verifica se l'input contiene l'anno (a, b, c)
             const match = input.match(/\b([abc])\b/); // Trova l'anno
             if (match) {
-                const anno = match[1]; // Prendi l'anno trovato
+                anno = match[1].toUpperCase(); // Prendi l'anno trovato e rendilo maiuscolo
+            }
+
+            // Costruisci il percorso JSON completo se abbiamo trovato un anno
+            if (found && anno) {
+                jsonFile = jsonFile.replace('*.json', `celebrazioni_anno_${anno}.json`);
+            } else if (!found && anno) {
+                // Se non abbiamo trovato alcun percorso e c'è un anno
                 jsonFile = `db/tempi_liturgici/celebrazioni_anno_${anno}.json`;
-                linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
-                    : (page === "anno") ? "../risultati.html"
-                        : "risultati.html";
-            } else if (!found) {
-                // Se non abbiamo trovato alcun percorso e non ci sono specifiche sull'anno,
-                // possiamo lasciare jsonFile vuoto per indicare che non c'è un file specifico
-                jsonFile = ""; // Puoi impostare qui il valore che preferisci
             }
 
-            // Controllo per numeri arabi e romani
-            const arabicNumbers = input.match(/\b\d+\b/g); // Trova numeri arabi
-            const numeriRomani = input.match(/\b(xxx|xx|x|iii|ii|i|iv|v|vi|vii|viii|ix|xi|xii|xiii|xiv|xv|xvi|xvii|xviii|xix|xx|xxx|xxxii|xxxiii)\b/);
+            // Imposta il link dei risultati
+            linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
+                : (page === "anno") ? "../risultati.html"
+                    : "risultati.html";
 
-            if (arabicNumbers) {
-                console.log("Numeri arabi trovati:", arabicNumbers);
-            }
-
-            if (numeriRomani) {
-                console.log("Numeri romani trovati:", numeriRomani);
-            }
-
-            // Esegui la ricerca nei file JSON
+            // Verifica il file JSON
             if (jsonFile) {
                 fetch(jsonFile)
                     .then(response => response.json())
@@ -126,8 +119,8 @@ async function searchCanti(event, page) {
 
                         data.celebrazioni.forEach(item => {
                             // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
-                            if ((numeroDomenica && item.numero === numeroDomenica && item.anno === (match ? match[1].toUpperCase() : '')) ||
-                                (match && item.anno === match[1].toUpperCase())) {
+                            if ((numeroDomenica && item.numero === numeroDomenica && item.anno === anno) ||
+                                (anno && item.anno === anno)) {
                                 results.push(item);
                             }
                         });
@@ -152,10 +145,6 @@ async function searchCanti(event, page) {
                 'i': 1,
                 'v': 5,
                 'x': 10,
-                'l': 50,
-                'c': 100,
-                'd': 500,
-                'm': 1000
             };
 
             let total = 0;
