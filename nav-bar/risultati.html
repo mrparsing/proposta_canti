@@ -149,14 +149,14 @@
                             messa.title.includes("quaresima") ? "quaresima" : "";
 
                     row.innerHTML = `
-                        <td>
-                            <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=${fest}" style="text-decoration: none; color: inherit;">
-                                ${messa.title}
-                            </a>
-                        </td>
-                        <td>${messa.numero}</td>
-                        <td>${messa.anno}</td>
-                    `;
+    <td colspan="3" style="text-align: left;">
+        <a href="../celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=${fest}" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+            <div>${messa.title}</div>
+            <div>Numero: ${messa.numero}</div>
+            <div>Anno: ${messa.anno}</div>
+        </a>
+    </td>
+`;
                 });
             } else {
                 resultsTable.innerHTML = "<tr><td colspan='3'>Nessun risultato trovato.</td></tr>";
