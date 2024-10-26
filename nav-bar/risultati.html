@@ -170,10 +170,28 @@
             }
         } else {
             if (results && results.length > 0) {
+                tableHeader.innerHTML = `
+                <th>Titolo</th>
+                <th>Autore</th>
+                <th>Tipologia</th>
+                <th>Tempo</th>
+                <th>Ascolto</th>
+                <th>Spartito</th>
+            `;
                 results.forEach(canto => {
                     const row = resultsTable.insertRow();
 
-                    row.innerHTML = `
+                    if (canto.download_link === "-") {
+                        row.innerHTML = `
+            <td>${canto.titolo}</td>
+            <td>${canto.autore}</td>
+            <td>${canto.tipologia}</td>
+            <td>${canto.tempo}</td>
+            <td><a href="${canto.ascolta}">Ascolta</a></td>
+            <td>Spartito non disponibile</a></td>
+            `;
+                    } else {
+                        row.innerHTML = `
             <td>${canto.titolo}</td>
             <td>${canto.autore}</td>
             <td>${canto.tipologia}</td>
@@ -181,6 +199,8 @@
             <td><a href="${canto.ascolta}">Ascolta</a></td>
             <td><a href="${canto.download_link}">Download</a></td>
             `;
+                    }
+
                 })
             }
         }

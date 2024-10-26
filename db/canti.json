@@ -396,7 +396,7 @@
             "tipologia": "Ingresso",
             "tempo": "Pasqua",
             "ascolta": "https://www.youtube.com/watch?v=qTIovLZjjyQ",
-            "download_link": "../db/canti/Hosanna"
+            "download_link": "../db/canti/Hosanna.pdf"
         },
         {
             "titolo": "O Dio, Tu sei il mio Dio",
@@ -404,7 +404,7 @@
             "tipologia": "Offertorio, Comunione",
             "tempo": "Qualsiasi",
             "ascolta": "https://www.youtube.com/watch?v=_1UjszncdZU",
-            "download_link": "../db/canti/o_dio_tu_sei_il_mio_dio"
+            "download_link": "../db/canti/o_dio_tu_sei_il_mio_dio.pdf"
         },
         {
             "titolo": "I miei occhi",
