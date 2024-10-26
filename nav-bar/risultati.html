@@ -141,7 +141,6 @@
                 <th>Numero</th>
                 <th>Anno</th>
             `;
-            console.log(results);
             if (results && results.length > 0) {
                 results.forEach(messa => {
                     const row = resultsTable.insertRow();
@@ -164,10 +163,25 @@
             <td>${messa.title}</td>
             <td>${messa.numero}</td>
             <td>${messa.anno}</td>
-        `;
+            `;
                 });
             } else {
                 resultsTable.innerHTML = "<tr><td colspan='3'>Nessun risultato trovato.</td></tr>";
+            }
+        } else {
+            if (results && results.length > 0) {
+                results.forEach(canto => {
+                    const row = resultsTable.insertRow();
+
+                    row.innerHTML = `
+            <td>${canto.titolo}</td>
+            <td>${canto.autore}</td>
+            <td>${canto.tipologia}</td>
+            <td>${canto.tempo}</td>
+            <td>${canto.ascolta}</td>
+            <td><a href="${canto.download_link}">Download</a></td>
+            `;
+                })
             }
         }
     </script>

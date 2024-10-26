@@ -1,16 +1,16 @@
 document.getElementById("global_search").addEventListener("keyup", searchCanti);
 
 async function searchCanti(event, page) {
+    const input = document.getElementById("global_search").value.toLowerCase();
+
+    // Salva l'input nella memoria locale
+    localStorage.setItem("searchInput", input);
+
+    let jsonFile = "";
+    let linkRisultati = "";
+
     if (event.key === "Enter") {
-        const input = document.getElementById("global_search").value.toLowerCase();
-
-        // Salva l'input nella memoria locale
-        localStorage.setItem("searchInput", input);
-
         if (input.includes("salmo")) {
-            let jsonFile = "";
-            let linkRisultati = "";
-
             // Determina il percorso del file JSON e il link ai risultati in base alla pagina
             if (page === "index" || page === "celebrazioni") {
                 jsonFile = "db/salmi/elenco_salmi.json";
@@ -64,18 +64,16 @@ async function searchCanti(event, page) {
             } catch (error) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
-        }
+        } else if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
+            const jsonPaths = {
+                "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
+                "avvento": "db/tempi_liturgici/avvento/*.json",
+                "quaresima": "db/tempi_liturgici/quaresima/*.json"
+            };
 
-        const jsonPaths = {
-            "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
-            "avvento": "db/tempi_liturgici/avvento/*.json",
-            "quaresima": "db/tempi_liturgici/quaresima/*.json"
-        };
+            let arabicNumbers = input.match(/\b(\d+)\b/g); // Trova i numeri arabi nell'input
+            let numeriRomani = input.match(/\b([ivxlc]+)\b/gi); // Trova i numeri romani nell'input
 
-        let arabicNumbers = input.match(/\b(\d+)\b/g); // Trova i numeri arabi nell'input
-        let numeriRomani = input.match(/\b([ivxlc]+)\b/gi); // Trova i numeri romani nell'input
-
-        if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
             let found = false; // Variabile per controllare se è stato trovato un percorso
 
             // Variabile per l'anno
@@ -129,6 +127,37 @@ async function searchCanti(event, page) {
             } else {
                 console.log("Nessun risultato trovato.");
             }
+        } else { // cerca un canto
+            if (page === "index" || page === "celebrazioni") {
+                jsonFile = "db/canti.json";
+                linkRisultati = "nav-bar/risultati.html";
+            } else if (page === "anno") {
+                jsonFile = "../../db/canti.json";
+                linkRisultati = "../risultati.html";
+            } else {
+                jsonFile = "../db/canti.json";
+                linkRisultati = "risultati.html";
+            }
+
+            try {
+                const response = await fetch(jsonFile);
+                const data = await response.json();
+                const results = []
+
+                data.canti.forEach(item => {
+                    if (input.toLowerCase() === item.titolo.toLowerCase()) {
+                        results.push(item)
+                    }
+                });
+            } catch (error) {
+                console.error('Errore nel fetching dei dati: ', error)
+            }
+
+            localStorage.setItem("searchResults", JSON.stringify(results));
+            localStorage.setItem("tipologia", "canto");
+
+            // Reindirizza alla pagina dei risultati
+            window.location.href = linkRisultati;
         }
     }
 }
@@ -141,13 +170,10 @@ async function cerca(jsonFile, arabicNumbers, numeriRomani, anno) {
             const response = await fetch(jsonFile);
             const data = await response.json();
             const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
-            console.log(numeroDomenica, "numero domenica");
 
             data.celebrazioni.forEach(item => {
-                console.log(item.numero);
                 // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
                 if (item.numero === numeroDomenica && item.anno.toLowerCase() === anno) {
-                    console.log("item", item);
                     results.push(item);
                 }
             });
