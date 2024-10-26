@@ -59,7 +59,8 @@
         }
 
         /* Messaggio quando nessun risultato è presente */
-        #resultsTable td[colspan="5"] {
+        #resultsTable td[colspan="4"],
+        #resultsTable td[colspan="3"] {
             text-align: center;
             color: #888;
             font-style: italic;
@@ -76,9 +77,7 @@
             if (searchInput) {
                 document.getElementById("global_search").value = searchInput;
             }
-
         });
-    </script>
     </script>
 </head>
 
@@ -100,7 +99,11 @@
     </div>
 
     <table id="resultsTable">
-        <th>Risultati</th>
+        <thead>
+            <tr id="tableHeader">
+                <!-- Le intestazioni verranno impostate tramite JavaScript -->
+            </tr>
+        </thead>
         <tbody></tbody>
     </table>
 
@@ -109,59 +112,56 @@
         const results = JSON.parse(localStorage.getItem("searchResults"));
         const tipologia = localStorage.getItem("tipologia");
         const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
+        const tableHeader = document.getElementById("tableHeader");
 
+        // Imposta le intestazioni della tabella in base alla tipologia
         if (tipologia === "salmo") {
+            tableHeader.innerHTML = `
+                <th>Titolo</th>
+                <th>Anno</th>
+                <th>Autore</th>
+                <th>Download</th>
+            `;
             if (results && results.length > 0) {
                 results.forEach(salmo => {
-                    console.log(salmo.download_link);
-
                     const row = resultsTable.insertRow();
                     row.innerHTML = `
-                    <td>${salmo.titolo}</td>
-                    <td>${salmo.anno}</td>
-                    <td>${salmo.autore}</td>
-                    <td><a href="${salmo.download_link}">Download</a></td>
-                `;
+                        <td>${salmo.titolo}</td>
+                        <td>${salmo.anno}</td>
+                        <td>${salmo.autore}</td>
+                        <td><a href="${salmo.download_link}">Download</a></td>
+                    `;
                 });
             } else {
                 resultsTable.innerHTML = "<tr><td colspan='4'>Nessun risultato trovato.</td></tr>";
             }
         } else if (tipologia === "messa") {
+            tableHeader.innerHTML = `
+                <th>Titolo</th>
+                <th>Numero</th>
+                <th>Anno</th>
+            `;
             if (results && results.length > 0) {
                 results.forEach(messa => {
                     const row = resultsTable.insertRow();
-                    if (messa.title.includes("ordinario")) {
-                        row.innerHTML = `
-        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=ordinario" style="text-decoration: none; color: inherit;">
-            <td>${messa.title}</td>
-            <td>${messa.numero}</td>
-            <td>${messa.anno}</td>
-        </a>
-    `;
-                    } else if (messa.title.includes("avvento")) {
-                        row.innerHTML = `
-        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=avvento" style="text-decoration: none; color: inherit;">
-            <td>${messa.title}</td>
-            <td>${messa.numero}</td>
-            <td>${messa.anno}</td>
-        </a>
-    `;
-                    } else if (messa.title.includes("quaresima")) {
-                        row.innerHTML = `
-        <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=quaresima" style="text-decoration: none; color: inherit;">
-            <td>${messa.title}</td>
-            <td>${messa.numero}</td>
-            <td>${messa.anno}</td>
-        </a>
-    `;
-                    }
+                    const fest = messa.title.includes("ordinario") ? "ordinario" :
+                        messa.title.includes("avvento") ? "avvento" :
+                            messa.title.includes("quaresima") ? "quaresima" : "";
+
+                    row.innerHTML = `
+                        <td>
+                            <a href="celebrazioni.html?numero=${messa.numero}&anno=${messa.anno}&festivita=${fest}" style="text-decoration: none; color: inherit;">
+                                ${messa.title}
+                            </a>
+                        </td>
+                        <td>${messa.numero}</td>
+                        <td>${messa.anno}</td>
+                    `;
                 });
             } else {
-                resultsTable.innerHTML = "<tr><td colspan='4'>Nessun risultato trovato.</td></tr>";
+                resultsTable.innerHTML = "<tr><td colspan='3'>Nessun risultato trovato.</td></tr>";
             }
         }
-
-
     </script>
 </body>
 
