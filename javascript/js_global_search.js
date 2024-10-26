@@ -72,6 +72,9 @@ async function searchCanti(event, page) {
         let jsonFile = "";
         let linkRisultati = "";
 
+        let arabicNumbers = input.match(/\b(\d+)\b/g); // Trova i numeri arabi nell'input
+        let numeriRomani = input.match(/\b([ivxlc]+)\b/gi); // Trova i numeri romani nell'input
+
         if (input.includes("messa") || input.includes("celebrazione") || input.includes("domenica")) {
             let found = false; // Variabile per controllare se è stato trovato un percorso
 
