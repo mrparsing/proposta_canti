@@ -1,3 +1,5 @@
+document.getElementById("global_search").addEventListener("keyup", searchCanti);
+
 async function searchCanti(event) {
     if (event.key === "Enter") { // Avvia la ricerca solo se il tasto premuto è "Enter"
         const input = document.getElementById("global_search").value.toLowerCase();
@@ -38,13 +40,10 @@ async function searchCanti(event) {
                 localStorage.setItem("searchResults", JSON.stringify(results));
 
                 // Reindirizza alla pagina dei risultati
-                window.location.href = "nav-bar/risultati.html";
+                window.location.href = "risultati.html";
             } catch (error) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
         }
     }
 }
-
-// Aggiungi l'evento keyup all'input di ricerca
-document.getElementById("global_search").addEventListener("keyup", searchCanti);
