@@ -119,12 +119,12 @@ async function searchCanti(event, page) {
                     .then(data => {
                         const results = []; // Lista per raccogliere i risultati
                         const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
-
+                        console.log(numeroDomenica, "numero domenica");
                         data.celebrazioni.forEach(item => {
                             console.log(item.numero);
                             // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
-                            if ((numeroDomenica && item.numero === numeroDomenica && item.anno === anno) ||
-                                (anno && item.anno === anno)) {
+                            if (item.numero === numeroDomenica && item.anno.toLowerCase() === anno) {
+                                console.log("item", item);
                                 results.push(item);
                             }
                         });
