@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Risultati di ricerca</title>
+</head>
+<body>
+    <h1>Risultati della ricerca</h1>
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Titolo</th>
+                <th>Anno</th>
+                <th>Numero</th>
+                <th>Autore</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        // Recupera i risultati da localStorage
+        const results = JSON.parse(localStorage.getItem("searchResults"));
+        const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0];
+
+        if (results && results.length > 0) {
+            results.forEach(salmo => {
+                const row = resultsTable.insertRow();
+
+                row.innerHTML = `
+                    <td>${salmo.titolo}</td>
+                    <td>${salmo.anno}</td>
+                    <td>${salmo.numero_arabo}</td>
+                    <td>${salmo.autore}</td>
+                    <td><a href="${salmo.download_link.replace(/^\.{2}\//, '')}">Download</a></td>
+                `;
+            });
+        } else {
+            resultsTable.innerHTML = "<tr><td colspan='5'>Nessun risultato trovato.</td></tr>";
+        }
+    </script>
+</body>
+</html>
