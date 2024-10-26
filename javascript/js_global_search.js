@@ -121,6 +121,7 @@ async function searchCanti(event, page) {
                         const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
 
                         data.celebrazioni.forEach(item => {
+                            console.log(item.numero);
                             // Verifica se il titolo o il numero corrispondono ai criteri di ricerca
                             if ((numeroDomenica && item.numero === numeroDomenica && item.anno === anno) ||
                                 (anno && item.anno === anno)) {
