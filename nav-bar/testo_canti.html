@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Risultati ricerca</title>
+    <title>Testo</title>
     <script src="../javascript/javascript.js"></script>
     <script src="../javascript/js_global_search.js"></script>
     <link rel="stylesheet" href="../styles/style_index.css">
@@ -13,10 +13,33 @@
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
-        });
 
-        titolo = localStorage.getItem("titolo")
-        document.getElementById('testo').innerHTML(titolo)
+            const titolo = localStorage.getItem("titolo");
+            if (titolo) {
+                document.getElementById('titolo').innerText = titolo;
+            }
+
+            fetch('../db/canti.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(canto => {
+                        if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
+                            document.getElementById('titolo').innerText = canto.titolo;
+
+                            // Crea i link da aggiungere in info-canto
+                            const infoCantoElement = document.getElementById('info-canto');
+                            infoCantoElement.innerHTML = `
+                                ${canto.autore} - ${canto.tipologia} - ${canto.tempo} - 
+                                <a href="${canto.ascolta}" target="_blank">Ascolta</a> - 
+                                <a href="${canto.download_link}" target="_blank">Download spartito</a>
+                            `;
+                            
+                            document.getElementById('testo').innerText = canto.testo;
+                        }
+                    });
+                })
+                .catch(error => console.error('Errore nel caricamento del file JSON:', error));
+        });
     </script>
 </head>
 
@@ -37,7 +60,11 @@
         </div>
     </div>
 
-    <div id="testo"></div>
+    <div class="testo">
+        <h1 id="titolo"></h1>
+        <p id="info-canto"></p>
+        <p id="testo"></p>
+    </div>
 
 </body>
 
