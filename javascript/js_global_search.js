@@ -104,15 +104,15 @@ async function searchCanti(event, page) {
 
             if (found && anno) {
                 jsonFile = jsonFile.replace('*.json', `celebrazioni_anno_${anno}.json`);
-                results = results.concat(cerca(jsonFile)); // Costruisci il percorso JSON completo se abbiamo trovato un anno
+                results = results.concat(cerca(jsonFile, arabicNumbers, numeriRomani)); // Costruisci il percorso JSON completo se abbiamo trovato un anno
             } else if (!anno) {
                 // Se non abbiamo trovato il valore anno itera su tutti i file
                 const jsonFile_a = jsonFile.replace('*.json', `celebrazioni_anno_a.json`);
-                results = results.concat(cerca(jsonFile_a));
+                results = results.concat(cerca(jsonFile_a, arabicNumbers, numeriRomani));
                 const jsonFile_b = jsonFile.replace('*.json', `celebrazioni_anno_a.json`);
-                results = results.concat(cerca(jsonFile_b));
+                results = results.concat(cerca(jsonFile_b, arabicNumbers, numeriRomani));
                 const jsonFile_c = jsonFile.replace('*.json', `celebrazioni_anno_c.json`);
-                results = results.concat(cerca(jsonFile_c));
+                results = results.concat(cerca(jsonFile_c, arabicNumbers, numeriRomani));
             }
 
             // Imposta il link dei risultati
@@ -159,12 +159,13 @@ async function searchCanti(event, page) {
     }
 }
 
-function cerca(jsonFile) {
+function cerca(jsonFile, arabicNumbers, numeriRomani) {
+    const results = []; // Lista per raccogliere i risultati
+
     if (jsonFile) {
         fetch(jsonFile)
             .then(response => response.json())
             .then(data => {
-                const results = []; // Lista per raccogliere i risultati
                 const numeroDomenica = arabicNumbers ? parseInt(arabicNumbers[0]) : numeriRomani ? convertRomanToInt(numeriRomani[0]) : null;
                 console.log(numeroDomenica, "numero domenica");
                 data.celebrazioni.forEach(item => {
