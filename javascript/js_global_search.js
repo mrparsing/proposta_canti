@@ -7,7 +7,7 @@ async function searchCanti(event, page) {
         // Salva l'input nella memoria locale
         localStorage.setItem("searchInput", input);
 
-        
+
         if (input.includes("salmo")) {
             let jsonFile = ""
             let linkRisultati = ""
@@ -62,6 +62,32 @@ async function searchCanti(event, page) {
             } catch (error) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
+        }
+
+        const jsonPaths = {
+            "ordinario": "db/tempi_liturgici/tempo_ordinario/*.json",
+            "avvento": "db/tempi_liturgici/avvento/*.json",
+            "quaresima": "db/tempi_liturgici/quaresima/*.json"
+        };
+
+        let jsonFile = "";
+        let linkRisultati = "";
+
+        if ((input.includes("messa") || input.includes("celebrazione")) && !input.includes("salmo")) {
+            for (const [key, value] of Object.entries(jsonPaths)) {
+                if (input.includes(key)) {
+                    jsonFile = (page === "index" || page === "celebrazioni") ? value
+                        : (page === "anno") ? "../../" + value
+                            : "../" + value;
+
+                    // Imposta il link dei risultati
+                    linkRisultati = (page === "index" || page === "celebrazioni") ? "nav-bar/risultati.html"
+                        : (page === "anno") ? "../risultati.html"
+                            : "risultati.html";
+                    break;
+                }
+            }
+            console.log(jsonFile);
         }
     }
 }
