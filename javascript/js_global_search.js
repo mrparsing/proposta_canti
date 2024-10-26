@@ -132,7 +132,10 @@ async function searchCanti(event, page) {
                         // Stampa i risultati
                         if (results.length > 0) {
                             console.log("Risultati trovati:", results);
-                            // Qui puoi popolare la tua tabella o lista con i risultati
+                            localStorage.setItem("searchResults", JSON.stringify(results));
+
+                            // Reindirizza alla pagina dei risultati
+                            window.location.href = linkRisultati;
                         } else {
                             console.log("Nessun risultato trovato.");
                         }
