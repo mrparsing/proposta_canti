@@ -43,10 +43,15 @@ function carica_canti() {
                     linksDiv.appendChild(scaricaLink);
 
                     const testoLink = document.createElement('a');
-                    testoLink.href = 'testo_canti.html'
+                    testoLink.href = 'testo_canti.html';
                     testoLink.className = "testo-button";
                     testoLink.textContent = 'Testo';
-                    localStorage.setItem("titolo", canto.testo)
+
+                    // Aggiungi un gestore di eventi per memorizzare il titolo nel localStorage
+                    testoLink.onclick = function () {
+                        localStorage.setItem("titolo", canto.titolo); // Salva il titolo del canto
+                    };
+
                     linksDiv.appendChild(testoLink);
 
 
