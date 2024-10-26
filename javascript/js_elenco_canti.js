@@ -42,6 +42,14 @@ function carica_canti() {
                     scaricaLink.textContent = 'Scarica';
                     linksDiv.appendChild(scaricaLink);
 
+                    const testoLink = document.createElement('a');
+                    testoLink.href = 'testo_canti.html'
+                    testoLink.className = "testo-button";
+                    testoLink.textContent = 'Testo';
+                    localStorage.setItem("titolo", canto.testo)
+                    linksDiv.appendChild(testoLink);
+
+
                     detailsDiv.appendChild(linksDiv);
                     li.appendChild(detailsDiv);
 

@@ -391,32 +391,43 @@ p {
 #download {
     margin-top: 20px;
     margin-left: 20px;
-    background-color: #4CAF50;
-    /* Verde scuro */
-    color: white;
+    background-color: #ffffff;
+    /* Sfondo bianco */
+    color: #000000;
+    /* Testo nero */
+    border: 2px solid #000000;
+    /* Bordo nero di 2px */
     font-size: 16px;
     font-weight: bold;
     padding: 12px 24px;
-    border: none;
     border-radius: 8px;
+    /* Angoli arrotondati */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    /* Aggiunge un'ombra */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    /* Ombra nera sottile */
 }
 
 #download:hover {
-    background-color: #45a049;
-    /* Colore leggermente più chiaro per l'hover */
+    background-color: #f0f0f0;
+    /* Sfondo leggermente più scuro al passaggio del mouse */
+    color: #000000;
+    /* Testo nero */
     transform: scale(1.05);
     /* Leggero ingrandimento al passaggio del mouse */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+    /* Ombra più grande */
 }
 
 #download:active {
-    background-color: #3e8e41;
-    /* Colore più scuro quando cliccato */
+    background-color: #e0e0e0;
+    /* Sfondo più scuro quando cliccato */
+    color: #000000;
+    /* Testo nero */
     transform: scale(0.98);
     /* Leggera riduzione quando cliccato */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Ombra più ridotta */
 }
 
 .update-banner {
