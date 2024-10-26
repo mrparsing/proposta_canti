@@ -19,7 +19,7 @@ async function searchCanti(event) {
                 words.forEach(word => {
                     if (/^\d+$/.test(word)) {
                         filters.number = word; // Numero arabo
-                    } else if (/^(i|ii|iii|iv|v|vi|vii|viii|ix|x)$/i.test(word)) {
+                    } else if (/^(i|ii|iii|iv|v|vi|vii|viii|ix|x|xi|xii|xiii|xiv|xv|xvi|xvii|xviii|xix|xx|xxi|xxii|xxiii|xxiv|xxv|xxvi|xxvii|xxviii|xxix|xxx|xxxi|xxxii|xxxiii)$/i.test(word)) {
                         filters.romanNumber = word.toLowerCase(); // Numero romano
                     } else if (["a", "b", "c"].includes(word)) {
                         filters.year = word.toUpperCase(); // Anno
