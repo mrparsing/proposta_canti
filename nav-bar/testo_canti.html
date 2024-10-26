@@ -22,21 +22,27 @@
             fetch('../db/canti.json')
                 .then(response => response.json())
                 .then(data => {
-                    data.forEach(canto => {
-                        if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
-                            document.getElementById('titolo').innerText = canto.titolo;
+                    // Controlla se il file JSON contiene un array di canti sotto la chiave "canti"
+                    if (Array.isArray(data.canti)) {
+                        const titolo = localStorage.getItem("titolo");
+                        data.canti.forEach(canto => {
+                            if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
+                                document.getElementById('titolo').innerText = canto.titolo;
 
-                            // Crea i link da aggiungere in info-canto
-                            const infoCantoElement = document.getElementById('info-canto');
-                            infoCantoElement.innerHTML = `
-                                ${canto.autore} - ${canto.tipologia} - ${canto.tempo} - 
-                                <a href="${canto.ascolta}" target="_blank">Ascolta</a> - 
-                                <a href="${canto.download_link}" target="_blank">Download spartito</a>
-                            `;
-                            
-                            document.getElementById('testo').innerText = canto.testo;
-                        }
-                    });
+                                // Crea i link da aggiungere in info-canto
+                                const infoCantoElement = document.getElementById('info-canto');
+                                infoCantoElement.innerHTML = `
+                        ${canto.autore} - ${canto.tipologia} - ${canto.tempo || ''} - 
+                        <a href="${canto.ascolta}" target="_blank">Ascolta</a> - 
+                        <a href="${canto.download_link}" target="_blank">Scarica PDF</a>
+                    `;
+
+                                document.getElementById('testo').innerHTML = canto.testo || "Testo non disponibile.";
+                            }
+                        });
+                    } else {
+                        console.error('Il file JSON non è strutturato come previsto:', data);
+                    }
                 })
                 .catch(error => console.error('Errore nel caricamento del file JSON:', error));
         });
