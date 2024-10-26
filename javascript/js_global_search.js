@@ -1,11 +1,22 @@
 document.getElementById("global_search").addEventListener("keyup", searchCanti);
 
-async function searchCanti(event) {
+async function searchCanti(event, page) {
     if (event.key === "Enter") {
         const input = document.getElementById("global_search").value.toLowerCase();
 
         if (input.includes("salmo")) {
-            const jsonFile = "db/salmi/elenco_salmi.json";
+            let jsonFile = ""
+            let linkRisultati = ""
+            if (page==="index" | page==="celebrazioni") {
+                jsonFile = "db/salmi/elenco_salmi.json";
+                linkRisultati = "nav-bar/risultati.html"
+            } else if (page === "anno") {
+                jsonFile = "../../db/salmi/elenco_salmi.json";
+                linkRisultati = "../risultati.html"
+            } else {
+                jsonFile = "../db/salmi/elenco_salmi.json";
+                linkRisultati = "risultati.html"
+            }
 
             try {
                 const response = await fetch(jsonFile);
@@ -43,7 +54,7 @@ async function searchCanti(event) {
                 localStorage.setItem("searchResults", JSON.stringify(results));
 
                 // Reindirizza alla pagina dei risultati
-                window.location.href = "nav-bar/risultati.html";
+                window.location.href = linkRisultati;
             } catch (error) {
                 console.error("Errore nel caricamento del file JSON:", error);
             }
