@@ -73,8 +73,13 @@
             const celebrazione = data.celebrazioni.find(celebra => celebra.numero == numero);
 
             if (celebrazione) {
-                document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
-                document.querySelector('#title').innerHTML = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                if (typeof numero === 'number') {
+                    document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
+                    document.querySelector('#title').innerHTML = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                } else {
+                    document.title = `${numero} - Anno ${anno}`;
+                    document.querySelector('#title').innerHTML = `${numero} - ANNO ${anno}`;
+                }
                 const colore = celebrazione.colore;
                 document.querySelector("#myNavbar").setAttribute("style", `background-color: ${colore};`);
                 document.querySelector('#antifona-ingresso').innerHTML = celebrazione.antifona_ingresso;
