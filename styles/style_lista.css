@@ -482,3 +482,11 @@
 .testo-button:hover {
     background-color: #0056b3;
 }
+
+.dark-theme .link-button {
+    color: white;
+}
+
+.dark-theme .testo-button {
+    color: white;
+}
