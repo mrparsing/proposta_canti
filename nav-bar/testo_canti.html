@@ -10,11 +10,18 @@
     <link rel="stylesheet" href="../styles/style_index.css">
 
     <script>
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const titolo = urlParams.get('titolo');
+            
+            return titolo;
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
             setDarkTheme();
 
-            const titolo = localStorage.getItem("titolo");
+            const titolo = getQueryParams()
             if (titolo) {
                 document.getElementById('titolo').innerText = titolo;
             }
@@ -23,7 +30,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (Array.isArray(data.canti)) {
-                        const titolo = localStorage.getItem("titolo");
+
                         data.canti.forEach(canto => {
                             if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
                                 document.getElementById('titolo').innerText = canto.titolo;

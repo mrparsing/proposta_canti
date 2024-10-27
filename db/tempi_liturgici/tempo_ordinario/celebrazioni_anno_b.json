@@ -631,6 +631,27 @@
             "canto_comunione": ""
         },
         {
+            "title": "Tutti i Santi - B",
+            "numero": "tutti i santi",
+            "anno": "B",
+            "colore": "#2a9a5c",
+            "antifona_ingresso": "Rallegriamoci tutti nel Signore<br>in questa solennità di tutti i Santi:<br>con noi gioiscono gli angeli<br>e lodano il Figlio di Dio.",
+            "canto_ingresso": "<a href='nav-bar/testo_canti.html?titolo=rallegriamoci%20ed%20esuiltiamo' target='_blank'>Rallegriamoci ed Esultiamo</a>",
+            "atto_penitenziale": "",
+            "tropo_1": " <b>Kyrie, elèison</b>",
+            "tropo_2": " <b>Christe, elèison.</b>",
+            "tropo_3": " <b>Kyrie, eleison.</b>",
+            "prima_lettura_testo": "<i>Dal libro dell’Apocalisse di san Giovanni apostolo<br>Ap 7,2-4.9-14</i><br><br>Io, Giovanni , vidi salire dall’oriente un altro angelo, con il sigillo del Dio vivente. E gridò a gran voce ai quattro angeli, ai quali era stato concesso di devastare la terra e il mare: «Non devastate la terra né il mare né le piante, finché non avremo impresso il sigillo sulla fronte dei servi del nostro Dio». E udii il numero di coloro che furono segnati con il sigillo: centoquarantaquattromila segnati, provenienti da ogni tribù dei figli d’Israele. Dopo queste cose vidi: ecco, una moltitudine immensa, che nessuno poteva contare, di ogni nazione, tribù, popolo e lingua. Tutti stavano in piedi davanti al trono e davanti all’Agnello, avvolti in vesti candide, e tenevano rami di palma nelle loro mani. E gridavano a gran voce: «La salvezza appartiene al nostro Dio, seduto sul trono, e all’Agnello». E tutti gli angeli stavano attorno al trono e agli anziani e ai quattro esseri viventi, e si inchinarono con la faccia a terra davanti al trono e adorarono Dio dicendo: «Amen! Lode, gloria, sapienza, azione di grazie, onore, potenza e forza al nostro Dio nei secoli dei secoli. Amen». Uno degli anziani allora si rivolse a me e disse: «Questi, che sono vestiti di bianco, chi sono e da dove vengono?». Gli risposi: «Signore mio, tu lo sai». E lui: «Sono quelli che vengono dalla grande tribolazione e che hanno lavato le loro vesti, rendendole candide nel sangue dell’Agnello».<br><br>Parola di Dio",
+            "salmo_link": "db/tempi_liturgici/tempo_ordinario/salmi_anno_b/Tutti i santi Visconti.pdf",
+            "salmo_testo": "<i>Sal 23<br><b>R. Ecco la generazione che cerca il tuo volto, Signore.</b><br>br>Del Signore è la terra e quanto contiene:<br>il mondo, con i suoi abitanti.<br>È lui che l’ha fondato sui mari<br>e sui fiumi l’ha stabilito. R.<br><br>Chi potrà salire il monte del Signore?<br>Chi potrà stare nel suo luogo santo?<br>Chi ha mani innocenti e cuore puro,<br>chi non si rivolge agli idoli. R.<br><br>Egli otterrà benedizione dal Signore,<br>giustizia da Dio sua salvezza.<br>Ecco la generazione che lo cerca,<br>che cerca il tuo volto, Dio di Giacobbe. R.",
+            "seconda_lettura_testo": "<i>Dalla prima lettera di san Giovanni apostolo<br>1Gv 3,1-3</i><br><br>Carissimi, vedete quale grande amore ci ha dato il Padre per essere chiamati figli di Dio, e lo siamo realmente! Per questo il mondo non ci conosce: perché non ha conosciuto lui. Carissimi, noi fin d’ora siamo figli di Dio, ma ciò che saremo non è stato ancora rivelato. Sappiamo però che quando egli si sarà manifestato, noi saremo simili a lui, perché lo vedremo così come egli è. Chiunque ha questa speranza in lui, purifica se stesso, come egli è puro.<br><br>Parola di Dio",
+            "acclamazione_al_vangelo": "Alleluia, alleluia.<br><br>Venite a me,<br>voi tutti che siete stanchi e oppressi,<br>e io vi darò ristoro. (Mt 11,28)<br><br>Alleluia.",
+            "vangelo": "<i>Dal Vangelo secondo Matteo<br>Mt 5,1-12a</i><br><br>In quel tempo, vedendo le folle, Gesù salì sul monte: si pose a sedere e si avvicinarono a lui i suoi discepoli. Si mise a parlare e insegnava loro dicendo: «Beati i poveri in spirito, perché di essi è il regno dei cieli. Beati quelli che sono nel pianto, perché saranno consolati. Beati i miti, perché avranno in eredità la terra. Beati quelli che hanno fame e sete della giustizia, perché saranno saziati. Beati i misericordiosi, perché troveranno misericordia. Beati i puri di cuore, perché vedranno Dio. Beati gli operatori di pace, perché saranno chiamati figli di Dio. Beati i perseguitati per la giustizia, perché di essi è il regno dei cieli. Beati voi quando vi insulteranno, vi perseguiteranno e, mentendo, diranno ogni sorta di male contro di voi per causa mia. Rallegratevi ed esultate, perché grande è la vostra ricompensa nei cieli».<br><br>Parola del Signore",
+            "canto_offertorio": "<a href='nav-bar/testo_canti.html?titolo=Dov'è%20carita%20e%20amore' target='_blank'>Dov'è carità e amore</a>",
+            "antifona_alla_comunione": "Beati i puri di cuore, perché vedranno Dio.<br>Beati gli operatori di pace,<br>perché saranno chiamati figli di Dio.<br>Beati i perseguitati a causa della giustizia,<br>perché di essi è il regno dei cieli. (Mt 5,8-10).",
+            "canto_comunione": "<a href='nav-bar/testo_canti.html?titolo=Beatitudini' target='_blank'>Beatitudini</a>"
+        },
+        {
             "title": "31° domenica tempo ordinario - B",
             "numero": 31,
             "anno": "B",

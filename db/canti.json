@@ -45,6 +45,14 @@
             "testo": "<b>RIT. Gustate e vedete come è buono il Signore<br>Beato l'uomo che trova il suo rifugio in Lui<br>Temete il Signore, Suoi santi<br>Nulla manca a coloro che Lo temono</b><br><br>Benedirò il Signore in ogni tempo<br>Sulla mia bocca la Sua lode<br>Io mi glorio nel Signore<br>Ascoltino gli umili e si rallegrino. RIT. <br><br>Celebrate con me il Signore<br>Esaltiamo insieme il Suo Nome<br>Ho cercato il Signore<br>E m'ha risposto, m'ha liberato. RIT.<br><br>Guardate a Lui e sarete raggianti<br>Non saranno confusi i vostri volti<br>Il Signore ascolta il povero<br>Egli lo libera da ogni angoscia. RIT."
         },
         {
+            "titolo": "Rallegriamoci ed esultiamo",
+            "autore": "Marco Frisina",
+            "tipologia": "Ingresso",
+            "ascolta": "https://www.youtube.com/watch?app=desktop&v=j11egNCVcZ8",
+            "download_link": "../db/canti/rallegriamoci_ed_esultiamo.pdf",
+            "testo": "<b> RIT. Rallegriamoci, esultiamo<br>Al Signore rendiamo gloria<br>Sono giunte le nozze dell'agnello<br>La sua sposa è pronta</b><br><br>Chiesa Santa del Signore<br>Convocata nella carità<br>Casa posta in cima all'alto monte<br>Luce radiosa delle genti. R.<br><br>Dagli apostoli gloriosi<br>Sei fondata nella verità<br>E dal sangue dei martiri e dei santi<br>Ricevi forza nel cammino. R."
+        },
+        {
             "titolo": "Dove la carità è vera",
             "autore": "Marco Frisina",
             "tipologia": "Offertorio",
@@ -761,6 +769,14 @@
             "tempo": "Qualsiasi",
             "download_link": "../db/canti/",
             "testo": ""
+        },
+        {
+            "titolo": "Beatitudini",
+            "autore": "Marco Frisina",
+            "tipologia": "Comunione",
+            "tempo": "Qualsiasi",
+            "download_link": "../db/canti/Beatitudini.pdf",
+            "testo": "Beati, beati i poveri perché di essi è il Regno<br>Beati, beati gli afflitti perché sarann consolati<br><br>Chi vuole seguir la mia strada rinneghi sé stesso e mi segua<br>Accolga ogni giorno la croce che salva e redime ogni uomo<br><br>Beati, beati i vinti, erediteranno la terra<br>Beato chi ha fame della giustizia perché sarà certo saziato<br><br>Il grido del povero sale al Padre che vede ogni cosa<br>Il Suo orecchio ascolta, ricorda il dolore del misero<br><br>Beati i misericordiosi perché troveranno il perdono<br>Beato ogni uomo dal cuore puro perché vedrà il suo Signore<br>Beato chi porta la pace sarà vero figlio di Dio<br><br>Vi lascio la pace nel cuore che dona una luce di gioia<br>Beati i perseguitati a causa della mia giustizia<br>Gioisca e esulti chi spera in Me perché canterà la nostra gioia"
         },
         {
             "titolo": "Vieni ancora, Gesù",
