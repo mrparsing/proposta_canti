@@ -180,9 +180,11 @@ function calcolaFestivita(anno) {
         festivita.push({ anno: tipologia_anno(anno), tipologia: "avvento", numero: `${index + 1}`, data: domenica });
     });
 
+    const dataSanti = new Date(oggi.getFullYear(), 10, 1);
+    festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: 'Solennità di tutti i Santi', data: dataSanti });
+
     const cristoRe = new Date(domenicheAvvento[0]);
     cristoRe.setDate(domenicheAvvento[0].getDate() - 7); // Sottrai 3 giorni
-
     festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: 'Solennità di Cristo Re', data: cristoRe });
 
     // Aggiungi inizio e fine Quaresima
@@ -265,7 +267,10 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
     if (tipologia === "ordinario") {
         if (numero === "Solennità di Cristo Re") {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
-        } else {
+        } else if (numero === "Solennità di tutti i Santi") {
+            li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
+        }
+        else {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
         }
     } else if (tipologia === "avvento") {
