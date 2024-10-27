@@ -15,7 +15,6 @@
             setDarkTheme();
 
             const titolo = localStorage.getItem("titolo");
-            console.log(titolo);
             if (titolo) {
                 document.getElementById('titolo').innerText = titolo;
             }
@@ -29,15 +28,20 @@
                             if (canto.titolo.toLowerCase() === titolo.toLowerCase()) {
                                 document.getElementById('titolo').innerText = canto.titolo;
 
-                                // Crea i link da aggiungere in info-canto
+                                // Controllo che l'elemento "info-canto" esista prima di modificarlo
                                 const infoCantoElement = document.getElementById('info-canto');
-                                infoCantoElement.innerHTML = `
-                        ${canto.autore} - ${canto.tipologia} - ${canto.tempo || ''} - 
-                        <a href="${canto.ascolta}" target="_blank">Ascolta</a> - 
-                        <a href="${canto.download_link}" target="_blank">Scarica PDF</a>
-                    `;
+                                if (infoCantoElement) {
+                                    infoCantoElement.innerHTML = `
+                                ${canto.autore} - ${canto.tipologia} - ${canto.tempo || ''} - 
+                                <a href="${canto.ascolta}" target="_blank">Ascolta</a> - 
+                                <a href="${canto.download_link}" target="_blank">Scarica PDF</a>
+                            `;
+                                }
 
-                                document.getElementById('testo').innerHTML = canto.testo || "Testo non disponibile.";
+                                const testoElement = document.getElementById('testo');
+                                if (testoElement) {
+                                    testoElement.innerHTML = canto.testo || "Testo non disponibile.";
+                                }
                             }
                         });
                     } else {
@@ -45,8 +49,7 @@
                     }
                 })
                 .catch(error => console.error('Errore nel caricamento del file JSON:', error));
-        });
-    </script>
+        });    </script>
 
     <style>
         .testo {
