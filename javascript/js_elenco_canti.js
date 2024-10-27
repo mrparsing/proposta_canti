@@ -30,6 +30,8 @@ function carica_canti() {
                     detailsDiv.innerHTML = `<strong>Autore:</strong> ${canto.autore} | <strong>Tipologia:</strong> ${canto.tipologia} | <strong>Tempo:</strong> ${canto.tempo}`;
 
                     const linksDiv = document.createElement('div');
+                    linksDiv.className = 'link-buttons'; // Classe per il layout flessibile
+
                     const ascoltaLink = document.createElement('a');
                     ascoltaLink.href = canto.ascolta;
                     ascoltaLink.className = 'link-button';
@@ -44,7 +46,7 @@ function carica_canti() {
 
                     const testoLink = document.createElement('a');
                     testoLink.href = 'testo_canti.html';
-                    testoLink.className = "testo-button";
+                    testoLink.className = 'testo-button';
                     testoLink.textContent = 'Testo';
 
                     // Aggiungi un gestore di eventi per memorizzare il titolo nel localStorage
@@ -54,8 +56,7 @@ function carica_canti() {
 
                     linksDiv.appendChild(testoLink);
 
-
-                    detailsDiv.appendChild(linksDiv);
+                    detailsDiv.appendChild(linksDiv); // Aggiungi il div dei link al div dei dettagli
                     li.appendChild(detailsDiv);
 
                     list.appendChild(li);
@@ -64,7 +65,6 @@ function carica_canti() {
         })
         .catch(error => console.error('Errore nel caricamento del file JSON:', error));
 }
-
 document.addEventListener('DOMContentLoaded', function () {
     carica_canti()
 });
