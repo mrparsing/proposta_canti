@@ -70,7 +70,7 @@
         }
 
         function populatePage(data, numero, anno) {
-            const celebrazione = data.celebrazioni.find(celebra => celebra.numero === parseInt(numero));
+            const celebrazione = data.celebrazioni.find(celebra => celebra.numero == numero);
 
             if (celebrazione) {
                 document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
