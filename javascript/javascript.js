@@ -180,7 +180,7 @@ function calcolaFestivita(anno) {
         festivita.push({ anno: tipologia_anno(anno), tipologia: "avvento", numero: `${index + 1}`, data: domenica });
     });
 
-    const dataSanti = new Date(oggi.getFullYear(), 10, 1);
+    const dataSanti = new Date(anno, 10, 1);
     festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: 'Solennità di tutti i Santi', data: dataSanti });
 
     const cristoRe = new Date(domenicheAvvento[0]);
@@ -204,14 +204,14 @@ function calcolaFestivita(anno) {
 
 
     // Aggiungi Pasqua
-    const giovediSanto = new Date(pasqua); // Crea una copia della data di Pasqua
+    const giovediSanto = new Date(pasqua);
     giovediSanto.setDate(pasqua.getDate() - 3); // Sottrai 3 giorni
 
-    const venerdiSanto = new Date(pasqua); // Crea una copia della data di Pasqua
-    venerdiSanto.setDate(pasqua.getDate() - 2); // Sottrai 3 giorni
+    const venerdiSanto = new Date(pasqua);
+    venerdiSanto.setDate(pasqua.getDate() - 2); // Sottrai 2 giorni
 
-    const sabatoSanto = new Date(pasqua); // Crea una copia della data di Pasqua
-    sabatoSanto.setDate(pasqua.getDate() - 1); // Sottrai 3 giorni
+    const sabatoSanto = new Date(pasqua);
+    sabatoSanto.setDate(pasqua.getDate() - 1); // Sottrai 1 giorni
 
     festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Giovedì Santo', data: giovediSanto });
     festivita.push({ anno: tipologia_anno(anno), tipologia: "pasqua", numero: 'Venerdì Santo', data: venerdiSanto });
