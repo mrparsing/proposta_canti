@@ -50,12 +50,10 @@
 
         .link-buttons {
             display: flex;
-            justify-content: center;
-            /* Centra i link orizzontalmente */
+            justify-content: space-around;
+            /* Distribuisce equamente lo spazio tra i bottoni */
             gap: 10px;
-            /* Spazio tra i link */
             margin-top: 10px;
-            /* Distanza dalla sezione superiore */
         }
 
         .link-button,
@@ -66,6 +64,10 @@
             background-color: #007bff;
             border-radius: 5px;
             font-size: 14px;
+            flex-grow: 1;
+            /* Assicura che ogni bottone occupi lo stesso spazio */
+            text-align: center;
+            /* Allinea il testo al centro del bottone */
         }
 
         .link-button:hover,
