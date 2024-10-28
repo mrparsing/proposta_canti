@@ -14,4 +14,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROPOSTA_CANTI_13252 }}
           channelId: live
-          projectId: proposta-canti-13252
+          projectId: propostacanti
