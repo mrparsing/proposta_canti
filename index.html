@@ -17,12 +17,13 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js"></script>
 
-
     <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
             authDomain: "proposta-canti-13252.firebaseapp.com",
