@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v2'; // Update the version number when caching files
+const CACHE_NAME = 'v2'; // Aggiorna il numero di versione quando cambi i file da cache
 const urlsToCache = [
   'index.html',
   'manifest.json',
@@ -6,7 +6,7 @@ const urlsToCache = [
   'javascript/javascript.js'
 ];
 
-// Installation of the service worker and caching files
+// Installazione del service worker e caching dei file
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
@@ -15,16 +15,17 @@ self.addEventListener('install', function (event) {
   );
 });
 
-// Intercept requests and respond with cached files
+// Intercetta le richieste e risponde con i file dalla cache
 self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request).then(function (response) {
+      // Controlla se la richiesta è in cache, altrimenti effettua una richiesta di rete
       return response || fetch(event.request);
     })
   );
 });
 
-// Update service worker and manage the cache
+// Aggiornamento del service worker e gestione della cache
 self.addEventListener('activate', function (event) {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -40,18 +41,17 @@ self.addEventListener('activate', function (event) {
   );
 });
 
-// Claim clients for the new service worker
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Forza l'attivazione del nuovo Service Worker
 });
 
-// Handle push notifications
-self.addEventListener('push', function(event) {
-  const options = {
-    body: event.data.text(),
-    // You can add more options here
-  };
-  event.waitUntil(
-    self.registration.showNotification('New Message', options)
-  );
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim()); // Assicura che il nuovo SW prenda il controllo
+});
+
+// Invia un messaggio al client quando l'installazione è completata
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
