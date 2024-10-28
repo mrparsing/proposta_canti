@@ -24,32 +24,6 @@
 
     <script>
         // Funzione per richiedere il permesso per le notifiche e ottenere il token
-        async function requestNotificationPermission() {
-            try {
-                const permission = await Notification.requestPermission();
-                if (permission === 'granted') {
-                    console.log("Permesso per le notifiche ottenuto.");
-                    const token = await messaging.getToken({ vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' });
-                    console.log("Token FCM:", token);
-                    // Puoi inviare il token al tuo server qui
-                } else {
-                    console.error("Permesso per le notifiche non ottenuto.");
-                }
-            } catch (error) {
-                console.error("Errore nella richiesta di permesso per le notifiche:", error);
-            }
-        }
-
-        // Gestione dei messaggi ricevuti
-        messaging.onMessage((payload) => {
-            console.log("Messaggio ricevuto:", payload);
-            const notificationTitle = payload.notification.title;
-            const notificationOptions = {
-                body: payload.notification.body,
-            };
-            new Notification(notificationTitle, notificationOptions);
-        });
-
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('firebase-messaging-sw.js').then((registration) => {
                 messaging.useServiceWorker(registration);
@@ -83,6 +57,33 @@
 
             // Now you can safely call functions that rely on messaging
             requestNotificationPermission();
+
+
+            async function requestNotificationPermission() {
+                try {
+                    const permission = await Notification.requestPermission();
+                    if (permission === 'granted') {
+                        console.log("Permesso per le notifiche ottenuto.");
+                        const token = await messaging.getToken({ vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' });
+                        console.log("Token FCM:", token);
+                        // Puoi inviare il token al tuo server qui
+                    } else {
+                        console.error("Permesso per le notifiche non ottenuto.");
+                    }
+                } catch (error) {
+                    console.error("Errore nella richiesta di permesso per le notifiche:", error);
+                }
+            }
+
+            // Gestione dei messaggi ricevuti
+            messaging.onMessage((payload) => {
+                console.log("Messaggio ricevuto:", payload);
+                const notificationTitle = payload.notification.title;
+                const notificationOptions = {
+                    body: payload.notification.body,
+                };
+                new Notification(notificationTitle, notificationOptions);
+            });
 
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
