@@ -36,6 +36,37 @@
                     }
                 });
             }
+            // Registrazione del Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('sw.js').then(function (registration) {
+                        console.log('ServiceWorker registrato con successo:', registration);
+
+                        registration.onupdatefound = function () {
+                            const newWorker = registration.installing;
+                            newWorker.onstatechange = function () {
+                                if (newWorker.state === 'installed') {
+                                    if (navigator.serviceWorker.controller) {
+                                        newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
+                                    }
+                                }
+                            };
+                        };
+
+                        // Controlla aggiornamenti ogni 10 secondi
+                        setInterval(() => {
+                            registration.update().then(() => {
+                                if (registration.waiting) {
+                                    registration.waiting.postMessage({ type: 'UPDATE_AVAILABLE' });
+                                }
+                            });
+                        }, 10000);
+                    }).catch(function (error) {
+                        console.error('Registrazione del ServiceWorker fallita:', error);
+                    });
+                });
+            }
+
 
             requestPermission();
         });
@@ -50,37 +81,6 @@
                     updateBanner.classList.remove('show'); // Rimuovi la classe per chiudere l'alert
                 };
             }
-        }
-
-        // Registrazione del Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js').then(function (registration) {
-                    console.log('ServiceWorker registrato con successo:', registration);
-
-                    registration.onupdatefound = function () {
-                        const newWorker = registration.installing;
-                        newWorker.onstatechange = function () {
-                            if (newWorker.state === 'installed') {
-                                if (navigator.serviceWorker.controller) {
-                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
-                                }
-                            }
-                        };
-                    };
-
-                    // Controlla aggiornamenti ogni 10 secondi
-                    setInterval(() => {
-                        registration.update().then(() => {
-                            if (registration.waiting) {
-                                registration.waiting.postMessage({ type: 'UPDATE_AVAILABLE' });
-                            }
-                        });
-                    }, 10000);
-                }).catch(function (error) {
-                    console.error('Registrazione del ServiceWorker fallita:', error);
-                });
-            });
         }
 
         // Inizializzazione di Google Analytics
