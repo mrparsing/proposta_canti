@@ -5,16 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
-
-    <!-- Script per i file JavaScript locali -->
     <script src="javascript/javascript.js"></script>
     <script src="javascript/js_global_search.js"></script>
-
-    <!-- Foglio di stile CSS -->
     <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
-
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
     <script>
@@ -38,8 +32,6 @@
             }
         });
 
-
-
         function showUpdateBanner() {
             const updateBanner = document.getElementById('updateBanner');
             if (updateBanner) {
@@ -50,12 +42,12 @@
             }
         }
 
+        // Registrazione del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js').then(function (registration) {
                     console.log('ServiceWorker registrato con successo:', registration);
 
-                    // Registrazione del Web Worker
                     registration.onupdatefound = function () {
                         const newWorker = registration.installing;
                         newWorker.onstatechange = function () {
@@ -80,6 +72,7 @@
                 });
             });
         }
+
         // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -145,29 +138,30 @@
             </div>
         </div>
     </div>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyBBZ9WPNSoWLZbwtwV0OvHzaK9mAd9cD7Y",
-          authDomain: "propostacanti.firebaseapp.com",
-          projectId: "propostacanti",
-          storageBucket: "propostacanti.appspot.com",
-          messagingSenderId: "803132493230",
-          appId: "1:803132493230:web:acdcbeea11301ead5f0c3f",
-          measurementId: "G-41844B841P"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBBZ9WPNSoWLZbwtwV0OvHzaK9mAd9cD7Y",
+        authDomain: "propostacanti.firebaseapp.com",
+        projectId: "propostacanti",
+        storageBucket: "propostacanti.appspot.com",
+        messagingSenderId: "803132493230",
+        appId: "1:803132493230:web:acdcbeea11301ead5f0c3f",
+        measurementId: "G-41844B841P"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
 </body>
 
 </html>
