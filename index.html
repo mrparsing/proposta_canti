@@ -17,29 +17,12 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
-    <!-- Firebase - Importo come script non modulo per evitare errori con import -->
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js"></script>
-    <!-- Firebase - Compat versions for non-modular environment -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
 
 
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
-            authDomain: "proposta-canti-13252.firebaseapp.com",
-            projectId: "proposta-canti-13252",
-            storageBucket: "proposta-canti-13252.appspot.com",
-            messagingSenderId: "643920970942",
-            appId: "1:643920970942:web:5351c41cc6068558a48aef",
-            measurementId: "G-1W0M5CGBGT"
-        };
-
-        // Inizializza Firebase
-        firebase.initializeApp(firebaseConfig);
-        const analytics = firebase.analytics();
-        const messaging = firebase.messaging();
-
         // Funzione per richiedere il permesso per le notifiche e ottenere il token
         async function requestNotificationPermission() {
             try {
@@ -84,6 +67,21 @@
         const currentVersion = '1.0.0';
 
         document.addEventListener('DOMContentLoaded', function () {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
+                authDomain: "proposta-canti-13252.firebaseapp.com",
+                projectId: "proposta-canti-13252",
+                storageBucket: "proposta-canti-13252.appspot.com",
+                messagingSenderId: "643920970942",
+                appId: "1:643920970942:web:5351c41cc6068558a48aef",
+                measurementId: "G-1W0M5CGBGT"
+            };
+
+            // Inizializza Firebase
+            firebase.initializeApp(firebaseConfig);
+            const analytics = firebase.analytics();
+            const messaging = firebase.messaging();
+
             avvia_index();
 
             const savedVersion = localStorage.getItem('appVersion');
