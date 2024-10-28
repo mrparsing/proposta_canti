@@ -40,9 +40,6 @@
             }
         }
 
-        // Chiamata alla funzione per richiedere il permesso
-        requestNotificationPermission();
-
         // Gestione dei messaggi ricevuti
         messaging.onMessage((payload) => {
             console.log("Messaggio ricevuto:", payload);
@@ -77,12 +74,15 @@
                 measurementId: "G-1W0M5CGBGT"
             };
 
-            // Inizializza Firebase
+            // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
             const analytics = firebase.analytics();
+
+            // Initialize Firebase Messaging here after Firebase is ready
             const messaging = firebase.messaging();
 
-            avvia_index();
+            // Now you can safely call functions that rely on messaging
+            requestNotificationPermission();
 
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
