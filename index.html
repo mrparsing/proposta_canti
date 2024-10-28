@@ -22,8 +22,52 @@
     <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js"></script>
 
 
-    <script>
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
+            authDomain: "proposta-canti-13252.firebaseapp.com",
+            projectId: "proposta-canti-13252",
+            storageBucket: "proposta-canti-13252.appspot.com",
+            messagingSenderId: "643920970942",
+            appId: "1:643920970942:web:5351c41cc6068558a48aef",
+            measurementId: "G-1W0M5CGBGT"
+        };
+
+        // Inizializza Firebase
+        firebase.initializeApp(firebaseConfig);
+        const analytics = firebase.analytics();
+        const messaging = firebase.messaging();
+
         // Funzione per richiedere il permesso per le notifiche e ottenere il token
+        async function requestNotificationPermission() {
+            try {
+                const permission = await Notification.requestPermission();
+                if (permission === 'granted') {
+                    console.log("Permesso per le notifiche ottenuto.");
+                    const token = await messaging.getToken({ vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' });
+                    console.log("Token FCM:", token);
+                    // Puoi inviare il token al tuo server qui
+                } else {
+                    console.error("Permesso per le notifiche non ottenuto.");
+                }
+            } catch (error) {
+                console.error("Errore nella richiesta di permesso per le notifiche:", error);
+            }
+        }
+
+        // Chiamata alla funzione per richiedere il permesso
+        requestNotificationPermission();
+
+        // Gestione dei messaggi ricevuti
+        messaging.onMessage((payload) => {
+            console.log("Messaggio ricevuto:", payload);
+            const notificationTitle = payload.notification.title;
+            const notificationOptions = {
+                body: payload.notification.body,
+            };
+            new Notification(notificationTitle, notificationOptions);
+        });
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('firebase-messaging-sw.js').then((registration) => {
                 messaging.useServiceWorker(registration);
@@ -34,56 +78,11 @@
         }
     </script>
 
-    <script type="module">
+    <script>
         const currentVersion = '1.0.0';
 
         document.addEventListener('DOMContentLoaded', function () {
-            const firebaseConfig = {
-                apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
-                authDomain: "proposta-canti-13252.firebaseapp.com",
-                projectId: "proposta-canti-13252",
-                storageBucket: "proposta-canti-13252.appspot.com",
-                messagingSenderId: "643920970942",
-                appId: "1:643920970942:web:5351c41cc6068558a48aef",
-                measurementId: "G-1W0M5CGBGT"
-            };
-
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            const analytics = firebase.analytics();
-
-            // Initialize Firebase Messaging here after Firebase is ready
-            const messaging = firebase.messaging();
-
-            // Now you can safely call functions that rely on messaging
-            requestNotificationPermission();
-
-
-            async function requestNotificationPermission() {
-                try {
-                    const permission = await Notification.requestPermission();
-                    if (permission === 'granted') {
-                        console.log("Permesso per le notifiche ottenuto.");
-                        const token = await messaging.getToken({ vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' });
-                        console.log("Token FCM:", token);
-                        // Puoi inviare il token al tuo server qui
-                    } else {
-                        console.error("Permesso per le notifiche non ottenuto.");
-                    }
-                } catch (error) {
-                    console.error("Errore nella richiesta di permesso per le notifiche:", error);
-                }
-            }
-
-            // Gestione dei messaggi ricevuti
-            messaging.onMessage((payload) => {
-                console.log("Messaggio ricevuto:", payload);
-                const notificationTitle = payload.notification.title;
-                const notificationOptions = {
-                    body: payload.notification.body,
-                };
-                new Notification(notificationTitle, notificationOptions);
-            });
+            avvia_index();
 
             const savedVersion = localStorage.getItem('appVersion');
             if (savedVersion !== currentVersion) {
