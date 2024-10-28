@@ -1,14 +1,17 @@
-importScripts("https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js");
-// For an optimal experience using Cloud Messaging, also add the Firebase SDK for Analytics.
-importScripts("https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js");
+importScripts('https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/9.10.0/firebase-messaging.js');
 
 console.log("test sw");
 
 // Initialize the Firebase app in the service worker by passing in the
 // messagingSenderId.
 firebase.initializeApp({
-    messagingSenderId: "643920970942"
+    apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
+    authDomain: "proposta-canti-13252.firebaseapp.com",
+    projectId: "proposta-canti-13252",
+    storageBucket: "proposta-canti-13252.appspot.com",
+    messagingSenderId: "643920970942",
+    appId: "1:643920970942:web:5351c41cc6068558a48aef",
 });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
