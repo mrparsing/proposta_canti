@@ -5,22 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti</title>
+
+    <!-- Script per i file JavaScript locali -->
     <script src="javascript/javascript.js"></script>
     <script src="javascript/js_global_search.js"></script>
+
+    <!-- Foglio di stile CSS -->
     <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js"></script>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
-    <script type="module">
-        // Importa i moduli necessari
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js";
+    <!-- Firebase - Importo come script non modulo per evitare errori con import -->
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js"></script>
 
-        // Configurazione del tuo app Firebase
+
+    <script>
         const firebaseConfig = {
             apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
             authDomain: "proposta-canti-13252.firebaseapp.com",
@@ -32,9 +35,9 @@
         };
 
         // Inizializza Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const messaging = getMessaging(app);
+        firebase.initializeApp(firebaseConfig);
+        const analytics = firebase.analytics();
+        const messaging = firebase.messaging();
 
         // Funzione per richiedere il permesso per le notifiche e ottenere il token
         async function requestNotificationPermission() {
@@ -42,9 +45,9 @@
                 const permission = await Notification.requestPermission();
                 if (permission === 'granted') {
                     console.log("Permesso per le notifiche ottenuto.");
-                    const token = await getToken(messaging, { vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' }); // Sostituisci con la tua chiave VAPID
+                    const token = await messaging.getToken({ vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' });
                     console.log("Token FCM:", token);
-                    // Qui puoi inviare il token al tuo server per salvarlo
+                    // Puoi inviare il token al tuo server qui
                 } else {
                     console.error("Permesso per le notifiche non ottenuto.");
                 }
@@ -57,7 +60,7 @@
         requestNotificationPermission();
 
         // Gestione dei messaggi ricevuti
-        onMessage(messaging, (payload) => {
+        messaging.onMessage((payload) => {
             console.log("Messaggio ricevuto:", payload);
             const notificationTitle = payload.notification.title;
             const notificationOptions = {
@@ -66,24 +69,14 @@
             new Notification(notificationTitle, notificationOptions);
         });
 
-        // Richiedi il permesso per le notifiche
-        messaging.requestPermission()
-            .then(() => {
-                console.log("Permesso per le notifiche ottenuto.");
-                return messaging.getToken();
-            })
-            .then(token => {
-                console.log("Token FCM:", token);
-                // Salva il token nel database o dove preferisci
-            })
-            .catch(error => {
-                console.error("Errore nella richiesta di permesso per le notifiche:", error);
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('firebase-messaging-sw.js').then((registration) => {
+                messaging.useServiceWorker(registration);
+                console.log('Service Worker registrato per Firebase.');
+            }).catch((error) => {
+                console.error('Errore nella registrazione del Service Worker:', error);
             });
-
-        messaging.onMessage(payload => {
-            console.log("Messaggio ricevuto:", payload);
-            // Puoi mostrare il contenuto della notifica all'utente qui
-        });
+        }
     </script>
 
     <script>
