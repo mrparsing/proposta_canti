@@ -17,6 +17,11 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+
     <script>
         const currentVersion = '1.0.0';
 
@@ -38,6 +43,8 @@
             }
         });
 
+
+
         function showUpdateBanner() {
             const updateBanner = document.getElementById('updateBanner');
             if (updateBanner) {
@@ -48,11 +55,16 @@
             }
         }
 
-        // Registrazione del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js').then(function (registration) {
                     console.log('ServiceWorker registrato con successo:', registration);
+
+                    // Registrazione del Web Worker
+                    const worker = new Worker('sw.js');
+
+                    // Se desideri comunicare con il Worker
+                    worker.postMessage({ type: 'INIT', payload: 'Some data' });
 
                     registration.onupdatefound = function () {
                         const newWorker = registration.installing;
@@ -78,7 +90,6 @@
                 });
             });
         }
-
         // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
