@@ -12,6 +12,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
     <script>
         const currentVersion = '1.0.0';
@@ -80,9 +81,6 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2J3NXSXK3Y');
-
-        // Inizializza Firebase Messaging
-        const messaging = firebase.messaging();
 
         // Richiedi il permesso per le notifiche
         messaging.requestPermission()
@@ -165,13 +163,12 @@
 </body>
 
 <script type="module">
+    // Importa i moduli necessari
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-messaging.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // Configurazione del tuo app Firebase
     const firebaseConfig = {
         apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
         authDomain: "proposta-canti-13252.firebaseapp.com",
@@ -182,9 +179,42 @@
         measurementId: "G-1W0M5CGBGT"
     };
 
-    // Initialize Firebase
+    // Inizializza Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+    // Inizializza Firebase Messaging
+    const messaging = getMessaging(app);
+
+    // Funzione per richiedere il permesso per le notifiche e ottenere il token
+    async function requestNotificationPermission() {
+        try {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                console.log("Permesso per le notifiche ottenuto.");
+                const token = await getToken(messaging, { vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' }); // Sostituisci con la tua chiave VAPID
+                console.log("Token FCM:", token);
+                // Qui puoi inviare il token al tuo server per salvarlo
+            } else {
+                console.error("Permesso per le notifiche non ottenuto.");
+            }
+        } catch (error) {
+            console.error("Errore nella richiesta di permesso per le notifiche:", error);
+        }
+    }
+
+    // Chiamata alla funzione per richiedere il permesso
+    requestNotificationPermission();
+
+    // Gestione dei messaggi ricevuti
+    onMessage(messaging, (payload) => {
+        console.log("Messaggio ricevuto:", payload);
+        const notificationTitle = payload.notification.title;
+        const notificationOptions = {
+            body: payload.notification.body,
+        };
+        new Notification(notificationTitle, notificationOptions);
+    });
 </script>
 
 </html>
