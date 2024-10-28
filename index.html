@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles/style_index.css">
     <link rel="manifest" href="manifest.json">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
 
     <script>
         const currentVersion = '1.0.0';
@@ -78,6 +80,35 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2J3NXSXK3Y');
+
+        // Richiedi permesso e ottieni il token
+        async function requestPermission() {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                const token = await getToken(messaging, { vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' });
+                console.log('Token ricevuto:', token);
+                // Salva il token sul server o utilizzalo come preferisci
+            } else {
+                console.log('Permesso per le notifiche non concesso');
+            }
+        }
+
+        requestPermission();
+
+        onMessage(messaging, (payload) => {
+            console.log('Messaggio ricevuto in primo piano:', payload);
+            // Mostra la notifica usando i dati payload
+        });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('firebase-messaging-sw.js')
+                .then((registration) => {
+                    console.log('Service Worker registrato:', registration);
+                }).catch((err) => {
+                    console.log('Errore nella registrazione del Service Worker:', err);
+                });
+        }
+        
     </script>
 </head>
 
@@ -161,6 +192,9 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+    const messaging = getMessaging(app);
+
 </script>
 
 </html>
