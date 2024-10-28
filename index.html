@@ -41,6 +41,70 @@
             }
         });
 
+        document.addEventListener("DOMContentLoaded", function () {
+            // Configurazione di Firebase
+            const firebaseConfig = {
+                apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
+                authDomain: "proposta-canti-13252.firebaseapp.com",
+                projectId: "proposta-canti-13252",
+                storageBucket: "proposta-canti-13252.appspot.com",
+                messagingSenderId: "643920970942",
+                appId: "1:643920970942:web:5351c41cc6068558a48aef",
+                measurementId: "G-1W0M5CGBGT"
+            };
+            // Inizializza Firebase App
+            firebase.initializeApp(firebaseConfig);
+
+            // Inizializza il servizio di messaggistica
+            const messaging = firebase.messaging();
+
+            // Registra il Service Worker e configura Firebase Messaging
+            if ("serviceWorker" in navigator && "PushManager" in window) {
+                navigator.serviceWorker
+                    .register("firebase-messaging-sw.js")
+                    .then((swReg) => {
+                        console.log("Service Worker registrato:", swReg);
+
+                        // Richiedi permessi di notifica e recupera il token
+                        requestNotificationPermission();
+
+                        // Gestione dei messaggi quando l'app è in primo piano
+                        messaging.onMessage((payload) => {
+                            console.log("Messaggio ricevuto:", payload);
+                            const notificationTitle = payload.notification.title;
+                            const notificationOptions = {
+                                body: payload.notification.body,
+                            };
+                            new Notification(notificationTitle, notificationOptions);
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Errore registrazione Service Worker:", error);
+                    });
+            } else {
+                console.warn("Messaggistica push non supportata in questo browser.");
+            }
+
+            // Funzione per richiedere permessi di notifica e recuperare il token FCM
+            async function requestNotificationPermission() {
+                try {
+                    const permission = await Notification.requestPermission();
+                    if (permission === 'granted') {
+                        console.log("Permesso per le notifiche concesso.");
+                        const token = await messaging.getToken({
+                            vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM'
+                        });
+                        console.log("Token FCM:", token);
+                        // Invia il token al server se necessario
+                    } else {
+                        console.error("Permesso per le notifiche non concesso.");
+                    }
+                } catch (error) {
+                    console.error("Errore durante la richiesta del permesso di notifica:", error);
+                }
+            }
+        });
+
         function showUpdateBanner() {
             const updateBanner = document.getElementById('updateBanner');
             if (updateBanner) {
@@ -147,7 +211,6 @@
             </div>
         </div>
     </div>
-    <script src="index.js"></script>
 </body>
 
 </html>
