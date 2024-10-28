@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-messaging.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js";
+import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
