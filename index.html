@@ -17,11 +17,6 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-
-
     <script>
         const currentVersion = '1.0.0';
 
@@ -61,11 +56,6 @@
                     console.log('ServiceWorker registrato con successo:', registration);
 
                     // Registrazione del Web Worker
-                    const worker = new Worker('sw.js');
-
-                    // Se desideri comunicare con il Worker
-                    worker.postMessage({ type: 'INIT', payload: 'Some data' });
-
                     registration.onupdatefound = function () {
                         const newWorker = registration.installing;
                         newWorker.onstatechange = function () {
@@ -161,23 +151,23 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-
+      
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            apiKey: "AIzaSyBBZ9WPNSoWLZbwtwV0OvHzaK9mAd9cD7Y",
-            authDomain: "propostacanti.firebaseapp.com",
-            projectId: "propostacanti",
-            storageBucket: "propostacanti.appspot.com",
-            messagingSenderId: "803132493230",
-            appId: "1:803132493230:web:acdcbeea11301ead5f0c3f",
-            measurementId: "G-41844B841P"
+          apiKey: "AIzaSyBBZ9WPNSoWLZbwtwV0OvHzaK9mAd9cD7Y",
+          authDomain: "propostacanti.firebaseapp.com",
+          projectId: "propostacanti",
+          storageBucket: "propostacanti.appspot.com",
+          messagingSenderId: "803132493230",
+          appId: "1:803132493230:web:acdcbeea11301ead5f0c3f",
+          measurementId: "G-41844B841P"
         };
-
+      
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
-    </script>
+      </script>
 </body>
 
 </html>
