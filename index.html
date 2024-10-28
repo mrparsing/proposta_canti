@@ -17,6 +17,10 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2J3NXSXK3Y"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
     <script>
         const currentVersion = '1.0.0';
 
@@ -86,9 +90,6 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2J3NXSXK3Y');
-
-        importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
-        importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
         const firebaseConfig = {
             apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
