@@ -1,0 +1,32 @@
+name: Deploy to Firebase Hosting
+
+# Esegui l'azione ogni volta che c'è un push sul branch 'main'
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout del repository
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Installazione di Node.js (assicurati di avere la versione giusta per Firebase CLI)
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # o la versione che preferisci
+
+      # Installa Firebase CLI
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      # Esegui il deploy su Firebase
+      - name: Deploy to Firebase Hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting
