@@ -54,11 +54,16 @@
             }
         }
 
-        // Registrazione del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw.js').then(function (registration) {
                     console.log('ServiceWorker registrato con successo:', registration);
+
+                    // Registrazione del Web Worker
+                    const worker = new Worker('worker.js');
+
+                    // Se desideri comunicare con il Worker
+                    worker.postMessage({ type: 'INIT', payload: 'Some data' });
 
                     registration.onupdatefound = function () {
                         const newWorker = registration.installing;
@@ -84,7 +89,6 @@
                 });
             });
         }
-
         // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
