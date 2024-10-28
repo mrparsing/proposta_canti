@@ -24,10 +24,6 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools@latest
 
-      # Usa npm install oppure npm ci a seconda della presenza di package-lock.json
-      - name: Install dependencies and build
-        run: npm install && npm run build  # Usa npm ci se hai aggiunto package-lock.json
-
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
