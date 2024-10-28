@@ -55,29 +55,3 @@ self.addEventListener('push', function(event) {
     self.registration.showNotification('New Message', options)
   );
 });
-
-// Firebase Messaging
-importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
-  authDomain: "proposta-canti-13252.firebaseapp.com",
-  projectId: "proposta-canti-13252",
-  storageBucket: "proposta-canti-13252.appspot.com",
-  messagingSenderId: "643920970942",
-  appId: "1:643920970942:web:5351c41cc6068558a48aef",
-};
-
-// Initialize Firebase Messaging
-const app = firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
-
-messaging.setBackgroundMessageHandler(function(payload) {
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: payload.data.body,
-  };
-  
-  return self.registration.showNotification(notificationTitle, notificationOptions);
-});
