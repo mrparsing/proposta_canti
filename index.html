@@ -36,39 +36,6 @@
                     }
                 });
             }
-            // Registrazione del Service Worker
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('sw.js').then(function (registration) {
-                        console.log('ServiceWorker registrato con successo:', registration);
-
-                        registration.onupdatefound = function () {
-                            const newWorker = registration.installing;
-                            newWorker.onstatechange = function () {
-                                if (newWorker.state === 'installed') {
-                                    if (navigator.serviceWorker.controller) {
-                                        newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
-                                    }
-                                }
-                            };
-                        };
-
-                        // Controlla aggiornamenti ogni 10 secondi
-                        setInterval(() => {
-                            registration.update().then(() => {
-                                if (registration.waiting) {
-                                    registration.waiting.postMessage({ type: 'UPDATE_AVAILABLE' });
-                                }
-                            });
-                        }, 10000);
-                    }).catch(function (error) {
-                        console.error('Registrazione del ServiceWorker fallita:', error);
-                    });
-                });
-            }
-
-
-            requestPermission();
         });
 
 
@@ -83,14 +50,45 @@
             }
         }
 
+        // Registrazione del Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    console.log('ServiceWorker registrato con successo:', registration);
+
+                    registration.onupdatefound = function () {
+                        const newWorker = registration.installing;
+                        newWorker.onstatechange = function () {
+                            if (newWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    newWorker.postMessage({ type: 'UPDATE_AVAILABLE' });
+                                }
+                            }
+                        };
+                    };
+
+                    // Controlla aggiornamenti ogni 10 secondi
+                    setInterval(() => {
+                        registration.update().then(() => {
+                            if (registration.waiting) {
+                                registration.waiting.postMessage({ type: 'UPDATE_AVAILABLE' });
+                            }
+                        });
+                    }, 10000);
+                }).catch(function (error) {
+                    console.error('Registrazione del ServiceWorker fallita:', error);
+                });
+            });
+        }
+
         // Inizializzazione di Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2J3NXSXK3Y');
 
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js';
-        import { getMessaging, getToken } from 'https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js';
+        importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
+        importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
         const firebaseConfig = {
             apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
@@ -123,6 +121,8 @@
                 }
             });
         }
+
+        requestPermission();
     </script>
 </head>
 
