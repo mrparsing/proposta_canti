@@ -9,7 +9,6 @@
     <!-- Script per i file JavaScript locali -->
     <script src="javascript/javascript.js"></script>
     <script src="javascript/js_global_search.js"></script>
-    <script src="firebase-messaging-sw.js"></script>
 
     <!-- Foglio di stile CSS -->
     <link rel="stylesheet" href="styles/style_index.css">
@@ -80,6 +79,15 @@
                     console.error('Registrazione del ServiceWorker fallita:', error);
                 });
             });
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('firebase-messaging-sw.js', { type: 'module' })
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch((error) => {
+                    console.error('Service Worker registration failed:', error);
+                });
         }
 
         // Inizializzazione di Google Analytics
