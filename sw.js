@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v2'; // Aggiorna il numero di versione quando cambi i file da cache
+const CACHE_NAME = 'v2'; // Update the version number when caching files
 const urlsToCache = [
   'index.html',
   'manifest.json',
@@ -6,7 +6,7 @@ const urlsToCache = [
   'javascript/javascript.js'
 ];
 
-// Installazione del service worker e caching dei file
+// Installation of the service worker and caching files
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
@@ -15,17 +15,16 @@ self.addEventListener('install', function (event) {
   );
 });
 
-// Intercetta le richieste e risponde con i file dalla cache
+// Intercept requests and respond with cached files
 self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request).then(function (response) {
-      // Controlla se la richiesta è in cache, altrimenti effettua una richiesta di rete
       return response || fetch(event.request);
     })
   );
 });
 
-// Aggiornamento del service worker e gestione della cache
+// Update service worker and manage the cache
 self.addEventListener('activate', function (event) {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -41,31 +40,26 @@ self.addEventListener('activate', function (event) {
   );
 });
 
-self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Forza l'attivazione del nuovo Service Worker
-});
-
+// Claim clients for the new service worker
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim()); // Assicura che il nuovo SW prenda il controllo
+  event.waitUntil(self.clients.claim());
 });
 
-// Invia un messaggio al client quando l'installazione è completata
-self.addEventListener('message', (event) => {
-  if (event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+// Handle push notifications
+self.addEventListener('push', function(event) {
+  const options = {
+    body: event.data.text(),
+    // You can add more options here
+  };
+  event.waitUntil(
+    self.registration.showNotification('New Message', options)
+  );
 });
 
-
-
+// Firebase Messaging
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
-
-console.log("test sw");
-
-// Initialize the Firebase app in the service worker by passing in the
-// messagingSenderId.
 const firebaseConfig = {
   apiKey: "AIzaSyAKG4mi3DGhomBo989PHUilHYW-PF-akzI",
   authDomain: "proposta-canti-13252.firebaseapp.com",
@@ -75,28 +69,15 @@ const firebaseConfig = {
   appId: "1:643920970942:web:5351c41cc6068558a48aef",
 };
 
+// Initialize Firebase Messaging
+const app = firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
 
-function requestPermission() {
-  console.log('Requesting permission...');
-  Notification.requestPermission().then((permission) => {
-    if (permission === 'granted') {
-      console.log('Notification permission granted');
-      const app = initializeApp(firebaseConfig)
-      // Retrieve an instance of Firebase Messaging so that it can handle background
-      // messages.
-      const messaging = getMessaging(app)
-
-      getToken(messaging, { vapidKey: 'BNWgH3H0wYtTullS6HQWgW9Oc79B6_d3i-wNP--UwP_-skGtA4VR3w8U-c0K7bD6jO63-vykpBVYBCQA0sQjxlM' }).then((currentToken) => {
-        if (currentToken) {
-          console.log('currentToken', currentToken);
-        } else {
-          console.log('Can not get token');
-        }
-      });
-    } else {
-      console.log('Do not have permission');
-    }
-  })
-}
-
-requestPermission()
+messaging.setBackgroundMessageHandler(function(payload) {
+  const notificationTitle = 'Background Message Title';
+  const notificationOptions = {
+    body: payload.data.body,
+  };
+  
+  return self.registration.showNotification(notificationTitle, notificationOptions);
+});
