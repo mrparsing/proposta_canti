@@ -44,14 +44,3 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim());
 });
-
-// Handle push notifications
-self.addEventListener('push', function(event) {
-  const options = {
-    body: event.data.text(),
-    // You can add more options here
-  };
-  event.waitUntil(
-    self.registration.showNotification('New Message', options)
-  );
-});
