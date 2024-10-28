@@ -65,6 +65,25 @@
             };
             new Notification(notificationTitle, notificationOptions);
         });
+
+        // Richiedi il permesso per le notifiche
+        messaging.requestPermission()
+            .then(() => {
+                console.log("Permesso per le notifiche ottenuto.");
+                return messaging.getToken();
+            })
+            .then(token => {
+                console.log("Token FCM:", token);
+                // Salva il token nel database o dove preferisci
+            })
+            .catch(error => {
+                console.error("Errore nella richiesta di permesso per le notifiche:", error);
+            });
+
+        messaging.onMessage(payload => {
+            console.log("Messaggio ricevuto:", payload);
+            // Puoi mostrare il contenuto della notifica all'utente qui
+        });
     </script>
 
     <script>
@@ -134,25 +153,6 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-2J3NXSXK3Y');
-
-        // Richiedi il permesso per le notifiche
-        messaging.requestPermission()
-            .then(() => {
-                console.log("Permesso per le notifiche ottenuto.");
-                return messaging.getToken();
-            })
-            .then(token => {
-                console.log("Token FCM:", token);
-                // Salva il token nel database o dove preferisci
-            })
-            .catch(error => {
-                console.error("Errore nella richiesta di permesso per le notifiche:", error);
-            });
-
-        messaging.onMessage(payload => {
-            console.log("Messaggio ricevuto:", payload);
-            // Puoi mostrare il contenuto della notifica all'utente qui
-        });
     </script>
 </head>
 
