@@ -269,8 +269,7 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
         } else if (numero === "Solennità di tutti i Santi") {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
-        }
-        else {
+        } else {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
         }
     } else if (tipologia === "avvento") {

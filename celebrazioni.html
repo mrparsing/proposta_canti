@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <title>Proposta Cantixs</title>
+    <title>Proposta Canti</title>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             setNavbarColor(festivita[0].tipologia);
@@ -71,9 +71,12 @@
 
         function populatePage(data, numero, anno) {
             const celebrazione = data.celebrazioni.find(celebra => celebra.numero == numero);
+            let number_cast = Number(numero)
+            console.log(typeof Number(numero) === 'number');
+            console.log("sdfsd");
 
             if (celebrazione) {
-                if (typeof numero === 'number') {
+                if (typeof Number(numero) === 'number' && !isNaN(Number(numero))) {
                     document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
                     document.querySelector('#title').innerHTML = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
                 } else {
