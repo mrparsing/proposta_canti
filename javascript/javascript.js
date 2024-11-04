@@ -292,7 +292,6 @@ function setNavbarColor(tipologia) {
 
     switch (tipologia) {
         case "ordinario":
-            console.log("sono qui");
             navbar.style.backgroundColor = '#2a9a5c'; // Verde
             break;
         case "avvento":
