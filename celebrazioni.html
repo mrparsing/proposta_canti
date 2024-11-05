@@ -80,11 +80,13 @@
 
             if (celebrazione) {
                 if (typeof Number(numero) === 'number' && !isNaN(Number(numero))) {
-                    document.title = `${numero}° domenica tempo ordinario - Anno ${anno}`;
-                    document.querySelector('#title').innerHTML = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                    const pageTitle = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                    document.title = pageTitle;
+                    document.querySelector('#title').innerHTML = pageTitle;
                 } else {
-                    document.title = `${numero} - Anno ${anno}`;
-                    document.querySelector('#title').innerHTML = `${numero} - ANNO ${anno}`;
+                    const pageTitle = `${numero} - ANNO ${anno}`;
+                    document.title = pageTitle;
+                    document.querySelector('#title').innerHTML = pageTitle;
                 }
                 const colore = celebrazione.colore;
                 document.querySelector("#myNavbar").setAttribute("style", `background-color: ${colore};`);
