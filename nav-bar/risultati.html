@@ -107,7 +107,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            setNavbarColor(festivita[0].tipologia);
+            setNavbarColor(prox_festivita.tipologia, "risultati");
             setDarkTheme();
 
             const searchInput = localStorage.getItem("searchInput");
@@ -161,7 +161,7 @@
                 <th>Anno</th>
                 <th>Autore</th>
                 <th>Download</th>
-            `;
+                `;
             if (results && results.length > 0) {
                 results.forEach(salmo => {
                     const row = resultsTable.insertRow();
@@ -217,6 +217,7 @@
                 <th>Tempo</th>
                 <th>Ascolto</th>
                 <th>Spartito</th>
+                <th>Testo</th>
             `;
                 results.forEach(canto => {
                     const row = resultsTable.insertRow();
@@ -229,6 +230,7 @@
             <td>${canto.tempo}</td>
             <td><a href="${canto.ascolta}">Ascolta</a></td>
             <td>Spartito non disponibile</td>
+            <td><a href="testo_canti.html?titolo=${canto.titolo}">Testo</a></td>
             `;
                     } else {
                         row.innerHTML = `
@@ -238,6 +240,7 @@
             <td>${canto.tempo}</td>
             <td><a href="${canto.ascolta}">Ascolta</a></td>
             <td><a href="${canto.download_link}">Download</a></td>
+            <td><a href="testo_canti.html?titolo=${canto.titolo}">Testo</a></td>
             `;
                     }
 

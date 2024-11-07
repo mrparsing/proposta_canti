@@ -226,10 +226,10 @@ function calcolaFestivita(anno) {
 const oggi = new Date();
 oggi.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
 const festivita = calcolaFestivita(oggi.getFullYear());
+const prox_festivita = festivita.find(f => new Date(f.data) >= oggi);
 
 function avvia_index() {
-
-    setNavbarColor(festivita[0].tipologia)
+    setNavbarColor(prox_festivita.tipologia)
 
     setDarkTheme()
 
@@ -287,9 +287,23 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
 }
 
 
-function setNavbarColor(tipologia) {
+function setNavbarColor(tipologia, page) {
     const navbar = document.querySelector('.navbar');
-
+    if (page === "risultati") {
+        const table = document.querySelector('#resultsTable thead tr');
+        switch (tipologia) {
+            case "ordinario":
+                table.style.backgroundColor = '#2a9a5c'; // Verde
+                break;
+            case "avvento":
+                table.style.backgroundColor = '#8A2BE2'; // Viola
+                break;
+            case "quaresima":
+                table.style.backgroundColor = '#8A2BE2'; // Viola
+                break;
+        }
+    
+    }
     switch (tipologia) {
         case "ordinario":
             navbar.style.backgroundColor = '#2a9a5c'; // Verde
