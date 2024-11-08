@@ -223,12 +223,13 @@ function calcolaFestivita(anno) {
     return festivita;
 }
 
-const oggi = new Date();
+const oggi = new Date(2024, 11, 1);
 oggi.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
 const festivita = calcolaFestivita(oggi.getFullYear());
 const prox_festivita = festivita.find(f => new Date(f.data) >= oggi);
 
 function avvia_index() {
+    localStorage.setItem("theme-navbar", prox_festivita.tipologia)
     setNavbarColor(prox_festivita.tipologia)
 
     setDarkTheme()
@@ -261,6 +262,13 @@ function setDarkTheme() {
     }
 }
 
+function setNavBarTheme() {
+    window.onload = function () {
+        const savedTheme = localStorage.getItem('theme-navbar');
+        navbar.style.backgroundColor = savedTheme;
+    }
+}
+
 function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
@@ -289,6 +297,7 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
 
 function setNavbarColor(tipologia, page) {
     const navbar = document.querySelector('.navbar');
+    console.log("STO TENTANDO DI CAMBIARE IL COLORE");
     if (page === "risultati") {
         const table = document.querySelector('#resultsTable thead tr');
         switch (tipologia) {

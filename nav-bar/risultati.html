@@ -107,7 +107,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            setNavbarColor(prox_festivita.tipologia, "risultati");
+            const theme = localStorage.getItem("theme-navbar")
+            setNavbarColor(theme, "risultati");
             setDarkTheme();
 
             const searchInput = localStorage.getItem("searchInput");

@@ -11,7 +11,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            setNavbarColor(prox_festivita.tipologia);
+            const theme = localStorage.getItem("theme-navbar")
+            setNavbarColor(theme);
             setDarkTheme()
         });
     </script>
