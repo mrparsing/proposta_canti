@@ -476,11 +476,11 @@
         },
         {
             "titolo": "M'invocherà e io lo esaudirò",
-            "autore": "autore 53",
+            "autore": "Giuseppe Libero",
             "tipologia": "Ingresso",
             "tempo": "Quaresima",
-            "ascolta": "link53.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=pqILoVS1PJA",
+            "download_link": "../db/canti/m'invocherà e io lo esaudirò,pdf",
             "testo": ""
         },
         {
@@ -488,53 +488,53 @@
             "autore": "Marco Frisina",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link54.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=yZF5XDW_NDI",
+            "download_link": "../db/canti/ti seguirò.pdf",
             "testo": ""
         },
         {
             "titolo": "Tu scendi dalle stelle",
-            "autore": "autore 55",
+            "autore": "",
             "tipologia": "Ingresso, Finale",
             "tempo": "Natale",
-            "ascolta": "link55.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=n5bmzzDiSvY",
+            "download_link": "../db/canti/tu scendi dalle stelle",
             "testo": ""
         },
         {
             "titolo": "Adeste Fideles",
-            "autore": "autore 56",
+            "autore": "-",
             "tipologia": "Ingresso, Offertorio, Comunione",
             "tempo": "Natale",
-            "ascolta": "link56.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=gO7FdGLX548",
+            "download_link": "../db/canti/adeste fidelis.pdf",
             "testo": ""
         },
         {
             "titolo": "Vieni Signore",
-            "autore": "autore 57",
+            "autore": "Daniele Semprini",
             "tipologia": "Comunione",
             "tempo": "Avvento",
-            "ascolta": "link57.html",
+            "ascolta": "https://www.youtube.com/watch?v=RDbsjzWEsS8",
             "download_link": "../db/canti/",
             "testo": ""
         },
         {
             "titolo": "Camminiamo incontro al Signore",
-            "autore": "autore 58",
+            "autore": "Daniele Semprini",
             "tipologia": "Comunione",
             "tempo": "Avvento",
-            "ascolta": "link58.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=oJzqaOPYeus",
+            "download_link": "../db/canti/camminiamo incontro al Signore.pdf",
             "testo": ""
         },
         {
             "titolo": "Maria porta dell'Avvento",
-            "autore": "autore 59",
+            "autore": "Daniele Semprini",
             "tipologia": "Comunione",
             "tempo": "Avvento",
-            "ascolta": "link59.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=BiHy5m0hQ0s",
+            "download_link": "../db/canti/Maria porta dellAvvento.pdf",
             "testo": ""
         },
         {
@@ -560,8 +560,8 @@
             "autore": "autore 62",
             "tipologia": "Ingresso",
             "tempo": "Qualsiasi",
-            "ascolta": "link62.html",
-            "download_link": "../db/canti/",
+            "ascolta": "",
+            "download_link": "../db/canti/ave maris stella.pdf",
             "testo": ""
         },
         {
@@ -575,10 +575,10 @@
         },
         {
             "titolo": "All'agnello che è stato immolato",
-            "autore": "autore 63",
+            "autore": "-",
             "tipologia": "Offertorio, Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link63.html",
+            "ascolta": "-",
             "download_link": "../db/canti/",
             "testo": ""
         },
@@ -587,8 +587,8 @@
             "autore": "autore 64",
             "tipologia": "Comunione",
             "tempo": "Qualsiasi",
-            "ascolta": "link64.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=cyrSSdoPWpA",
+            "download_link": "../db/canti/perche tu sei con me.pdf",
             "testo": ""
         },
         {
@@ -596,8 +596,8 @@
             "autore": "autore 65",
             "tipologia": "Offertorio",
             "tempo": "Qualsiasi",
-            "ascolta": "link65.html",
-            "download_link": "../db/canti/",
+            "ascolta": "https://www.youtube.com/watch?v=8iywj803XgY",
+            "download_link": "../db/canti/Le mani alzate.pdf",
             "testo": ""
         },
         {
