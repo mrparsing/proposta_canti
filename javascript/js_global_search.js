@@ -125,6 +125,7 @@ async function searchCanti(event, page) {
                 // Reindirizza alla pagina dei risultati
                 window.location.href = linkRisultati;
             } else {
+                document.getElementById("resultsContainer").innerHTML = "<div>Nessun risultato trovato</div>"
                 console.log("Nessun risultato trovato.");
             }
         } else { // cerca un canto

@@ -223,7 +223,7 @@ function calcolaFestivita(anno) {
     return festivita;
 }
 
-const oggi = new Date(2024, 11, 1);
+const oggi = new Date();
 oggi.setHours(0, 0, 0, 0); // Set time to 00:00:00.000
 const festivita = calcolaFestivita(oggi.getFullYear());
 const prox_festivita = festivita.find(f => new Date(f.data) >= oggi);
