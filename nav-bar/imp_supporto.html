@@ -10,12 +10,6 @@
     <link rel="stylesheet" href="../styles/style_index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            setNavbarColor(prox_festivita.tipologia);
-            setDarkTheme()
-        });
-    </script>
     <style>
         body {
             background-color: var(--background-color);
@@ -262,6 +256,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            setNavbarColor(prox_festivita.tipologia);
             const savedTheme = localStorage.getItem('theme');
             const themeToggleSwitch = document.getElementById('theme-toggle');
 
