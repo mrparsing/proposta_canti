@@ -27,6 +27,87 @@ body {
     color: var(--text-color);
 }
 
+.header {
+    position: relative;
+    /* Posiziona l'overlay sopra l'immagine di sfondo */
+    background: green url('../styles/img/sfondo.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    /* Spazio sopra l'header per separarlo dalla navbar */
+    padding: 50px 0;
+    /* Aggiungi spazio sopra e sotto il testo */
+    text-align: center;
+    /* Allinea il testo al centro */
+    width: 100%;
+}
+
+/* Aggiungi l'overlay semitrasparente */
+.header::before {
+    content: '';
+    /* Contenuto vuoto */
+    position: absolute;
+    /* Posiziona l'overlay sopra l'immagine di sfondo */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Overlay nero semi-trasparente */
+    z-index: 1;
+    /* Assicurati che l'overlay stia sotto il testo */
+}
+
+/* Stile per il contenuto del testo */
+.header-content {
+    position: relative;
+    /* Assicurati che il testo sia sopra l'overlay */
+    z-index: 2;
+    /* Rende il testo visibile sopra l'overlay */
+}
+
+.header h1 {
+    font-size: 3em;
+    /* Dimensione del titolo */
+    color: white;
+    margin: 0;
+}
+
+.header .subtitle {
+    font-size: 1.5em;
+    /* Dimensione del sottotitolo */
+    margin-top: 10px;
+}
+
+#celebrazioneList {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#celebrazioneList li {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#celebrazioneList li:hover {
+    background-color: #dff0d8;
+    transform: translateX(5px);
+}
+
+/* Add a simple icon or symbol for each item */
+#celebrazioneList li::before {
+    /* Cross icon */
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #5bc0de;
+}
+
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -112,27 +193,64 @@ body {
 .prossime-celebrazioni-div {
     background-color: #e1e1e1;
     padding: 15px;
+    height: 100%;
     border-radius: 10px;
-    margin-bottom: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
 .slogan-div {
-    flex: 0 0 60%;
+    flex: 0 0 40%;
     line-height: 1.8;
-    /* Improve line spacing */
+    padding: 30px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px 0;
+    border-radius: 8px;
+    line-height: 1.6;
+    overflow: hidden;
+    /* Aggiungi per evitare che il contenuto esca dalla sezione */
+    max-height: 700px;
+    /* Impostiamo un limite per l'altezza massima */
+    display: flex;
+    flex-direction: column;
+
 }
 
 .slogan-div p {
-    margin-bottom: 15px;
-    /* Space between paragraphs */
+    font-size: 1.1em;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    word-wrap: break-word;
 }
+
+.slogan-div b {
+    color: #4CAF50;
+    /* Green for emphasis */
+}
+
+.slogan-div p:last-child {
+    margin-bottom: 0;
+}
+
+/* Optional: Aggiungere un gradiente di sfondo per migliorare l'aspetto */
+.slogan-div {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+}
+
 
 .prossime-celebrazioni-div {
     background-color: #d1d1d1;
-    flex: 0 0 40%;
+    flex: 0 0 60%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -140,6 +258,26 @@ body {
 .prossime-celebrazioni-div h2 {
     font-size: 20px;
     color: #333;
+}
+
+.prossime-celebrazioni-div h2 {
+    font-size: 2em;
+    color: #3c763d;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.slogan-div,
+.prossime-celebrazioni-div {
+    flex: 1;
+    /* Permette a ciascuna sezione di espandersi in modo uguale */
+    margin: 0 15px;
+    /* Spazio tra le due sezioni */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* Per separare il contenuto in modo uniforme */
 }
 
 @keyframes slideDown {
@@ -166,50 +304,120 @@ body {
     }
 }
 
-@media (max-width: 1200px) {
+/* Aggiungi un media query per la visualizzazione su dispositivi mobili */
+@media (max-width: 768px) {
+
+    /* Navbar */
     .navbar {
         flex-direction: row;
-        align-items: flex-start;
+        padding: 10px;
+        text-align: center;
     }
 
     .navbar h1 {
-        margin-bottom: 10px;
+        margin: 10px;
     }
 
     .navbar-buttons {
         display: none;
         flex-direction: column;
         width: 100%;
-    }
-
-    .menu-toggle {
-        display: block;
-        margin-bottom: 10px;
+        margin-top: 10px;
     }
 
     .navbar.active .navbar-buttons {
         display: flex;
     }
 
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
     .navbar input[type="text"] {
         max-width: 100%;
         margin-top: 10px;
+        padding: 12px;
+        font-size: 16px;
     }
 
+    /* Contenuto principale */
     .main-content {
         flex-direction: column;
+        padding: 10px;
+        gap: 20px;
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .slogan-image {
-        display: flex;
-        flex-direction: column;
-        /* Imposta disposizione orizzontale su schermi grandi */
+    .slogan-div, .prossime-celebrazioni-div {
+        flex: 1;
+        margin: 0 10px;
+        padding: 15px;
+    }
+
+    .slogan-div {
+        flex: 1 0 100%;
+        padding: 20px;
+        max-height: none;
+    }
+
+    .prossime-celebrazioni-div {
+        flex: 0 0 100%;
+        padding: 20px;
+    }
+
+    /* Slogan e Prossime Celebrazioni */
+    .slogan-div p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .prossime-celebrazioni-div h2 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    /* Adatta le immagini per i dispositivi mobili */
+    .slogan-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Aggiustamenti per la lista delle celebrazioni */
+    #celebrazioneList li {
+        font-size: 1em;
+        padding: 10px;
+        margin: 8px 0;
+    }
+
+    #celebrazioneList li a {
+        font-size: 1.1em;
+    }
+
+    /* Pulsante download */
+    #download {
+        margin-top: 10px;
         width: 100%;
-        /* Occupa l'intera larghezza del contenitore */
-        gap: 20px;
-        /* Spazio tra immagine e testo */
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+
+    /* Banner aggiornamenti */
+    .update-banner {
+        position: static;
+        padding: 15px;
+        text-align: left;
+        box-shadow: none;
+    }
+
+    .update-banner button {
+        font-size: 14px;
+        padding: 8px 12px;
     }
 }
+
 
 .prossime-celebrazioni-div {
     background-color: #f9f9f9;

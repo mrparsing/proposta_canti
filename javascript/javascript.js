@@ -296,7 +296,7 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
 
 
 function setNavbarColor(tipologia, page) {
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.getElementById('myNavbar');
     if (page === "risultati") {
         const table = document.querySelector('#resultsTable thead tr');
         switch (tipologia) {
