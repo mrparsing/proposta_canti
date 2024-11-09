@@ -20,16 +20,14 @@
         content="proposta canti, canti liturgici, prossima domenica, domenica prossima, tempo ordinario, celebrazioni liturgiche, anno liturgico, domenica liturgia, letture domenicali, salmi responsoriali">
     <title>Proposta Canti</title>
     <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Event",
-                "name": "Proposta Canti - {{numero}}° Domenica del Tempo Ordinario - Anno {{anno}}",
-                "startDate": "YYYY-MM-DD",
-                "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-                "description": "Proposta di canti {{numero}}° domenica del tempo ordinario.",
-                "keywords": ["proposta canti", "celebrazioni liturgiche", "domenica", "tempo ordinario", "domenica prossima"]
-            }
-            </script>
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Proposta Canti per la ${numero}° domenica",
+          "description": "Proposta canti per la ${numero}° domenica - anno ${anno} del tempo di ${festivita}.",
+          "url": "https://propostacanti.web.app/celebrazioni.html?numero=${numero}&anno=${anno}&festivita=${festivita}"
+        }
+        </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -97,13 +95,18 @@
 
             if (celebrazione) {
                 if (typeof Number(numero) === 'number' && !isNaN(Number(numero))) {
-                    const pageTitle = `${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
-                    document.title = pageTitle;
-                    document.querySelector('#title').innerHTML = pageTitle;
+                    document.title = `Proposta Canti - ${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                    const metaDescription = document.createElement('meta');
+                    metaDescription.name = "description";
+                    metaDescription.content = `Scopri la proposta canti per la ${numero}° domenica del tempo ordinario - ${anno}. Suggerimenti per Ingresso, Offertorio, Comunione e canto finale.`;
+                    document.head.appendChild(metaDescription);
+
                 } else {
-                    const pageTitle = `${numero} - ANNO ${anno}`;
-                    document.title = pageTitle;
-                    document.querySelector('#title').innerHTML = pageTitle;
+                    document.title = `Proposta Canti - ${numero} - ANNO ${anno}`;
+                    const metaDescription = document.createElement('meta');
+                    metaDescription.name = "description";
+                    metaDescription.content = `Scopri la proposta canti per ${numero} - anno ${anno}. Suggerimenti per Ingresso, Offertorio, Comunione e canto finale.`;
+                    document.head.appendChild(metaDescription);
                 }
                 const colore = celebrazione.colore;
                 document.querySelector("#myNavbar").setAttribute("style", `background-color: ${colore};`);
