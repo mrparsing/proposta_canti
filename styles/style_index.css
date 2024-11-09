@@ -219,7 +219,6 @@ body {
     /* Impostiamo un limite per l'altezza massima */
     display: flex;
     flex-direction: column;
-
 }
 
 .slogan-div p {
@@ -360,7 +359,6 @@ body {
     .slogan-div {
         flex: 1 0 100%;
         padding: 20px;
-        max-height: none;
     }
 
     .prossime-celebrazioni-div {
@@ -416,6 +414,28 @@ body {
         font-size: 14px;
         padding: 8px 12px;
     }
+
+    .main-content {
+        flex-direction: column;
+        padding: 10px;
+        gap: 20px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Cambia l'ordine dei div */
+    .prossime-celebrazioni-div {
+        order: 1; /* Assegna il primo ordine */
+        flex: 0 0 100%;
+        padding: 20px;
+    }
+
+    .slogan-div {
+        order: 2; /* Assegna il secondo ordine */
+        flex: 1 0 100%;
+        padding: 20px;
+    }
+
 }
 
 

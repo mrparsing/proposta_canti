@@ -240,7 +240,7 @@ function avvia_index() {
         if (festivitaItem.data >= oggi) {
             console.log(festivitaItem);
             prox_celebrazioni.push(festivitaItem);
-            if (prox_celebrazioni.length === 9) {
+            if (prox_celebrazioni.length === 8) {
                 break;
             }
         }
