@@ -239,12 +239,9 @@ body {
 
 /* Optional: Aggiungere un gradiente di sfondo per migliorare l'aspetto */
 .slogan-div {
-    background-color: #e9ecef;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
 }
 
-.dark-theme .slogan-div {
-    color: white;
-}
 
 .prossime-celebrazioni-div {
     background-color: #d1d1d1;
@@ -400,7 +397,6 @@ body {
     /* Pulsante download */
     #download {
         margin-top: 10px;
-        width: 100%;
         padding: 12px 20px;
         font-size: 18px;
     }
@@ -441,8 +437,9 @@ body {
 
 }
 
+
 .prossime-celebrazioni-div {
-    background-color: #000000;
+    background-color: #f9f9f9;
     /* Light background for the section */
     border-radius: 8px;
     /* Rounded corners */
@@ -515,19 +512,9 @@ body {
 /* Tema scuro - colore di default */
 .dark-theme #celebrazioneList li a {
     color: #ffffff;
-    background-color: #444;
     /* Il testo sarà bianco in modalità scura */
 }
 
-.dark-theme #celebrazioneList li {
-    color: #ffffff;
-    background-color: #444;
-    /* Il testo sarà bianco in modalità scura */
-}
-
-.dark-theme .slogan-div {
-    background-color: #444;
-}
 
 .slogan-div {
     display: flex;
