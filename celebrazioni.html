@@ -91,15 +91,16 @@
             const celebrazione = data.celebrazioni.find(celebra => celebra.numero == numero);
             let number_cast = Number(numero)
             console.log(typeof Number(numero) === 'number');
-            console.log("sdfsd");
 
             if (celebrazione) {
                 if (typeof Number(numero) === 'number' && !isNaN(Number(numero))) {
-                    document.title = `Proposta Canti - ${numero}° DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
+                    document.title = `Proposta Canti - ${convertiInRomano(numero)} DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
                     const metaDescription = document.createElement('meta');
                     metaDescription.name = "description";
-                    metaDescription.content = `Scopri la proposta canti per la ${numero}° domenica del tempo ordinario - ${anno}. Suggerimenti per Ingresso, Offertorio, Comunione e canto finale.`;
+                    metaDescription.content = `Scopri la proposta canti per la ${convertiInRomano(numero)} domenica del tempo ordinario - ${anno}. Suggerimenti per Ingresso, Offertorio, Comunione e canto finale.`;
                     document.head.appendChild(metaDescription);
+
+                    document.getElementById('title').innerHTML = `${convertiInRomano(numero)} DOMENICA DEL TEMPO ORDINARIO - ANNO ${anno}`;
 
                 } else {
                     document.title = `Proposta Canti - ${numero} - ANNO ${anno}`;
@@ -107,6 +108,9 @@
                     metaDescription.name = "description";
                     metaDescription.content = `Scopri la proposta canti per ${numero} - anno ${anno}. Suggerimenti per Ingresso, Offertorio, Comunione e canto finale.`;
                     document.head.appendChild(metaDescription);
+
+                    document.getElementById('title').innerHTML = `${numero} - ANNO ${anno}`;
+
                 }
                 const colore = celebrazione.colore;
                 document.querySelector("#myNavbar").setAttribute("style", `background-color: ${colore};`);

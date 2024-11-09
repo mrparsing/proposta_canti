@@ -278,16 +278,16 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
         } else if (numero === "Solennità di tutti i Santi") {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
         } else {
-            li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero}° domenica tempo ordinario - anno: ${anno}</a>`;
+            li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${convertiInRomano(numero)} domenica tempo ordinario - anno: ${anno}</a>`;
         }
     } else if (tipologia === "avvento") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=avvento">${numero}° domenica tempo d'avvento - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=avvento">${convertiInRomano(numero)} domenica tempo d'avvento - anno: ${anno}</a>`;
     } else if (tipologia === "natale") {
         li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=natale">${numero}</a>`;
     } else if (numero === "Mercoledì delle Ceneri") {
         li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ceneri">${numero}</a>`;
     } else if (tipologia === "quaresima") {
-        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=quaresima">${numero}° domenica tempo di quaresima - anno: ${anno}</a>`;
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=quaresima">${convertiInRomano(numero)} domenica tempo di quaresima - anno: ${anno}</a>`;
     } else if (tipologia === "pasqua") {
         li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=pasqua">${numero}</a>`;
     }
@@ -297,7 +297,6 @@ function inserisci_elemento_lista(numero, anno, tipologia) {
 
 function setNavbarColor(tipologia, page) {
     const navbar = document.querySelector('.navbar');
-    console.log("STO TENTANDO DI CAMBIARE IL COLORE");
     if (page === "risultati") {
         const table = document.querySelector('#resultsTable thead tr');
         switch (tipologia) {
@@ -329,4 +328,36 @@ function setNavbarColor(tipologia, page) {
 function toggleMenu() {
     const navbar = document.getElementById('myNavbar');
     navbar.classList.toggle('active');
+}
+
+function convertiInRomano(numero) {
+    if (numero < 1 || numero > 33) return "Numero non valido";
+
+    const numeriRomani = [
+        ["I", "IV", "V", "IX"],
+        ["X", "XL", "L", "XC"],
+        ["C", "CD", "D", "CM"]
+    ];
+
+    let romano = "";
+    let cifra = 0;
+
+    while (numero > 0) {
+        const n = numero % 10;
+        if (n !== 0) {
+            if (n <= 3) {
+                romano = numeriRomani[cifra][0].repeat(n) + romano;
+            } else if (n === 4) {
+                romano = numeriRomani[cifra][1] + romano;
+            } else if (n <= 8) {
+                romano = numeriRomani[cifra][2] + numeriRomani[cifra][0].repeat(n - 5) + romano;
+            } else if (n === 9) {
+                romano = numeriRomani[cifra][3] + romano;
+            }
+        }
+        numero = Math.floor(numero / 10);
+        cifra++;
+    }
+
+    return romano;
 }
