@@ -141,14 +141,10 @@
 }
 
 .link-button {
-    float: right;
     /* Posiziona il link a destra */
     text-decoration: none;
     /* Rimuove la sottolineatura */
     color: #4A90E2;
-    /* Colore del link */
-    margin-left: 10px;
-    /* Spazio tra il testo e il link */
 }
 
 .link-button:hover {
@@ -320,7 +316,7 @@
     .search_bar_filtri {
         display: flex;
         flex-direction: row;
-        width: 380px;
+        width: 100%;
     }
 }
 
