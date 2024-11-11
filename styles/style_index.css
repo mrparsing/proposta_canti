@@ -200,24 +200,16 @@ body {
 }
 
 .slogan-div {
-    /* flex: 0 0 40%; */
-    /* line-height: 1.8; */
-    /* padding: 30px; */
-    /* background-color: #f1f1f1; */
-    /* border-radius: 8px; */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: "Arial", sans-serif;
     /* line-height: 1.6; */
     color: #333;
-    margin: 20px 0;
+    /* margin: 20px 0; */
     border-radius: 8px;
     line-height: 1.6;
-    /* overflow: hidden; */
-    /* Aggiungi per evitare che il contenuto esca dalla sezione */
     max-height: 700px;
-    /* Impostiamo un limite per l'altezza massima */
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
 }
 
 .slogan-div p {
@@ -236,9 +228,14 @@ body {
     margin-bottom: 0;
 }
 
-/* Optional: Aggiungere un gradiente di sfondo per migliorare l'aspetto */
 .slogan-div {
     background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    padding: 10px;
+}
+
+.dark-theme .slogan-div {
+    background: var(--background-color);
+    color: white;
 }
 
 
@@ -269,13 +266,9 @@ body {
 .slogan-div,
 .prossime-celebrazioni-div {
     flex: 1;
-    /* Permette a ciascuna sezione di espandersi in modo uguale */
     margin: 0 15px;
-    /* Spazio tra le due sezioni */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    /* Per separare il contenuto in modo uniforme */
+    /* display: flex; */
+    /* flex-direction: column; */
 }
 
 @keyframes slideDown {
@@ -503,9 +496,11 @@ body {
 }
 
 .dark-theme #celebrazioneList li:hover {
+    background-color: #555;
+}
+.dark-theme #celebrazioneList li {
     background-color: #3a3a3a;
 }
-
 /* Hover per i link nel tema scuro */
 .dark-theme #celebrazioneList li a:hover {
     color: #ffffff;
@@ -524,7 +519,10 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     font-size: 18px;
-    padding: 10px;
+}
+
+.dark-theme .slogan-div {
+    background-color: #444;
 }
 
 .slogan-text {

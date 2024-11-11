@@ -108,7 +108,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const theme = localStorage.getItem("theme-navbar")
-            setNavbarColor(theme, "risultati");
+            if (!theme) {
+                setNavbarColor("ordinario", "risultati")
+            }
+            else {
+                setNavbarColor(theme, "risultati");
+            }
             setDarkTheme();
 
             const searchInput = localStorage.getItem("searchInput");

@@ -257,7 +257,12 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const theme = localStorage.getItem("theme-navbar")
-            setNavbarColor(theme);
+            if (!theme) {
+                setNavbarColor("ordinario")
+            }
+            else {
+                setNavbarColor(theme);
+            }
             const savedTheme = localStorage.getItem('theme');
             const themeToggleSwitch = document.getElementById('theme-toggle');
 
