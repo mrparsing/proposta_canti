@@ -180,6 +180,27 @@ function calcolaFestivita(anno) {
         festivita.push({ anno: tipologia_anno(anno), tipologia: "avvento", numero: `${index + 1}`, data: domenica });
     });
 
+    // Novena Immacolata
+    // Calcolo della data del 29 novembre
+    const dataInizioNovena = new Date(anno, 10, 29); // 29 novembre
+
+    // Aggiungi i giorni della Novena dell'Immacolata
+    // metto sempre ordinario per semplicità di implementazione
+    // perché altrimenti dovrei fare un file json a parte per la novena
+    // invece ho messo la novena nelle celebrazioni del tempo ordinario
+    // il colore della navbar tanto viene stabilito nel json
+    for (let i = 0; i < 9; i++) {
+        const dataNovena = new Date(dataInizioNovena);
+        dataNovena.setDate(dataNovena.getDate() + i);
+
+        festivita.push({
+            anno: tipologia_anno(anno),
+            tipologia: "ordinario",
+            numero: `Novena Immacolata - Giorno ${i + 1}`,
+            data: dataNovena
+        });
+    }
+
     const dataSanti = new Date(anno, 10, 1);
     festivita.push({ anno: tipologia_anno(anno), tipologia: "ordinario", numero: 'Solennità di tutti i Santi', data: dataSanti });
 
@@ -272,7 +293,11 @@ function setNavBarTheme() {
 function inserisci_elemento_lista(numero, anno, tipologia) {
     const ul = document.querySelector('.prossime-celebrazioni-div ul');
     const li = document.createElement('li');
-    if (tipologia === "ordinario") {
+    console.log(numero, numero.includes("Novena Immacolata"));
+    if (numero.includes("Novena Immacolata")) {
+        li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
+    }
+    if (tipologia === "ordinario" && !numero.includes("Novena Immacolata")) {
         if (numero === "Solennità di Cristo Re") {
             li.innerHTML = `<a href="celebrazioni.html?numero=${numero}&anno=${anno}&festivita=ordinario">${numero} - anno: ${anno}</a>`;
         } else if (numero === "Solennità di tutti i Santi") {
@@ -310,7 +335,7 @@ function setNavbarColor(tipologia, page) {
                 table.style.backgroundColor = '#8A2BE2'; // Viola
                 break;
         }
-    
+
     }
     switch (tipologia) {
         case "ordinario":
