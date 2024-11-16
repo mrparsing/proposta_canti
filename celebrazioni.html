@@ -130,6 +130,13 @@
                     document.getElementById('link_salmo').style.display = 'none';
                 }
 
+                const link_salmo2 = celebrazione.salmo_link2;
+                if (link_salmo2) {
+                    document.getElementById('link_salmo2').setAttribute('href', link_salmo2);
+                } else {
+                    document.getElementById('link_salmo2').style.display = 'none';
+                }
+
                 document.querySelector('#seconda-lettura').innerHTML = celebrazione.seconda_lettura_testo;
                 document.querySelector('#acclamazione-al-vangelo').innerHTML = celebrazione.acclamazione_al_vangelo;
                 document.querySelector('#vangelo').innerHTML = celebrazione.vangelo;
@@ -205,6 +212,7 @@
 
         <h2>Salmo Responsoriale</h2>
         <p><a id="link_salmo" href="" download>Salmo Responsoriale</a></p>
+        <p><a id="link_salmo2" href="" download>Salmo Responsoriale (2)</a></p>
         <p id="salmo"></p>
 
         <h2>Seconda Lettura</h2>
