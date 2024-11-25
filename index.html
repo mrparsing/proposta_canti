@@ -5,21 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta Canti - Guida alla Scelta dei Canti Liturgici</title>
+
     <!-- Meta Description for SEO -->
     <meta name="description"
-        content="Scopri una proposta di canti liturgici adatta per ogni celebrazione. Pianifica i canti per l’Ingresso, l’Offertorio, la Comunione e il Congedo in base al calendario liturgico.">
+        content="Proposta canti liturgici - Scopri i migliori canti per ogni celebrazione. Suggerimenti per Ingresso, Offertorio, Comunione e Congedo in base al calendario liturgico.">
+
     <!-- Meta Keywords for SEO -->
     <meta name="keywords"
-        content="canti liturgici, proposta canti, celebrazioni religiose, musicisti, anima liturgico-musicale, calendario liturgico">
-    <!-- Author Tag -->
-    <meta name="author" content="Proposta Canti Team">
+        content="proposta canti, canti liturgici, guida canti liturgici, proposta canti liturgia, calendario liturgico, messa, avvento, quaresima, natale, pasqua, tempo ordinario, salmi responsoriali, liturgia eucaristica, celebrazioni religiose, cori, musicisti, elenco canti, spartiti, solennità, rito, triduo, comunione, offertorio, gloria, alleluia, assemblea, adorazione, maria, anno liturgico">
+
+    <link rel="canonical" href="https://cantusacri.web.app">
+    <meta name="author" content="Canti e Liturgia Team">
+
     <!-- Open Graph Meta Tags for social media sharing -->
     <meta property="og:title" content="Proposta Canti - Guida alla Scelta dei Canti Liturgici">
     <meta property="og:description"
-        content="Uno strumento utile per gli animatori liturgico-musicali per scegliere i canti più appropriati per ogni celebrazione.">
+        content="Proposta canti liturgici per ogni celebrazione. Elenco dettagliato per Avvento, Natale, Quaresima e Tempo Ordinario.">
     <meta property="og:image" content="styles/img/sfondo.png">
-    <meta property="og:url" content="https://propostacanti.web.app">
+    <meta property="og:url" content="https://cantusacri.web.app">
     <meta property="og:type" content="website">
+
     <meta name="google-site-verification" content="F-tZrF53BS0YnRte71tcyRU3MdrqNGQIyUUFKWfzRHg" />
     <script src="javascript/javascript.js"></script>
     <script src="javascript/js_global_search.js"></script>
@@ -101,7 +106,7 @@
     <div class="main-container">
 
         <div class="navbar" id="myNavbar">
-            <h1>Proposta canti</h1>
+            <h1>Canti e Liturgia</h1>
             <span class="menu-toggle" onclick="toggleMenu()">☰</span>
             <div class="navbar-buttons">
                 <button onclick="location.href='index.html'">Home</button>
@@ -111,19 +116,23 @@
                 <button onclick="location.href='nav-bar/eventi_speciali.html'">Eventi speciali</button>
                 <button onclick="location.href='nav-bar/imp_supporto.html'">Impostazioni/Supporto</button>
             </div>
-            <input type="text" id="global_search" onkeyup="searchCanti(event, 'index')" placeholder="Cerca...">
+            <div class="inputs">
+                <input type="text" id="global_search" onkeyup="searchCanti(event, 'index')"
+                    oninput="suggestions(event, 'index')" placeholder="Cerca..." autocomplete="off">
+                <div id="suggestions" class="suggestions-container"></div>
+            </div>
         </div>
         <div class="header">
             <div class="header-content">
-                <h1>Proposta Canti</h1>
-                <p class="subtitle">La guida per la scelta dei canti liturgici per ogni celebrazione dell'anno.</p>
+                <h1>Proposta Canti Liturgici</h1>
+                <p class="subtitle">Guida per scegliere i canti liturgici ideali per ogni celebrazione.</p>
             </div>
         </div>
 
         <div class="main-content" id="main-content">
             <div class="slogan-div">
-                <p>Questo è uno strumento pensato per supportare la scelta dei canti liturgici più adatti in base al
-                    calendario liturgico. Questa proposta di canti vuole essere una traccia offerta a tutti gli
+                <p>Proposta canti liturgici per ogni domenica dell'anno. Questa proposta di canti vuole essere una
+                    traccia offerta a tutti gli
                     animatori liturgico-musicali per la scelta delle parti canore per l’Ingresso, l’Offertorio, la
                     Comunione e il
                     Congedo, in modo che siano pertinenti ai testi proposti dal Messale e alla Parola di Dio proclamata.
@@ -168,7 +177,7 @@
         apiKey: "AIzaSyBBZ9WPNSoWLZbwtwV0OvHzaK9mAd9cD7Y",
         authDomain: "propostacanti.firebaseapp.com",
         projectId: "propostacanti",
-        storageBucket: "propostacanti.appspot.com",
+        storageBucket: "propostacanti.firebasestorage.app",
         messagingSenderId: "803132493230",
         appId: "1:803132493230:web:acdcbeea11301ead5f0c3f",
         measurementId: "G-41844B841P"
@@ -178,6 +187,26 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
 </script>
+
+<!-- Schema.org for rich snippets -->
+<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Proposta Canti - Guida alla Scelta dei Canti Liturgici",
+          "description": "Proposta canti liturgici per ogni celebrazione liturgica dell'anno. Suggerimenti per Avvento, Natale, Quaresima e Tempo Ordinario.",
+          "url": "https://propostacanti.web.app",
+          "image": "https://propostacanti.web.app/styles/img/sfondo.png",
+          "author": {
+            "@type": "Organization",
+            "name": "Canti e Liturgia Team"
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://propostacanti.web.app"
+          }
+        }
+    </script>
 </body>
 
 </html>

@@ -240,6 +240,24 @@
         .social-button i {
             vertical-align: middle;
         }
+
+        .github-link {
+            color: #2196F3;
+            /* A bold orange-red color */
+            font-weight: bold;
+            /* Make the link bold */
+            text-decoration: none;
+            /* Remove underline */
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+
+        .github-link:hover {
+            color: #1a8cff;
+            /* A darker shade when hovered */
+            text-decoration: underline;
+            /* Underline on hover */
+        }
     </style>
     <script>
         function toggleTheme() {
@@ -289,7 +307,11 @@
                 <button onclick="location.href='eventi_speciali.html'">Eventi speciali</button>
                 <button onclick="location.href='imp_supporto.html'">Impostazioni/Supporto</button>
             </div>
-            <input type="text" id="global_search" onkeyup="searchCanti(event, 'supporto')" placeholder="Cerca...">
+            <div class="inputs">
+                <input type="text" id="global_search" onkeyup="searchCanti(event, 'supporto')"
+                    oninput="suggestions(event, 'supporto')" placeholder="Cerca..." autocomplete="off">
+                <div id="suggestions" class="suggestions-container"></div>
+            </div>
         </div>
 
         <div class="main-content" id="main-content">
@@ -304,8 +326,9 @@
             <div class="section">
                 <h3>Contatti</h3>
                 <p>Per qualsiasi richiesta di supporto, suggerimenti o segnalazioni di problemi, puoi creare un'issue
-                    nella repository <a href="https://github.com/mrparsing/proposta_canti/issues"
-                        target="_blank">GitHub</a> o inviare un messaggio compilando il form.</p>
+                    nella <a href="https://github.com/mrparsing/cantusacri" target="_blank" class="github-link">GitHub
+                        Repository</a>
+                    o inviare un messaggio compilando il form.</p>
                 <form action="https://formspree.io/f/xgveegyl" method="POST">
                     <input type="email" name="email" placeholder="La tua email" required>
                     <textarea name="message" placeholder="Il tuo messaggio" required></textarea>

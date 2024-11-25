@@ -6,10 +6,22 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "headers": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=0, no-cache, no-store, must-revalidate" }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/xxxiii-domenica-ordinario-anno-b",
+        "destination": "/celebrazioni/33/B/ordinario"
+      },
+      {
+        "source": "/solennita-di-cristo-re-anno-b",
+        "destination": "/celebrazioni/Solennita-Cristo-Re/B/ordinario"
       }
     ]
   }
